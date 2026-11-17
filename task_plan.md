@@ -1,0 +1,123 @@
+# Task Plan: rn-e2e-shootout（Quiesco / Detox / Appium / Maestro 对比）
+
+规范文档：`e2e-comparison-plan.md`（以下简称“计划书”）。本文件只跟踪执行进度，内容以计划书为准。
+
+## Goal
+
+按计划书完成 M1–M10，产出公开仓库、原始数据、`results/summary.json`、官网对比页素材和发布文。
+
+## Next Step
+
+在 `app/` 用 `create-expo-app` 创建 SDK 58 的 Expo Router 项目（scheme `rnshootout`），然后搭建 mock-server。
+
+## Current Phase
+
+Phase 2（M2）
+
+## Phases
+
+### Phase 1: M1 仓库骨架与预注册文档
+
+- [x] `git init`，建立计划书第 1 节的目录骨架
+- [x] README.md（目的、立场披露、复现方法占位、结果摘要占位）
+- [x] scenarios.md（S1–S23 + C1–C11，含前置条件 / 步骤 / 验证点 / 通过标准、平台适用性表）
+- [x] METHODOLOGY.md（指标定义、等待分类 W1–W3、重置规则、N、预热、交错执行、Wilson 区间、施压条件、版本记录）
+- [x] 用户审阅并确认 → 提交并打 tag `methodology-v1`
+- **Status:** complete
+
+### Phase 2: M2 被测 app + mock server
+
+- [ ] `create-expo-app`（SDK 58），Expo Router + New Architecture，scheme `rnshootout`
+- [ ] 实现 A1–A28，所有元素带稳定 `testID`（A24 的刻意例外除外）
+- [ ] mock-server：`/reset`、CRUD、延迟、错误注入、轮询 + WebSocket、OAuth 页、延迟图片、推送辅助脚本
+- [ ] 动画时长可配置（jitter），Toast 固定 2 秒
+- [ ] iOS 模拟器、Android 模拟器、Web 三端手动走通
+- **Status:** in_progress
+
+### Phase 3: M3 四套测试实现（诊断版 + 正式版）
+
+- [ ] quiesco（0.5.0 + Vitest），记录易用性数据
+- [ ] detox（Jest），记录易用性数据
+- [ ] appium（WebdriverIO），记录易用性数据
+- [ ] maestro（YAML），记录易用性数据
+- [ ] 每套正式版 iOS / Android 连续 5 次全绿，或记录 ✗ 原因；C1–C11 逐项检查
+- **Status:** pending
+
+### Phase 4: M4 harness 与汇总脚本
+
+- [ ] `harness run --tool --platform --runs --variant --stress`
+- [ ] 每次运行输出计划书第 5 节格式的 JSON
+- [ ] 预热、交错执行（固定种子）、caffeinate
+- [ ] 汇总：median / p90 / min / max、Wilson 95% 区间（整套 + 按场景）、图表
+- **Status:** pending
+
+### Phase 5: M5 本地正式测量
+
+- [ ] 速度：N ≥ 20 × 工具 × 平台
+- [ ] 稳定性：N = 100，诊断版 + 正式版
+- [ ] 施压：slow-net / slow-cpu / jitter
+- **Status:** pending
+
+### Phase 6: M6 Expo 版本矩阵
+
+- [ ] SDK 54–58（以执行时最新版为准向前 4–5 个）× 四工具，跑 S1
+- [ ] 标注 Expo Go / dev client / prebuild / EAS Build / New Architecture
+- **Status:** pending
+
+### Phase 7: M7 AI 编写效率
+
+- [ ] 固定模型、提示词；每工具 3 次，记录轮数与通过数，公开对话记录
+- **Status:** pending
+
+### Phase 8: M8 外部 review
+
+- [ ] 请各工具使用者 review 实现；如有不公平之处，修正并重跑受影响测量
+- **Status:** pending
+
+### Phase 9: M9 CI 与定期重跑
+
+- [ ] GitHub Actions 矩阵、月度定时、手动触发、artifact、summary 自动 PR、Renovate
+- **Status:** pending
+
+### Phase 10: M10 官网页面与发布文
+
+- [ ] 标题数字、对比表、图表、方法 / 版本 / 硬件 / 立场披露、Quiesco 不占优项
+- [ ] 博客 / 发布文
+- **Status:** pending
+
+## Key Questions
+
+1. 外部 review（M8）找谁？——需用户提供人选。
+2. “首个测试通过所需时间”由谁执行？——需用户确定第三方，否则按计划书披露为作者本人。
+3. AI 编写效率使用哪个 LLM 模型 / 版本？——M7 开始前确定。
+4. 仓库公开到哪里（GitHub 组织 / 账号）？——M9 前确定。
+
+## Decisions Made
+
+| Decision | Rationale |
+|----------|-----------|
+| Quiesco 版本锁定 0.5.0 | 用户指定；测量期间不升级 |
+| Quiesco runner 用 Vitest（`@quiesco/vitest`） | 用户指定 |
+| 深链接 scheme 为 `rnshootout` | 用户指定 |
+| 被测 app 使用 Expo SDK 58.0.25 | 2026-11-17 npm 上的 latest |
+| 不分阶段交付，按 M1–M10 全量执行 | 用户指定 |
+| 规划文件放在项目根目录（legacy 模式） | 单一任务，无并行计划 |
+| 场景使用固定测试数据、英文界面、`#list-top-title` 判定第一行 | 避免各工具“元素顺序断言”能力差异干扰其他指标 |
+| 速度数据复用正式版无施压的 100 次运行 | 避免重复跑；N=100 ≥ 20 |
+| 场景耗时取自各工具 JUnit XML，套件耗时由 harness 外部计时 | 四个工具都能输出 JUnit，口径统一 |
+| 施压配置由 mock server `/config` 下发 | 所有工具共用一份配置，不在各工具中分别设置 |
+| 施压每种 N=50；`slow-cpu` 仅 Android；AI 编写每场景最多 10 轮 | 草案自定，用户审阅未提异议，随 v1 预注册 |
+| 公开文档用中文 | 用户指定；用户之后自行翻译 |
+| 许可证 MIT（版权人写 “rn-e2e-shootout contributors”） | 用户指定 |
+| 计划书与规划文件纳入 Git 并公开 | 用户指定 |
+
+## Errors Encountered
+
+| Error | Attempt | Resolution |
+|-------|---------|------------|
+|       |         |            |
+
+## Notes
+
+- 计划书是规范；若执行中需要改方法，先改计划书 / METHODOLOGY 并升版本号。
+- `methodology-v1` tag 打之前不跑任何正式测量。
