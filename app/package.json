@@ -38,6 +38,8 @@
   },
   "devDependencies": {
     "@types/react": "~19.3.0",
+    "detox": "20.51.4",
+    "expo-detox-config-plugin": "13.1.0",
     "typescript": "~6.0.3"
   },
   "scripts": {
@@ -48,5 +50,8 @@
     "web": "expo start --web",
     "lint": "expo lint"
   },
-  "private": true
+  "private": true,
+  "allowScripts": {
+    "detox@20.51.4": true
+  }
 }
