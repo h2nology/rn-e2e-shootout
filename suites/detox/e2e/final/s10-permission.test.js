@@ -1,6 +1,6 @@
 // S10 定位权限。S10a：launchApp permissions 预先授权（iOS，applesimutils）。
 // S10b：iOS 用 Detox 的 system API 点击系统弹窗；Android 无系统 UI 操作能力 → ✗。
-const { resetApp, login, isIOS } = require('../support');
+const { resetApp, login } = require('../support');
 
 async function openPermission() {
   await login();
@@ -17,7 +17,7 @@ describe('S10', () => {
   });
 
   // Android：Detox 无法操作系统权限弹窗 → ✗
-  (isIOS ? it : it.skip)('S10b 点击系统弹窗“允许”', async () => {
+  (device.getPlatform() === 'ios' ? it : it.skip)('S10b 点击系统弹窗“允许”', async () => {
     await resetApp();
     await openPermission();
     await system.element(by.system.label('Allow While Using App')).tap();

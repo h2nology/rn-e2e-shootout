@@ -89,6 +89,7 @@ Phase 3（M3）
 
 ## Key Questions
 
+00. 【待用户决定，阻塞 Detox Android】Detox 20.51.4 无法在 Android API 37 运行（`InputManager.getInstance` 已移除），且官方建议 AOSP default 镜像。是否把所有工具的 Android 测量设备换成 Detox 能运行的 API 级别 / 镜像？（方法变更，开 v3）
 0. 【待定，不阻塞】iOS 27 模拟器通知权限无法预授权（simctl / Maestro 均失败），若 Detox / Appium 也做不到，S22 前提需改为“允许测试点 Allow”；C1 失败路径需补充“系统提示重试时点取消”。两者一起开 v3，届时征求用户同意。
 
 1. 外部 review（M8）找谁？——需用户提供人选。

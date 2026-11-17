@@ -182,4 +182,11 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 深链接：`device.openURL` 仅用于前台；`launchApp({ newInstance: false/true, url })` 在 RN 0.88（SceneDelegate）下均不生效（app 回到前台但不跳转）。外部 `simctl openurl` 对已运行的 app 有效（热启动可行，但有竞态，需 W3）；外部命令冷启动的进程 Detox 无法连接 → **S21 冷启动在 iOS 上做不到**。RN 0.88 不在 Detox 官方支持范围（RN 0.77–0.84），结果须注明。
 - S6 滚动到第 400 行约 120 s（贴近模板默认的 120 s 单测超时）。
 - 状态重置用 `launchApp({ delete: true })`（卸载重装），每个场景约多花数秒，反映在 resetMs。
-- 正式版 iOS：20 通过 / S21 ✗ / 跳过 S10b(Android 专用跳过不适用于 iOS，此处为 S22) 等。S11 修正后通过：Detox 处理无限动画须在进入页面**之前** `disableSynchronization()`，且不能在该页面内 `enableSynchronization()`（会等待空闲而卡死，verbose 日志确认卡在 `setSyncSettings {"enabled":true}`，忙碌原因为 Animated 原生驱动的循环定时器）。
+- 正式版 iOS：S11 修正后 21 通过、S21 ✗、S22 跳过（✗）；S10b 因平台判断 bug 被误跳过（`DETOX_CONFIGURATION` 环境变量 Detox 并不设置），已改用 `device.getPlatform()`，待重跑。S11 修正后通过：Detox 处理无限动画须在进入页面**之前** `disableSynchronization()`，且不能在该页面内 `enableSynchronization()`（会等待空闲而卡死，verbose 日志确认卡在 `setSyncSettings {"enabled":true}`，忙碌原因为 Animated 原生驱动的循环定时器）。
+
+### Detox（Android，API 37 google_apis_playstore）实测（2026-11-17）
+
+- `android.emulator` 设备类型：Detox 通过 telnet 查询模拟器控制台时超时（`response not received`）；emulator 37 的控制台需要认证。改用 `android.attached`（adbName `emulator-5554`）可绕过。
+- 绕过后 app 启动即崩溃：`java.lang.NoSuchMethodException: android.hardware.input.InputManager.getInstance []`（Detox 的 Android 端通过反射调用该隐藏 API，Android 37 已移除）。→ **Detox 20.51.4 无法在 Android API 37 上运行**，与 app 无关。
+- Detox 官方 Android 环境指南（https://wix.github.io/Detox/docs/guide/android-dev-env）：未列出支持的 API 范围（示例为 API 28，称其他 API 也支持）；**强烈建议使用 AOSP `default` 镜像**，不建议 Google APIs 镜像（Play 服务占 CPU）。当前计划使用的是 API 37 `google_apis_playstore`。
+- 是否更换 Android 测量设备（API 级别 / 镜像类型）属于方法变更，需用户决定（开 v3）。
