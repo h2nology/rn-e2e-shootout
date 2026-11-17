@@ -37,7 +37,7 @@ Phase 2（M2）
 ### Phase 3: M3 四套测试实现（诊断版 + 正式版）
 
 - [ ] quiesco（0.5.0 + Vitest），记录易用性数据
-- [ ] detox（Jest），记录易用性数据
+- [ ] detox（Jest），记录易用性数据；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
 - [ ] appium（WebdriverIO），记录易用性数据
 - [ ] maestro（YAML），记录易用性数据
 - [ ] 每套正式版 iOS / Android 连续 5 次全绿，或记录 ✗ 原因；C1–C11 逐项检查
@@ -100,6 +100,7 @@ Phase 2（M2）
 | Quiesco runner 用 Vitest（`@quiesco/vitest`） | 用户指定 |
 | 深链接 scheme 为 `rnshootout` | 用户指定 |
 | 被测 app 使用 Expo SDK 58.0.25 | 2026-11-17 npm 上的 latest |
+| 只测 SDK 58，不加 SDK 55 对照组（暂定，“先只测”） | 用户决定（2026-11-17）。Detox 官方只支持 RN 0.77–0.84（SDK 58 为 RN 0.88），发布结果时须注明这一点及来源 |
 | 不分阶段交付，按 M1–M10 全量执行 | 用户指定 |
 | 规划文件放在项目根目录（legacy 模式） | 单一任务，无并行计划 |
 | 场景使用固定测试数据、英文界面、`#list-top-title` 判定第一行 | 避免各工具“元素顺序断言”能力差异干扰其他指标 |

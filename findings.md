@@ -112,3 +112,12 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 
 - 安装 debug APK 后首次启动，系统弹出 “Allow rnshootout to find, connect to, and determine the relative position of nearby devices?”。推测与 Debug 构建通过网络连接 Metro 有关（Android 新版的本地网络权限），Release 构建是否也会出现待确认。
 - 模拟器的 `window_animation_scale` 为 1.0（默认）。
+
+### Detox 与 Expo SDK 58 的兼容性（2026-11-17 查询）
+
+- Detox 官方文档（Environment Setup）：支持 RN v0.77.x–v0.84.x。来源：https://wix.github.io/Detox/docs/introduction/environment-setup
+- Detox 最新稳定版 20.51.4（2026-06-16）；21.0.0 仅有 rc / alpha。
+- 各 SDK 的 RN 版本（npm + expo 仓库 bundledNativeModules.json）：54 → 0.81.5、55 → 0.83.10、56 → 0.85.3、57 → 0.86.3、58 → 0.88.1。Detox 官方范围与 Quiesco（55+）的交集只有 SDK 55。
+- 社区插件 `expo-detox-config-plugin` 标注支持 SDK 58，要求 ≥13.1.0；SDK 58（AGP 9）的 R8 会删掉 Detox 需要的 Kotlin 类，Release 构建需加 ProGuard keep 规则。Expo 官方 config-plugins 仓库已移除 Detox 支持。来源：https://github.com/isilher/expo-detox-config-plugin
+- 有个例报告 SDK 58 上 Detox 能跑通（需 ProGuard 规则；RN 0.88 下原地 reload 有问题，改为每个测试冷启动）。来源：https://github.com/stefanf81/taskflow-enterprise/pull/184
+- 以上均为文档 / 第三方信息，以 M3 实测为准。
