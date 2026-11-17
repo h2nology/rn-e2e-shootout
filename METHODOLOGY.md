@@ -88,7 +88,7 @@
 | 工具 | iOS | Android | Web |
 |---|---|---|---|
 | Quiesco | 待填 | 待填 | 待填 |
-| Detox | 待填 | 待填 | — |
+| Detox | 外部命令补齐：结束 app → 清空数据容器（`simctl get_app_container … data` 下的 Library / Documents / tmp）→ `simctl privacy reset all` → `launchApp({ newInstance: true })`（Detox 只有卸载重装 `delete: true`） | 外部命令补齐：`adb shell pm clear` → `launchApp({ newInstance: true })` | — |
 | Appium | 待填 | 待填 | 待填 |
 | Maestro | 待填 | 待填 | 待填 |
 

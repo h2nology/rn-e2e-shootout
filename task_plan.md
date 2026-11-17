@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Detox：Android（API 36 AOSP）诊断版 → 正式版；iOS / Android 各连续 5 次全绿；C1–C11 能力检查；写 RESULTS.md。之后 Appium → Maestro → Quiesco。
+Detox：等待重置方式改正后的重跑（正式版两平台各 5 轮 + C1–C11，后台）→ 实测 C9 Android `setOrientation` → 把结果填入 `suites/detox/RESULTS.md` → 提交。之后 Appium → Maestro → Quiesco。
 
 ## Current Phase
 
@@ -130,6 +130,11 @@ Phase 3（M3）
 | 同上 | 3 | 用 `HeaderHeightContext` 在 iOS 上手动加 paddingTop → 截图仍完全相同（连标题栏背景色也没变，怀疑改动未进入 app；入口 bundle 为 lazy，无法直接确认）→ 已达 3 次，上报用户 |
 | 同上 | 4（用户同意） | 打 Release 构建：标题栏正常，第 1 次修复（不透明 header）本来就有效；Debug 构建未加载新代码。撤回第 2、3 次改动 |
 | iOS：嵌套在 Pressable 里的按钮（`rea-card-action`、`item-delete-*`）不出现在无障碍树中，Maestro 点不到 | 1 | 改为并列结构（卡片标题 / 行主体与按钮为兄弟节点） |
+| Detox C1 iOS：`device.unmatchFace()` 在 Face ID 弹窗显示时卡在 waitForActive（5 分钟超时） | 1 | 改用外部 `notifyutil -p com.apple.BiometricKit_Sim.pearl.(no)match`，记为需额外配置 |
+| Detox C11 iOS：`system` API 找不到推送横幅 | 1–3 | 截图确认横幅已显示 → 预热 XCUITest runner → 试多种 label，均失败 → 记 ✗ |
+| Detox C10：`toHaveText` 对 Pressable（View）不匹配 | 1 | iOS 用 `toHaveLabel`；Android 用 `by.text().withAncestor()` |
+| Detox 重置用 `delete: true`（卸载重装），不符合 METHODOLOGY 5 | 1 | 改为外部命令只清数据（iOS 清数据容器 + privacy reset；Android pm clear），重跑 5 轮 |
+| 我误记“Detox 文档注明 setOrientation 仅 iOS” | 1 | 核对文档无此说法，改为实测 |
 
 ## Notes
 

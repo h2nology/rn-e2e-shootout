@@ -25,6 +25,7 @@
 | 3 | 1 s | postinstall 执行 | 命令 | 本机 `~/Library/Detox/ios` 已有 2026-10-22 / 11-05 的缓存，framework 构建被跳过。**首次接入的 framework 构建耗时未测到**；第三方测量“首个测试通过时间”前须清空该缓存 |
 | 4 | 9 s | `suites/detox`：`npm init -y`、`npm i -D detox@20.51.4 jest@^29`、`npx detox init` | 命令 | 生成 `.detoxrc.js`、`e2e/jest.config.js`、`e2e/starter.test.js`；同样需要 `npm install-scripts approve detox` |
 | 5 | — | 修改 `.detoxrc.js`：模板中 binaryPath / scheme 为 `YOUR_APP` 占位，设备为 iPhone 15 / Pixel_3a_API_30；改为本项目路径、Release 配置、iPhone 17 / iOS 27、`Medium_Phone_API_37.0`、`reversePorts: [4000]`；构建命令前加 `E2E_TOOL=detox npx expo prebuild --clean` | 手动编辑 | Expo 项目没有现成的 `ios/` `android/`，需要自己把 prebuild 串进 build 命令（官方文档不涵盖 Expo） |
-| 6 | — | 状态重置：Detox 无“只清除 app 数据”的 API，采用官方的 `device.launchApp({ delete: true })`（卸载重装） | 设计 | 与 METHODOLOGY 5 的“不重新安装”不同，属于工具能力差异，在 METHODOLOGY 5 的表中记录 |
+| 6 | — | 状态重置：Detox 无“只清除 app 数据”的 API，先采用官方的 `device.launchApp({ delete: true })`（卸载重装） | 设计 | 与 METHODOLOGY 5 的“不重新安装”不一致。按该节“不一致时以本规则为准，另行补齐”，已在第 9 步改正 |
 | 7 | 223 s | `npx detox build -c ios.sim.release`（prebuild --clean + pod install + xcodebuild Release） | 命令 | 成功 |
 | 8 | 23 s | 编写 S1（诊断版）+ `support.js`，`VARIANT=diagnostic npx detox test -c ios.sim.release` | 命令 | **首个测试通过（iOS）**。从第 1 步（17:43:43）到此（17:49:33）约 6 分钟，不含此前查阅文档的时间。执行者为 AI 且已熟悉 app、本机有 Detox 缓存，仅供参考 |
+| 9 | — | 重置改为“只清数据”：iOS 结束 app → 清空 `simctl get_app_container … data` 下的 Library / Documents / tmp → `simctl privacy reset all`；Android `pm clear`。S10a 在 Android 上改用 `pm grant` 预先授权（`pm clear` 会撤销权限，而 Detox 的 `permissions` 参数只对 iOS 有效；此前能通过是因为 Detox 用 `adb install -g` 重装时自动授予了全部权限） | 手动编辑 | 需要外部命令补齐；改正后重跑正式版 5 轮和 C1–C11 |

@@ -198,5 +198,5 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 用户同意：主测量用 API 36 AOSP，C2 在 API 36 google_apis 上检查 → METHODOLOGY v3。
 - 需在新设备上重新走查 app（M2 的 Android 走查在 API 37 上进行）。
 - Detox Android（API 36 AOSP）：诊断版 15 通过 / 7 失败（S3、S8、S9、S11、S15、S17、S20）；S21 冷 / 热启动均通过（iOS 的 SceneDelegate 问题不影响 Android）。
-- Android 专有问题：`setOrientation` 文档注明仅 iOS（C9 Android ✗）；系统日期对话框的日期格子不可匹配，只能坐标点击；`device.tap` 坐标换算不可靠（传 (811,1387) 实际点到 (2249,4120)），改为基于元素的相对坐标；`web(by.id('webview'))` 匹配到 RN 外层容器，需用默认 `web`；`typeText` 后值带尾随空格（`"note "`）；键盘收起后的布局调整不被同步等待（S20 需 W1）；Detox 构建 R8 OOM 需 `-Xmx4g`。
+- Android 专有问题：~~`setOrientation` 文档注明仅 iOS~~（更正：当前文档只写明 iPad 限制，该说法无出处，C9 Android 需实测）；系统日期对话框的日期格子不可匹配，只能坐标点击；`device.tap` 坐标换算不可靠（传 (811,1387) 实际点到 (2249,4120)），改为基于元素的相对坐标；`web(by.id('webview'))` 匹配到 RN 外层容器，需用默认 `web`；`typeText` 后值带尾随空格（`"note "`）；键盘收起后的布局调整不被同步等待（S20 需 W1）；Detox 构建 R8 OOM 需 `-Xmx4g`。
 - app 修复：长表单底部加 safe area inset（Android 15+ 强制 edge-to-edge，Submit 被导航栏遮住）。

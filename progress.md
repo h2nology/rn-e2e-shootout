@@ -92,6 +92,10 @@
 | 回归（iOS，修复后） | full-walk / gestures / notif | 全部通过 | 全部通过 | pass |
 | Detox iOS 诊断版 | S1–S23 | 观察 | 修正写法后：S11 超时、S17 失败、S21 失败，其余通过 | info |
 | Detox iOS 正式版 | S1–S23 | 除 ✗ 外全绿 | 21 通过（S11 修正后）/ S21 ✗ / S10b、S22 跳过 | pass（S21 ✗） |
+| Detox 正式版 5 轮（卸载重装式重置） | iOS / Android 各 5 轮 | 除 ✗ 外全绿 | iOS 5 轮均 22 通过 / S21 冷启动失败（同一行）/ S22 跳过；Android 5 轮均 22 通过 / S10b、S22 跳过 | pass（作废：重置方式不符合 METHODOLOGY 5，重跑） |
+| Detox C1–C11（iOS） | 能力检查 | 记录 ✓ / ✗ | C1 需外部 notifyutil；C2 ✗；C7 需 waitFor；C10 写法修正（toHaveLabel）后 ✓；C11 ✗ | info |
+| Detox C1–C11（Android） | 能力检查 | 记录 ✓ / ✗ | C2（GAPIS）✗；C3 需关闭同步；C10 写法修正后 ✓；C11 ✗；C9 待实测 | info |
+| 重置方式改正冒烟 | S1 / S10 / S23 两平台 | 通过 | 全部通过 | pass |
 
 ## Error Log
 
