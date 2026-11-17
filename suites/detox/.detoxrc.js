@@ -35,9 +35,9 @@ module.exports = {
     },
     emulator: {
       type: 'android.emulator',
-      device: { avdName: 'Medium_Phone_API_37.0' },
+      device: { avdName: 'Medium_Phone_API_36_AOSP' },
     },
-    // emulator 37 下 Detox 通过 telnet 查询模拟器控制台超时（“response not received”），
+    // emulator 37.2 下 Detox 通过 telnet 查询模拟器控制台超时（“response not received”，控制台需认证），
     // 改用模板中的 android.attached，按 adb 名称直接连接已启动的模拟器。
     attached: {
       type: 'android.attached',

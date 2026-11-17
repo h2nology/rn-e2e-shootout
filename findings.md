@@ -190,3 +190,10 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 绕过后 app 启动即崩溃：`java.lang.NoSuchMethodException: android.hardware.input.InputManager.getInstance []`（Detox 的 Android 端通过反射调用该隐藏 API，Android 37 已移除）。→ **Detox 20.51.4 无法在 Android API 37 上运行**，与 app 无关。
 - Detox 官方 Android 环境指南（https://wix.github.io/Detox/docs/guide/android-dev-env）：未列出支持的 API 范围（示例为 API 28，称其他 API 也支持）；**强烈建议使用 AOSP `default` 镜像**，不建议 Google APIs 镜像（Play 服务占 CPU）。当前计划使用的是 API 37 `google_apis_playstore`。
 - 是否更换 Android 测量设备（API 级别 / 镜像类型）属于方法变更，需用户决定（开 v3）。
+
+### Android 设备更换实测（2026-11-17）
+
+- API 36 AOSP `default`：Detox S1 通过（12 s）；无浏览器（仅 `com.android.webview`、`webview_shell`）；locale en-US。
+- API 36 `google_apis`：Detox S1 通过（24 s，首次启动，Play 服务占 CPU）；有 `com.android.chrome`。
+- 用户同意：主测量用 API 36 AOSP，C2 在 API 36 google_apis 上检查 → METHODOLOGY v3。
+- 需在新设备上重新走查 app（M2 的 Android 走查在 API 37 上进行）。

@@ -1,6 +1,6 @@
 # 场景清单
 
-> 状态：**v1**（2026-11-17 预注册 tag `methodology-v1`；当前方法版本 v2，tag `methodology-v2`）。本文件的场景语义和通过标准不得修改；如需修改，新开方法版本并重跑所有工具。
+> 状态：**v1**（2026-11-17 预注册 tag `methodology-v1`；当前方法版本 v3，tag `methodology-v3`；v3 仅补充 C1 的操作说明）。本文件的场景语义和通过标准不得修改；如需修改，新开方法版本并重跑所有工具。
 
 本文件与工具无关，只用自然语言描述“做什么、验证什么、怎样才算通过”。四个工具的实现都必须符合这里的定义。
 
@@ -311,7 +311,7 @@
 
 | # | 检查项 | 通过标准 | iOS | Android | Web |
 |---|---|---|---|---|---|
-| C1 | 生物识别（A21） | 在 Settings Tab 点 `#open-biometric` → `#biometric-unlock`。先模拟一次失败的验证，`#biometric-status` 显示 `Failed`；再模拟一次成功的验证，显示 `Unlocked` | ✓ | ✓ | — |
+| C1 | 生物识别（A21） | 在 Settings Tab 点 `#open-biometric` → `#biometric-unlock`。先模拟一次失败的验证，`#biometric-status` 显示 `Failed`（iOS 上匹配失败后系统会提示重试，此时点“取消”结束验证）；再模拟一次成功的验证，显示 `Unlocked` | ✓ | ✓ | — |
 | C2 | 跨 app 登录（A22） | 点 `#oauth-login`，在 `expo-web-browser` 打开的页面中输入用户名 `oauth-user` 并提交，跳回 app 后 `#oauth-status` 显示 `Signed in as oauth-user` | ✓ | ✓ | ✓ |
 | C3 | 系统分享面板（A22） | 点 `#share-button`，系统分享面板出现后将其关闭，回到 app，`#share-status` 显示 `Share dismissed` | ✓ | ✓ | — |
 | C4 | 选择器（A24） | ① 在 `#dup-list` 中，所有行共用 `testID` `dup-row`，点第 3 个，`#dup-result` 显示 `Row 3`；② 只用 accessibility label `Secret button`（无 `testID`）定位并点击，`#a11y-result` 显示 `Found` | ✓ | ✓ | ✓ |

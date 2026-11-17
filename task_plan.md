@@ -89,7 +89,7 @@ Phase 3（M3）
 
 ## Key Questions
 
-00. 【待用户决定，阻塞 Detox Android】Detox 20.51.4 无法在 Android API 37 运行（`InputManager.getInstance` 已移除），且官方建议 AOSP default 镜像。是否把所有工具的 Android 测量设备换成 Detox 能运行的 API 级别 / 镜像？（方法变更，开 v3）
+00. 【已解决】Android 设备改为 API 36 AOSP（C2 用 API 36 google_apis），METHODOLOGY v3（用户同意，2026-11-17）Detox 20.51.4 无法在 Android API 37 运行（`InputManager.getInstance` 已移除），且官方建议 AOSP default 镜像。是否把所有工具的 Android 测量设备换成 Detox 能运行的 API 级别 / 镜像？（方法变更，开 v3）
 0. 【待定，不阻塞】iOS 27 模拟器通知权限无法预授权（simctl / Maestro 均失败），若 Detox / Appium 也做不到，S22 前提需改为“允许测试点 Allow”；C1 失败路径需补充“系统提示重试时点取消”。两者一起开 v3，届时征求用户同意。
 
 1. 外部 review（M8）找谁？——需用户提供人选。
@@ -113,6 +113,7 @@ Phase 3（M3）
 | 场景耗时取自各工具 JUnit XML，套件耗时由 harness 外部计时 | 四个工具都能输出 JUnit，口径统一 |
 | 施压配置由 mock server `/config` 下发 | 所有工具共用一份配置，不在各工具中分别设置 |
 | 施压每种 N=50；`slow-cpu` 仅 Android；AI 编写每场景最多 10 轮 | 草案自定，用户审阅未提异议，随 v1 预注册 |
+| Android 测量设备改为 API 36 AOSP，C2 在 API 36 google_apis 上检查（METHODOLOGY v3） | Detox 20.51.4 无法在 Android 37 运行，官方建议 AOSP；用户选方案 B 并同意 v3 |
 | 公开文档用中文 | 用户指定；用户之后自行翻译 |
 | jitter 采用方案 (a)：在 METHODOLOGY 写明覆盖范围，开 v2 | 用户决定（2026-11-17）；同时把 Release 构建、设备环境统一设置写入 v2 |
 | M3 接入顺序：Detox → Appium → Maestro → Quiesco | 用户采纳建议：Quiesco 最后，避免熟悉 app 的过程只让 Quiesco 受益。注意：M2 走查已使用过 Maestro，对 Maestro 的熟悉度需在易用性数据中披露 |

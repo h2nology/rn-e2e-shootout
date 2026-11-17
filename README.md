@@ -2,7 +2,7 @@
 
 在同一个 Expo app、同一组场景、同一台机器上，对比四个 React Native E2E 测试工具：**Quiesco、Detox、Appium、Maestro**。
 
-> **状态**：方法（`METHODOLOGY.md`）和场景（`scenarios.md`）已于 2026-11-17 预注册（tag `methodology-v1`），当前方法版本为 v2（tag `methodology-v2`，改动见 METHODOLOGY 第 13 节）。还没有任何测量结果。
+> **状态**：方法（`METHODOLOGY.md`）和场景（`scenarios.md`）已于 2026-11-17 预注册（tag `methodology-v1`），当前方法版本为 v3（tag `methodology-v3`，改动见 METHODOLOGY 第 13 节）。还没有任何测量结果。
 
 ## 立场披露
 

@@ -1,6 +1,6 @@
 # 测量方法
 
-> 方法版本：**v2**（2026-11-17，tag `methodology-v2`；v1 为 2026-11-17 预注册的初版，改动见第 13 节）。本文件只能通过新开版本修改（v2、v3 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
+> 方法版本：**v3**（2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
 
 场景定义见 [`scenarios.md`](scenarios.md)。本文件定义**怎么跑、怎么计数、怎么统计、怎么报告**。
 
@@ -34,10 +34,13 @@
 | 宿主机 | Apple M5 Pro（15 核），24 GB 内存，macOS 26.7.2 |
 | Xcode | 27.2 (27B52) |
 | iOS 设备 | iPhone 17 模拟器，iOS 27.0 |
-| Android 设备 | `Medium_Phone_API_37.0` 模拟器，android-37.0 google_apis_playstore |
+| Android 设备 | `Medium_Phone_API_36_AOSP` 模拟器：android-36 `default`（AOSP）arm64-v8a，medium_phone，4 核 / 2 GB |
+| Android 设备（仅 C2） | `Medium_Phone_API_36_GAPIS` 模拟器：android-36 `google_apis` arm64-v8a，配置同上（AOSP 镜像没有浏览器，C2 需要 Custom Tabs） |
 | Web | Chromium（版本在接入时记录；各工具使用的浏览器版本须一致） |
 
 以上每一项都写进每次运行的结果 JSON（`toolVersion`、`device`、`host` 等字段）。
+
+**Android 设备的选择理由（v3）**：v1 / v2 使用 API 37 `google_apis_playstore`。实测 Detox 20.51.4 在 Android 37 上无法运行（app 启动即崩溃：`NoSuchMethodException: android.hardware.input.InputManager.getInstance`，该隐藏 API 在 Android 37 被移除）；Detox 官方 Android 环境指南强烈建议使用 AOSP `default` 镜像。为让四个工具在同一台设备上对比，改用 Detox 能运行且官方推荐的 API 36 AOSP 镜像。AOSP 镜像没有浏览器，因此只有 C2 在同配置的 `google_apis` 镜像上检查；C2 只记 ✓ / ✗，不参与速度和稳定性统计。
 
 **构建类型**：所有测量（速度、稳定性、施压、版本矩阵）一律使用 **Release 构建**（JS bundle 内嵌，不连接 Metro）。Debug 构建在实测中出现过代码改动未生效、启动时额外的系统权限弹窗等问题，不用于任何测量。各工具接入时如需对 Release 构建做额外配置（例：ProGuard keep 规则），计入该工具的易用性数据。
 
@@ -260,3 +263,4 @@ CI     = [center − half, center + half]
 |---|---|---|---|
 | v1 | 2026-11-17 | 初版 | — |
 | v2 | 2026-11-17 | ① 8.4 写明 `jitter` 的实际覆盖范围（原文为“app 内所有动画”）；② 2.2 规定所有测量只用 Release 构建；③ 6.4 增加 harness 统一设置设备环境（语言、动画、外观）并要求重启模拟器的理由 | M2 实现与走查中发现：部分动画时长由原生 / 第三方库控制，app 无法改变；Debug 构建不可靠；宿主机的模拟器和浏览器为日文、iOS 模拟器开启了 Reduce Motion，会影响 C10、S15 等结果。v2 制定时尚无任何测量数据 |
+| v3 | 2026-11-17 | ① 2.2 Android 测量设备由 API 37 `google_apis_playstore` 改为 API 36 AOSP `default`；C2 改在 API 36 `google_apis` 上检查；② scenarios.md C1 补充 iOS 失败路径的操作（系统提示重试时点“取消”），判定标准不变 | ① Detox 20.51.4 在 Android 37 上无法运行（实测），且官方建议 AOSP 镜像；为保证四个工具在同一设备上对比而更换（用户决定，2026-11-17）。AOSP 镜像无浏览器，C2 需要 Custom Tabs。② iOS 上 Face ID 匹配失败后系统提示重试，`authenticateAsync` 需点“取消”才返回失败（实测）。v3 制定时尚无任何测量数据（M3 实现阶段） |
