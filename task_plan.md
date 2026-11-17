@@ -8,7 +8,7 @@
 
 ## Next Step
 
-iOS 开发构建（`expo run:ios`）完成后，在 iPhone 17 / iOS 27 模拟器上逐页走通；之后 Android、Web。
+【等待用户决定】iOS 27 标题栏遮挡问题的处理方向（见 Errors Encountered）。Android 端：先处理启动时的“附近设备”权限弹窗，再走通。
 
 ## Current Phase
 
@@ -115,7 +115,10 @@ Phase 2（M2）
 
 | Error | Attempt | Resolution |
 |-------|---------|------------|
-|       |         |            |
+| `expo run:ios --device <UDID>` 报 `connect ENOENT /var/run/usbmuxd`（枚举物理设备时） | 1 | 改为 `pod install` + `xcodebuild -destination id=<UDID>` + `simctl install` |
+| iOS 27：页面内容画在原生标题栏下面（标题栏 y=62–116，内容从 y=0 开始） | 1 | `headerTransparent: false` + `headerStyle.backgroundColor` → 无效 |
+| 同上 | 2 | `Screen` 改为 `contentInsetAdjustmentBehavior="automatic"` 的 ScrollView → 无效 |
+| 同上 | 3 | 用 `HeaderHeightContext` 在 iOS 上手动加 paddingTop → 截图仍完全相同（连标题栏背景色也没变，怀疑改动未进入 app；入口 bundle 为 lazy，无法直接确认）→ 已达 3 次，上报用户 |
 
 ## Notes
 

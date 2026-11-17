@@ -97,3 +97,18 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - `ReanimatedSwipeable` 的回弹、`RefreshControl` 的下拉动画、系统日期选择器 / 权限弹窗
 已覆盖：iOS Stack 转场、确认 Modal 淡入、Toast 淡入淡出、A11 循环动画、A13 Reanimated 弹簧。
 处理方案待定：(a) 在 METHODOLOGY 中写明覆盖范围（开 v2）；(b) 把这些组件换成 app 自绘实现。
+
+### 模拟器环境必须由 harness 统一设置（2026-11-17 在 iPhone 17 / iOS 27 上发现）
+
+- 本机 iOS 模拟器的系统语言为日文：登录按钮显示「ログイン」，不满足 scenarios.md 0.1（en-US）。
+- 模拟器开启了“减弱动态效果”（`com.apple.Accessibility ReduceMotionEnabled = 1`）。Reanimated 在此设置下会禁用动画（Metro 日志有警告），会直接影响 S15 和 jitter 的结果。
+- 结论：harness 在每次运行前必须显式设置并记录：系统语言 / 地区（en / en_US）、Reduce Motion 关闭、外观（浅色）。Android 同理（语言、动画缩放 `window_animation_scale` 等保持默认 1.0）。这些设置写进 METHODOLOGY（下次开版本时）和结果 JSON。
+
+### iOS 27 上 expo-router Stack 的标题栏默认透明
+
+- 内容从屏幕顶部开始绘制，与标题栏重叠（截图确认）。
+
+### Android 37 模拟器：Debug 构建启动时弹出“附近设备”权限
+
+- 安装 debug APK 后首次启动，系统弹出 “Allow rnshootout to find, connect to, and determine the relative position of nearby devices?”。推测与 Debug 构建通过网络连接 Metro 有关（Android 新版的本地网络权限），Release 构建是否也会出现待确认。
+- 模拟器的 `window_animation_scale` 为 1.0（默认）。

@@ -1,16 +1,19 @@
 // A25：纵向列表中嵌套横向轮播
 import { useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
-import { colors, Label } from '@/components/ui';
+import { colors, Label, useHeaderInset } from '@/components/ui';
 
 const SLIDES = Array.from({ length: 10 }, (_, i) => i + 1);
 const SECTIONS = ['header-1', 'header-2', 'carousel', 'footer-1', 'footer-2', 'footer-3'];
 
 export default function Nested() {
   const [result, setResult] = useState('');
+  const top = useHeaderInset();
   return (
     <FlatList
       testID="nested-list"
+      contentInsetAdjustmentBehavior="never"
+      contentContainerStyle={{ paddingTop: top }}
       data={SECTIONS}
       keyExtractor={(s) => s}
       ListHeaderComponent={<Label testID="carousel-result" style={{ padding: 16 }}>{result}</Label>}

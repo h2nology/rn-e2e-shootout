@@ -37,6 +37,11 @@
   - app：安装依赖；删除模板示例代码；实现 lib（api / anim(jitter) / store / i18n）、组件（ui / toast / confirm-modal / date-field(.web) / web-frame(.web)）
   - app：实现全部路由（login、tabs：home / explore(嵌套 stack) / settings、item/[id]、add、controls、permission、webview、busy、reanimated、live、reorder、long-form、notification-target、biometric、system、dup、nested、image、auth）
   - `npx tsc --noEmit` 通过
+  - mock-server 常驻 :4000、Metro 常驻 :8081
+  - iOS：`expo run:ios` 因 usbmuxd 失败 → `pod install` + `xcodebuild`（135 s）成功；安装到 iPhone 17 / iOS 27
+  - iOS 模拟器设置：语言 en / en_US，关闭 Reduce Motion，浅色外观（原为日文 + Reduce Motion 开启）
+  - iOS：登录页内容被原生标题栏遮挡，三次修复均无效（见 task_plan.md Errors），已上报用户
+  - Android：prebuild + `gradlew assembleDebug`（347 s）成功；安装后首次启动出现“附近设备”权限弹窗，walkthrough 未开始
 - Files created/modified:
   - `app/**`、`mock-server/**`
 - Files created/modified:

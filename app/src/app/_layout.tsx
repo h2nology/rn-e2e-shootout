@@ -69,7 +69,7 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ToastProvider>
-        <Stack screenOptions={{ animationDuration: duration(350) }}>
+        <Stack screenOptions={{ animationDuration: duration(350), headerTransparent: false, headerStyle: { backgroundColor: "#FFFFFF" } }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="login" options={{ title: 'Sign in', headerBackVisible: false }} />
           <Stack.Screen name="item/[id]" options={{ title: 'Item' }} />
