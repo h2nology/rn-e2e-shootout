@@ -8,12 +8,14 @@ const TOKEN_KEY = 'rnshootout.token';
 type Row = Item & { pending?: boolean };
 
 type State = {
+  /** 登录态是否已从存储中恢复（恢复前不做登录跳转判断） */
+  restored: boolean;
   token: string | null;
   items: Row[];
   status: 'idle' | 'loading' | 'error' | 'ready';
 };
 
-let state: State = { token: null, items: [], status: 'idle' };
+let state: State = { restored: false, token: null, items: [], status: 'idle' };
 const listeners = new Set<() => void>();
 
 function set(patch: Partial<State>) {
@@ -35,7 +37,7 @@ export function useStore<T>(selector: (s: State) => T): T {
 export const auth = {
   async restore() {
     const token = await AsyncStorage.getItem(TOKEN_KEY);
-    set({ token });
+    set({ token, restored: true });
   },
   async login(email: string, password: string) {
     const { token } = await api.login(email, password);

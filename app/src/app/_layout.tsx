@@ -64,7 +64,8 @@ export default function RootLayout() {
 
   useNotificationRouting(ready);
 
-  if (!ready) return null;
+  // 导航器从一开始就挂载（原生 splash 覆盖到 ready 为止），
+  // 这样 splash 期间收到的深链接不会丢失（S21 冷启动）。
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

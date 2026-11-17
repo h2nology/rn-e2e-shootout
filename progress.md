@@ -56,6 +56,17 @@
   - `task_plan.md`、`findings.md`、`progress.md`
   - `.gitignore`、`README.md`、`scenarios.md`、`METHODOLOGY.md`、各目录 `.gitkeep`
 
+### Phase 3: M3 四套测试实现
+
+- **Status:** in_progress
+- **Started:** 2026-11-17
+- Actions taken:
+  - 补验 M2 遗留交互（iOS / Android Release，临时 Maestro flow + simctl / adb 命令）：S23、S19、S14 拖拽、S8 滑块 / 日期、C2 OAuth、C3 分享、C8 深色、C9 横竖屏、S22 本地通知、C11 iOS 推送、C1 iOS Face ID 全部走通
+  - 修复 app：通知发送前申请权限；splash 期间挂载导航器；`/auth` 原生端立即返回
+  - 回归：iOS full-walk / gestures 全部通过；system 中通知需点 Allow（已知，见 findings）
+- Files created/modified:
+  - `app/src/app/(tabs)/settings.tsx`、`app/src/app/_layout.tsx`、`app/src/app/(tabs)/_layout.tsx`、`app/src/lib/store.ts`、`app/src/app/auth.tsx`、`findings.md`
+
 ## Test Results
 
 | Test | Input | Expected | Actual | Status |
@@ -70,6 +81,9 @@
 | Android Release 走查 | full-walk.yaml（Medium Phone API 37） | 全部步骤通过 | 全部通过 | pass |
 | Web 走查 | Playwright walk.mjs（Chromium，en-US） | 19 项通过 | 19 项通过 | pass |
 | 手势 / 权限 | gestures.yaml（iOS + Android） | S12 / S13 / S14 长按 / S10 通过 | 全部通过 | pass |
+| M3 补验（iOS） | extra / system / notif / push / bio flow | 系统级交互可走通 | 全部走通（通知需点 Allow；Face ID 失败路径需点取消） | pass |
+| M3 补验（Android） | android-extra / android-extra2 | 系统级交互可走通 | 全部走通（需关闭 Chrome 首次启动向导） | pass |
+| 回归（iOS，修复后） | full-walk / gestures / notif | 全部通过 | 全部通过 | pass |
 
 ## Error Log
 

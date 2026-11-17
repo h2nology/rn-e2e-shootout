@@ -8,7 +8,13 @@ export default function Settings() {
   const toast = useToast();
 
   async function notifyIn3s() {
-    // A20：3 秒后发出本地通知（权限由测试预先授权，见 scenarios.md S22）
+    // A20：3 秒后发出本地通知（权限由测试预先授权，见 scenarios.md S22）。
+    // 与真实 app 一样，发送前确认权限；未授权时弹出系统权限请求。
+    const current = await Notifications.getPermissionsAsync();
+    if (!current.granted) {
+      const requested = await Notifications.requestPermissionsAsync();
+      if (!requested.granted) return;
+    }
     await Notifications.scheduleNotificationAsync({
       content: { title: 'Hello from rnshootout', data: { target: 'notification' } },
       trigger: { type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL, seconds: 3, channelId: 'default' },

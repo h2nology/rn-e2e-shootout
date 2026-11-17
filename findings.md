@@ -148,3 +148,28 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 
 - Maestro 2.11 Web（beta）：`tapOn` 密码框后焦点仍留在邮箱框，两段输入都进了邮箱；`pressKey: Tab` 不受支持，flow 中断。Maestro 的 Chrome 继承宿主语言（日文），需要设法固定 en-US。
 - harness 在 Web 上也必须固定浏览器语言 / locale（C10 依赖）。
+
+### iOS 27 模拟器：通知权限无法预先授予（影响 S22 前提）
+
+- `xcrun simctl privacy <udid> grant notifications com.rnshootout.app` 报错（NSPOSIXErrorDomain code=1）。
+- Maestro `launchApp: { permissions: { notifications: allow } }` 之后，app 申请通知权限时仍弹出系统对话框 → 预先授权未生效。
+- app 已改为发送前检查 / 申请权限（与真实 app 一致），因此未预授权时会出现系统权限框，可从画面直接判断。
+- Detox（applesimutils）与 Appium 的授权方式待 M3 实测。若所有工具都无法预授权，需要考虑修改 S22 前提（允许测试点击“Allow”），这属于场景语义变更，需开 METHODOLOGY v3 并征得用户同意。
+
+### iOS 系统级交互补验（2026-11-17，Release，iPhone 17 / iOS 27）
+
+- 通过：S23 前后台草稿保持、S14 拖拽（R5 → 顶部）、S8 滑块（须拖动滑钮本身，点轨道无效）与 inline 日期选择器弹出、C2 OAuth（`openAuthSessionAsync`，系统会先弹“wants to use … to Sign In”确认）、C3 分享面板（iOS 27 无 Close 按钮，点面板外关闭）、C9 横竖屏（Maestro `setOrientation`）、C8 深色模式（`simctl ui appearance dark`）、S22 本地通知（点 Allow 后）、C11 远程推送（`simctl push`；通知中心里同一 app 的多条通知会折叠，第一次点击只会展开）。
+- C1 生物识别：`notifyutil -s com.apple.BiometricKit.enrollmentChanged 1` 后，`…BiometricKit_Sim.pearl.match` → 显示 Unlocked。`…pearl.nomatch` 后系统提示重试，`authenticateAsync` 不会立即返回失败，需要再点“取消”才显示 Failed。C1 的步骤描述需补充这一点（与 S22 的前提问题一起处理，需开 v3）。
+
+### Android 系统级交互补验（2026-11-17，Release，Medium Phone API 37）
+
+- 通过：S23 前后台草稿保持、S19 硬件返回键（键盘打开时第一次返回只收起键盘）、S14 拖拽、S8 滑块（点击轨道即跳到对应值，与 iOS 不同）与系统日期对话框、C2 OAuth（Custom Tabs）、C3 分享面板（返回键关闭）、C9 横竖屏、C8 深色模式（`adb shell cmd uimode night yes`）、S22 本地通知。
+- 模拟器环境：Chrome 首次启动向导会挡住 OAuth（Custom Tabs），且按钮文字每次不同。harness 环境准备需执行：`adb shell 'echo "_ --disable-fre --no-default-browser-check --no-first-run" > /data/local/tmp/chrome-command-line'` + `adb shell am set-debug-app --persistent com.android.chrome`。
+- React Native 在 Android 上：app 进程刚启动、JS 尚未就绪时送达的深链接（onNewIntent）会丢失。scenarios 中没有该时序（S21 冷启动 = app 未运行，正常；热启动 = app 已在后台运行，正常），不影响场景，但工具实现中“启动后立刻 openLink”会失败。
+- 未验证：C1 Android 生物识别（需在模拟器上设置锁屏 PIN 并录入指纹，留到工具实现时验证）、C11 Android 远程推送（无 FCM，预期 ✗）、S7b 输入法（依赖工具能力）。
+
+### app 修复（M3 补验中发现）
+
+1. 发送本地通知前检查 / 申请通知权限（与真实 app 一致；原实现在未授权时静默不发）。
+2. 根布局在 splash 期间不再 `return null`，导航器从一开始挂载，Tab 布局等登录态恢复后再渲染（避免 splash 期间深链接丢失）。
+3. `/auth`（OAuth 回跳页）在原生端打开后立即返回发起页（Android 上 Expo Router 会把回跳 URL 当作深链接打开该页，盖住结果）。

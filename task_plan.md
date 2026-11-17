@@ -8,7 +8,7 @@
 
 ## Next Step
 
-M3：先补验 M2 未走查的交互，然后按 Detox → Appium → Maestro → Quiesco 的顺序逐个从零接入。
+M3：从零接入 Detox（20.51.4 + 社区 expo-detox-config-plugin），记录每一步的命令、耗时、改动文件和问题。之后 Appium → Maestro → Quiesco。
 
 ## Current Phase
 
@@ -36,7 +36,7 @@ Phase 3（M3）
 
 ### Phase 3: M3 四套测试实现（诊断版 + 正式版）
 
-- [ ] 先补验 M2 未走查的交互：S14 拖拽、S7 IME、S8 滑块 / 原生日期、S22 通知、S23 前后台、C1 生物识别、C2 OAuth、C3 分享、C8 / C9 / C11
+- [x] 先补验 M2 未走查的交互（iOS / Android 均通过；S7b、C1 Android、C11 Android 依赖工具能力，留到各工具实现时验证；发现并修复 3 处 app 问题，见 findings.md）
 
 - [ ] detox（Jest），记录易用性数据；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
 - [ ] appium（WebdriverIO），记录易用性数据
@@ -88,6 +88,8 @@ Phase 3（M3）
 - **Status:** pending
 
 ## Key Questions
+
+0. 【待定，不阻塞】iOS 27 模拟器通知权限无法预授权（simctl / Maestro 均失败），若 Detox / Appium 也做不到，S22 前提需改为“允许测试点 Allow”；C1 失败路径需补充“系统提示重试时点取消”。两者一起开 v3，届时征求用户同意。
 
 1. 外部 review（M8）找谁？——需用户提供人选。
 2. “首个测试通过所需时间”由谁执行？——需用户确定第三方，否则按计划书披露为作者本人。
