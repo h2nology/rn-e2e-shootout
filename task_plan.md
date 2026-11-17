@@ -8,7 +8,7 @@
 
 ## Next Step
 
-M3 开始：先补验 M2 未走查的交互，然后按工具逐个从零接入（顺序待定）。（jitter 覆盖范围 a/b 仍待用户决定）
+M3：先补验 M2 未走查的交互，然后按 Detox → Appium → Maestro → Quiesco 的顺序逐个从零接入。
 
 ## Current Phase
 
@@ -111,6 +111,8 @@ Phase 3（M3）
 | 施压配置由 mock server `/config` 下发 | 所有工具共用一份配置，不在各工具中分别设置 |
 | 施压每种 N=50；`slow-cpu` 仅 Android；AI 编写每场景最多 10 轮 | 草案自定，用户审阅未提异议，随 v1 预注册 |
 | 公开文档用中文 | 用户指定；用户之后自行翻译 |
+| jitter 采用方案 (a)：在 METHODOLOGY 写明覆盖范围，开 v2 | 用户决定（2026-11-17）；同时把 Release 构建、设备环境统一设置写入 v2 |
+| M3 接入顺序：Detox → Appium → Maestro → Quiesco | 用户采纳建议：Quiesco 最后，避免熟悉 app 的过程只让 Quiesco 受益。注意：M2 走查已使用过 Maestro，对 Maestro 的熟悉度需在易用性数据中披露 |
 | 许可证 MIT（版权人写 “rn-e2e-shootout contributors”） | 用户指定 |
 | 计划书与规划文件纳入 Git 并公开 | 用户指定 |
 
