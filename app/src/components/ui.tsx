@@ -1,28 +1,11 @@
-import { HeaderHeightContext } from 'expo-router/react-navigation';
-import { useContext, type ReactNode } from 'react';
-import { Platform, Pressable, ScrollView, StyleSheet, Text, type ViewStyle } from 'react-native';
+import type { ReactNode } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 
-/**
- * iOS 26+ 上原生标题栏浮在内容之上（headerTransparent: false、contentInsetAdjustmentBehavior 均无效，
- * 见 findings.md），因此在 iOS 上按标题栏高度手动留出顶部空间。
- */
-export function useHeaderInset(): number {
-  const h = useContext(HeaderHeightContext) ?? 0;
-  return Platform.OS === 'ios' ? h : 0;
-}
-
-/** 页面容器 */
 export function Screen({ children, scroll = false, style }: { children: ReactNode; scroll?: boolean; style?: ViewStyle }) {
-  const top = useHeaderInset();
-  return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="never"
-      keyboardShouldPersistTaps="handled"
-      scrollEnabled={scroll}
-      contentContainerStyle={[styles.screen, { paddingTop: 16 + top }, !scroll && { flexGrow: 1 }, style]}>
-      {children}
-    </ScrollView>
-  );
+  if (scroll) {
+    return <ScrollView contentContainerStyle={[styles.screen, style]}>{children}</ScrollView>;
+  }
+  return <View style={[styles.screen, { flex: 1 }, style]}>{children}</View>;
 }
 
 export function Button({

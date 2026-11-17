@@ -4,7 +4,7 @@ import { duration } from '@/lib/anim';
 
 export default function ExploreLayout() {
   return (
-    <Stack screenOptions={{ animationDuration: duration(350), headerTransparent: false, headerStyle: { backgroundColor: "#FFFFFF" } }}>
+    <Stack screenOptions={{ animationDuration: duration(350), headerTransparent: false, headerStyle: { backgroundColor: "#FFFFFF" }, headerBackButtonDisplayMode: "minimal" }}>
       <Stack.Screen name="index" options={{ title: 'Explore' }} />
       <Stack.Screen name="detail" options={{ title: 'Explore detail' }} />
     </Stack>

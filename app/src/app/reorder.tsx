@@ -1,8 +1,8 @@
 // A12：按住把手拖拽排序（gesture-handler v3 Pan）
 import { useRef, useState } from 'react';
-import { Animated, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 import { GestureDetector, usePanGesture } from 'react-native-gesture-handler';
-import { colors, Label, useHeaderInset } from '@/components/ui';
+import { colors, Label } from '@/components/ui';
 
 const ROW_H = 56;
 const INITIAL = Array.from({ length: 10 }, (_, i) => `R${i + 1}`);
@@ -38,7 +38,6 @@ function DraggableRow({ label, index, onDrop }: { label: string; index: number; 
 
 export default function Reorder() {
   const [order, setOrder] = useState(INITIAL);
-  const top = useHeaderInset();
   function drop(from: number, to: number) {
     if (from === to) return;
     setOrder((o) => {
@@ -49,14 +48,14 @@ export default function Reorder() {
     });
   }
   return (
-    <ScrollView contentInsetAdjustmentBehavior="never" scrollEnabled={false} contentContainerStyle={{ paddingTop: top }}>
+    <View style={{ flex: 1 }}>
       <Label testID="reorder-summary" style={{ padding: 12 }}>
         {order.join(',')}
       </Label>
       {order.map((label, i) => (
         <DraggableRow key={label} label={label} index={i} onDrop={drop} />
       ))}
-    </ScrollView>
+    </View>
   );
 }
 

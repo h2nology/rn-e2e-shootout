@@ -121,3 +121,20 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 社区插件 `expo-detox-config-plugin` 标注支持 SDK 58，要求 ≥13.1.0；SDK 58（AGP 9）的 R8 会删掉 Detox 需要的 Kotlin 类，Release 构建需加 ProGuard keep 规则。Expo 官方 config-plugins 仓库已移除 Detox 支持。来源：https://github.com/isilher/expo-detox-config-plugin
 - 有个例报告 SDK 58 上 Detox 能跑通（需 ProGuard 规则；RN 0.88 下原地 reload 有问题，改为每个测试冷启动）。来源：https://github.com/stefanf81/taskflow-enterprise/pull/184
 - 以上均为文档 / 第三方信息，以 M3 实测为准。
+
+### Debug 构建不可靠，走查与测量一律用 Release 构建（2026-11-17）
+
+- iOS Debug 构建 + Metro：三次修改布局后 app 显示完全不变；改用 Release 构建（bundle 内嵌）后立即生效。原因未深究（疑似 Metro 懒加载 / 缓存），结论是 M2 走查和后续测量都只用 Release 构建。
+- iOS 26+ 原生标题栏默认透明：`headerTransparent: false` + `headerStyle.backgroundColor` 即可修复（第 1 次修复本来有效）。
+
+### iOS 无障碍树会合并 Pressable 的子元素
+
+- 可点击容器（`Pressable`，accessible=true）内部的按钮不会作为独立元素出现在 iOS 无障碍树中，基于无障碍树的工具（Maestro、Appium XCUITest 等）点不到。app 里所有可点击元素都改为并列结构，避免某个工具因此吃亏。
+
+### 走查观察：Maestro `scrollUntilVisible` 滚到第 400 行很慢（M3 参考）
+
+- 默认参数（speed 40）下 60 秒只滚到约第 150 行。app 端滚动正常。M3 实现 S6 时需按 Maestro 官方推荐写法调参，并计入易用性记录。
+
+### iOS 27：从外部打开深链接会弹系统确认框（影响 S21）
+
+- `xcrun simctl openurl`（Maestro `openLink` 底层同样如此）打开 `rnshootout://...` 时，系统弹出「Open in "rnshootout"?」（Cancel / Open）。S21 的实现必须处理这个系统弹窗；各工具对系统弹窗的处理能力不同，M3 实测时记录各自的做法。

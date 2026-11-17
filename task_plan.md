@@ -8,7 +8,7 @@
 
 ## Next Step
 
-【等待用户决定】iOS 27 标题栏遮挡问题的处理方向（见 Errors Encountered）。Android 端：先处理启动时的“附近设备”权限弹窗，再走通。
+iOS 已走通（Release）。下一步：Android Release 构建 + 走查，然后 Web 走查。（jitter 覆盖范围 a/b 仍待用户决定）
 
 ## Current Phase
 
@@ -120,6 +120,8 @@ Phase 2（M2）
 | iOS 27：页面内容画在原生标题栏下面（标题栏 y=62–116，内容从 y=0 开始） | 1 | `headerTransparent: false` + `headerStyle.backgroundColor` → 无效 |
 | 同上 | 2 | `Screen` 改为 `contentInsetAdjustmentBehavior="automatic"` 的 ScrollView → 无效 |
 | 同上 | 3 | 用 `HeaderHeightContext` 在 iOS 上手动加 paddingTop → 截图仍完全相同（连标题栏背景色也没变，怀疑改动未进入 app；入口 bundle 为 lazy，无法直接确认）→ 已达 3 次，上报用户 |
+| 同上 | 4（用户同意） | 打 Release 构建：标题栏正常，第 1 次修复（不透明 header）本来就有效；Debug 构建未加载新代码。撤回第 2、3 次改动 |
+| iOS：嵌套在 Pressable 里的按钮（`rea-card-action`、`item-delete-*`）不出现在无障碍树中，Maestro 点不到 | 1 | 改为并列结构（卡片标题 / 行主体与按钮为兄弟节点） |
 
 ## Notes
 

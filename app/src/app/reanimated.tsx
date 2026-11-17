@@ -24,12 +24,12 @@ export default function ReanimatedScreen() {
 
   return (
     <Screen>
-      <Pressable testID="rea-card" onPress={toggle}>
-        <Animated.View style={[styles.card, style]}>
+      <Animated.View style={[styles.card, style]}>
+        <Pressable testID="rea-card" onPress={toggle}>
           <Text style={styles.title}>Tap to expand</Text>
-          {expanded && <Button testID="rea-card-action" title="Do action" onPress={() => setResult('Action done')} />}
-        </Animated.View>
-      </Pressable>
+        </Pressable>
+        {expanded && <Button testID="rea-card-action" title="Do action" onPress={() => setResult('Action done')} />}
+      </Animated.View>
       <Label testID="rea-result">{result}</Label>
     </Screen>
   );

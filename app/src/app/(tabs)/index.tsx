@@ -51,17 +51,19 @@ function Row({
           <Text style={styles.swipeDeleteText}>Delete</Text>
         </Pressable>
       )}>
-      <Pressable
-        testID={`item-row-${id}`}
-        style={styles.row}
-        onPress={() => !item.pending && router.push(`/item/${item.id}`)}
-        onLongPress={() => onLongPress(item.id)}
-        delayLongPress={500}>
-        <Text style={styles.rowTitle}>{item.title}</Text>
+      <View style={styles.row}>
+        <Pressable
+          testID={`item-row-${id}`}
+          style={styles.rowMain}
+          onPress={() => !item.pending && router.push(`/item/${item.id}`)}
+          onLongPress={() => onLongPress(item.id)}
+          delayLongPress={500}>
+          <Text style={styles.rowTitle}>{item.title}</Text>
+        </Pressable>
         <Pressable testID={`item-delete-${id}`} hitSlop={8} onPress={() => onDelete(item.id)}>
           <Text style={styles.deleteIcon}>✕</Text>
         </Pressable>
-      </Pressable>
+      </View>
     </Swipeable>
   );
 }
@@ -174,6 +176,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: colors.border,
   },
+  rowMain: { flex: 1, height: '100%', justifyContent: 'center' },
   rowTitle: { fontSize: 16 },
   deleteIcon: { fontSize: 18, color: colors.muted, paddingHorizontal: 8 },
   swipeDelete: { backgroundColor: colors.danger, justifyContent: 'center', width: 90, alignItems: 'center' },

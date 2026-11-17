@@ -42,6 +42,10 @@
   - iOS 模拟器设置：语言 en / en_US，关闭 Reduce Motion，浅色外观（原为日文 + Reduce Motion 开启）
   - iOS：登录页内容被原生标题栏遮挡，三次修复均无效（见 task_plan.md Errors），已上报用户
   - Android：prebuild + `gradlew assembleDebug`（347 s）成功；安装后首次启动出现“附近设备”权限弹窗，walkthrough 未开始
+  - 用户决定：只测 SDK 58（Detox 官方只支持到 RN 0.84，已记录）
+  - 用户同意打 Release 构建：iOS Release 下标题栏正常 → 撤回第 2、3 次修复；嵌套 Pressable 改为并列结构；返回按钮只显示箭头
+  - iOS Release 走查（临时 Maestro flow，scratchpad，不入库）：登录、删除 Modal、新增、busy、Reanimated、live、WebView、long-form、dup / a11y、远程图片、深链接全部通过；controls / reorder / system 截图正常
+  - 发现：iOS 外部打开深链接有系统确认框（S21 相关）；遗留的系统弹窗不会因 app 重启而消失（harness 需每次重启模拟器）
 - Files created/modified:
   - `app/**`、`mock-server/**`
 - Files created/modified:
@@ -58,6 +62,7 @@
 | mock-server 冒烟 | `/test/fail` count=1 后两次 `GET /items` | 500 → 200 | 500 → 200 | pass |
 | mock-server 冒烟 | `WS /ws` | 每 500 ms 一条 | 收到 tick 1、2 | pass |
 | mock-server 冒烟 | `GET /image.png` | ≈1.5 s + 网络延迟 | 2.02 s，64×64 PNG | pass |
+| iOS Release 走查 | full-walk.yaml（iPhone 17 / iOS 27） | 全部步骤通过 | 全部通过（S6 长滚动因 Maestro 速度跳过，app 滚动正常） | pass |
 
 ## Error Log
 

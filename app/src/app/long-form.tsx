@@ -1,15 +1,13 @@
 // A18：底部输入框会被键盘遮挡，页面依靠 KeyboardAvoidingView 上移
 import { useState } from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
-import { Button, colors, Label, useHeaderInset } from '@/components/ui';
+import { Keyboard, KeyboardAvoidingView, Platform, Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { Button, colors, Label } from '@/components/ui';
 
 export default function LongForm() {
   const [notes, setNotes] = useState('');
   const [result, setResult] = useState('');
-  const top = useHeaderInset();
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={100}>
-      <ScrollView contentInsetAdjustmentBehavior="never" scrollEnabled={false} keyboardShouldPersistTaps="handled" contentContainerStyle={{ flexGrow: 1, paddingTop: top }}>
       <Pressable style={styles.container} onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.spacer}>
           <Label>Fill in the notes at the bottom of the page.</Label>
@@ -19,7 +17,6 @@ export default function LongForm() {
         <TextInput testID="form-notes" style={styles.input} value={notes} onChangeText={setNotes} autoCorrect={false} />
         <Button testID="form-submit" title="Submit" onPress={() => setResult(`Submitted: ${notes}`)} />
       </Pressable>
-      </ScrollView>
     </KeyboardAvoidingView>
   );
 }
