@@ -20,11 +20,12 @@ module.exports = {
       binaryPath: `${APP}/ios/build-detox/Build/Products/Release-iphonesimulator/rnshootout.app`,
       build: `${PREBUILD} --platform ios && cd ios && pod install && xcodebuild -workspace rnshootout.xcworkspace -scheme rnshootout -configuration Release -sdk iphonesimulator -derivedDataPath build-detox`,
     },
+    // -Xmx4g：Expo 生成的 gradle.properties 默认 2 GB，R8 压缩测试 APK 时 OOM（实测）
     'android.release': {
       type: 'android.apk',
       binaryPath: `${APP}/android/app/build/outputs/apk/release/app-release.apk`,
       testBinaryPath: `${APP}/android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk`,
-      build: `${PREBUILD} --platform android && cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release`,
+      build: `${PREBUILD} --platform android && cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release -Dorg.gradle.jvmargs=-Xmx4g`,
       reversePorts: [4000],
     },
   },
