@@ -8,7 +8,7 @@
 
 ## Next Step
 
-配置 `app/`（app.json：name / scheme `rnshootout` / bundle id `com.rnshootout.app`），安装所需依赖，开始实现 A1–A28。
+iOS 开发构建（`expo run:ios`）完成后，在 iPhone 17 / iOS 27 模拟器上逐页走通；之后 Android、Web。
 
 ## Current Phase
 
@@ -27,10 +27,10 @@ Phase 2（M2）
 
 ### Phase 2: M2 被测 app + mock server
 
-- [ ] `create-expo-app`（SDK 58），Expo Router + New Architecture，scheme `rnshootout`
-- [ ] 实现 A1–A28，所有元素带稳定 `testID`（A24 的刻意例外除外）
+- [x] `create-expo-app`（SDK 58），Expo Router + New Architecture，scheme `rnshootout`
+- [x] 实现 A1–A28，所有元素带稳定 `testID`（A24 的刻意例外除外）
 - [x] mock-server：`/reset`、CRUD、延迟、错误注入、轮询 + WebSocket、OAuth 页、延迟图片、推送辅助脚本
-- [ ] 动画时长可配置（jitter），Toast 固定 2 秒
+- [x] 动画时长可配置（jitter），Toast 固定 2 秒
 - [ ] iOS 模拟器、Android 模拟器、Web 三端手动走通
 - **Status:** in_progress
 

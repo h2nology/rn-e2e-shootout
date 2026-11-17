@@ -78,3 +78,22 @@
 
 - Android 模拟器没有官方命令可以注入“远程推送”（需要 FCM）；iOS 可用 `xcrun simctl push`。C11 的 Android 侧实现方式待 M3 实测。
 - 计划 bundle id / package 统一为 `com.rnshootout.app`（推送脚本依赖它）。
+
+### react-native-gesture-handler 3.3.0（SDK 58 模板自带）
+
+- v3 改为 hooks API：`usePanGesture` / `useLongPressGesture` / `useTapGesture` …，配合 `GestureDetector`；旧的 `Gesture.Pan()` 仍以 `Gesture`（GestureObjects）导出，带 Legacy 前缀的类型为旧 API。
+- 回调：`onBegin` / `onActivate` / `onUpdate` / `onDeactivate` / `onFinalize`；配置 `runOnJS: true` 可在 JS 线程执行回调。
+- Pan 事件有 `translationX` / `translationY`；LongPress 配置为 `minDuration`。
+- `ReanimatedSwipeable` 位于子路径 `react-native-gesture-handler/ReanimatedSwipeable`，有 `renderRightActions(progress, translation, methods)`、`rightThreshold`、`friction`。
+
+### app 依赖（`npx expo install`，2026-11-17）
+
+react-native-webview 14.0.1、expo-notifications ~58.1.9、expo-location ~58.0.22、expo-local-authentication ~58.0.3、expo-localization ~58.0.5、@react-native-async-storage/async-storage 2.2.0、@react-native-community/slider 5.2.1、@react-native-community/datetimepicker 9.2.1
+
+### jitter 的覆盖范围（与 METHODOLOGY v1 8.4 的偏差，需用户确认）
+
+METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实现时发现以下动画由原生或第三方库控制，app 无法改时长：
+- Android 原生 Stack 转场（native-stack 的 `animationDuration` 只对 iOS 生效）
+- `ReanimatedSwipeable` 的回弹、`RefreshControl` 的下拉动画、系统日期选择器 / 权限弹窗
+已覆盖：iOS Stack 转场、确认 Modal 淡入、Toast 淡入淡出、A11 循环动画、A13 Reanimated 弹簧。
+处理方案待定：(a) 在 METHODOLOGY 中写明覆盖范围（开 v2）；(b) 把这些组件换成 app 自绘实现。

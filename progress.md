@@ -33,8 +33,12 @@
   - `create-expo-app --template default@sdk-58` 生成 `app/`（未安装依赖；删除模板自带 LICENSE）
   - 实现 mock-server（Node 24 原生 TS + `ws`）：reset / config（施压）/ 测试注入 / 业务接口 / WebView 与 OAuth 页面 / 延迟图片 / WebSocket / iOS 推送脚本
   - curl 冒烟测试通过（见 Test Results）
+  - app：配置 app.json（name/scheme `rnshootout`、bundle id / package `com.rnshootout.app`、ATS / cleartext、各权限插件、orientation default、web.output single）
+  - app：安装依赖；删除模板示例代码；实现 lib（api / anim(jitter) / store / i18n）、组件（ui / toast / confirm-modal / date-field(.web) / web-frame(.web)）
+  - app：实现全部路由（login、tabs：home / explore(嵌套 stack) / settings、item/[id]、add、controls、permission、webview、busy、reanimated、live、reorder、long-form、notification-target、biometric、system、dup、nested、image、auth）
+  - `npx tsc --noEmit` 通过
 - Files created/modified:
-  - `app/**`（模板）、`mock-server/**`
+  - `app/**`、`mock-server/**`
 - Files created/modified:
   - `task_plan.md`、`findings.md`、`progress.md`
   - `.gitignore`、`README.md`、`scenarios.md`、`METHODOLOGY.md`、各目录 `.gitkeep`
