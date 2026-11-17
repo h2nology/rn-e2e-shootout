@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Detox：等待重置方式改正后的重跑（正式版两平台各 5 轮 + C1–C11，后台）→ 实测 C9 Android `setOrientation` → 把结果填入 `suites/detox/RESULTS.md` → 提交。之后 Appium → Maestro → Quiesco。
+Appium（WebdriverIO）接入：SETUP-LOG → 诊断版 → 正式版 → WAITS.md → 两平台各 5 轮 → C1–C11 → RESULTS.md。之后 Maestro → Quiesco。
 
 ## Current Phase
 
@@ -38,7 +38,7 @@ Phase 3（M3）
 
 - [x] 先补验 M2 未走查的交互（iOS / Android 均通过；S7b、C1 Android、C11 Android 依赖工具能力，留到各工具实现时验证；发现并修复 3 处 app 问题，见 findings.md）
 
-- [ ] detox（Jest），记录易用性数据；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
+- [x] detox（Jest），记录易用性数据（结果见 `suites/detox/RESULTS.md`）；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
 - [ ] appium（WebdriverIO），记录易用性数据
 - [ ] maestro（YAML），记录易用性数据
 - [ ] quiesco（0.5.0 + Vitest），记录易用性数据（最后接入）

@@ -134,14 +134,15 @@ describe('C8 深色模式', () => {
 });
 
 describe('C9 横竖屏', () => {
-  // Detox 文档只写明 iPad 上的限制（需声明全屏），两个平台都实测
+  // Detox 文档只写明 iPad 上的限制（需声明全屏），两个平台都实测。
+  // Android：转回竖屏后 Detox 不等待配置变更后的重新布局，不加 waitFor 时读到旧值 “landscape”（实测）→ 需 W3
   it('旋转后布局变化', async () => {
     await resetApp();
     await openSystemPage();
     await device.setOrientation('landscape');
-    await expect(element(by.id('orientation-indicator'))).toHaveText('landscape');
+    await waitFor(element(by.id('orientation-indicator'))).toHaveText('landscape').withTimeout(5000);
     await device.setOrientation('portrait');
-    await expect(element(by.id('orientation-indicator'))).toHaveText('portrait');
+    await waitFor(element(by.id('orientation-indicator'))).toHaveText('portrait').withTimeout(5000);
   });
 });
 

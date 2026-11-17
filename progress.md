@@ -96,6 +96,8 @@
 | Detox C1–C11（iOS） | 能力检查 | 记录 ✓ / ✗ | C1 需外部 notifyutil；C2 ✗；C7 需 waitFor；C10 写法修正（toHaveLabel）后 ✓；C11 ✗ | info |
 | Detox C1–C11（Android） | 能力检查 | 记录 ✓ / ✗ | C2（GAPIS）✗；C3 需关闭同步；C10 写法修正后 ✓；C11 ✗；C9 待实测 | info |
 | 重置方式改正冒烟 | S1 / S10 / S23 两平台 | 通过 | 全部通过 | pass |
+| Detox 正式版 5 轮（只清数据重置） | iOS / Android 各 5 轮 | 除 ✗ 外全绿 | iOS 5 轮均 22 通过 / S21 ✗（同一行）/ S22 跳过；Android 5 轮均 22 通过 / S10b、S22 跳过 | pass |
+| Detox C1–C11（重跑） | 两平台 | 记录 | 与初步结果一致；C9 Android `setOrientation` 可用，加 waitFor 后连续 3 次通过 | info |
 
 ## Error Log
 

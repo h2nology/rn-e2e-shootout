@@ -41,7 +41,14 @@
 
 ### 连续 5 轮（正式版）
 
-待重跑结果（重置方式改正后）。改正前的一轮（卸载重装方式）：iOS 5 轮均为 22 通过 / 1 跳过（S22）/ 1 失败（S21 冷启动，均在同一行），Android 5 轮均为 22 通过 / 2 跳过（S10b、S22）。
+重置方式改正后（2026-11-17，23:37 结束）：
+
+| 平台 | 轮次 | 每轮结果 | 每轮耗时 |
+|---|---|---|---|
+| iOS | 5 | 22 通过 / 1 跳过（S22）/ 1 失败（S21，5 轮均在冷启动断言 `s21-deeplink.test.js:27`） | 642–653 s |
+| Android | 5 | 22 通过 / 2 跳过（S10b、S22） | 399–440 s |
+
+除已记为 ✗ 的项外，两个平台 5 轮全绿，没有偶发失败。（改正前的卸载重装方式也跑过 5 轮，结果相同，已作废。）耗时含 Detox 启动与重置，仅供参考，正式测量由 harness 进行（M4–M5）。
 
 ## 2. 能力检查 C1–C11
 
@@ -55,11 +62,11 @@
 | C6 启动阶段 | ✓ | ✓ | 不加 sleep 直接输入 |
 | C7 远程图片 | ✓（需 W3） | ✓（需 W3） | Detox 的同步不等待 expo-image 的网络加载，不加 `waitFor` 时失败 |
 | C8 深色模式 | 需额外配置 | 需额外配置 | Detox 无切换外观的 API，用 `simctl ui appearance` / `adb shell cmd uimode night` |
-| C9 横竖屏 | ✓ | 待验证 | `setOrientation`。当前文档只写明 iPad 上的限制，没有写不支持 Android；此前据“仅 iOS”跳过的依据不成立，需实测 |
+| C9 横竖屏 | ✓ | ✓（需 W3） | `setOrientation` 两个平台都可用（文档只写明 iPad 需声明全屏）。Android：转回竖屏后 Detox 不等待重新布局，不加 `waitFor` 时读到旧值 |
 | C10 系统语言 | ✓ | 需额外配置 | iOS：`launchApp({ languageAndLocale })`；按钮是 View，文字只暴露为 label，断言用 `toHaveLabel`。Android：Detox 无 API，用 `adb shell cmd locale set-app-locales` |
 | C11 远程推送 | ✗ | ✗ | iOS：`push-ios.sh` 发出的横幅能显示，但 `system` API 找不到（每次查找约 20 秒，预热 XCUITest runner、试多种 label 均失败）；Detox 官方的 `sendUserNotification` 不进入目标页（RN 0.88 下与 S21 同样不生效）。Android：没有 FCM，无法从外部向 app 投递推送（各工具共通）；`sendUserNotification` 后台调用报 “No Activity found”，冷启动方式把数据放在 intent extras，需 app 侧代码读取，不允许为单个工具改 app |
 
-待重跑结果（重置方式改正后）确认。
+以上为重置方式改正后的结果（C2 Android 在 GAPIS 上单独执行；主设备 AOSP 上无 Chrome，该项必然失败，不计）。C9 Android 在加 `waitFor` 后单独连续执行 3 次通过。
 
 ## 3. 出处
 
