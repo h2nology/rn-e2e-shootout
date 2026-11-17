@@ -46,6 +46,10 @@
   - 用户同意打 Release 构建：iOS Release 下标题栏正常 → 撤回第 2、3 次修复；嵌套 Pressable 改为并列结构；返回按钮只显示箭头
   - iOS Release 走查（临时 Maestro flow，scratchpad，不入库）：登录、删除 Modal、新增、busy、Reanimated、live、WebView、long-form、dup / a11y、远程图片、深链接全部通过；controls / reorder / system 截图正常
   - 发现：iOS 外部打开深链接有系统确认框（S21 相关）；遗留的系统弹窗不会因 app 重启而消失（harness 需每次重启模拟器）
+  - Android Release（`assembleRelease`）走查：full-walk 全部通过；无“附近设备”弹窗
+  - Web（`expo export -p web` + `serve -s`）：Maestro Web 点击无法把焦点移到密码框、不支持 `pressKey: Tab`（记为 M3 参考）；改用 scratchpad 内 Playwright 1.65.1（locale en-US）走查，19 项全部通过
+  - 手势 / 权限 flow（iOS + Android）：S12 左滑删除、S13 下拉刷新、S14 长按菜单、S10 定位权限全部通过
+  - 未走查（留到 M3 首次实现时验证）：S14 拖拽、S7 IME、S8 滑块 / 原生日期选择、S22 通知、S23 前后台、C1 生物识别、C2 OAuth、C3 分享、C8 深色、C9 横屏、C11 推送
 - Files created/modified:
   - `app/**`、`mock-server/**`
 - Files created/modified:
@@ -63,6 +67,9 @@
 | mock-server 冒烟 | `WS /ws` | 每 500 ms 一条 | 收到 tick 1、2 | pass |
 | mock-server 冒烟 | `GET /image.png` | ≈1.5 s + 网络延迟 | 2.02 s，64×64 PNG | pass |
 | iOS Release 走查 | full-walk.yaml（iPhone 17 / iOS 27） | 全部步骤通过 | 全部通过（S6 长滚动因 Maestro 速度跳过，app 滚动正常） | pass |
+| Android Release 走查 | full-walk.yaml（Medium Phone API 37） | 全部步骤通过 | 全部通过 | pass |
+| Web 走查 | Playwright walk.mjs（Chromium，en-US） | 19 项通过 | 19 项通过 | pass |
+| 手势 / 权限 | gestures.yaml（iOS + Android） | S12 / S13 / S14 长按 / S10 通过 | 全部通过 | pass |
 
 ## Error Log
 

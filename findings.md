@@ -138,3 +138,13 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 ### iOS 27：从外部打开深链接会弹系统确认框（影响 S21）
 
 - `xcrun simctl openurl`（Maestro `openLink` 底层同样如此）打开 `rnshootout://...` 时，系统弹出「Open in "rnshootout"?」（Cancel / Open）。S21 的实现必须处理这个系统弹窗；各工具对系统弹窗的处理能力不同，M3 实测时记录各自的做法。
+
+### Android Release 构建不弹“附近设备”权限
+
+- Release APK（bundle 内嵌，不连 Metro）启动时没有“附近设备”弹窗，确认该弹窗只出现在 Debug 构建。测量一律用 Release 构建。
+- Android 37 模拟器的系统语言为 en-US（`ro.product.locale`），符合 scenarios.md 0.1。
+
+### Web 走查观察（M3 参考）
+
+- Maestro 2.11 Web（beta）：`tapOn` 密码框后焦点仍留在邮箱框，两段输入都进了邮箱；`pressKey: Tab` 不受支持，flow 中断。Maestro 的 Chrome 继承宿主语言（日文），需要设法固定 en-US。
+- harness 在 Web 上也必须固定浏览器语言 / locale（C10 依赖）。

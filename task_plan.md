@@ -8,11 +8,11 @@
 
 ## Next Step
 
-iOS 已走通（Release）。下一步：Android Release 构建 + 走查，然后 Web 走查。（jitter 覆盖范围 a/b 仍待用户决定）
+M3 开始：先补验 M2 未走查的交互，然后按工具逐个从零接入（顺序待定）。（jitter 覆盖范围 a/b 仍待用户决定）
 
 ## Current Phase
 
-Phase 2（M2）
+Phase 3（M3）
 
 ## Phases
 
@@ -31,17 +31,19 @@ Phase 2（M2）
 - [x] 实现 A1–A28，所有元素带稳定 `testID`（A24 的刻意例外除外）
 - [x] mock-server：`/reset`、CRUD、延迟、错误注入、轮询 + WebSocket、OAuth 页、延迟图片、推送辅助脚本
 - [x] 动画时长可配置（jitter），Toast 固定 2 秒
-- [ ] iOS 模拟器、Android 模拟器、Web 三端手动走通
-- **Status:** in_progress
+- [x] iOS 模拟器、Android 模拟器、Web 三端手动走通（Release 构建；未走查项见 progress.md，M3 首次实现时验证）
+- **Status:** complete
 
 ### Phase 3: M3 四套测试实现（诊断版 + 正式版）
+
+- [ ] 先补验 M2 未走查的交互：S14 拖拽、S7 IME、S8 滑块 / 原生日期、S22 通知、S23 前后台、C1 生物识别、C2 OAuth、C3 分享、C8 / C9 / C11
 
 - [ ] quiesco（0.5.0 + Vitest），记录易用性数据
 - [ ] detox（Jest），记录易用性数据；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
 - [ ] appium（WebdriverIO），记录易用性数据
 - [ ] maestro（YAML），记录易用性数据
 - [ ] 每套正式版 iOS / Android 连续 5 次全绿，或记录 ✗ 原因；C1–C11 逐项检查
-- **Status:** pending
+- **Status:** in_progress
 
 ### Phase 4: M4 harness 与汇总脚本
 
