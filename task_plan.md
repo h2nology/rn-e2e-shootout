@@ -8,7 +8,7 @@
 
 ## Next Step
 
-在 `app/` 用 `create-expo-app` 创建 SDK 58 的 Expo Router 项目（scheme `rnshootout`），然后搭建 mock-server。
+配置 `app/`（app.json：name / scheme `rnshootout` / bundle id `com.rnshootout.app`），安装所需依赖，开始实现 A1–A28。
 
 ## Current Phase
 
@@ -29,7 +29,7 @@ Phase 2（M2）
 
 - [ ] `create-expo-app`（SDK 58），Expo Router + New Architecture，scheme `rnshootout`
 - [ ] 实现 A1–A28，所有元素带稳定 `testID`（A24 的刻意例外除外）
-- [ ] mock-server：`/reset`、CRUD、延迟、错误注入、轮询 + WebSocket、OAuth 页、延迟图片、推送辅助脚本
+- [x] mock-server：`/reset`、CRUD、延迟、错误注入、轮询 + WebSocket、OAuth 页、延迟图片、推送辅助脚本
 - [ ] 动画时长可配置（jitter），Toast 固定 2 秒
 - [ ] iOS 模拟器、Android 模拟器、Web 三端手动走通
 - **Status:** in_progress

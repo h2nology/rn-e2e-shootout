@@ -65,3 +65,16 @@
 
 - 计划书：`e2e-comparison-plan.md`
 - https://www.npmjs.com/package/quiesco
+
+### Expo SDK 58 默认模板（`create-expo-app --template default@sdk-58`，2026-11-17）
+
+- react-native 0.88.1、react 19.3.0、expo-router ~58.0.31、react-native-reanimated 4.7.1、react-native-worklets 0.13.0、react-native-gesture-handler ~3.3.0、react-native-screens ~4.30.1、react-native-web ~0.21.4、TypeScript ~6.0.3
+- 路由目录是 `src/app/`（不是根目录 `app/`）；模板自带 Tab（`src/components/app-tabs.tsx` / `.web.tsx`）
+- `app.json`：`web.output = "server"`、`experiments.reactCompiler = true`、`typedRoutes = true`
+- 模板自带 `AGENTS.md`：要求依据 v58 版本文档而不是记忆；安装依赖一律 `npx expo install`
+- 模板自带 LICENSE（已删除，以仓库根目录 MIT 为准）
+
+### mock-server
+
+- Android 模拟器没有官方命令可以注入“远程推送”（需要 FCM）；iOS 可用 `xcrun simctl push`。C11 的 Android 侧实现方式待 M3 实测。
+- 计划 bundle id / package 统一为 `com.rnshootout.app`（推送脚本依赖它）。

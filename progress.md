@@ -29,6 +29,12 @@
 
 - **Status:** in_progress
 - **Started:** 2026-11-17
+- Actions taken:
+  - `create-expo-app --template default@sdk-58` 生成 `app/`（未安装依赖；删除模板自带 LICENSE）
+  - 实现 mock-server（Node 24 原生 TS + `ws`）：reset / config（施压）/ 测试注入 / 业务接口 / WebView 与 OAuth 页面 / 延迟图片 / WebSocket / iOS 推送脚本
+  - curl 冒烟测试通过（见 Test Results）
+- Files created/modified:
+  - `app/**`（模板）、`mock-server/**`
 - Files created/modified:
   - `task_plan.md`、`findings.md`、`progress.md`
   - `.gitignore`、`README.md`、`scenarios.md`、`METHODOLOGY.md`、各目录 `.gitkeep`
@@ -37,7 +43,12 @@
 
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|
-|      |       |          |        |        |
+| mock-server 冒烟 | `GET /items?q=Item 04` | 10 条（Item 040–049） | 10 条 | pass |
+| mock-server 冒烟 | `POST /login` 正确 / 错误 | 200 / 401 | 200 / 401 | pass |
+| mock-server 冒烟 | `POST /items` | id 501 | id 501 | pass |
+| mock-server 冒烟 | `/test/fail` count=1 后两次 `GET /items` | 500 → 200 | 500 → 200 | pass |
+| mock-server 冒烟 | `WS /ws` | 每 500 ms 一条 | 收到 tick 1、2 | pass |
+| mock-server 冒烟 | `GET /image.png` | ≈1.5 s + 网络延迟 | 2.02 s，64×64 PNG | pass |
 
 ## Error Log
 
