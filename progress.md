@@ -67,6 +67,9 @@
 - Files created/modified:
   - `app/src/app/(tabs)/settings.tsx`、`app/src/app/_layout.tsx`、`app/src/app/(tabs)/_layout.tsx`、`app/src/lib/store.ts`、`app/src/app/auth.tsx`、`findings.md`
 
+- Detox 接入（iOS）：首个测试通过（约 6 分钟，含缓存，仅供参考）；诊断版 / 正式版全套 iOS 已跑；S11 同步绕过方式修正；S21 iOS ✗（RN 0.88 下 Detox URL API 不生效）
+- Files created/modified: `suites/detox/**`、`app/app.config.ts`、`app/package.json`
+
 ## Test Results
 
 | Test | Input | Expected | Actual | Status |
@@ -84,6 +87,8 @@
 | M3 补验（iOS） | extra / system / notif / push / bio flow | 系统级交互可走通 | 全部走通（通知需点 Allow；Face ID 失败路径需点取消） | pass |
 | M3 补验（Android） | android-extra / android-extra2 | 系统级交互可走通 | 全部走通（需关闭 Chrome 首次启动向导） | pass |
 | 回归（iOS，修复后） | full-walk / gestures / notif | 全部通过 | 全部通过 | pass |
+| Detox iOS 诊断版 | S1–S23 | 观察 | 修正写法后：S11 超时、S17 失败、S21 失败，其余通过 | info |
+| Detox iOS 正式版 | S1–S23 | 除 ✗ 外全绿 | 21 通过（S11 修正后）/ S21 ✗ / S10b、S22 跳过 | pass（S21 ✗） |
 
 ## Error Log
 

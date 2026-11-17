@@ -1,5 +1,7 @@
 // 共用辅助：状态重置（METHODOLOGY 5）与界面登录（scenarios.md 0.4）
 const MOCK = 'http://localhost:4000';
+/** 加载测试文件时即可判断平台（用于 it.skip 标记不支持的场景） */
+const isIOS = (process.env.DETOX_CONFIGURATION ?? '').startsWith('ios');
 
 async function resetServer() {
   await fetch(`${MOCK}/reset`, { method: 'POST' });
@@ -25,4 +27,4 @@ async function login() {
   await element(by.id('login-submit')).tap();
 }
 
-module.exports = { MOCK, resetServer, postJson, resetApp, login };
+module.exports = { MOCK, isIOS, resetServer, postJson, resetApp, login };

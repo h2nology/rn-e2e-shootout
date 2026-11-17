@@ -173,3 +173,13 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 1. 发送本地通知前检查 / 申请通知权限（与真实 app 一致；原实现在未授权时静默不发）。
 2. 根布局在 splash 期间不再 `return null`，导航器从一开始挂载，Tab 布局等登录态恢复后再渲染（避免 splash 期间深链接丢失）。
 3. `/auth`（OAuth 回跳页）在原生端打开后立即返回发起页（Android 上 Expo Router 会把回跳 URL 当作深链接打开该页，盖住结果）。
+
+### Detox（iOS，SDK 58 / RN 0.88）实测（2026-11-17）
+
+- 诊断版（无等待）iOS：S1–S23 中 17 通过 / 5 失败 / 2 跳过（S10b Android、S22）。修正 3 处写法错误后（S6 步长、S8 滑块、S21 热启动 API），剩余失败：S11（无限动画，120 s 超时）、S17（Toast 消失需等待）、S21（见下）。
+- S16（轮询 1 s + WebSocket）在诊断版中直接通过：Detox 同步没有被轮询卡住。
+- `adjustSliderToPosition(0.75)` 只改原生 UISlider 的值，Fabric 下的 `@react-native-community/slider` 5.2.1 收不到 `onValueChange` → 改用从滑钮开始的 `swipe`。
+- 深链接：`device.openURL` 仅用于前台；`launchApp({ newInstance: false/true, url })` 在 RN 0.88（SceneDelegate）下均不生效（app 回到前台但不跳转）。外部 `simctl openurl` 对已运行的 app 有效（热启动可行，但有竞态，需 W3）；外部命令冷启动的进程 Detox 无法连接 → **S21 冷启动在 iOS 上做不到**。RN 0.88 不在 Detox 官方支持范围（RN 0.77–0.84），结果须注明。
+- S6 滚动到第 400 行约 120 s（贴近模板默认的 120 s 单测超时）。
+- 状态重置用 `launchApp({ delete: true })`（卸载重装），每个场景约多花数秒，反映在 resetMs。
+- 正式版 iOS：20 通过 / S21 ✗ / 跳过 S10b(Android 专用跳过不适用于 iOS，此处为 S22) 等。S11 修正后通过：Detox 处理无限动画须在进入页面**之前** `disableSynchronization()`，且不能在该页面内 `enableSynchronization()`（会等待空闲而卡死，verbose 日志确认卡在 `setSyncSettings {"enabled":true}`，忙碌原因为 Animated 原生驱动的循环定时器）。
