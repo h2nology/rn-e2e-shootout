@@ -8,7 +8,7 @@
 
 ## Next Step
 
-M3：从零接入 Detox（20.51.4 + 社区 expo-detox-config-plugin），记录每一步的命令、耗时、改动文件和问题。之后 Appium → Maestro → Quiesco。
+Detox：Android（API 36 AOSP）诊断版 → 正式版；iOS / Android 各连续 5 次全绿；C1–C11 能力检查；写 RESULTS.md。之后 Appium → Maestro → Quiesco。
 
 ## Current Phase
 

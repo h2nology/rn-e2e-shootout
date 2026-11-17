@@ -68,7 +68,10 @@
   - `app/src/app/(tabs)/settings.tsx`、`app/src/app/_layout.tsx`、`app/src/app/(tabs)/_layout.tsx`、`app/src/lib/store.ts`、`app/src/app/auth.tsx`、`findings.md`
 
 - Detox 接入（iOS）：首个测试通过（约 6 分钟，含缓存，仅供参考）；诊断版 / 正式版全套 iOS 已跑；S11 同步绕过方式修正；S21 iOS ✗（RN 0.88 下 Detox URL API 不生效）
-- Files created/modified: `suites/detox/**`、`app/app.config.ts`、`app/package.json`
+- Detox Android：API 37 上无法运行（InputManager.getInstance 被移除）→ 用户选方案 B → 新建 API 36 AOSP / google_apis AVD 实测 → METHODOLOGY v3（tag methodology-v3）
+- app 在 API 36 AOSP 上重新走查：full-walk / gestures 全部通过
+- iOS S10b（Detox system API 点击权限弹窗）通过
+- Files created/modified: `suites/detox/**`、`app/app.config.ts`、`app/package.json`、`METHODOLOGY.md`、`scenarios.md`
 
 ## Test Results
 
