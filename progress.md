@@ -73,6 +73,14 @@
 - iOS S10b（Detox system API 点击权限弹窗）通过
 - Files created/modified: `suites/detox/**`、`app/app.config.ts`、`app/package.json`、`METHODOLOGY.md`、`scenarios.md`
 
+## Session: 2026-11-18
+
+- Appium 接入开始：`E2E_TOOL=none` prebuild（app 零改动）；iOS / Android Release 构建（后台）
+- `suites/appium` 本地安装 appium 4.0.0 + xcuitest 13.1.1 + uiautomator2 9.2.1（官方文档只写全局安装，为固定版本改为项目本地，官方 managing-exts 指南支持该方式）；两个驱动 doctor 无必需修复
+- WebdriverIO 10.2.0 测试运行器（mocha、appium-service、junit / spec reporter）；npm 11 拦截的 edgedriver / geckodriver / esbuild install script 移动端不需要，已拒绝
+- 写 `wdio.conf.js`、`test/support.js`、S1 诊断版
+- Android Release 构建 309 s；S1 诊断版首次失败（列表不出现：app 经 localhost:4000 访问 mock server，Appium 不做 adb reverse）→ `onPrepare` 中执行 `adb reverse` 后通过（约 09:14）。Appium 4.0.0 + WDIO 10.2.0 可配合（WDIO 文档写 Appium 3，peer 为 `>=3`）
+
 ## Test Results
 
 | Test | Input | Expected | Actual | Status |
@@ -104,3 +112,27 @@
 | Timestamp | Error | Attempt | Resolution |
 |-----------|-------|---------|------------|
 |           |       | 1       |            |
+
+- mock server 修复：请求途中客户端断开导致进程崩溃（`aborted` 未捕获）→ handler 包 catch
+- 诊断版（S1–S23）两平台已跑：Android 17/24（真实失败 S6 超时、S11 / S16 UiAutomator2 等待空闲卡死、S23 保存请求被 terminateApp 切断）；iOS 2/24（默认输入速度下登录丢字符，依赖登录的场景全部失败）。补充观察（只把输入节奏调到 20）：iOS 7/24，S10b 弹窗残留导致后续连带失败
+- 正式版（`test/final`）进行中。已确定的处理：
+  - iOS 文本输入：`typeText` 先输入第一个字符并 W3 等值反映，再输入其余（冷启动 24/24）；`maxTypingFrequency` 20 不可靠（4/8），已撤回
+  - S3 Android 改为 W3C 按键逐字输入 + `hideKeyboard`（UiAutomator2 看不到被键盘挡住的行）
+  - S6 W3 等列表 + 超时 300 s + `percent 0.8 / duration 1000`（iOS 约 179 s）
+  - S9 iOS：WebView 内按钮用 `tap()`（`click` 无效）+ W3 `waitForDisplayed`（单独跑约 2/16 偶发失败，原因未定）
+  - S10b iOS：W2 点击后弹窗仍在则重点（模拟器重启后第一次点击常被忽略；重启后 4/4）
+  - S11 / S16 Android：X `waitForIdleTimeout: 0`；S12 / S13 / S18 W3 等首次加载；S23 W3 等 `item-row-501`
+  - S22 iOS：通知权限用 `reloadSession` + `appium:permissions`（会话中途 `setPermission` 会断开 WDA）；通知中心的同 app 通知折叠为组（label 含 Grouped）→ 先展开
+- iOS 正式版全套最近一轮（final-3）：20/24（S12、S13、S18 已修改未重跑；S22 未解决）
+- **暂停点（用户要求暂停）**：S22 iOS 展开分组后点击通知不打开 app。截图显示点击被识别为横向滑动（卡片右滑露出 “Open” 后弹回）；`click` / `tap()` / 停 1.5 s 后点 / 点卡片按钮均无效。下一步：试点 “Open” 按钮、在通知中心先清空本 app 通知、或改为单条通知时再点；之后跑 Android 正式版全套、两平台各 5 轮、C1–C11、WAITS.md、RESULTS.md
+- **恢复（2026-11-18）**：
+  - S22 iOS 解决：右滑通知卡片露出 “Open” 再点（操作方式变通，不属于等待），连续 3 次通过；诊断版同步改
+  - iOS 正式版全套 final-4：20/23 spec（S9 偶发、S13 写法错误——等待前取了列表元素、S18 iOS 同一文字有两个嵌套 StaticText 触发严格模式）
+  - S13 调整顺序；S18 两版都改为取 `$$(...)[0]`；S9 加 W2（点完结果仍为 Waiting 则重点；单独 16 次未复现，失败截图页面正常、坐标不变，原因未查明）
+  - C1–C11 脚本 `suites/appium/test/capability/c-all.js` 已写，未执行
+  - Android 正式版全套首次 23/23；S9（W2）、S13、S18 修正后 iOS 也通过
+  - **5 轮**：iOS 5 × 23/23（530–542 s）、Android 5 × 23/23（368–519 s），无偶发失败
+  - C1–C11：iOS 全 ✓（C1、C3 需 W2）；Android C1 需额外配置（登记指纹，测完已清除 PIN）、C2 GAPIS ✓、C11 ✗，其余 ✓；S7b iOS 需额外配置（simctl 登记键盘，3/3）、Android ✗
+  - WAITS.md（iOS W2×2 / W3×10；Android W3×2 / X×2）、RESULTS.md、METHODOLOGY 5 Appium 行已写
+  - 环境恢复：iOS 键盘 AppleKeyboards = en_US；AOSP PIN / 指纹已清除；GAPIS 模拟器已关闭
+- **Appium 接入完成**。下一步 Maestro

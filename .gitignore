@@ -10,3 +10,4 @@ app/android/
 # local planning state of planning-with-files
 .planning/
 .plan-attestation
+.run/

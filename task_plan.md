@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Appium（WebdriverIO）接入：SETUP-LOG → 诊断版 → 正式版 → WAITS.md → 两平台各 5 轮 → C1–C11 → RESULTS.md。之后 Maestro → Quiesco。
+Maestro 接入：SETUP-LOG → 诊断版 → 正式版 → WAITS.md → 两平台各 5 轮 → C1–C11（含 S7b）→ RESULTS.md。之后 Quiesco。
 
 ## Current Phase
 
@@ -39,7 +39,7 @@ Phase 3（M3）
 - [x] 先补验 M2 未走查的交互（iOS / Android 均通过；S7b、C1 Android、C11 Android 依赖工具能力，留到各工具实现时验证；发现并修复 3 处 app 问题，见 findings.md）
 
 - [x] detox（Jest），记录易用性数据（结果见 `suites/detox/RESULTS.md`）；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
-- [ ] appium（WebdriverIO），记录易用性数据
+- [x] appium（WebdriverIO），记录易用性数据（结果见 `suites/appium/RESULTS.md`）；app 零改动，重置全部用 Appium API
 - [ ] maestro（YAML），记录易用性数据
 - [ ] quiesco（0.5.0 + Vitest），记录易用性数据（最后接入）
 - [ ] 每套正式版 iOS / Android 连续 5 次全绿，或记录 ✗ 原因；C1–C11 逐项检查
@@ -135,6 +135,14 @@ Phase 3（M3）
 | Detox C10：`toHaveText` 对 Pressable（View）不匹配 | 1 | iOS 用 `toHaveLabel`；Android 用 `by.text().withAncestor()` |
 | Detox 重置用 `delete: true`（卸载重装），不符合 METHODOLOGY 5 | 1 | 改为外部命令只清数据（iOS 清数据容器 + privacy reset；Android pm clear），重跑 5 轮 |
 | 我误记“Detox 文档注明 setOrientation 仅 iOS” | 1 | 核对文档无此说法，改为实测 |
+| Appium Android S1：列表不出现 | 1 | app 经 localhost:4000 访问 mock server，Appium 不做 adb reverse → `onPrepare` 执行 `adb reverse` |
+| Appium iOS 重置：`mobile: setPermission` 后 WDA 断开（ECONNREFUSED 8100） | 1 | 改用 `mobile: simctl privacy reset all` |
+| Appium iOS：邮箱输入丢字符 | 1–4 | sleep 3 s、等键盘、`maxTypingFrequency` 20（冷启动 4/8）、关 keyboardPrediction 均无效 → 先输入首字符并 W3 等值反映（24/24） |
+| Appium iOS S22：点通知被识别为横向滑动 | 1 | 右滑卡片露出 “Open” 再点 |
+| Appium iOS：系统 UI（分享面板、LocalAuthentication 弹窗）刚出现时点击被忽略 | 1 | W2 点完状态未变则再点 |
+| Appium iOS C10：language capability 重启 SpringBoard 使 WDA 断开 | 1 | `mobile: launchApp` 的 `-AppleLanguages` 启动参数 |
+| Appium iOS S7b：`configureLocalization` 写入的键盘值格式有误 | 2 | 外部命令 `simctl defaults write -g AppleKeyboards` |
+| mock server 进程崩溃（请求途中客户端断开，`aborted` 未捕获） | 1 | handler 包 catch；用中途断开的请求验证后服务仍正常 |
 
 ## Notes
 

@@ -134,7 +134,7 @@ function filterItems(q: string | null): Item[] {
 
 // ---------- 路由 ----------
 
-const server = http.createServer(async (req, res) => {
+async function handle(req: http.IncomingMessage, res: http.ServerResponse) {
   const url = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`);
   const path = url.pathname;
   const method = req.method ?? 'GET';
@@ -237,6 +237,15 @@ const server = http.createServer(async (req, res) => {
   }
 
   send(res, 404, { error: `no route: ${method} ${path}` });
+}
+
+// 客户端在请求途中断开（例：测试结束 app 进程）时，读取请求体会抛出 `aborted`。
+// 只记录日志，不让整个 mock server 退出（2026-11-18 Appium S23 中实测导致进程崩溃）。
+const server = http.createServer((req, res) => {
+  handle(req, res).catch((err) => {
+    console.error(`[mock-server] ${req.method} ${req.url}: ${err?.code ?? err}`);
+    if (!res.headersSent && !res.destroyed) res.destroy();
+  });
 });
 
 // ---------- WebSocket（A14）：每 500 ms 推送一条消息 ----------

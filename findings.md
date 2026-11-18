@@ -200,3 +200,24 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - Detox Android（API 36 AOSP）：诊断版 15 通过 / 7 失败（S3、S8、S9、S11、S15、S17、S20）；S21 冷 / 热启动均通过（iOS 的 SceneDelegate 问题不影响 Android）。
 - Android 专有问题：~~`setOrientation` 文档注明仅 iOS~~（更正：当前文档只写明 iPad 限制，该说法无出处；实测 Android 可用，需 waitFor）；系统日期对话框的日期格子不可匹配，只能坐标点击；`device.tap` 坐标换算不可靠（传 (811,1387) 实际点到 (2249,4120)），改为基于元素的相对坐标；`web(by.id('webview'))` 匹配到 RN 外层容器，需用默认 `web`；`typeText` 后值带尾随空格（`"note "`）；键盘收起后的布局调整不被同步等待（S20 需 W1）；Detox 构建 R8 OOM 需 `-Xmx4g`。
 - app 修复：长表单底部加 safe area inset（Android 15+ 强制 edge-to-edge，Submit 被导航栏遮住）。
+
+### Appium（appium 4.0.0 + XCUITest 13.1.1 / UiAutomator2 9.2.1 + WebdriverIO 10.2.0）实测（2026-11-18）
+
+- WDIO 文档写“WebdriverIO 10 requires Appium 3”，但 `@wdio/appium-service` 的 peer 为 `appium >=3`；Appium 4.0.0（2026-11-15 发布）实测可用。
+- 官方 Quickstart 只写 `npm install -g appium`；改为 `suites/appium` 本地 devDependencies（官方 managing-exts 指南支持“项目 package.json 声明 appium + 驱动”）以固定版本。
+- app 零改动（`E2E_TOOL=none`）。Android 需 `adb reverse tcp:4000`（Appium 无对应 capability，在 `onPrepare` 中执行）。
+- 定位：iOS `~testID`（accessibilityIdentifier）；Android testID 是不带包名的 resource-id，`~` 指 content-desc，需用 `UiSelector().resourceId()`。
+- 重置：iOS `mobile: clearApp`（仅模拟器）+ `mobile: simctl privacy reset all` + `mobile: launchApp`；Android `mobile: clearApp` + `mobile: activateApp`。全部是 Appium API，不需要外部命令。`mobile: setPermission`（applesimutils）耗时约 10 s 并使 WebDriverAgent 断开（ECONNREFUSED 8100），不可用于重置。
+- iOS 输入丢字符：默认输入速度下，冷启动后第一次聚焦邮箱框时丢 1–5 个字符（`us@…`、`ur@…`、`usple.com`），先 sleep 3 s 也会丢。`appium:maxTypingFrequency` 30 仍丢、20 冷启动下 4/8 失败（早先 6/6 是热状态）。最终：先输入第一个字符、W3 等输入框值长度为 1、再输入其余（冷启动 24/24）。Detox `typeText` 未出现此问题。
+- UiAutomator2 也有“等待界面空闲”：S11（无限动画）、S16（轮询 + WebSocket）上每个命令都卡住直到 mocha 60 s 超时（socket hang up）。之后同一会话的 UiAutomator2 server 不稳定，下一个 spec 连带失败。
+- Appium 不跟踪 app 的网络请求：S23 点保存后立刻 `terminateApp`，POST /items 在途中被切断（mock server 收到 ECONNRESET），服务端没有保存 → 重启后第一行不是 Persisted。正式版等待 `item-row-501`（服务端确认后才由临时行替换）。
+- mock server bug：请求途中客户端断开时 `readJson` 抛出 `aborted`，未捕获导致整个进程退出。已修复（handler 包一层 catch，只记日志）。与工具无关，任何工具在同一时机结束 app 都会触发。
+- Android 系统 UI：UiAutomator2 能操作权限对话框（AOSP API 36 上按钮文字为全大写 `WHILE USING THE APP`，按 resource-id 定位）和通知栏（`openNotifications()` 后按文字点击）。WebView 内容在原生无障碍树中可见，不切换 WEBVIEW 上下文即可操作（iOS 切换上下文需要 app 开启 `webviewDebuggingEnabled`）。
+- iOS 系统 UI（XCUITest）：定位弹窗、通知中心在动画中 / 刚出现时的点击会被忽略（返回成功但无效果），且元素一进入树 displayed / hittable 即为 true，没有可等待的状态。通知中心里已送达的通知不随 `clearApp` 清除，同 app 多条会折叠为组；展开后点击通知被识别为横向滑动（露出 “Open”）而不打开 app → 右滑卡片后点 “Open” 解决。分享面板（出现后约 3 秒内点击无效）、LocalAuthentication 的 Cancel 同样有“刚出现时点击被忽略”，都用 W2 重点。
+- iOS WebView：WKWebView 内元素用 `click` 不触发网页 click 事件，`element.tap()`（`mobile: tap`）有效。
+- iOS 嵌套 StaticText：RN 的 Text 在 XCUITest 树中可能出现两层同 label 的 StaticText（坐标相同），WDIO 10 严格选择器模式下报错，需 `$$()[0]`。
+- iOS C10：`appium:language` / `locale` capability 会重启 SpringBoard / locationd / tccd / akd（驱动日志明示），之后 WDA 断开；`mobile: launchApp` 的 `arguments: ['-AppleLanguages','(ja)','-AppleLocale','ja_JP']` 只改本 app，可用。
+- iOS S7b：`mobile: configureLocalization` 把 keyboard 写成 `name@sw=layout;@hw=Automatic`（多一个 `@`），键盘不切换；`simctl spawn booted defaults write -g AppleKeyboards -array "zh_Hans-Pinyin@sw=Pinyin10-QWERTY;hw=Automatic" "ja_JP-Romaji@sw=QWERTY-Japanese;hw=Automatic"` 后，候选栏是可定位的 Cell（label 如 “测试, 测试的测，考试的试”），“Next keyboard” 按钮切换键盘；系统记住上次使用的键盘。Android AOSP 只有 LatinIME。
+- Android C1：AOSP 模拟器默认未登记指纹，`fingerPrint()` 前需 `adb shell locksettings set-pin 1111` + 设置 app 内登记（`adb emu finger touch 1` × 约 10 次）；测完 `locksettings clear --old 1111` 恢复。失败（未登记 id）后系统弹窗不关闭，需点 `button_negative`。
+- Android C2（GAPIS）：Chrome Custom Tab 内的网页输入框 / 按钮可直接作为原生元素操作，首次即通过。
+- 5 轮（2026-11-18）：iOS 530–542 s / 轮、Android 368–519 s / 轮，均 23/23 spec 全绿。

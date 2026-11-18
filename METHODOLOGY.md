@@ -89,7 +89,7 @@
 |---|---|---|---|
 | Quiesco | 待填 | 待填 | 待填 |
 | Detox | 外部命令补齐：结束 app → 清空数据容器（`simctl get_app_container … data` 下的 Library / Documents / tmp）→ `simctl privacy reset all` → `launchApp({ newInstance: true })`（Detox 只有卸载重装 `delete: true`） | 外部命令补齐：`adb shell pm clear` → `launchApp({ newInstance: true })` | — |
-| Appium | 待填 | 待填 | 待填 |
+| Appium | 全部用 Appium API：`mobile: clearApp`（仅模拟器；结束 app 并清空数据容器）→ `mobile: simctl` `privacy reset all <bundleId>` → `mobile: launchApp` | 全部用 Appium API：`mobile: clearApp`（`pm clear`，同时结束进程、撤销运行时权限）→ `mobile: activateApp` | — |
 | Maestro | 待填 | 待填 | 待填 |
 
 如果某个工具的 runner 自带重置（例：`@quiesco/vitest` 在每个测试前 reset），需要确认其粒度与上述规则一致；不一致时以本规则为准，另行补齐。
