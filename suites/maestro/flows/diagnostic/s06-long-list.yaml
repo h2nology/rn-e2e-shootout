@@ -1,0 +1,16 @@
+# S6 长列表滚动到第 400 行（scrollUntilVisible，默认参数）
+appId: com.rnshootout.app
+name: S6
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- scrollUntilVisible:
+    element:
+      id: item-row-400
+    direction: DOWN
+- tapOn:
+    id: item-row-400
+- assertVisible:
+    id: item-detail-title
+    text: Item 400

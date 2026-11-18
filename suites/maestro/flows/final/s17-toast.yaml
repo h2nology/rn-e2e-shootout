@@ -1,0 +1,16 @@
+# S17 自动消失的 Toast
+appId: com.rnshootout.app
+name: S17
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: settings-save
+- assertVisible:
+    id: toast
+    text: Saved
+- assertNotVisible:
+    id: toast

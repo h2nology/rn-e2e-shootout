@@ -1,0 +1,15 @@
+# S1 登录成功后进入列表
+appId: com.rnshootout.app
+name: S1
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- assertVisible:
+    id: item-list
+- assertVisible:
+    id: item-row-1
+    text: Item 001
+- assertVisible:
+    id: list-top-title
+    text: "Top: Item 001"

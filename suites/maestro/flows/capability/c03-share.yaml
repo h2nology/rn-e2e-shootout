@@ -1,0 +1,31 @@
+# C3 系统分享面板：打开后关闭
+appId: com.rnshootout.app
+name: C3
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-system
+- tapOn:
+    id: share-button
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      # iOS 27 的分享面板没有关闭按钮，点面板外的空白区域关闭（屏幕 15% 高度处是导航栏，点了不会关闭，实测）
+      - assertVisible: Copy
+      - tapOn:
+          point: 50%, 45%
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - assertVisible:
+          id: com.android.intentresolver.*
+      - back
+- assertVisible:
+    id: share-status
+    text: Share dismissed

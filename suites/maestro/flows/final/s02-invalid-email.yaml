@@ -1,0 +1,19 @@
+# S2 错误邮箱的校验提示
+appId: com.rnshootout.app
+name: S2
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- tapOn:
+    id: login-email
+- inputText: not-an-email
+- tapOn:
+    id: login-password
+- inputText: Passw0rd!
+- tapOn:
+    id: login-submit
+- assertVisible:
+    id: login-email-error
+    text: Invalid email
+- assertNotVisible:
+    id: item-list

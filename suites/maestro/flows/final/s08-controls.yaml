@@ -1,0 +1,52 @@
+# S8 原生控件（开关、滑块、日期选择器）
+appId: com.rnshootout.app
+name: S8
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-controls
+- tapOn:
+    id: control-switch
+# 滑块：从滑钮（值 0 时在左端）拖到轨道 75% 处。swipe 的 from + direction 终点固定为屏幕 90%，
+# start / end 又不能写成环境变量（解析阶段校验格式），只能按平台写屏幕百分比坐标（按实测布局换算，见 SETUP-LOG）
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - swipe:
+          start: 9%, 25%
+          end: 72%, 25%
+          duration: 800
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - swipe:
+          start: 6%, 20%
+          end: 72%, 20%
+          duration: 800
+- tapOn:
+    id: control-date
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      # inline 日历中的日期按钮，label 形如 “Friday, December 25”
+      - tapOn: .*December 25.*
+      - tapOn:
+          id: control-date-done
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: "25"
+      - tapOn: OK
+- tapOn:
+    id: control-submit
+- assertVisible:
+    id: control-result
+    text: switch=on slider=75 date=2026-12-25

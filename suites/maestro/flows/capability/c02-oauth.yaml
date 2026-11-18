@@ -1,0 +1,26 @@
+# C2 跨 app 登录（expo-web-browser 打开的页面；页面内容在无障碍树中按文字 / 类型定位）
+appId: com.rnshootout.app
+name: C2
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-system
+- tapOn:
+    id: oauth-login
+# iOS：ASWebAuthenticationSession 的系统确认框（“… Wants to Use … to Sign In”）
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: Continue
+# 网页（mock server 的 OAuth 页）：<label>Username <input></label> + <button>Continue</button>。点标签文字即聚焦输入框
+- tapOn: Username
+- inputText: oauth-user
+- tapOn: Continue
+- assertVisible:
+    id: oauth-status
+    text: "Signed in as oauth-user"

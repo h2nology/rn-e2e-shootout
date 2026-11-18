@@ -1,0 +1,29 @@
+# C5 嵌套滚动：在横向轮播内向左滑，直到第 6 张出现
+appId: com.rnshootout.app
+name: C5
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: open-nested
+- scrollUntilVisible:
+    element:
+      id: carousel
+    direction: DOWN
+- repeat:
+    while:
+      notVisible:
+        id: carousel-slide-6
+    commands:
+      - swipe:
+          from:
+            id: carousel
+          direction: LEFT
+- tapOn:
+    id: carousel-slide-6
+- assertVisible:
+    id: carousel-result
+    text: Slide 6

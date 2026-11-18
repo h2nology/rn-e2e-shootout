@@ -1,0 +1,28 @@
+# S19 Tab 与嵌套导航
+appId: com.rnshootout.app
+name: S19
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: explore-counter
+    repeat: 3
+- tapOn:
+    id: open-explore-detail
+- assertVisible:
+    id: explore-detail-title
+    text: Explore detail
+- runFlow: ../common/back.yaml
+- assertVisible:
+    id: explore-counter-value
+    text: "3"
+- tapOn:
+    id: tab-home
+- tapOn:
+    id: tab-explore
+- assertVisible:
+    id: explore-counter-value
+    text: "3"

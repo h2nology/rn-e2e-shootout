@@ -1,0 +1,19 @@
+# S16 轮询与 WebSocket
+appId: com.rnshootout.app
+name: S16
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: open-live
+- tapOn:
+    id: live-name
+- inputText: Alice
+- tapOn:
+    id: live-submit
+- assertVisible:
+    id: live-greeting
+    text: Hello, Alice

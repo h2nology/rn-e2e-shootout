@@ -1,0 +1,12 @@
+# C6 启动阶段：冷启动后不加 sleep 直接操作登录页
+appId: com.rnshootout.app
+name: C6
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- tapOn:
+    id: login-email
+- inputText: user@example.com
+- assertVisible:
+    id: login-email
+    text: user@example.com

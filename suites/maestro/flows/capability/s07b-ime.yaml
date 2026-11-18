@@ -1,0 +1,63 @@
+# S7b 经由输入法输入中日文（iOS）。外部命令登记拼音和日文罗马字键盘（需额外配置）；按键、选词、切换键盘都用 tapOn。
+# Android：API 36 AOSP 镜像只有 LatinIME，没有中日文输入法 → ✗（与工具无关）
+appId: com.rnshootout.app
+name: S7b
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+onFlowComplete:
+  - runScript:
+      file: ../common/exec.js
+      env:
+        NAME: ios-keyboards-en
+---
+- runScript:
+    file: ../common/exec.js
+    env:
+      NAME: ios-keyboards-cjk
+# 键盘设置在 app 下次显示键盘时生效 → 重新启动 app（数据已在 onFlowStart 中清除）
+- launchApp:
+    permissions:
+      all: unset
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: add-item-button
+- tapOn:
+    id: new-item-title
+# 系统记住上次使用的键盘，先切到拼音键盘（其删除键 label 为 “删除”，日文为 “削除”）
+- repeat:
+    times: 3
+    while:
+      notVisible: 删除
+    commands:
+      - tapOn: Next keyboard
+- assertVisible: 删除
+- tapOn: "c"
+- tapOn: "e"
+- tapOn: "s"
+- tapOn: "h"
+- tapOn: "i"
+# 候选栏的 Cell label 形如 “测试, 测试的测，考试的试”
+- tapOn: "测试,.*"
+- tapOn: "b"
+- tapOn: "i"
+- tapOn: "a"
+- tapOn: "o"
+- tapOn: "t"
+- tapOn: "i"
+- tapOn: "标题,.*"
+- tapOn: space
+- tapOn: Next keyboard
+- tapOn: "t"
+- tapOn: "e"
+- tapOn: "s"
+- tapOn: "u"
+- tapOn: "t"
+- tapOn: "o"
+- tapOn: "テスト,.*"
+- tapOn:
+    id: new-item-save
+- tapOn:
+    id: item-row-501
+- assertVisible:
+    id: item-detail-title
+    text: 测试标题 テスト

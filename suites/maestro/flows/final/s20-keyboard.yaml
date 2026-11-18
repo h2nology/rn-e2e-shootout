@@ -1,0 +1,20 @@
+# S20 键盘遮挡（收起键盘：Maestro hideKeyboard）
+appId: com.rnshootout.app
+name: S20
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-long-form
+- tapOn:
+    id: form-notes
+- inputText: note
+- hideKeyboard
+- tapOn:
+    id: form-submit
+- assertVisible:
+    id: form-result
+    text: "Submitted: note"

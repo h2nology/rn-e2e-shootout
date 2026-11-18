@@ -1,0 +1,26 @@
+# S9 WebView（网页内容出现在无障碍树中，按可见文字定位）
+appId: com.rnshootout.app
+name: S9
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: open-webview
+- assertVisible: Web page ready
+# [W2] iOS：按钮一出现就点击，网页尚不可交互，点击无效（诊断版实测，偶发）。页面上没有“可交互”的状态可以等待。
+#      Maestro 的 retryTapIfNoChange 也不可靠：WebView 内容仍在变化，被判为“界面已变化”而不重试（5 轮中 1 次失败）
+#      → 结果没出现就再点（repeat while，最多 5 次；重复发送 hello 不影响断言）
+- repeat:
+    times: 5
+    while:
+      notVisible:
+        id: webview-result
+        text: "Received: hello"
+    commands:
+      - tapOn: Send to native
+- assertVisible:
+    id: webview-result
+    text: "Received: hello"

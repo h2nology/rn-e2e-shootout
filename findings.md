@@ -221,3 +221,12 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - Android C1：AOSP 模拟器默认未登记指纹，`fingerPrint()` 前需 `adb shell locksettings set-pin 1111` + 设置 app 内登记（`adb emu finger touch 1` × 约 10 次）；测完 `locksettings clear --old 1111` 恢复。失败（未登记 id）后系统弹窗不关闭，需点 `button_negative`。
 - Android C2（GAPIS）：Chrome Custom Tab 内的网页输入框 / 按钮可直接作为原生元素操作，首次即通过。
 - 5 轮（2026-11-18）：iOS 530–542 s / 轮、Android 368–519 s / 轮，均 23/23 spec 全绿。
+
+### Maestro Android：启动中的点击使注入触摸全部失效（2026-11-18，API 36 AOSP）
+
+- 现象：登录时点击密码框、登录按钮无效（两段文字都进了邮箱框，或什么都没输入）；一旦出现，之后所有场景都失败，`adb shell input tap` 也无效；重启模拟器后恢复。重启后第 1 个场景就可能出现，频率约 1/6（S1 单独循环）。
+- 根因（logcat）：Maestro 在 app 刚启动、窗口还没有输入通道时（只有 `ActivityRecordInputSink`）就点击第一个元素 → `InputDispatcher: Dropping event because all windows would just receive ACTION_OUTSIDE`（DOWN 被丢弃）→ 之后每次注入都报 `Inconsistent event … Invalid DOWN event - pointers already down for device DeviceId(-1)` / `Input event injection from pid … failed`。注入设备 -1 上的 0 号手指一直被记为按下，Maestro 与 `adb shell input` 都用这个设备注入，所以都失效。
+- 解除：注入一个 UP（`adb shell input motionevent UP x y`）立即恢复；`am force-stop` 后重新启动 app 也恢复（窗口重建）。Maestro 的 `clearState` + `launchApp` 不能恢复。
+- 之前误判为 launcher（`recents_animation_input_consumer`）问题，实际无关。
+- Appium 5 轮未遇到：UiAutomator2 的 `activateApp` 等界面空闲后才返回。
+- 对策：正式版在 Android 的重置后加 `waitForAnimationToEnd`（W3），等启动画面静止后再操作。

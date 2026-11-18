@@ -1,0 +1,21 @@
+# S5 删除条目，确认 Modal
+appId: com.rnshootout.app
+name: S5
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: item-delete-2
+- assertVisible:
+    id: confirm-modal
+- tapOn:
+    id: confirm-ok
+- assertNotVisible:
+    id: confirm-modal
+- assertNotVisible:
+    id: item-row-2
+- assertVisible:
+    id: item-row-1
+- assertVisible:
+    id: item-row-3

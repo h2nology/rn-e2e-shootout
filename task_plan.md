@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Maestro 接入：SETUP-LOG → 诊断版 → 正式版 → WAITS.md → 两平台各 5 轮 → C1–C11（含 S7b）→ RESULTS.md。之后 Quiesco。
+Quiesco 接入（0.5.0 + Vitest）：SETUP-LOG → 诊断版 → 正式版 → WAITS.md → 两平台各 5 轮 → C1–C11（含 S7b）→ RESULTS.md。
 
 ## Current Phase
 
@@ -40,7 +40,7 @@ Phase 3（M3）
 
 - [x] detox（Jest），记录易用性数据（结果见 `suites/detox/RESULTS.md`）；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
 - [x] appium（WebdriverIO），记录易用性数据（结果见 `suites/appium/RESULTS.md`）；app 零改动，重置全部用 Appium API
-- [ ] maestro（YAML），记录易用性数据
+- [x] maestro（YAML），记录易用性数据（结果见 `suites/maestro/RESULTS.md`）；app 零改动；iOS 重置与工具缺失的系统操作经 `scripts/device-helper.mjs`（本地 HTTP）执行外部命令
 - [ ] quiesco（0.5.0 + Vitest），记录易用性数据（最后接入）
 - [ ] 每套正式版 iOS / Android 连续 5 次全绿，或记录 ✗ 原因；C1–C11 逐项检查
 - **Status:** in_progress
@@ -143,6 +143,9 @@ Phase 3（M3）
 | Appium iOS C10：language capability 重启 SpringBoard 使 WDA 断开 | 1 | `mobile: launchApp` 的 `-AppleLanguages` 启动参数 |
 | Appium iOS S7b：`configureLocalization` 写入的键盘值格式有误 | 2 | 外部命令 `simctl defaults write -g AppleKeyboards` |
 | mock server 进程崩溃（请求途中客户端断开，`aborted` 未捕获） | 1 | handler 包 catch；用中途断开的请求验证后服务仍正常 |
+| Maestro Android：启动中的点击使之后所有注入触摸失效（`pointers already down for device -1`） | 3 | 起初误判为 launcher 问题；logcat 查明根因，正式版重置后加 `waitForAnimationToEnd`（W3） |
+| 等待循环 `pgrep -f "maestro.*test"` 匹配到自身命令行，永远不结束 | 1 | 改为检查后台任务输出文件 |
+| Maestro `swipe` 的 `start` / `end` 不能用环境变量（Parsing Failed） | 1 | 按平台分支写死坐标 |
 
 ## Notes
 

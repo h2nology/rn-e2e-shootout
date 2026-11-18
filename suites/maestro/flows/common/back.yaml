@@ -1,0 +1,13 @@
+# S19 的“返回”：Android 硬件返回键（Maestro back）；iOS 点导航栏左上角的返回按钮（Maestro 的 back 只支持 Android / Web）
+appId: com.rnshootout.app
+---
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - back
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: Back

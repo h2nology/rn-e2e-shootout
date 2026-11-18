@@ -1,0 +1,16 @@
+# S11 永不静止的动画
+appId: com.rnshootout.app
+name: S11
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: open-busy-animation
+- tapOn:
+    id: busy-tap
+- assertVisible:
+    id: busy-result
+    text: Tapped 1

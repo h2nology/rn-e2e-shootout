@@ -1,0 +1,9 @@
+# C10 系统语言（Android）：系统语言由 scripts/c10-android.sh 在 flow 外切换（重启 zygote 会中断 Maestro 的驱动，不能在 flow 内做）
+appId: com.rnshootout.app
+name: C10-android-zh
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- assertVisible:
+    id: login-submit
+    text: 登录

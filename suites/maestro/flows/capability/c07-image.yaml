@@ -1,0 +1,14 @@
+# C7 远程图片：断言延迟 1.5 秒返回的图片已加载
+appId: com.rnshootout.app
+name: C7
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: open-image
+- assertVisible:
+    id: image-status
+    text: Loaded

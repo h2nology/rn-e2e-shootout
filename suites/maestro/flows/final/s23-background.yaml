@@ -1,0 +1,35 @@
+# S23 前后台切换与持久化（pressKey home → launchApp stopApp:false；stopApp → launchApp）
+appId: com.rnshootout.app
+name: S23
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: add-item-button
+- tapOn:
+    id: new-item-title
+- inputText: Draft text
+- pressKey: home
+# 场景步骤要求在后台停留 2 秒（不是为了稳定而加的等待）
+- runScript:
+    file: ../common/sleep.js
+    env:
+      MS: "2000"
+- launchApp:
+    stopApp: false
+- assertVisible:
+    id: new-item-title
+    text: Draft text
+- tapOn:
+    id: new-item-title
+- eraseText
+- inputText: Persisted
+- tapOn:
+    id: new-item-save
+- stopApp
+- launchApp:
+    stopApp: false
+- assertVisible:
+    id: list-top-title
+    text: "Top: Persisted"

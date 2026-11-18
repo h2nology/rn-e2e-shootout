@@ -1,0 +1,28 @@
+# S10b 点击系统弹窗“允许”
+appId: com.rnshootout.app
+name: S10b
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-permission
+- tapOn:
+    id: request-location
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: Allow While Using App
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      # API 36 AOSP 的按钮文字显示为全大写，按系统对话框的 resource-id 定位
+      - tapOn:
+          id: .*permission_allow_foreground_only_button
+- assertVisible:
+    id: permission-status
+    text: Granted

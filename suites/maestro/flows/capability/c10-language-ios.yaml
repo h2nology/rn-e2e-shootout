@@ -1,0 +1,24 @@
+# C10 系统语言（iOS：launchApp 的启动参数 -AppleLanguages，只改本 app）
+appId: com.rnshootout.app
+name: C10
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- launchApp:
+    permissions:
+      all: unset
+    arguments:
+      AppleLanguages: (ja)
+      AppleLocale: ja_JP
+- assertVisible:
+    id: login-submit
+    text: ログイン
+- launchApp:
+    permissions:
+      all: unset
+    arguments:
+      AppleLanguages: (zh-Hans)
+      AppleLocale: zh_CN
+- assertVisible:
+    id: login-submit
+    text: 登录

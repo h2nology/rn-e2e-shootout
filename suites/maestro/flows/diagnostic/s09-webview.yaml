@@ -1,0 +1,16 @@
+# S9 WebView（网页内容出现在无障碍树中，按可见文字定位）
+appId: com.rnshootout.app
+name: S9
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: open-webview
+- assertVisible: Web page ready
+- tapOn: Send to native
+- assertVisible:
+    id: webview-result
+    text: "Received: hello"

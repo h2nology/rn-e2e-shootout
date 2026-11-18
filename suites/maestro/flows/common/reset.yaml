@@ -1,0 +1,30 @@
+# 每个场景开始前的状态重置（METHODOLOGY 5），由各 flow 的 onFlowStart 调用。
+# Android：Maestro 官方的 launchApp clearState（= pm clear，不重装）。
+# iOS：reset.js 经 device-helper 清数据，再 launchApp（stopApp 默认 true → 冷启动）。
+# launchApp 默认授予全部权限（官方文档）；为与“清除数据后的初始状态”一致，显式改为 unset。
+appId: com.rnshootout.app
+---
+- runScript: reset.js
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - launchApp:
+          clearState: true
+          permissions:
+            all: unset
+      # [W3] 正式版：等启动画面静止后再操作。Maestro 在 app 窗口尚不能接收输入时就点击第一个元素，
+      #      注入的 DOWN 被系统丢弃，但 Android 36 的输入校验仍记为“手指按下”，之后所有注入的点击都被拒绝
+      #      （logcat：Invalid DOWN event - pointers already down for device -1），直到重启模拟器（WAITS.md #1）
+      - runFlow:
+          when:
+            true: ${MAESTRO_VARIANT == 'final'}
+          commands:
+            - waitForAnimationToEnd
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - launchApp:
+          permissions:
+            all: unset

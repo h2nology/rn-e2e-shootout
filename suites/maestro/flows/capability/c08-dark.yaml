@@ -1,0 +1,22 @@
+# C8 深色模式（Maestro setDarkMode）
+appId: com.rnshootout.app
+name: C8
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-system
+- assertVisible:
+    id: theme-indicator
+    text: light
+- setDarkMode: enabled
+- assertVisible:
+    id: theme-indicator
+    text: dark
+- setDarkMode: disabled
+- assertVisible:
+    id: theme-indicator
+    text: light

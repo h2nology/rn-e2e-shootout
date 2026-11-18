@@ -1,0 +1,74 @@
+# C1 生物识别：Maestro 没有生物识别命令 → device-helper 外部命令（iOS notifyutil / Android adb emu finger）
+appId: com.rnshootout.app
+name: C1
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - runScript:
+          file: ../common/exec.js
+          env:
+            NAME: ios-biometric-enroll
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-biometric
+- tapOn:
+    id: biometric-unlock
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - assertVisible: Face ID
+      - runScript:
+          file: ../common/exec.js
+          env:
+            NAME: ios-biometric-nomatch
+      # 匹配失败后系统提示重试，点“取消”结束验证（scenarios.md C1）
+      # LocalAuthentication 弹窗的按钮（按文字 “Cancel” 定位时找不到，按 id 可以）
+      - tapOn:
+          id: com.apple.localauthentication.ax.authentication.button.cancel
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - assertVisible:
+          id: com.android.systemui:id/biometric_icon
+      - runScript:
+          file: ../common/exec.js
+          env:
+            NAME: android-finger-2
+      - assertVisible: .*Not recognized.*
+      - tapOn:
+          id: com.android.systemui:id/button_negative
+- assertVisible:
+    id: biometric-status
+    text: Failed
+- tapOn:
+    id: biometric-unlock
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - assertVisible: Face ID
+      - runScript:
+          file: ../common/exec.js
+          env:
+            NAME: ios-biometric-match
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - assertVisible:
+          id: com.android.systemui:id/biometric_icon
+      - runScript:
+          file: ../common/exec.js
+          env:
+            NAME: android-finger-1
+- assertVisible:
+    id: biometric-status
+    text: Unlocked

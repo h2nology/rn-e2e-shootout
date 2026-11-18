@@ -1,0 +1,18 @@
+# C11 远程推送（iOS：mock server 辅助脚本 push-ios.sh = simctl push）
+appId: com.rnshootout.app
+name: C11
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- assertVisible:
+    id: item-list
+- pressKey: home
+- runScript:
+    file: ../common/exec.js
+    env:
+      NAME: ios-push
+- tapOn: Push from rnshootout
+- assertVisible:
+    id: notification-target
+    text: Opened from push

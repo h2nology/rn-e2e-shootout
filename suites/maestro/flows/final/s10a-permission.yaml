@@ -1,0 +1,31 @@
+# S10a 预先授权（Maestro setPermissions）
+appId: com.rnshootout.app
+name: S10a
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+# iOS 的定位权限取值为 always / inuse / never（allow 报错 “wrong argument value”）
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - setPermissions:
+          permissions:
+            location: inuse
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - setPermissions:
+          permissions:
+            location: allow
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-permission
+- tapOn:
+    id: request-location
+- assertVisible:
+    id: permission-status
+    text: Granted

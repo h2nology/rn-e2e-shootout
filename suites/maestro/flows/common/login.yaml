@@ -1,0 +1,11 @@
+# 界面登录（scenarios.md 0.4）
+appId: com.rnshootout.app
+---
+- tapOn:
+    id: login-email
+- inputText: user@example.com
+- tapOn:
+    id: login-password
+- inputText: Passw0rd!
+- tapOn:
+    id: login-submit

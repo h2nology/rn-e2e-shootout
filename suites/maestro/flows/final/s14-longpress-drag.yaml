@@ -1,0 +1,27 @@
+# S14 长按菜单与拖拽排序（longPressOn；拖拽用 swipe 从手柄向上拖）
+appId: com.rnshootout.app
+name: S14
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- longPressOn:
+    id: item-row-3
+- tapOn:
+    id: menu-pin
+- assertVisible:
+    id: list-top-title
+    text: "Top: Item 003"
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: open-reorder
+# Maestro 没有“拖到某元素”的命令：从 R5 的手柄向上拖（终点为屏幕 10% 高度，越过 R1 后列表把 R5 放在第一位）
+- swipe:
+    from:
+      id: reorder-handle-R5
+    direction: UP
+    duration: 1500
+- assertVisible:
+    id: reorder-summary
+    text: R5,R1,R2,R3,R4,R6,R7,R8,R9,R10

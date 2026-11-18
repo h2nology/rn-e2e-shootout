@@ -1,0 +1,29 @@
+# S21 深链接（Maestro openLink；切后台用 pressKey home，终止用 stopApp）
+appId: com.rnshootout.app
+name: S21
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- pressKey: home
+- openLink: rnshootout://item/123
+# iOS 27：从外部打开自定义 scheme 时系统可能弹出确认框（Open in "rnshootout"?）。
+# Maestro 文档：点过 Open 之后该模拟器不再弹出，与清除 app 数据无关 → 出现时才点
+- runFlow:
+    when:
+      visible: Open
+    commands:
+      - tapOn: Open
+- assertVisible:
+    id: item-detail-title
+    text: Item 123
+- stopApp
+- openLink: rnshootout://item/77
+- runFlow:
+    when:
+      visible: Open
+    commands:
+      - tapOn: Open
+- assertVisible:
+    id: item-detail-title
+    text: Item 077

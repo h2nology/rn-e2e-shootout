@@ -136,3 +136,21 @@
   - WAITS.md（iOS W2×2 / W3×10；Android W3×2 / X×2）、RESULTS.md、METHODOLOGY 5 Appium 行已写
   - 环境恢复：iOS 键盘 AppleKeyboards = en_US；AOSP PIN / 指纹已清除；GAPIS 模拟器已关闭
 - **Appium 接入完成**。下一步 Maestro
+- **Maestro 接入开始（2026-11-18 16:25）**
+  - Maestro CLI 2.11.0（已安装）；构建复用 Appium 的 `E2E_TOOL=none` 产物（app 零改动），`suites/maestro/build.sh` 同 Appium
+  - iOS `clearState` 会重装 app（官方文档）→ `scripts/device-helper.mjs`（本地 HTTP，代执行 simctl）+ `flows/common/reset.yaml`（onFlowStart）；Android 用官方 `launchApp clearState`；`launchApp` 默认授予全部权限 → `permissions: { all: unset }`
+  - 首个测试通过：iOS 16:31、Android 16:39
+  - 诊断版：iOS 19/24（S6 默认超时、S9 WebView 点击过早、S10a / S21 / S22 写法问题已修正后通过）；Android 22/24（S6；S5 为下述模拟器问题）
+  - Android “触摸全部丢失”（起初误判为 launcher 问题）：根因是 Maestro 在 app 窗口尚不能接收输入时点击，注入的 DOWN 被丢弃但仍记为按下，之后所有注入点击被拒绝（logcat `pointers already down for device -1`；注入 UP 可解除）。正式版在 Android 重置后加 `waitForAnimationToEnd`（W3），重启后 S1 连续 20 次 0 发生（未加时约 1/6）。详见 findings.md
+  - 等待脚本踩坑：`pgrep -f "maestro.*test"` 会匹配等待脚本自己的命令行，导致永远等不到 → 改为检查输出文件
+  - 正式版：S6 W3（timeout 300 s；speed 100 会惯性越过第 400 行）；S9 W3 `retryTapIfNoChange`（iOS 5/5）
+  - 5 轮尝试记录（全部保留，供 RESULTS 引用）：
+    - Android 第 1 次（加 WAITS #1 之前）：第 1 轮 6/24（重启后第一个场景就发生触摸失效）→ 中止，查明根因
+    - Android 第 2 次（加 #1 后）：5 × 24/24（797–915 s，含重启）。当时 S9 为 `retryTapIfNoChange` 版
+    - iOS 第 1 次：第 1 轮 23/24（S9：`retryTapIfNoChange` 判为“界面已变化”不重试）；第 2 轮 1/24（S3 中 Maestro iOS 驱动截图超时 `Timed out while requesting screenshot`，约 6.5 分钟后 XCTest runner 重启，Maestro 未恢复，其余 23 个 flow 1 秒内全部失败）→ 中止
+    - S9 改为 W2（`repeat while notVisible`），iOS 单独 6/6、Android 1/1；iOS 5 轮重新开始，之后 Android 用最终代码再跑 5 轮
+  - **最终 5 轮**：iOS 5 × 24/24（9 分 46 秒–9 分 51 秒）；Android（最终代码）5 × 24/24（13 分 11 秒–14 分 29 秒）
+  - C1–C11：iOS C1 需额外配置（notifyutil；Cancel 需按 id）、C11 需额外配置（push-ios.sh 经 helper），其余 ✓；Android C1 需额外配置（PIN + 指纹登记，测完已清除 PIN）、C2 GAPIS ✓、C6 ✓（依赖 WAITS #1）、C10 需额外配置（flow 外 setprop + 重启 zygote）、C11 ✗，其余 ✓；S7b iOS 需额外配置（3/3）、Android ✗
+  - WAITS.md（iOS W2×1 / W3×1；Android W3×2）、RESULTS.md、SETUP-LOG.md、METHODOLOGY 5 Maestro 行已写
+  - 环境恢复：iOS 键盘 en_US；Android AOSP 模拟器、en-US、无 PIN；GAPIS 模拟器已关闭
+- **Maestro 接入完成**。下一步 Quiesco

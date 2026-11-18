@@ -1,0 +1,19 @@
+# C9 横竖屏（Maestro setOrientation）
+appId: com.rnshootout.app
+name: C9
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: open-system
+- setOrientation: LANDSCAPE_LEFT
+- assertVisible:
+    id: orientation-indicator
+    text: landscape
+- setOrientation: PORTRAIT
+- assertVisible:
+    id: orientation-indicator
+    text: portrait

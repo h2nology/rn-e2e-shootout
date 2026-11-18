@@ -1,0 +1,21 @@
+# C4 选择器：同 testID 的第 3 个元素（index: 2）；只靠 accessibility label 定位
+appId: com.rnshootout.app
+name: C4
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-explore
+- tapOn:
+    id: open-dup
+- tapOn:
+    id: dup-row
+    index: 2
+- assertVisible:
+    id: dup-result
+    text: Row 3
+- tapOn: Secret button
+- assertVisible:
+    id: a11y-result
+    text: Found

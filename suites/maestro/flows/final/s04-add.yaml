@@ -1,0 +1,22 @@
+# S4 新增条目并在刷新后保留
+appId: com.rnshootout.app
+name: S4
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: add-item-button
+- tapOn:
+    id: new-item-title
+- inputText: New task
+- tapOn:
+    id: new-item-save
+- assertVisible:
+    id: list-top-title
+    text: "Top: New task"
+- tapOn:
+    id: list-reload
+- assertVisible:
+    id: list-top-title
+    text: "Top: New task"

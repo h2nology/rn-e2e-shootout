@@ -1,0 +1,19 @@
+# S7a 中文 / 日文输入（inputText；Android 上非 ASCII 文字由 Maestro 的输入法一次性写入，不经过用户输入法）
+appId: com.rnshootout.app
+name: S7
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: add-item-button
+- tapOn:
+    id: new-item-title
+- inputText: 测试标题 テスト
+- tapOn:
+    id: new-item-save
+- tapOn:
+    id: item-row-501
+- assertVisible:
+    id: item-detail-title
+    text: 测试标题 テスト

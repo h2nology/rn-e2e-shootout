@@ -1,0 +1,19 @@
+# S13 下拉刷新（swipe from 列表向下）
+appId: com.rnshootout.app
+name: S13
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- runScript:
+    file: ../common/http.js
+    env:
+      PATH: /test/items
+      BODY: '{"title":"Server item"}'
+- swipe:
+    from:
+      id: item-list
+    direction: DOWN
+- assertVisible:
+    id: list-top-title
+    text: "Top: Server item"

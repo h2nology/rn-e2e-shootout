@@ -1,0 +1,45 @@
+# S22 本地通知：从系统通知中心点击（打开通知中心：从屏幕顶端向下滑）
+appId: com.rnshootout.app
+name: S22
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- setPermissions:
+    permissions:
+      notifications: allow
+- runFlow: ../common/login.yaml
+- tapOn:
+    id: tab-settings
+- tapOn:
+    id: notify-in-3s
+- pressKey: home
+- swipe:
+    start: 20%, 0%
+    end: 20%, 60%
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: Hello from rnshootout
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      # iOS 通知中心把同一 app 的多条通知折叠为一组（已送达的通知不随 app 数据清除，第二轮起必然折叠），
+      # 先点一下展开。展开后出现 “Show less”（label 实为 “Confirm Show less”；Maestro 的文字匹配是整串正则）
+      - tapOn: Hello from rnshootout
+      - runFlow:
+          when:
+            visible: .*Show less
+          commands:
+            # iOS 27 通知中心里对通知卡片的点击被识别成横向滑动，app 不打开（Appium 接入时同样实测）。
+            # 改为用户的另一种打开方式：右滑最上面（最新）的卡片，点露出的 “Open”
+            - swipe:
+                from:
+                  text: Hello from rnshootout
+                  index: 0
+                direction: RIGHT
+            - tapOn: Open
+- assertVisible:
+    id: notification-target
+    text: Opened from notification

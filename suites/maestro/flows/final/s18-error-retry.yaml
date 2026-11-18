@@ -1,0 +1,21 @@
+# S18 错误态与重试
+appId: com.rnshootout.app
+name: S18
+onFlowStart:
+  - runFlow: ../common/reset.yaml
+---
+- runFlow: ../common/login.yaml
+- runScript:
+    file: ../common/http.js
+    env:
+      PATH: /test/fail
+      BODY: '{"route":"/items","status":500,"count":1}'
+- tapOn:
+    id: list-reload
+- assertVisible:
+    id: error-view
+- assertVisible: Something went wrong
+- tapOn:
+    id: error-retry
+- assertVisible:
+    id: item-row-1
