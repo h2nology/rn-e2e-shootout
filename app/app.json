@@ -63,7 +63,8 @@
           "faceIDPermission": "rnshootout uses Face ID to unlock a protected page."
         }
       ],
-      "expo-notifications"
+      "expo-notifications",
+      "@quiesco/expo-plugin"
     ],
     "experiments": {
       "typedRoutes": true,

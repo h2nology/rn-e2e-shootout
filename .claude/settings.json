@@ -1,6 +1,7 @@
 {
   "enabledPlugins": {
     "planning-with-files@planning-with-files": true,
-    "commit-commands@anthropic-plugin-directory": true
+    "commit-commands@anthropic-plugin-directory": true,
+    "quiesco@h2nology": true
   }
 }

@@ -1,3 +1,4 @@
+import { QuiescoRoot } from '@quiesco/agent';
 import * as Notifications from 'expo-notifications';
 import { Stack, router } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -68,6 +69,8 @@ export default function RootLayout() {
   // 这样 splash 期间收到的深链接不会丢失（S21 冷启动）。
 
   return (
+    // Quiesco：agent 从这里连接测试端；非 e2e 构建中 metro 的 withQuiesco() 把它换成空实现
+    <QuiescoRoot>
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ToastProvider>
         <Stack screenOptions={{ animationDuration: duration(350), headerTransparent: false, headerStyle: { backgroundColor: "#FFFFFF" }, headerBackButtonDisplayMode: "minimal" }}>
@@ -94,5 +97,6 @@ export default function RootLayout() {
         </Stack>
       </ToastProvider>
     </GestureHandlerRootView>
+    </QuiescoRoot>
   );
 }

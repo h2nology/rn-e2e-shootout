@@ -154,3 +154,18 @@
   - WAITS.md（iOS W2×1 / W3×1；Android W3×2）、RESULTS.md、SETUP-LOG.md、METHODOLOGY 5 Maestro 行已写
   - 环境恢复：iOS 键盘 en_US；Android AOSP 模拟器、en-US、无 PIN；GAPIS 模拟器已关闭
 - **Maestro 接入完成**。下一步 Quiesco
+
+## Session: 2026-11-19
+
+- **Quiesco 接入（0.7.0，用户决定由 0.5.0 升级；使用 quiesco@h2nology 插件）** → METHODOLOGY v4（版本变更 + 插件披露），README / 计划书版本号同步
+  - `quiesco init`（13 s）→ 测试侧移到 `suites/quiesco`；app 侧保留 agent / native / expo-plugin、metro、index.ts，根布局包 `<QuiescoRoot>`。expo-plugin 必须一直在 app.json（非 e2e 构建由它排除 native 模块）
+  - Release 构建约 7 min；首个测试通过 iOS 09:24、Android 09:25（从 09:15 起）
+  - 诊断版：iOS 20/24（S6 超时；S8 / S21 / S22 写法问题已修正）、Android 21/24（S6 工具缺陷、S22 openNotification 只找 5 s、S8 写法问题）
+  - 用插件 debug 技能 + failure-investigator agent 定位：Android scrollTo 在 RefreshControl 列表上失效；scrollTo 露细边即停 + tap 瞄准整行中心（点到标题栏）；openNotification Android 写死 5 s（均为 Quiesco 缺陷，见 findings.md）
+  - 环境修正：iOS 模拟器 AppleLocale `US` → `en_US`（METHODOLOGY 6.4）
+  - C10 iOS 需 CFBundleLocalizations → 用户决定只加在 Quiesco 构建（app.config.ts quiesco 叠加），重建 iOS
+  - **最终 5 轮**：iOS 5 × 24/24（385–392 s）、Android（最终代码）5 × 24/24（258–445 s）。中止 / 作废的尝试见 RESULTS.md
+  - C1–C11：iOS C2 ✗、C3 ✗（其他进程 UI 不可见）、C5 需额外说明、C10 需额外配置，其余 ✓；Android C2 需额外配置（adb input text）、C5 需额外说明、C10 ✓（per-app language）、C11 ✗，其余 ✓；S7b 两平台 ✗
+  - WAITS：iOS W2×1 / W3×1；Android W2×2 / W3×1；X 0（S11 / S15 / S16 不需要同步绕过）
+  - 环境恢复：iOS 键盘 en_US、AppleLocale en_US；Android AOSP、en-US、无 PIN；GAPIS 已关闭
+- **Quiesco 接入完成**。M3 四套全部完成，下一步 M4 harness

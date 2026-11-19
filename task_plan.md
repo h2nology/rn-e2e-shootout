@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 接入（0.5.0 + Vitest）：SETUP-LOG → 诊断版 → 正式版 → WAITS.md → 两平台各 5 轮 → C1–C11（含 S7b）→ RESULTS.md。
+M3 完成（待用户确认 METHODOLOGY v4 并打 tag）。下一步 M4：harness 与汇总脚本。
 
 ## Current Phase
 
@@ -41,8 +41,8 @@ Phase 3（M3）
 - [x] detox（Jest），记录易用性数据（结果见 `suites/detox/RESULTS.md`）；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
 - [x] appium（WebdriverIO），记录易用性数据（结果见 `suites/appium/RESULTS.md`）；app 零改动，重置全部用 Appium API
 - [x] maestro（YAML），记录易用性数据（结果见 `suites/maestro/RESULTS.md`）；app 零改动；iOS 重置与工具缺失的系统操作经 `scripts/device-helper.mjs`（本地 HTTP）执行外部命令
-- [ ] quiesco（0.5.0 + Vitest），记录易用性数据（最后接入）
-- [ ] 每套正式版 iOS / Android 连续 5 次全绿，或记录 ✗ 原因；C1–C11 逐项检查
+- [x] quiesco（0.7.0 + Vitest，METHODOLOGY v4；用 quiesco@h2nology 插件接入），记录易用性数据（结果见 `suites/quiesco/RESULTS.md`）
+- [x] 每套正式版 iOS / Android 连续 5 次全绿，或记录 ✗ 原因；C1–C11 逐项检查
 - **Status:** in_progress
 
 ### Phase 4: M4 harness 与汇总脚本

@@ -3,7 +3,7 @@
 对比对象：**Quiesco / Detox / Appium / Maestro**
 目的：得到可复现、经得起质疑的数据，用于 Quiesco 官网宣传。
 
-**Quiesco 版本**：使用当前最新版 **`quiesco@0.5.0`**（[npm](https://www.npmjs.com/package/quiesco)，要求 Node ≥ 24）。测量期间不升级；如果正式测量前发布了新版本，统一升级后从头重跑，不混用版本的数据。
+**Quiesco 版本**：使用 **`quiesco@0.7.0`**（计划制定时为 0.5.0；M3 接入前发布 0.7.0，按下述规则升级，见 METHODOLOGY v4）（[npm](https://www.npmjs.com/package/quiesco)，要求 Node ≥ 24）。测量期间不升级；如果正式测量前发布了新版本，统一升级后从头重跑，不混用版本的数据。
 
 ---
 
@@ -11,7 +11,7 @@
 
 1. **同一个 app、同一组场景、同一台机器、同一时间段**跑四个工具。
 2. 每个工具都用**官方推荐写法**实现，不故意写得差。实现完成后请熟悉该工具的人 review（见 M8）。
-3. **固定版本**：工具（含 Quiesco 0.5.0）、Expo SDK、Node、Xcode、Android 镜像、模拟器型号、宿主机型号都写进结果。
+3. **固定版本**：工具（含 Quiesco 0.7.0）、Expo SDK、Node、Xcode、Android 镜像、模拟器型号、宿主机型号都写进结果。
 4. **公开原始数据**（每次运行的 JSON 和日志），官网只引用汇总数字，并链接到仓库。
 5. **Quiesco 输的项也要如实发布。** 已知的弱项：只支持 Expo SDK 55 及以上，需要 dev client（不支持 Expo Go），需要在 app 里加 `<QuiescoRoot>`；基于“等待静止”的同步机制在永不静止的动画、轮询和长连接面前可能吃亏（S11、S15、S16 专门测这一点）。
 6. 竞品的能力描述**以实测为准**。查文档得到的结论要标明来源和日期，不能凭印象写。
@@ -32,7 +32,7 @@ rn-e2e-shootout/
   app/                 被测 Expo app（中立，不复用 quiesco 的 todo-app）
   mock-server/         可调延迟 / 可注入错误的 API 服务
   suites/
-    quiesco/           quiesco@0.5.0 + Vitest
+    quiesco/           quiesco@0.7.0 + Vitest
     detox/             Jest
     appium/            WebdriverIO + Appium
     maestro/           YAML flows
@@ -256,7 +256,7 @@ rn-e2e-shootout/
 
 ```json
 {
-  "tool": "quiesco", "toolVersion": "0.5.0",
+  "tool": "quiesco", "toolVersion": "0.7.0",
   "methodologyVersion": "v1",
   "variant": "final",
   "platform": "android", "device": "...", "host": "...",
@@ -329,7 +329,7 @@ rn-e2e-shootout/
 | 运行器生态 | 能否用 Jest、Vitest、Cucumber 等现有工具，还是只能用专用格式 |
 | 对 app 的侵入 | 是否需要改 app 代码；生产包是否残留测试代码（Quiesco 有 prod-strip 检查） |
 | 能力边界 | 3.3 的 C1–C11 逐项 ✓ / ✗ / 需额外配置，加上主套件中 S10（系统弹窗）、S21（深链接）、S22（通知中心）、S23（前后台）的结果 |
-| 成熟度 | 首次发布时间、维护状况、社区规模（引用公开数据并注明日期）。Quiesco 0.5.0 仍是 0.x 版本，照实写 |
+| 成熟度 | 首次发布时间、维护状况、社区规模（引用公开数据并注明日期）。Quiesco 0.7.0 仍是 0.x 版本，照实写 |
 
 ---
 
@@ -351,7 +351,7 @@ rn-e2e-shootout/
 3. 官网对比页（Quiesco 文档站新增 / 替换 `docs/detox-comparison.mdx` 的数据来源）：
    - 3–4 个标题数字（例：施压条件下的 flake 率、W1 + W2 等待数、跨平台复用率、AI 编写效率）
    - 四个观点的对比表和图表
-   - 方法说明（含方法版本）、工具版本（Quiesco 0.5.0 等）、日期、硬件，以及到仓库的链接
+   - 方法说明（含方法版本）、工具版本（Quiesco 0.7.0 等）、日期、硬件，以及到仓库的链接
    - 立场披露
    - Quiesco 不占优的项目（至少包括：SDK 55 以下不支持、不支持 Expo Go、需要改 app 代码、S11 / S15 / S16 的结果）
 4. 一篇博客 / 发布文：方法和结论
@@ -387,7 +387,7 @@ M8 的 review 如果指出实现不公平，修正后重跑受影响的测量，
 | 作者偏差（作者最熟悉 Quiesco） | 易用性由第三方执行或明确披露；以 AI 编写效率作为主指标 |
 | 统计上差异不显著却被宣传成优势 | flake 率附置信区间，区间重叠时只写“无显著差异” |
 | 工具升级后数据过时 | 页面写明测量日期和版本；Renovate 自动升级并定期重跑 |
-| Quiesco 0.x 版本在测量期间发布新版本 | 正式测量期间锁定 0.5.0；升级后全量重跑，不混用数据 |
+| Quiesco 0.x 版本在测量期间发布新版本 | 正式测量期间锁定 0.7.0；升级后全量重跑，不混用数据 |
 | 测量噪声大 | 固定机器，预热，交错执行，N ≥ 20，报告 p90 而不只报 median，测量期间关闭其他负载 |
 | Quiesco 在某项明显落后 | 如实发布，并在 Quiesco 的路线图里给出对应计划 |
 | 竞品许可证或商标问题 | 只做事实对比，不使用竞品 logo，引用时注明出处 |

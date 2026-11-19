@@ -230,3 +230,17 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 之前误判为 launcher（`recents_animation_input_consumer`）问题，实际无关。
 - Appium 5 轮未遇到：UiAutomator2 的 `activateApp` 等界面空闲后才返回。
 - 对策：正式版在 Android 的重置后加 `waitForAnimationToEnd`（W3），等启动画面静止后再操作。
+
+### Quiesco 0.7.0：发现的工具问题（2026-11-19，接入时实测；作为对 Quiesco 的反馈）
+
+1. **Android：`scrollTo` / `scrollToEdge` 在带 `RefreshControl` 的列表上失效。** RN 0.88 在 Android 上用 `AndroidSwipeRefreshLayout` 包住 ScrollView；agent 的 `findScrollable`（`@quiesco/agent/src/actions/js.ts`）取组件的第一个 host 节点当滚动视图、其第一个子节点当内容，在这里分别是刷新布局和 ScrollView 本身（rect 相同），偏移恒为 0 → 拖一次就判定“已到两端”（`Scrolled … to both ends without finding …`）。iOS 的 RefreshControl 是 ScrollView 的子节点，不受影响。测试中改为手写的 `scroll()` 循环（W2）。
+2. **Android：`openNotification` 只在通知栏中找 5 秒**（`NOTIFICATION_WAIT_MS = 5_000`，写死，不受 `timeoutMs` 影响；iOS 为 10 秒）。本 app 的本地通知在切到后台后约 5 秒才发出，时间踩线；通知不以横幅出现，`system.expectVisible` 等不到。测试中改为找不到时再试（W2）。
+3. **Android：app 自己的对话框窗口（`DateTimePicker` 的系统日期对话框）无法用真实触摸操作。** 文档写明只能用 `setValue`（回调）；`system.tap` 只看其他 package 的 UI。S8 的通过标准禁止直接设值 → 用外部命令（`uiautomator dump` + `adb shell input tap`）。
+4. **iOS：inline 日历（原生 UIDatePicker）的日期格子不在元素树中**，`system.tap` 也只看 app 之外 → 按元素内相对坐标点击（依赖地区设置的星期起始日）。
+5. **`openUrl()` 不能在 app 处于后台时调用**（报错提示先 `bringToForeground`），S21“后台时打开深链接”需外部命令。
+6. **`quiesco doctor` 不支持 app 与测试工程分开的布局**（无指定 app 目录的选项）；`quiesco list` 把 `test.beforeEach(fn)` 列成一个测试；`quiesco()` 的 `isolate: false` 使共用模块顶层注册的 hook 只对第一个文件生效（需在每个文件中注册）。
+7. **`scrollTo` 在目标露出一条细边（`visibleRatio > 0`）时就停下，`tap` 瞄准整个矩形的中心**，中心可能落在滚动视图的裁剪范围之外（列表上方的标题栏）；`hitTest` 不考虑祖先的裁剪，不报 `ELEMENT_OBSCURED`，点击“成功”却没点到（S6 iOS 5 轮中 2 次）。测试中补一次拖动并断言 `ratio: 1`（W2）。
+8. **横向轮播（嵌套在纵向列表中）上 `scrollTo` 同样误判“已到两端”**（iOS、Android 都发生；C5）；`scroll()` 的 `distance` 在该轮播上不起作用（每次约 445 pt）。
+9. **iOS：其他进程的 UI 不在 `system.*` 的可见范围内**：分享面板（C3）、ASWebAuthenticationSession 中的网页（C2）、软键盘（S7b）都报 “on screen outside the app: nothing”；app 内注入的触摸也到不了。iOS 模拟器没有从外部点击 / 输入的命令 → C2、C3、S7b iOS 记 ✗（Appium / Maestro 经 XCUITest 能操作）。Android 上 `system.*` 能读到 Custom Tab 与分享面板，但没有输入文字的 API（C2 用 `adb shell input text`）。
+10. **iOS `setLocale` 要求 Info.plist 声明 `CFBundleLocalizations`**（Appium / Maestro 直接传 `-AppleLanguages` 不需要）→ 只在 Quiesco 构建中声明（用户决定，2026-11-19）。
+11. 环境：iOS 模拟器的 `AppleLocale` 原为不规范的 `US`（日历周一开头），按 METHODOLOGY 6.4 改为 `en_US`。harness 需统一设置。
