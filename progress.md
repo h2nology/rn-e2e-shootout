@@ -177,3 +177,4 @@
   - 正式版：第 1 次 iOS 4/5（S22 #64 → W3）、Android 3/5（S10b #66 → X；S18 #67 → W3）；最终代码 iOS 3/5（S22 #65、#68）、Android 3/5（S6 卡住超过 300 s，原因未定）
   - 新 issue：h2nology/quiesco#63–#68（用户要求提交）
   - **用户决定：按现状记录，等 Quiesco 修复后重跑**。RESULTS.md 标为“未达到 M3 完成标准”
+- METHODOLOGY v4（Quiesco 0.8.0 + 插件披露）用户确认，打 tag `methodology-v4`

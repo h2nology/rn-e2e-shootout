@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 0.8.0 未达 5 轮全绿，等 h2nology/quiesco#63–#68 修复后重跑（用户决定，2026-11-19）。METHODOLOGY v4 待用户确认并打 tag。下一步 M4：harness 与汇总脚本。
+Quiesco 0.8.0 未达 5 轮全绿，等 h2nology/quiesco#63–#68 修复后重跑（用户决定，2026-11-19）。METHODOLOGY v4 已确认并打 tag `methodology-v4`（2026-11-19）。下一步 M4：harness 与汇总脚本。
 
 ## Current Phase
 
