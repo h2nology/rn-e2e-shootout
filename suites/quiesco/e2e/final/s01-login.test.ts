@@ -1,7 +1,5 @@
 // S1 登录成功后进入列表
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S1 登录成功后进入列表', async ({ app }) => {
   await login(app);

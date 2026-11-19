@@ -1,7 +1,5 @@
 // C7 远程图片
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('C7 远程图片', async ({ app }) => {
   await login(app);

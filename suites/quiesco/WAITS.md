@@ -6,13 +6,13 @@ Quiesco 的每个调用都先等 app 空闲（网络、定时器、React、原�
 
 | # | 文件:行 | 类别 | 平台 | 内容 | 为什么需要 |
 |---|---|---|---|---|---|
-| 1 | `e2e/final/s06-long-list.test.ts:12` | W3 | iOS | `scrollTo` 的 `timeoutMs` 10 s → 300 s | 滚到第 400 行需要数十次滑动，整个调用约 90 s；默认超时下诊断版 `SYNC_TIMEOUT` |
-| 2 | `e2e/final/s06-long-list.test.ts:17` | W2 | Android | 自己重复 `scroll('item-list', 'down')` 直到 `item-row-400` 可见（最多 120 次） | **Quiesco 0.7.0 的缺陷**：带 `RefreshControl` 的列表在 Android 上被 `AndroidSwipeRefreshLayout` 包住，agent 把包装层当作滚动视图，测到的偏移恒为 0，`scrollTo` 拖一次就判定“已到两端”（`Scrolled … to both ends without finding …`；读 agent 源码确认，见 findings.md）。不改工具，在测试中绕过 |
-| 3 | `e2e/final/s06-long-list.test.ts:25` | W2 | iOS | 目标行没有完全显示时再做一次真实拖动，`expectVisible(…, { ratio: 1 })` 后再点 | **Quiesco 0.7.0 的缺陷**：`scrollTo`（及 #2 的循环）在目标行露出一条细边时就停下，`tap` 却瞄准整行矩形的中心，可能落在列表上方的标题栏；遮挡检查不考虑祖先的裁剪，点击“成功”却没点到行（iOS 5 轮中 2 次失败；失败时 `item-row-400` 只露出 1–15 pt，读 agent 源码确认，见 findings.md）|
-| 4 | `e2e/final/s22-notification.test.ts:17` | W2 | Android | `openNotification` 失败时再试（最多 3 次） | Android 的 `openNotification` 只在通知栏中找 5 秒（写死，不受 `timeoutMs` 影响；iOS 为 10 秒），通知在切到后台后约 5 秒才发出，时间踩线（诊断版失败）。通知不以横幅出现，`system.expectVisible` 等不到（实测），没有可等待的状态 |
-| 5 | `e2e/final/s06-long-list.test.ts:7` | W3 | Android | 单测超时 120 s → 300 s | 重启后第一轮的 Android 模拟器较慢（每次滚动 4–5 s），S6 超过 120 s（正式版 5 轮中 1 次，`TestTimeoutError`）。Appium 同样把单测超时放宽到 300 s |
+| 1 | `e2e/final/s06-long-list.test.ts:9` | W3 | iOS、Android | `scrollTo` 的 `timeoutMs` 10 s → 300 s | `scrollTo` 的整个调用（所有拖动步骤合计）只有一个超时，默认 10 s（`sync.timeoutMs`）。滚到第 400 行约需 37 步，诊断版两个平台都超时（iOS：`SYNC_TIMEOUT`；Android：超时后误报为 `Scrolled … to both ends`，见 findings.md）。`scrollToEdge` / `scrollToIndex` 每一步都有完整的超时，`scrollTo` 没有 |
+| 2 | `e2e/final/s06-long-list.test.ts:5` | W3 | iOS、Android | 单测超时 120 s → 300 s | 30 多次真实拖动，模拟器较慢时接近 120 s（0.7.0 时 Android 正式版 5 轮中 1 次超过）。Appium 同样把单测超时放宽到 300 s |
+| 3 | `e2e/final/s22-notification.test.ts:15` | W3 | iOS | `openNotification` 的 `timeoutMs` 10 s → 30 s | **Quiesco 0.8.0 的缺陷**：iOS 的 `openNotification` 在启动 XCUITest runner（系统 UI 读取用）之前就开始计时。S22 常是一轮中第一个用到系统 UI 的测试，runner 启动通常约 7 s，正式版第 1 轮用了 14.4 s，第一次读屏返回时已经超时，没有打开通知中心就报“no notification … (seen: nothing)”（读源码确认，见 findings.md）。两平台都执行，Android 不受影响 |
+| 4 | `e2e/final/s18-error-retry.test.ts:9` | W3 | Android | 登录后先 `expectVisible('item-row-1')`，再注入错误 | 登录处理依次 await 登录请求 → `AsyncStorage.setItem`（原生模块）→ 跳转首页 → 首页挂载时 `GET /items`。Quiesco 的 tracker 不包括原生模块的 Promise（文档的 tracker 表），`setItem` 期间所有 tracker 空闲，登录的 `tap` 可能在首页首次请求之前就返回；随后注入的 500 被首次请求消耗，Reload 拿到正常列表（Android 正式版 5 轮中 1 次）。Appium 在同一位置有相同的等待 |
+| 5 | `e2e/final/s10b-permission.test.ts:11` | X | Android | 打开权限弹窗的 `tap('request-location', { sync: false })` | **Quiesco 的缺陷（0.7.0 起就存在）**：弹窗使 app 进入后台，Android 暂停 JS 定时器；agent 动作后的空闲等待（`sync/wait-for-idle.ts`）只在 AppState 变化的那一刻检查一次，若此时有 tracker 忙，就睡在暂停的定时器上，不再醒来也不会超时，15 s 后宿主报 AGENT_TIMEOUT（Android 正式版 5 轮中 1 次，读源码确认，见 findings.md）。之后的 `system.tap` 会等弹窗出现，`expectText` 回到前台后再同步 |
 
-“平台”列为该项是因哪个平台的实测失败而加；#1、#2 按平台分支，#3、#5 两个平台都执行，#4 只在 Android 重试。
+“平台”列为该项是因哪个平台的实测失败而加；代码中都不按平台分支，两个平台都执行。
 
 ## 汇总（正式版）
 
@@ -20,11 +20,21 @@ Quiesco 的每个调用都先等 app 空闲（网络、定时器、React、原�
 
 | 平台 | W1 固定 sleep | W2 手写重试 | W3 条件等待 | X 同步绕过 |
 |---|---|---|---|---|
-| iOS 需要 | 0 | 1（#3） | 1（#1） | 0 |
-| Android 需要 | 0 | 2（#2、#4） | 1（#5） | 0 |
-| 套件合计（代码中的调用点） | 0 | 3 | 2 | 0 |
+| iOS 需要 | 0 | 0 | 3（#1、#2、#3） | 0 |
+| Android 需要 | 0 | 0 | 3（#1、#2、#4） | 1（#5） |
+| 套件合计（代码中的调用点） | 0 | 0 | 4 | 1 |
 
-W2 三处都是绕过工具本身的问题（#2、#3 为缺陷，#4 为写死的等待时间），不是 app 的同步问题。
+### 与 0.7.0 的差别
+
+0.7.0 时为 iOS W2×1 / W3×1、Android W2×2 / W3×1。三处 W2 都是绕过工具本身的问题，0.8.0 修复后全部去掉：
+
+| 0.7.0 的项 | 0.8.0 |
+|---|---|
+| S6 Android：`scrollTo` 在带 RefreshControl 的列表上失效 → 手写 `scroll()` 循环（W2） | 已修复（h2nology/quiesco#44）→ 直接 `scrollTo` |
+| S6 iOS：`scrollTo` 露出细边就停、`tap` 点到列表外 → 补一次拖动（W2） | 已修复（#45：停在目标中心露出时、点击可见部分的中心）→ 去掉 |
+| S22 Android：`openNotification` 只找 5 秒 → 再试（W2） | 已修复（#47：两平台都等 `timeoutMs`，默认 10 s）→ 去掉。另有 iOS 的新问题（#3，W3） |
+| S6 Android 单测超时（W3） | 保留（#2，现在两平台都执行） |
+| S6 iOS `scrollTo` 的 `timeoutMs`（W3） | 保留，Android 也需要（#1） |
 
 ## S11 / S15 / S16（同步机制相关）
 
@@ -36,9 +46,7 @@ W2 三处都是绕过工具本身的问题（#2、#3 为缺陷，#4 为写死的
 ## 不计入的项
 
 - 场景本身要求的停留：S23 “在后台等 2 秒”（`setTimeout` 2000 ms）。
-- 条件分支（不是为稳定而加）：`e2e/support.ts:52`，S21 用外部命令打开深链接后，iOS 的“Open in "rnshootout"?”确认框出现时才点（点过一次后该模拟器不再出现；为判断是否出现最多等 3 秒）。
-- 操作方式的变通（不是等待，但脆弱度不同，在 RESULTS.md 中说明）：
-  - S3：`type()` 一次写入整段文字（iOS `insertText`、Android `commitText`），不满足“逐字输入” → 每个字符调用一次 `type()`
-  - S8 iOS：inline 日历的日期格子不在元素树中 → 按 `control-date-picker` 内的相对坐标点击（依赖 en_US 的周日开头）
-  - S8 Android：系统日期对话框是 app 的独立窗口，Quiesco 的真实触摸到不了，只能 `setValue`（场景禁止）→ 外部命令（`uiautomator dump` + `adb shell input tap`）
-  - S21：`openUrl()` 不能在后台调用 → 外部命令（`simctl openurl` / `am start`）+ `bringToForeground()`
+- 0.7.0 时的操作方式变通，0.8.0 起全部改为 Quiesco 的 API（不再需要外部命令）：
+  - S3：`type(…, { perCharacter: true })` 逐字输入（#52）
+  - S8：日期格子用 `system.tap({ text: '25' })` 真实点击，iOS inline 日历（#50）与 Android 日期对话框（#49）相同
+  - S21：`openUrl()` 在 app 处于后台时也可调用（#48）

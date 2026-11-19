@@ -11,6 +11,8 @@ export default defineConfig({
   test: {
     ...quiesco(),
     include: [process.env.SPEC ?? `e2e/${VARIANT}/**/*.test.ts`],
+    // 每个测试前的重置（e2e/setup.ts）
+    setupFiles: ['e2e/setup.ts'],
     retry: 0,
     bail: 0,
     testTimeout: 120_000,

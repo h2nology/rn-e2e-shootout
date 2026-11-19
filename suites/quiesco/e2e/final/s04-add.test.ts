@@ -1,7 +1,5 @@
 // S4 新增条目并在刷新后保留
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S4 新增条目并在刷新后保留', async ({ app }) => {
   await login(app);

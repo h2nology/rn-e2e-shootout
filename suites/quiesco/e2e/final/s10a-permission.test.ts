@@ -1,7 +1,5 @@
 // S10a 预先授权后显示 Granted
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S10a 预先授权后显示 Granted', async ({ app }) => {
   await app.device.setPermission('location', 'grant');

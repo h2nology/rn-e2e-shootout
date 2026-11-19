@@ -1,12 +1,10 @@
 // S7b 经由输入法输入中日文（iOS）。外部命令登记拼音和日文罗马字键盘；按键、选词经 system.tap（软键盘不在 app 的元素树中）。
 // Android：AOSP 镜像只有 LatinIME，没有中日文输入法 → ✗（与工具无关）
 import { execFileSync } from 'node:child_process';
-import { login, reset, test } from '../support';
+import { login, test } from '../support';
 
 const setKeyboards = (...kbs: string[]) =>
   execFileSync('xcrun', ['simctl', 'spawn', 'booted', 'defaults', 'write', '-g', 'AppleKeyboards', '-array', ...kbs]);
-
-test.beforeEach(reset);
 
 test('S7b 拼音选词 + 日文转换', { tags: ['@ios'] }, async ({ app }) => {
   setKeyboards('zh_Hans-Pinyin@sw=Pinyin10-QWERTY;hw=Automatic', 'ja_JP-Romaji@sw=QWERTY-Japanese;hw=Automatic');

@@ -1,8 +1,6 @@
 // C8 深色模式
 import type { Driver } from '@quiesco/core';
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 async function openSystem(app: Driver) {
   await login(app);

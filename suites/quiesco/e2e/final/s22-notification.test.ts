@@ -1,7 +1,5 @@
 // S22 本地通知
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S22 本地通知', async ({ app }) => {
   // 前置：通知权限已授权。Android：预先授予。iOS：模拟器不能预先授予，也不能用 simctl 重置（Quiesco 的 reset 会重装 app），
@@ -12,15 +10,8 @@ test('S22 本地通知', async ({ app }) => {
   await app.tap('notify-in-3s');
   await app.device.sendToBackground();
   // 从系统通知中心点击（iOS：横幅或通知中心；Android：通知栏）
-  // [W2] Android：openNotification 在通知栏里只找 5 秒（写死，不受 timeoutMs 影响；iOS 为 10 秒），通知在切到后台后约 5 秒才发出，
-  //      时间刚好踩线（诊断版 Android 失败）。通知不以横幅出现，system.expectVisible 等不到（实测）→ 找不到时再试一次
-  for (let attempt = 1; ; attempt++) {
-    try {
-      await app.device.openNotification('Hello from rnshootout');
-      break;
-    } catch (e) {
-      if (app.platform !== 'android' || attempt >= 3) throw e;
-    }
-  }
+  // [W3] timeoutMs 10 s → 30 s：iOS 上本场景常是第一个用到系统 UI 的测试，openNotification 的计时从 Quiesco 的 XCUITest runner
+  //      启动之前就开始，runner 启动用了 14 s 时第一次读屏就已超时、直接失败（正式版第 1 轮；其他轮 7 s 左右）。Quiesco 0.8.0 的缺陷，见 findings.md
+  await app.device.openNotification('Hello from rnshootout', { timeoutMs: 30_000 });
   await app.expectText('notification-target', 'Opened from notification');
 });

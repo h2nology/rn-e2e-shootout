@@ -1,10 +1,8 @@
 // C11 远程推送
 import { execFileSync } from 'node:child_process';
-import { login, reset, test } from '../support';
+import { login, test } from '../support';
 
 const PUSH_IOS = new URL('../../../../mock-server/scripts/push-ios.sh', import.meta.url).pathname;
-
-test.beforeEach(reset);
 
 test('C11 远程推送', async ({ app }) => {
   // Android：模拟器没有推送服务；Quiesco 的 sendNotification 以 app 身份在本地发出通知（不是远程推送），需通知权限

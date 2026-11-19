@@ -233,6 +233,8 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 
 ### Quiesco 0.7.0：发现的工具问题（2026-11-19，接入时实测；作为对 Quiesco 的反馈）
 
+已提交 GitHub issue（h2nology/quiesco，2026-11-19）：#44（下 1）、#45（下 7）、#46（下 8）、#47（下 2）、#48（下 5）、#49（下 3）、#50（下 4）、#51（下 9）、#52（S3：`type()` 一次写入整段）、#53（下 10）、#54、#55（下 6）
+
 1. **Android：`scrollTo` / `scrollToEdge` 在带 `RefreshControl` 的列表上失效。** RN 0.88 在 Android 上用 `AndroidSwipeRefreshLayout` 包住 ScrollView；agent 的 `findScrollable`（`@quiesco/agent/src/actions/js.ts`）取组件的第一个 host 节点当滚动视图、其第一个子节点当内容，在这里分别是刷新布局和 ScrollView 本身（rect 相同），偏移恒为 0 → 拖一次就判定“已到两端”（`Scrolled … to both ends without finding …`）。iOS 的 RefreshControl 是 ScrollView 的子节点，不受影响。测试中改为手写的 `scroll()` 循环（W2）。
 2. **Android：`openNotification` 只在通知栏中找 5 秒**（`NOTIFICATION_WAIT_MS = 5_000`，写死，不受 `timeoutMs` 影响；iOS 为 10 秒）。本 app 的本地通知在切到后台后约 5 秒才发出，时间踩线；通知不以横幅出现，`system.expectVisible` 等不到。测试中改为找不到时再试（W2）。
 3. **Android：app 自己的对话框窗口（`DateTimePicker` 的系统日期对话框）无法用真实触摸操作。** 文档写明只能用 `setValue`（回调）；`system.tap` 只看其他 package 的 UI。S8 的通过标准禁止直接设值 → 用外部命令（`uiautomator dump` + `adb shell input tap`）。
@@ -244,3 +246,32 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 9. **iOS：其他进程的 UI 不在 `system.*` 的可见范围内**：分享面板（C3）、ASWebAuthenticationSession 中的网页（C2）、软键盘（S7b）都报 “on screen outside the app: nothing”；app 内注入的触摸也到不了。iOS 模拟器没有从外部点击 / 输入的命令 → C2、C3、S7b iOS 记 ✗（Appium / Maestro 经 XCUITest 能操作）。Android 上 `system.*` 能读到 Custom Tab 与分享面板，但没有输入文字的 API（C2 用 `adb shell input text`）。
 10. **iOS `setLocale` 要求 Info.plist 声明 `CFBundleLocalizations`**（Appium / Maestro 直接传 `-AppleLanguages` 不需要）→ 只在 Quiesco 构建中声明（用户决定，2026-11-19）。
 11. 环境：iOS 模拟器的 `AppleLocale` 原为不规范的 `US`（日历周一开头），按 METHODOLOGY 6.4 改为 `en_US`。harness 需统一设置。
+
+### Quiesco 0.8.0：上面各问题的验证结果与新发现（2026-11-19）
+
+0.8.0 关闭了 #44–#55。升级后在本仓库实测：
+
+| 问题 | 0.8.0 实测 |
+|---|---|
+| #44 Android RefreshControl 列表上 `scrollTo` 失效 | 已修复：列表确实滚动（见下 N1） |
+| #45 露细边就停 / 点到列表外 | 已修复：S6 iOS 不再需要补拖动，5 轮未再出现 |
+| #46 横向轮播 `scrollTo` / `distance` | 已修复：C5 两平台直接 `scrollTo('carousel', 'carousel-slide-6')` 通过 |
+| #47 Android `openNotification` 5 s | 已修复：S22 Android 不再需要重试 |
+| #48 后台 `openUrl()` | 已修复：S21 两平台不需要外部命令 |
+| #49 Android app 自己的对话框 | 已修复：S8 Android 用 `system.tap({ text: '25' })` |
+| #50 iOS inline 日历 | 已修复：S8 iOS 用 `system.tap({ text: '25' })`，不再依赖坐标和地区 |
+| #51 iOS 其他进程的 UI / `system.type` | 已修复：C2 iOS（认证页面）、C3 iOS（分享面板）、S7b iOS（键盘按键）通过；C2 Android 用 `system.type` |
+| #52 逐字输入 | 已修复：S3 用 `type(…, { perCharacter: true })` |
+| #53 `setLocale` 要求 `CFBundleLocalizations` | 已修复：去掉声明后 C10 iOS 通过（输出警告：`Intl` 与原生字符串仍为 bundle 的语言） |
+| #54 app 与测试工程分开 | 已修复：`appDir` 后 `doctor` 全部通过。`quiesco build` 可用，但 prebuild 不加 `--clean`，本仓库仍用 `build.sh` |
+| #55 `list` 列出 hook / 共用 hook | 已修复：`list` 正确；重置改为 `setupFiles` |
+
+0.8.0 中新发现的问题（已提交 GitHub issue，h2nology/quiesco，2026-11-19：#63（N1）、#64（N2）、#65（N3）、#66（N4）、#67（N5，question）、#68（N6））：
+
+- **N1 `scrollTo` 的超时是整个调用合计，且超时后误报“已到两端”。** `@quiesco/agent` `src/runtime.ts` 中 `scrollTo` 在进入循环前设一个 `deadline`（默认 `sync.timeoutMs` 10 s），向下的循环到时 `break`，向上的循环第一步也 `break`，然后抛 `ELEMENT_NOT_FOUND “Scrolled … to both ends”`。Android S6 实际滚动了约 7,900 dp（约 150 行，37 步中的 15 步）。`scrollToEdge` / `scrollToIndex` 属于多步操作，每步都有完整超时（`multiStep`），`scrollTo` 不是。iOS 上同样超时（报 `SYNC_TIMEOUT`）。正式版两平台都放宽 `timeoutMs`（W3）。
+- **N2 iOS `openNotification` 的计时包含 XCUITest runner 的启动。** `@quiesco/core` `src/devices/ios.ts` 的 `openNotification` 先设 `start` / `deadline`，第一次 `runner.screen()` 才启动 runner（通常约 7 s，正式版第 1 轮 14.4 s）。返回时已过期限 → 不打开通知中心就报 “seen: nothing”。正式版放宽 `timeoutMs` 到 30 s（W3）。
+- **N3 iOS `openNotification` 在通知中心的分组上崩溃。** 0.8.0 改为 2 s（`BANNER_WAIT_MS`）后就打开通知中心；本 app 的通知 3 s 后才发出，进入通知中心里已有的同一 app 的分组（之前各轮留下的通知，重启不清除）。第一次点击把分组展开（“still on screen after the tap; tapping it again”），XCUITest runner 的 `/screen`（`ios-runner/Runner/SystemUIServer.swift` 用 `allElementsBoundByIndex` 逐个读取）在列表重排时报 “No matches found for Element at index 19”，runner 退出，测试得到 `TypeError: fetch failed`（`ECONNRESET` 不在 runner 的自动重启条件内，`ios-runner.ts` 的 `isConnectionRefused`）。诊断版出现 1 次（runner 已在运行时）；单独重跑 3 / 3 通过。
+- **N6 iOS `openNotification` 把横幅自行消失当作点击成功。** 点击后 1.5 s 内通知从屏幕上消失就算成功（`ios.ts` 的 `NOTIFICATION_TAP_CONFIRM_MS`）；横幅到时间自己收起也满足这一条件。正式版重跑第 2 轮：runner 启动 9.6 s，没有出现 “still on screen” 警告，app 的 device.log 在 `appDidSuspend` 之后没有任何回到前台的记录，随后报 “the app did not become active within 5000ms”，下一个测试的 reset 也超时（推断，未证实）。
+- **N4 Android：打开系统弹窗的动作之后，空闲等待可能永久挂起（0.7.0 起就存在）。** `@quiesco/agent` `src/sync/wait-for-idle.ts`：app 在后台时（权限弹窗是另一个 Activity），Android 暂停 JS 定时器；等待循环只在 AppState 变化事件到来时被唤醒一次，若此时有 tracker 忙（react / network / idle-callback），就再次 `sleep()` 在暂停的 `setTimeout` 上，既不返回也不超时（超时检查也在 sleep 之后），宿主 15 s 后报 AGENT_TIMEOUT。下一个测试的 reset 也同样挂起，直到 Quiesco 重启 app。S10b Android 正式版 5 轮中 1 次 → 那次点击用 `{ sync: false }`（X）。与 0.7.0 对比（npm 缓存中的 tarball）`wait-for-idle.ts` 与 `QuiescoNativeModule.kt` 相同，0.7.0 的 5 / 5 是时机上的运气。
+- **N5 原生模块的 Promise 不计入忙碌。** tracker 只有 network / timer / react / idle-callback / native（iOS 转场）/ frame-stable。本 app 登录时 `await AsyncStorage.setItem` 期间所有 tracker 空闲，登录的 `tap` 可能在首页的首次请求发出前返回（S18 Android 5 轮中 1 次，W3）。是否算缺陷有待 Quiesco 判断（文档未承诺覆盖）；Appium 在同一处也需要等待。
+- 环境：iOS 模拟器的通知中心里积累了各工具各轮 S22 留下的通知（重启不清除），harness 应在每轮前清空（M4）。

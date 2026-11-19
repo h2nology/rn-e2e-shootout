@@ -1,7 +1,5 @@
 // S19 Tab 与嵌套导航
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S19 Tab 与嵌套导航', async ({ app }) => {
   await login(app);

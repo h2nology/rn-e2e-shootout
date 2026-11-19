@@ -1,7 +1,5 @@
 // S11 永不静止的动画
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S11 永不静止的动画', async ({ app }) => {
   await login(app);

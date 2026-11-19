@@ -11,12 +11,8 @@ const overlays: Record<string, (c: ExpoConfig) => ExpoConfig> = {
   // Quiesco：开关是 prebuild / 打包时的 EXPO_PUBLIC_QUIESCO=1，不在这里叠加。
   // @quiesco/expo-plugin 必须一直在 app.json 中：非 e2e 构建时由它把 @quiesco/native 排除出自动链接
   // （不在时反而会被链接进其他工具的构建）；metro.config.js 的 withQuiesco() 同理把 agent 换成空实现。
-  // C10 iOS：Quiesco 的 setLocale 要求 Info.plist 声明 CFBundleLocalizations（否则报 “does it support ja-JP?”）。
-  // Appium / Maestro 直接传 -AppleLanguages 不需要；只加在 Quiesco 的构建里（用户决定，2026-11-19）
-  quiesco: (c) => ({
-    ...c,
-    ios: { ...c.ios, infoPlist: { ...c.ios?.infoPlist, CFBundleLocalizations: ['en', 'ja', 'zh-Hans'] } },
-  }),
+  // （0.7.0 时 C10 iOS 的 setLocale 要求 Info.plist 声明 CFBundleLocalizations，曾在这里叠加；0.8.0 起不再需要，已移除）
+  quiesco: (c) => c,
 };
 
 export default ({ config }: ConfigContext): ExpoConfig => {

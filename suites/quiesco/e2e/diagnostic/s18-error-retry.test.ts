@@ -1,7 +1,5 @@
 // S18 错误态与重试
-import { login, postJson, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, postJson, test } from '../support';
 
 test('S18 错误态与重试', async ({ app }) => {
   await login(app);

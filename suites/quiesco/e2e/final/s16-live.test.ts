@@ -1,7 +1,5 @@
 // S16 轮询与 WebSocket
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S16 轮询与 WebSocket', async ({ app }) => {
   await login(app);

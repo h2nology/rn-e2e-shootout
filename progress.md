@@ -169,3 +169,11 @@
   - WAITS：iOS W2×1 / W3×1；Android W2×2 / W3×1；X 0（S11 / S15 / S16 不需要同步绕过）
   - 环境恢复：iOS 键盘 en_US、AppleLocale en_US；Android AOSP、en-US、无 PIN；GAPIS 已关闭
 - **Quiesco 接入完成**。M3 四套全部完成，下一步 M4 harness
+- **Quiesco 0.8.0 重跑**（用户要求：0.8.0 发布，#44–#55 已关闭；插件由用户更新到 0.8.0）
+  - `appDir` + `init --upgrade`（包固定 0.8.0，删除 `e2e:*` 脚本）；`doctor` 在 `suites/quiesco` 中全部通过；重置 hook 改为 `setupFiles`；去掉 C10 的 `CFBundleLocalizations`（不再需要）
+  - 测试代码改用 0.8.0 API：S3 perCharacter、S6 / C5 直接 scrollTo、S8 system.tap、S21 后台 openUrl、S22 去重试、C2 system.type、C3 iOS system.expectVisible + tapAt；support.ts 中外部命令全部删除
+  - 诊断版：iOS 22/24、Android 23/24（S6 两平台 #63；S22 iOS #65）
+  - 能力检查：iOS C1–C11 全部 ✓、S7b iOS ✓；Android C11 ✗，其余 ✓（C2 GAPIS ✓）
+  - 正式版：第 1 次 iOS 4/5（S22 #64 → W3）、Android 3/5（S10b #66 → X；S18 #67 → W3）；最终代码 iOS 3/5（S22 #65、#68）、Android 3/5（S6 卡住超过 300 s，原因未定）
+  - 新 issue：h2nology/quiesco#63–#68（用户要求提交）
+  - **用户决定：按现状记录，等 Quiesco 修复后重跑**。RESULTS.md 标为“未达到 M3 完成标准”

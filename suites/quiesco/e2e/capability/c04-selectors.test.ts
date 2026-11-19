@@ -1,7 +1,5 @@
 // C4 选择器：同 testID 的第 3 个；只用 accessibility label
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('C4 选择器：同 testID 的第 3 个；只用 accessibility label', async ({ app }) => {
   await login(app);

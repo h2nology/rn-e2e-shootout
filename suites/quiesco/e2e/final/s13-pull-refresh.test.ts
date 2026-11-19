@@ -1,7 +1,5 @@
 // S13 下拉刷新
-import { login, postJson, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, postJson, test } from '../support';
 
 test('S13 下拉刷新', async ({ app }) => {
   await login(app);

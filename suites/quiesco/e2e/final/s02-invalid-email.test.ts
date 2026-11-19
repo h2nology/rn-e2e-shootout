@@ -1,7 +1,5 @@
 // S2 错误邮箱的校验提示
-import { reset, test } from '../support';
-
-test.beforeEach(reset);
+import { test } from '../support';
 
 test('S2 错误邮箱的校验提示', async ({ app }) => {
   await app.type('login-email', 'not-an-email');

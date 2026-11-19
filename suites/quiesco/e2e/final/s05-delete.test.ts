@@ -1,7 +1,5 @@
 // S5 删除条目，确认 Modal
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S5 删除条目，确认 Modal', async ({ app }) => {
   await login(app);

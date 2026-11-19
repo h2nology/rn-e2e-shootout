@@ -1,7 +1,5 @@
 // C1 生物识别：失败一次（取消）再成功
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('C1 生物识别：失败一次（取消）再成功', async ({ app }) => {
   // Quiesco 内置：iOS notifyutil；Android 设置锁屏 PIN 并经设置 app 登记指纹（测试结束后撤销）

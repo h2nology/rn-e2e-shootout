@@ -1,7 +1,5 @@
 // S10b 点击系统弹窗“允许”
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S10b 点击系统弹窗“允许”', async ({ app }) => {
   await login(app);

@@ -1,7 +1,5 @@
 // S8 原生控件
-import { login, reset, tapAndroidDialogText, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S8 原生控件', async ({ app }) => {
   await login(app);
@@ -11,17 +9,10 @@ test('S8 原生控件', async ({ app }) => {
   // 真实拖动滑钮（setValue 直接设值，场景禁止）
   await app.adjustSlider('control-slider', 0.75);
   await app.tap('control-date');
-  if (app.platform === 'ios') {
-    // inline 日历（原生 UIDatePicker）在 app 内部，日期格子不在 Quiesco 的元素树中，system.tap 也只看 app 之外的系统 UI
-    // → 按 control-date-picker 内的相对位置点 25 日（en_US：周日开头，2026-12 的 25 日在第 4 行、第 6 列）
-    const rect = (await app.attributes('control-date-picker')).rect!;
-    await app.tap('control-date-picker', { point: { x: rect.width * (5.5 / 7), y: rect.height * 0.758 } });
-    await app.tap('control-date-done');
-  } else {
-    // 系统日期对话框：Quiesco 的触摸到不了（见 support.ts）→ 外部命令点击
-    tapAndroidDialogText('25');
-    tapAndroidDialogText('OK');
-  }
+  // 日期格子：iOS 是 inline 日历（UIKit 视图），Android 是系统日期对话框（app 的独立窗口），都经 system.* 以真实触摸点击
+  await app.device.system.tap({ text: '25' });
+  if (app.platform === 'ios') await app.tap('control-date-done');
+  else await app.device.system.tap({ id: 'android:id/button1' }); // OK
   await app.tap('control-submit');
   await app.expectText('control-result', 'switch=on slider=75 date=2026-12-25');
 });

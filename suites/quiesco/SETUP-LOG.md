@@ -1,20 +1,21 @@
 # Quiesco 接入记录
 
-> 易用性数据（METHODOLOGY 10.3）。执行者：Claude（AI 助手），代表 Quiesco 作者一方执行；对 app 已经熟悉（M2 由同一执行者实现），且此前已接入过 Detox、Appium、Maestro，因此“首个测试通过时间”仅供参考（METHODOLOGY 10.2）。
+> 易用性数据（METHODOLOGY 10.3）。下面的“步骤”是 0.7.0 的首次接入记录；同日升级到 0.8.0 的过程见“升级到 0.8.0”一节（结果以 0.8.0 为准）。执行者：Claude（AI 助手），代表 Quiesco 作者一方执行；对 app 已经熟悉（M2 由同一执行者实现），且此前已接入过 Detox、Appium、Maestro，因此“首个测试通过时间”仅供参考（METHODOLOGY 10.2）。
 >
-> **额外披露（METHODOLOGY v4）**：本工具的接入使用了 Quiesco 官方的 Claude Code 插件 `quiesco@h2nology` 0.7.0（`setup`、`writing-tests`、`quiesco-api`、`debug` 技能及 `failure-investigator` agent，内含官方文档的副本与操作流程）。其他三个工具没有对应插件，接入时只依据官方网站文档。插件带来的便利会体现在接入步骤、首个测试通过时间和排错过程中，比较时须考虑这一点。
+> **额外披露（METHODOLOGY v4）**：本工具的接入使用了 Quiesco 官方的 Claude Code 插件 `quiesco@h2nology`（首次接入 0.7.0，升级后 0.8.0；`setup`、`writing-tests`、`quiesco-api`、`debug` 技能及 `failure-investigator` agent，内含官方文档的副本与操作流程）。其他三个工具没有对应插件，接入时只依据官方网站文档。插件带来的便利会体现在接入步骤、首个测试通过时间和排错过程中，比较时须考虑这一点。
 
 ## 依据的文档（2026-11-19 访问）
 
 - 插件内的官方文档副本（与 Quiesco 文档站同源，由 `docs/*.mdx` 生成）：`setup/references/{quickstart,native,cli}.md`、`quiesco-api/references/{api,sync,platforms,runners,parallel}.md`、`debug/references/troubleshooting.md`
-- npm：`quiesco` 0.7.0（2026-11-19 时的最新版）
+- npm：`quiesco` 0.7.0（2026-11-19 上午的最新版）、0.8.0（同日 11:41 UTC 发布）
+- 0.8.0 的 release notes（GitHub `h2nology/quiesco` v0.8.0）与插件 0.8.0 中更新的 `api.md`、`platforms.md`、`runners.md`、`cli.md`
 
 ## 版本
 
 | 包 | 版本 |
 |---|---|
-| quiesco（CLI）、@quiesco/core、@quiesco/vitest | 0.7.0（`suites/quiesco`） |
-| @quiesco/agent、@quiesco/native、@quiesco/expo-plugin | 0.7.0（`app`） |
+| quiesco（CLI）、@quiesco/core、@quiesco/vitest | 0.8.0（`suites/quiesco`；首次接入时 0.7.0） |
+| @quiesco/agent、@quiesco/native、@quiesco/expo-plugin | 0.8.0（`app`；首次接入时 0.7.0） |
 | vitest | 5.1.1 |
 
 ## 步骤
@@ -43,6 +44,24 @@
 | 20 | — | C10 iOS：`setLocale` 报 “does it support ja-JP?” | 坑 | 需要 Info.plist 声明 `CFBundleLocalizations`。用户决定只加在 Quiesco 的构建（`app.config.ts` 的 `quiesco` 叠加），重新构建 iOS |
 | 21 | — | C2 / C3 / S7b iOS：其他进程的 UI（认证网页、分享面板、软键盘）不在 `system.*` 的可见范围内 | 坑（工具限制） | iOS 模拟器没有外部点击 / 输入的命令 → 记 ✗ |
 
+## 升级到 0.8.0（2026-11-19）
+
+0.7.0 接入中发现的问题提交为 h2nology/quiesco#44–#55（见 findings.md），0.8.0 全部关闭（修复或新增 API）。升级后从诊断版起重跑。
+
+| # | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|
+| U1 | 用户更新插件（`/plugin`）到 0.8.0 | 命令 | — |
+| U2 | `quiesco.config.mts` 加 `appDir: '../../app'`（#54），在 `suites/quiesco` 中运行 `npx quiesco@0.8.0 init --upgrade` | 命令 | app 与测试工程两侧的包都升级到 0.8.0；另外在测试工程的 `package.json` 加了 `e2e:*` 脚本（dev client 用，本仓库只用 Release 构建 → 删除）、`tsconfig.json` 加 `allowImportingTsExtensions`。依赖改为精确版本 `0.8.0` |
+| U3 | `npx quiesco doctor`（在 `suites/quiesco` 中） | 命令 | 必需检查全部通过（#54 修复）；警告 1 项：`app.config.ts` 存在时不比对 app ID |
+| U4 | 重置 hook 改为 `setupFiles`（`e2e/setup.ts`），删除各文件的 `test.beforeEach(reset)` | 手动编辑 | 0.8.0 文档给出的写法（#55）；`quiesco list` 不再把 hook 列成测试 |
+| U5 | 去掉 C10 用的 `CFBundleLocalizations`（`app.config.ts` 的 `quiesco` 叠加改为空） | 手动编辑（app 配置） | #53：`setLocale` 不再要求该声明（只输出警告：`Intl` 与原生字符串保持 bundle 的语言）。C10 iOS 实测通过 → Quiesco 构建与其他工具的构建相同 |
+| U6 | 构建：仍用 `build.sh` | 命令 | 0.8.0 的 `quiesco build` 支持 `appDir` 和 Release（按 `binaryPath` 判断），但 prebuild 不加 `--clean`，会受其他工具 prebuild 留下的 `ios/`、`android/` 影响 → 继续用 `--clean` 的脚本 |
+| U7 | 测试代码改为 0.8.0 的 API | 手动编辑 | S3 `type(…, { perCharacter: true })`；S6 直接 `scrollTo`；S8 `system.tap({ text: '25' })`（两平台）；S21 后台时 `openUrl()`；S22 去掉重试；C2 `system.type()`；C3 iOS `system.expectVisible` + `system.tapAt`；C5 `scrollTo('carousel', …)`。删除 `support.ts` 中的外部命令辅助函数 |
+| U8 | 诊断版：iOS 22 / 24，Android 23 / 24 | 命令 | S6 两平台：`scrollTo` 整个调用 10 s 超时（Android 上误报为 “to both ends”，插件的 `failure-investigator` 读证据确认列表实际滚动了约 150 行、#44 已修复）。S22 iOS：XCUITest runner 在通知中心崩溃一次（单独重跑 3 / 3 通过，见 RESULTS.md） |
+| U9 | C3 iOS 第一次失败 | 坑（测试代码） | `system.tapAt` 的点在屏幕上部，iOS 27 不关闭面板（Maestro 实测相同）→ 改为屏幕高度约 45% 处 |
+| U10 | 两个平台同时运行时第二个报 `EADDRINUSE` | 坑（操作） | 两个进程都用默认端口 7357（可用 `server.port` 改）。本仓库的测量本来就依次运行，不改配置 |
+| U11 | 正式版第 1 次 5 轮：iOS 第 1 轮 S22 失败；Android 第 4 轮 S10b、第 5 轮 S18 失败 | 坑 | 各交给 `failure-investigator` 读证据与源码：S22 iOS = `openNotification` 的计时含 XCUITest runner 启动（14.4 s）；S10b Android = 后台时空闲等待挂起（N4）；S18 Android = 原生模块 Promise 不计入忙碌（N5）。分别加 W3 / X / W3（WAITS #3–#5），两平台都用最终代码重跑 5 轮 |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：
@@ -52,14 +71,12 @@ Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、�
 | iOS | mock server `POST /reset` → `app.device.setPermission('location', 'reset')`（`simctl privacy reset`；`clearData` 不撤销权限）→ `app.device.relaunch({ clearData: true })`（清空数据容器、删除 UserDefaults，冷启动） |
 | Android | mock server `POST /reset` → `app.device.relaunch({ clearData: true })`（`pm clear`，同时撤销运行时权限） |
 
-## 外部命令 / 额外配置一览
+## 外部命令 / 额外配置一览（0.8.0）
 
 | 用途 | 做法 | 原因 |
 |---|---|---|
-| Release 构建 | `build.sh` | 测试工程不在 app 目录内（见步骤 6） |
-| S21 后台时打开深链接 | `simctl openurl` / `adb shell am start` | `openUrl()` 要求 app 在前台 |
-| S8 Android 日期对话框 | `uiautomator dump` + `adb shell input tap` | 对话框是 app 的独立窗口，Quiesco 只能 `setValue`（场景禁止） |
-| C2 Android 外部页面输入 | `adb shell input text` | `system.*` 没有输入文字的 API |
-| C10 iOS | app 侧声明 `CFBundleLocalizations`（仅 Quiesco 构建） | `setLocale` 的前提 |
-| S7b iOS 键盘登记 | `simctl … defaults write -g AppleKeyboards` | 模拟器默认只有英文键盘（登记后仍无法操作软键盘，S7b iOS 为 ✗） |
+| Release 构建 | `build.sh` | `quiesco build` 的 prebuild 不加 `--clean`（见 U6） |
+| S7b iOS 键盘登记 | `simctl … defaults write -g AppleKeyboards` | 模拟器默认只有英文键盘（场景前置条件） |
 | 每轮前重启模拟器 | `../maestro/scripts/reboot-*.sh`，`scripts/five-runs.sh` | METHODOLOGY 6.4 |
+
+0.7.0 时另有 S21（`simctl openurl` / `am start`）、S8 Android（`uiautomator dump` + `input tap`）、C2 Android（`adb shell input text`）三处外部命令与 C10 iOS 的 `CFBundleLocalizations`，0.8.0 起都不再需要。

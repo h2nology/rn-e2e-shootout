@@ -1,7 +1,5 @@
 // S17 自动消失的 Toast
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S17 自动消失的 Toast', async ({ app }) => {
   await login(app);

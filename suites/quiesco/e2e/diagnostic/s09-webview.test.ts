@@ -1,7 +1,5 @@
 // S9 WebView
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S9 WebView', async ({ app }) => {
   await login(app);

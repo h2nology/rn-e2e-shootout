@@ -1,7 +1,5 @@
 // S7a 中文 / 日文输入
-import { login, reset, test } from '../support';
-
-test.beforeEach(reset);
+import { login, test } from '../support';
 
 test('S7a 中文 / 日文输入', async ({ app }) => {
   await login(app);

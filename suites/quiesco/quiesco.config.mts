@@ -3,6 +3,8 @@
 import { defineConfig } from '@quiesco/core';
 
 export default defineConfig({
+  // app 与测试工程分开（0.8.0 起支持）：doctor / build / init --upgrade 在这里找 Expo app
+  appDir: '../../app',
   apps: {
     ios: {
       bundleId: 'com.rnshootout.app',
