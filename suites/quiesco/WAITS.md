@@ -1,4 +1,4 @@
-# Quiesco：等待与同步绕过清单（正式版）
+# Quiesco：等待与同步绕过清单（正式版，0.9.0）
 
 按 METHODOLOGY 4 分类。诊断版（`e2e/diagnostic`）不含以下任何一项；正式版与诊断版的差别只有下表的位置（`diff -r e2e/diagnostic e2e/final`）。
 
@@ -6,35 +6,30 @@ Quiesco 的每个调用都先等 app 空闲（网络、定时器、React、原�
 
 | # | 文件:行 | 类别 | 平台 | 内容 | 为什么需要 |
 |---|---|---|---|---|---|
-| 1 | `e2e/final/s06-long-list.test.ts:9` | W3 | iOS、Android | `scrollTo` 的 `timeoutMs` 10 s → 300 s | `scrollTo` 的整个调用（所有拖动步骤合计）只有一个超时，默认 10 s（`sync.timeoutMs`）。滚到第 400 行约需 37 步，诊断版两个平台都超时（iOS：`SYNC_TIMEOUT`；Android：超时后误报为 `Scrolled … to both ends`，见 findings.md）。`scrollToEdge` / `scrollToIndex` 每一步都有完整的超时，`scrollTo` 没有 |
-| 2 | `e2e/final/s06-long-list.test.ts:5` | W3 | iOS、Android | 单测超时 120 s → 300 s | 30 多次真实拖动，模拟器较慢时接近 120 s（0.7.0 时 Android 正式版 5 轮中 1 次超过）。Appium 同样把单测超时放宽到 300 s |
-| 3 | `e2e/final/s22-notification.test.ts:15` | W3 | iOS | `openNotification` 的 `timeoutMs` 10 s → 30 s | **Quiesco 0.8.0 的缺陷**：iOS 的 `openNotification` 在启动 XCUITest runner（系统 UI 读取用）之前就开始计时。S22 常是一轮中第一个用到系统 UI 的测试，runner 启动通常约 7 s，正式版第 1 轮用了 14.4 s，第一次读屏返回时已经超时，没有打开通知中心就报“no notification … (seen: nothing)”（读源码确认，见 findings.md）。两平台都执行，Android 不受影响 |
-| 4 | `e2e/final/s18-error-retry.test.ts:9` | W3 | Android | 登录后先 `expectVisible('item-row-1')`，再注入错误 | 登录处理依次 await 登录请求 → `AsyncStorage.setItem`（原生模块）→ 跳转首页 → 首页挂载时 `GET /items`。Quiesco 的 tracker 不包括原生模块的 Promise（文档的 tracker 表），`setItem` 期间所有 tracker 空闲，登录的 `tap` 可能在首页首次请求之前就返回；随后注入的 500 被首次请求消耗，Reload 拿到正常列表（Android 正式版 5 轮中 1 次）。Appium 在同一位置有相同的等待 |
-| 5 | `e2e/final/s10b-permission.test.ts:11` | X | Android | 打开权限弹窗的 `tap('request-location', { sync: false })` | **Quiesco 的缺陷（0.7.0 起就存在）**：弹窗使 app 进入后台，Android 暂停 JS 定时器；agent 动作后的空闲等待（`sync/wait-for-idle.ts`）只在 AppState 变化的那一刻检查一次，若此时有 tracker 忙，就睡在暂停的定时器上，不再醒来也不会超时，15 s 后宿主报 AGENT_TIMEOUT（Android 正式版 5 轮中 1 次，读源码确认，见 findings.md）。之后的 `system.tap` 会等弹窗出现，`expectText` 回到前台后再同步 |
+| 1 | `e2e/final/s06-long-list.test.ts:10` | W3 | Android | `scrollTo` 的 `timeoutMs`（0.9.0 起为每一步的超时）10 s → 30 s | 诊断版 Android 1 次在某一步之后的空闲等待中 `SYNC_TIMEOUT`：快速拖动后 FlatList 逐批渲染新行（`setTimeout` 50 ms + React 提交，元素树 4,000+ 节点，CPU 渲染的模拟器），一步之后的空闲超过 10 s（findings.md 0.9.0 N2）。单独运行 6 次都约 36 s 通过，偶发 |
+| 2 | `e2e/final/s06-long-list.test.ts:5` | W3 | iOS、Android | 单测超时 120 s → 300 s | 30 多次真实拖动；0.7.0 / 0.8.0 时 Android 正式版超过过 120 s。Appium 同样放宽到 300 s。0.9.0 的正式版中 S6 约 63 s（含上一测试 S12 崩溃后的 30 s 重连等待，见 RESULTS.md） |
 
 “平台”列为该项是因哪个平台的实测失败而加；代码中都不按平台分支，两个平台都执行。
 
-## 汇总（正式版）
+## 汇总（正式版，0.9.0）
 
 按调用点计数（METHODOLOGY 4.2）。
 
 | 平台 | W1 固定 sleep | W2 手写重试 | W3 条件等待 | X 同步绕过 |
 |---|---|---|---|---|
-| iOS 需要 | 0 | 0 | 3（#1、#2、#3） | 0 |
-| Android 需要 | 0 | 0 | 3（#1、#2、#4） | 1（#5） |
-| 套件合计（代码中的调用点） | 0 | 0 | 4 | 1 |
+| iOS 需要 | 0 | 0 | 1（#2） | 0 |
+| Android 需要 | 0 | 0 | 2（#1、#2） | 0 |
+| 套件合计（代码中的调用点） | 0 | 0 | 2 | 0 |
 
-### 与 0.7.0 的差别
+不包括 S12：S12 在 0.9.0 中因 Quiesco 的缺陷使 app 崩溃（h2nology/quiesco#74），没有可以加的等待。
 
-0.7.0 时为 iOS W2×1 / W3×1、Android W2×2 / W3×1。三处 W2 都是绕过工具本身的问题，0.8.0 修复后全部去掉：
+### 各版本的差别
 
-| 0.7.0 的项 | 0.8.0 |
-|---|---|
-| S6 Android：`scrollTo` 在带 RefreshControl 的列表上失效 → 手写 `scroll()` 循环（W2） | 已修复（h2nology/quiesco#44）→ 直接 `scrollTo` |
-| S6 iOS：`scrollTo` 露出细边就停、`tap` 点到列表外 → 补一次拖动（W2） | 已修复（#45：停在目标中心露出时、点击可见部分的中心）→ 去掉 |
-| S22 Android：`openNotification` 只找 5 秒 → 再试（W2） | 已修复（#47：两平台都等 `timeoutMs`，默认 10 s）→ 去掉。另有 iOS 的新问题（#3，W3） |
-| S6 Android 单测超时（W3） | 保留（#2，现在两平台都执行） |
-| S6 iOS `scrollTo` 的 `timeoutMs`（W3） | 保留，Android 也需要（#1） |
+| 版本 | iOS | Android | 说明 |
+|---|---|---|---|
+| 0.7.0 | W2×1 / W3×1 | W2×2 / W3×1 | 三处 W2 都是绕过工具问题（#44、#45、#47） |
+| 0.8.0 | W3×3 | W3×3 / X×1 | `scrollTo` 整体超时（#63）、iOS 通知 runner 启动计时（#64）、原生模块 Promise（#67）、弹窗期间空闲等待挂起（#66） |
+| 0.9.0 | W3×1 | W3×2 | 0.8.0 的 S6 `scrollTo` 300 s、S22 30 s、S18 `expectVisible`、S10b `sync: false` 全部去掉，5 轮通过；S6 Android 改为每步 30 s |
 
 ## S11 / S15 / S16（同步机制相关）
 

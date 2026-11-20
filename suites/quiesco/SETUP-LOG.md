@@ -62,6 +62,20 @@
 | U10 | 两个平台同时运行时第二个报 `EADDRINUSE` | 坑（操作） | 两个进程都用默认端口 7357（可用 `server.port` 改）。本仓库的测量本来就依次运行，不改配置 |
 | U11 | 正式版第 1 次 5 轮：iOS 第 1 轮 S22 失败；Android 第 4 轮 S10b、第 5 轮 S18 失败 | 坑 | 各交给 `failure-investigator` 读证据与源码：S22 iOS = `openNotification` 的计时含 XCUITest runner 启动（14.4 s）；S10b Android = 后台时空闲等待挂起（N4）；S18 Android = 原生模块 Promise 不计入忙碌（N5）。分别加 W3 / X / W3（WAITS #3–#5），两平台都用最终代码重跑 5 轮 |
 
+## 升级到 0.9.0（2026-11-20）
+
+0.8.0 中发现的问题提交为 h2nology/quiesco#63–#68，0.9.0 全部关闭。升级后从诊断版起重跑。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| V1 | — | 用户更新插件（`/plugin`）到 0.9.0 | 命令 | — |
+| V2 | 8.5 s | 在 `suites/quiesco` 中运行 `npx quiesco@0.9.0 init --upgrade` | 命令 | 两侧的包升级到 0.9.0。与 0.8.0 时相同：依赖写成 `^0.9.0`，并加回 `e2e:*` 脚本 → 改回精确版本 `0.9.0`、删除 |
+| V3 | iOS 217 s、Android 210 s | 构建改为 `npx quiesco build ios|android --clean`（用户指出 0.9.0 已支持 `--clean`），删除 `build.sh` | 命令 | iOS 的 `binaryPath` 改为 `build/Build/Products/Release-iphonesimulator/rnshootout.app`（configuration 由路径决定）；Android 的 `build/app-release.apk` 含 `release` → `assembleRelease`。Gradle 内存与其他工具相同用 4 GB：`GRADLE_OPTS=-Dorg.gradle.jvmargs=-Xmx4g`（`quiesco build` 没有对应选项）。写成 `package.json` 的 `build:ios` / `build:android` |
+| V4 | — | `npx quiesco doctor` | 命令 | 必需检查全部通过；警告 1 项（`app.config.ts` 时不比对 app ID） |
+| V5 | — | 正式版去掉 0.8.0 时的等待：S6 `scrollTo` 300 s、S22 30 s、S18 `expectVisible`、S10b `sync: false` | 手动编辑 | 0.8.0 的正式版保存在 `logs/q080-final-backup/`（不入库） |
+| V6 | — | 诊断版：iOS 23 / 24、Android 22 / 24 | 命令 | S6 iOS、S22 iOS 通过（#63、#64 修复）。**S12 两平台 app 崩溃**（新问题，读 logcat / iOS crash report 与 agent、Gesture Handler 源码确认，h2nology/quiesco#74）。S6 Android 一步之后空闲超过 10 s（单独 6 次都通过）→ 每步 30 s（W3） |
+| V7 | — | 正式版两平台各 5 轮 | 命令 | 每轮 23 / 24，失败只有 S12（#74） |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：
@@ -71,12 +85,13 @@ Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、�
 | iOS | mock server `POST /reset` → `app.device.setPermission('location', 'reset')`（`simctl privacy reset`；`clearData` 不撤销权限）→ `app.device.relaunch({ clearData: true })`（清空数据容器、删除 UserDefaults，冷启动） |
 | Android | mock server `POST /reset` → `app.device.relaunch({ clearData: true })`（`pm clear`，同时撤销运行时权限） |
 
-## 外部命令 / 额外配置一览（0.8.0）
+## 外部命令 / 额外配置一览（0.9.0）
 
 | 用途 | 做法 | 原因 |
 |---|---|---|
-| Release 构建 | `build.sh` | `quiesco build` 的 prebuild 不加 `--clean`（见 U6） |
+| Release 构建的 Gradle 内存 | `GRADLE_OPTS=-Dorg.gradle.jvmargs=-Xmx4g`（`npm run build:android`） | Expo 生成的默认值 2 GB；其他工具同样用 4 GB（Detox 接入时 R8 OOM 风险） |
 | S7b iOS 键盘登记 | `simctl … defaults write -g AppleKeyboards` | 模拟器默认只有英文键盘（场景前置条件） |
 | 每轮前重启模拟器 | `../maestro/scripts/reboot-*.sh`，`scripts/five-runs.sh` | METHODOLOGY 6.4 |
 
+0.8.0 时的 `build.sh`（`quiesco build` 的 prebuild 不加 `--clean`）在 0.9.0 中不再需要。
 0.7.0 时另有 S21（`simctl openurl` / `am start`）、S8 Android（`uiautomator dump` + `input tap`）、C2 Android（`adb shell input text`）三处外部命令与 C10 iOS 的 `CFBundleLocalizations`，0.8.0 起都不再需要。

@@ -178,3 +178,17 @@
   - 新 issue：h2nology/quiesco#63–#68（用户要求提交）
   - **用户决定：按现状记录，等 Quiesco 修复后重跑**。RESULTS.md 标为“未达到 M3 完成标准”
 - METHODOLOGY v4（Quiesco 0.8.0 + 插件披露）用户确认，打 tag `methodology-v4`
+
+## Session: 2026-11-20
+
+- **Quiesco 0.9.0 重跑**（用户要求：0.9.0 发布，#63–#68 已关闭；插件由用户更新到 0.9.0）
+  - `init --upgrade`（8.5 s；改回精确版本 0.9.0、删除 `e2e:*` 脚本）；`doctor` 通过
+  - 构建改为 `quiesco build ios|android --clean`（用户指出），删除 `build.sh`；iOS `binaryPath` 改为 xcodebuild 产物路径；Gradle 4 GB 经 `GRADLE_OPTS`；iOS 217 s、Android 210 s
+  - 正式版去掉 0.8.0 的 S6 300 s `timeoutMs`、S22 30 s、S18 `expectVisible`、S10b `sync: false`
+  - 诊断版：iOS 23/24、Android 22/24。**S12 两平台 app 崩溃**（`native-module` 包装在 tracker 关闭时也安装 → Gesture Handler worklet 调用 JS 包装函数）→ 用户要求提交 h2nology/quiesco#74。S6 Android 一步之后空闲 > 10 s（单独 6/6 通过）→ 每步 30 s（W3）
+  - 正式版 5 轮：iOS 5 × 23/24（396–415 s）、Android 5 × 23/24（286–289 s），失败只有 S12；S22 iOS、S10b / S18 Android 无等待 5/5
+  - 能力检查：iOS 全部 ✓（C1 / C3 整套中偶发失败，单独通过）；Android C11 ✗，其余 ✓（C2 GAPIS ✓）
+  - WAITS：iOS W3×1、Android W3×2、X 0
+  - 其他：`@quiesco/core` 0.9.0 残留 `DBG` 调试输出
+  - METHODOLOGY v5（Quiesco 0.9.0）用户确认，打 tag `methodology-v5`
+  - 环境恢复：Android 切回 AOSP（GAPIS 已关闭）

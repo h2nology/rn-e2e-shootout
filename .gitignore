@@ -11,3 +11,5 @@ app/android/
 .planning/
 .plan-attestation
 .run/
+# 本地执行日志（构建日志、旧版本代码备份等）
+/logs/

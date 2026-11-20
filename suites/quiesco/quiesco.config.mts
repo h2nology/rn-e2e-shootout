@@ -1,5 +1,6 @@
 // Quiesco 配置。只用 Release 构建（METHODOLOGY 2.2）：JS bundle 内嵌，不用 dev client / Metro。
-// 构建产物由 ./build.sh 生成到 ./build（E2E_TOOL=quiesco、EXPO_PUBLIC_QUIESCO=1）。
+// 构建：npx quiesco build ios|android --clean（0.9.0 起不再需要自写脚本）。
+// Release 由 binaryPath 决定：iOS 取路径中的 <Configuration>-iphonesimulator，Android 路径含 release 时 assembleRelease。
 import { defineConfig } from '@quiesco/core';
 
 export default defineConfig({
@@ -8,7 +9,7 @@ export default defineConfig({
   apps: {
     ios: {
       bundleId: 'com.rnshootout.app',
-      binaryPath: 'build/rnshootout.app',
+      binaryPath: 'build/Build/Products/Release-iphonesimulator/rnshootout.app',
     },
     android: {
       package: 'com.rnshootout.app',

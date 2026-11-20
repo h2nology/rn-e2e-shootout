@@ -275,3 +275,25 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - **N4 Android：打开系统弹窗的动作之后，空闲等待可能永久挂起（0.7.0 起就存在）。** `@quiesco/agent` `src/sync/wait-for-idle.ts`：app 在后台时（权限弹窗是另一个 Activity），Android 暂停 JS 定时器；等待循环只在 AppState 变化事件到来时被唤醒一次，若此时有 tracker 忙（react / network / idle-callback），就再次 `sleep()` 在暂停的 `setTimeout` 上，既不返回也不超时（超时检查也在 sleep 之后），宿主 15 s 后报 AGENT_TIMEOUT。下一个测试的 reset 也同样挂起，直到 Quiesco 重启 app。S10b Android 正式版 5 轮中 1 次 → 那次点击用 `{ sync: false }`（X）。与 0.7.0 对比（npm 缓存中的 tarball）`wait-for-idle.ts` 与 `QuiescoNativeModule.kt` 相同，0.7.0 的 5 / 5 是时机上的运气。
 - **N5 原生模块的 Promise 不计入忙碌。** tracker 只有 network / timer / react / idle-callback / native（iOS 转场）/ frame-stable。本 app 登录时 `await AsyncStorage.setItem` 期间所有 tracker 空闲，登录的 `tap` 可能在首页的首次请求发出前返回（S18 Android 5 轮中 1 次，W3）。是否算缺陷有待 Quiesco 判断（文档未承诺覆盖）；Appium 在同一处也需要等待。
 - 环境：iOS 模拟器的通知中心里积累了各工具各轮 S22 留下的通知（重启不清除），harness 应在每轮前清空（M4）。
+
+### Quiesco 0.9.0：#63–#68 的验证结果与新发现（2026-11-20）
+
+0.9.0 关闭了 #63–#68。升级后在本仓库实测（正式版两平台各 5 轮，每轮前重启模拟器）：
+
+| 问题 | 0.9.0 实测 |
+|---|---|
+| #63 `scrollTo` 整个调用一个超时 / 误报“两端” | 已修复：每一步单独计时。S6 iOS 诊断版通过（48 s），正式版不再需要 300 s 的 `timeoutMs`。Android 见下 N2 |
+| #64 iOS `openNotification` 计时含 runner 启动 | 已修复：S22 iOS 诊断版、正式版 5 / 5 都用默认 10 s 通过 |
+| #65 iOS 通知分组上 runner 崩溃 | 5 轮未再出现（通知中心未清空，与 0.8.0 相同的环境） |
+| #66 Android 弹窗期间空闲等待挂起 | 去掉 `{ sync: false }` 后 S10b Android 5 / 5 通过 |
+| #67 原生模块 Promise | 新增 `native-module` tracker（默认关闭）。未开启、去掉 S18 的等待后 S18 Android 5 / 5 通过（0.8.0 时 5 轮中 1 次失败，偶发问题，5 轮不能证明消失）。开启它也不能绕过下面的 N1 |
+| #68 横幅自行消失被当作点击成功 | 5 轮未再出现 |
+| `quiesco build --clean`（0.8.0 时 U6） | 可用：`build.sh` 删除，改为 `quiesco build ios|android --clean` |
+
+0.9.0 中新发现的问题：
+
+- **N1 app 在 S12（左滑删除）中崩溃，两平台 5 / 5（已提交 h2nology/quiesco#74，2026-11-20）。** `@quiesco/agent` `src/sync/native-module.ts` 在 app 启动时替换 `TurboModuleRegistry.get` / `getEnforcing`，返回方法被 JS 函数包装的 `Proxy`；源码注释写明 tracker 关闭时也安装（“while it is off a wrapped call only passes through”）。react-native-gesture-handler 3.3.0 `src/v3/NativeProxy.ts` 从 `RNGestureHandlerModule` 解构出 `flushOperations` / `updateGestureHandlerConfig`（注释：“to have a raw HostFunction reference”），在 worklet 中于 UI runtime 上调用；拿到的是 Quiesco 的 JS 包装函数 → Worklets 报 “Tried to synchronously call a Remote Function”（Android `FATAL EXCEPTION`；iOS `SIGABRT`，栈为 `worklets::runSyncOnRuntime` → `HermesRuntimeImpl::throwPendingError`）。`ReanimatedSwipeable` 在滑动结束时调用。测试侧无法绕过（`ignoreNativeCalls` 只是不计数，仍然包装）。连带影响：下一个测试（S6）的 reset 先等崩溃的 app 重连 30 s，再重启 app（S6 在整套中约 63 s，单独约 36 s）。
+- **N2 S6 Android：一步之后的空闲等待超过 10 s（诊断版 1 次）。** 每一步单独计时后，0.8.0 中“每步约 16 s”的慢状态变成 `SYNC_TIMEOUT`：`timer: setTimeout(50ms)`（VirtualizedList 的分批渲染）、`react`、`frame-stable`（元素树 4,318 节点，每次加 1 行，9.5 s 内只采样 270 帧）。单独运行 6 次都约 36 s 通过；正式版 5 轮也都通过（30 s 的每步超时，W3）。原因仍未定（CPU 渲染的模拟器上 FlatList 逐批补齐窗口，属于 app 确实在忙）；不作为 Quiesco 缺陷提交。
+- **N3 `@quiesco/core` 0.9.0 发布时残留调试输出。** `dist/session.js`、`dist/device.js` 中有 `console.error("DBG resetDeviceState end", …)` / `"DBG driver.reset start"` / `"DBG waitForApp start"`，每个测试前都输出到 stderr（每轮约 70 行）。不影响结果。
+- **N4 iOS C1 / C3 在整套能力检查中偶发失败（原因未查，未提交）。** 3 次整套运行中：C1 失败 2 次（① `biometrics.fail()` 后截图上有 “Face Not Recognized / Cancel” 对话框，`system.tap({ text: 'Cancel' })` 却只读到 app 的元素 “Back / Biometric / Unlock / Locked”；② 点击 “Cancel” 报成功但状态仍为 Locked）；C3 失败 1 次（`system.expectVisible({ text: 'Copy' })` 通过、`system.tapAt` 后面板未关闭）。两项都排在 C11（`openNotification`，使用 XCUITest runner）之后；单独运行各 2 / 2 通过；0.8.0 时未出现。可能与 0.9.0 的 runner 改动（一次快照读屏、连接重置后重启）有关，属推测。
+- `init --upgrade` 仍把依赖写成 `^0.9.0`，并在测试工程加回 `e2e:*` 脚本（0.8.0 时相同）→ 改回精确版本、删除。

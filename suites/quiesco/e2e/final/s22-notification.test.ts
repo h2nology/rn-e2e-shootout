@@ -9,9 +9,7 @@ test('S22 本地通知', async ({ app }) => {
   await app.tap('tab-settings');
   await app.tap('notify-in-3s');
   await app.device.sendToBackground();
-  // 从系统通知中心点击（iOS：横幅或通知中心；Android：通知栏）
-  // [W3] timeoutMs 10 s → 30 s：iOS 上本场景常是第一个用到系统 UI 的测试，openNotification 的计时从 Quiesco 的 XCUITest runner
-  //      启动之前就开始，runner 启动用了 14 s 时第一次读屏就已超时、直接失败（正式版第 1 轮；其他轮 7 s 左右）。Quiesco 0.8.0 的缺陷，见 findings.md
-  await app.device.openNotification('Hello from rnshootout', { timeoutMs: 30_000 });
+  // 从系统通知中心点击（iOS：横幅或通知中心；Android：通知栏）。默认最多找 10 秒
+  await app.device.openNotification('Hello from rnshootout');
   await app.expectText('notification-target', 'Opened from notification');
 });

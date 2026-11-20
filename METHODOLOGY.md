@@ -1,6 +1,6 @@
 # 测量方法
 
-> 方法版本：**v4**（2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
+> 方法版本：**v5**（2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
 
 场景定义见 [`scenarios.md`](scenarios.md)。本文件定义**怎么跑、怎么计数、怎么统计、怎么报告**。
 
@@ -18,7 +18,7 @@
 
 | 工具 | 版本 | 测试写法 |
 |---|---|---|
-| Quiesco | `quiesco` 0.8.0（含 `@quiesco/*` 0.8.0） | Vitest（`@quiesco/vitest`） |
+| Quiesco | `quiesco` 0.9.0（含 `@quiesco/*` 0.9.0） | Vitest（`@quiesco/vitest`） |
 | Detox | 20.51.4 | Jest |
 | Appium | 4.0.0（XCUITest / UiAutomator2 driver 版本在接入时记录） | WebdriverIO 10.2.0 |
 | Maestro | 2.11.0 | YAML flows |
@@ -265,3 +265,4 @@ CI     = [center − half, center + half]
 | v2 | 2026-11-17 | ① 8.4 写明 `jitter` 的实际覆盖范围（原文为“app 内所有动画”）；② 2.2 规定所有测量只用 Release 构建；③ 6.4 增加 harness 统一设置设备环境（语言、动画、外观）并要求重启模拟器的理由 | M2 实现与走查中发现：部分动画时长由原生 / 第三方库控制，app 无法改变；Debug 构建不可靠；宿主机的模拟器和浏览器为日文、iOS 模拟器开启了 Reduce Motion，会影响 C10、S15 等结果。v2 制定时尚无任何测量数据 |
 | v3 | 2026-11-17 | ① 2.2 Android 测量设备由 API 37 `google_apis_playstore` 改为 API 36 AOSP `default`；C2 改在 API 36 `google_apis` 上检查；② scenarios.md C1 补充 iOS 失败路径的操作（系统提示重试时点“取消”），判定标准不变 | ① Detox 20.51.4 在 Android 37 上无法运行（实测），且官方建议 AOSP 镜像；为保证四个工具在同一设备上对比而更换（用户决定，2026-11-17）。AOSP 镜像无浏览器，C2 需要 Custom Tabs。② iOS 上 Face ID 匹配失败后系统提示重试，`authenticateAsync` 需点“取消”才返回失败（实测）。v3 制定时尚无任何测量数据（M3 实现阶段） |
 | v4 | 2026-11-19 | ① 2.1 Quiesco 0.5.0 → 0.8.0；② 披露：Quiesco 的接入使用了 Quiesco 官方的 Claude Code 插件（`quiesco@h2nology` 0.7.0 / 0.8.0：setup / writing-tests / quiesco-api / debug 技能），其他三个工具没有对应插件，接入时只依据官方文档 | ① Quiesco 在 M3 接入前发布 0.7.0，按第 2.1 节“正式测量开始前统一升级”的规则升级（用户决定，2026-11-19）；同日接入完成后发布 0.8.0（修复接入中提交的 h2nology/quiesco#44–#55），v4 尚未打 tag，直接改为 0.8.0 并重跑 Quiesco 的 M3（用户决定，2026-11-19）；其他工具版本不变。② 插件会影响易用性数据（接入步骤、首个测试通过时间、AI 编写效率），必须与结果一起报告。v4 制定时尚无任何测量数据（M3 实现阶段，Quiesco 尚未接入） |
+| v5 | 2026-11-20 | ① 2.1 Quiesco 0.8.0 → 0.9.0；② 插件披露的版本加上 `quiesco@h2nology` 0.9.0（内容不变） | ① M3 期间 Quiesco 发布 0.9.0（关闭 #63–#68），按第 2.1 节“正式测量开始前统一升级”的规则升级（用户决定，2026-11-20）；其他工具版本不变。v5 制定时尚无正式测量数据（M3 实现阶段） |

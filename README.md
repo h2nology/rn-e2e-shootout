@@ -31,7 +31,7 @@
 
 | 工具 | 版本 |
 |---|---|
-| Quiesco | 0.8.0（Vitest） |
+| Quiesco | 0.9.0（Vitest） |
 | Detox | 20.51.4（Jest） |
 | Appium | 4.0.0（WebdriverIO 10.2.0） |
 | Maestro | 2.11.0 |

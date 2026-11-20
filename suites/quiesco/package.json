@@ -3,14 +3,16 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build:ios": "E2E_TOOL=quiesco quiesco build ios --clean",
+    "build:android": "E2E_TOOL=quiesco GRADLE_OPTS=-Dorg.gradle.jvmargs=-Xmx4g quiesco build android --clean",
     "test:ios": "quiesco test --platform ios",
     "test:android": "quiesco test --platform android"
   },
   "devDependencies": {
-    "@quiesco/core": "0.8.0",
-    "@quiesco/vitest": "0.8.0",
+    "@quiesco/core": "0.9.0",
+    "@quiesco/vitest": "0.9.0",
     "@types/node": "24.19.2",
-    "quiesco": "0.8.0",
+    "quiesco": "0.9.0",
     "vitest": "5.1.1"
   }
 }
