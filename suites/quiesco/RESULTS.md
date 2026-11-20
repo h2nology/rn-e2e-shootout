@@ -73,7 +73,7 @@
 
 | 项 | iOS | Android | 说明 |
 |---|---|---|---|
-| C1 生物识别 | ✓ | ✓ | `biometrics.enroll()` / `fail()` / `match()`；“取消”用 `system.tap`。**iOS 在整套能力检查中失败**（0.11.0：2 次中 2 次，0.10.0：1 次中 1 次，都是 `system.tap` 10 s 内找不到 Face ID 对话框中的 “Cancel”，屏幕上只读到 “Biometric / Unlock / Locked”）。单独运行：0.11.0 重启后 2 次中第 2 次通过，0.10.0 2 / 2 通过。0.9.0 时为点击丢失（#87，0.11.0 已修复） |
+| C1 生物识别 | ✓ | ✓ | `biometrics.enroll()` / `fail()` / `match()`；“取消”用 `system.tap`。**iOS 在整套能力检查中失败**（0.11.0：2 次中 2 次，0.10.0：1 次中 1 次，都是 `system.tap` 10 s 内找不到 Face ID 对话框中的 “Cancel”，屏幕上只读到 “Biometric / Unlock / Locked”）。单独运行：0.11.0 重启后 2 次中第 2 次通过，0.10.0 2 / 2 通过。0.9.0 时为点击丢失（#87，0.11.0 已修复）。原因：模拟器启动后第一次出现的 Face ID 对话框不在 SpringBoard 的树中，Quiesco 读不到（h2nology/quiesco#92，见第 4 节） |
 | C2 跨 app 登录 | ✓ | ✓（GAPIS） | iOS：确认框 `system.tap({ text: 'Continue' })`，认证页面经 `system.type`。Android：Custom Tab 中 `system.type`（AOSP 镜像上经 WebView shell 也通过，不作为结果） |
 | C3 分享面板 | ✓ | ✓ | iOS：`system.expectVisible({ text: 'Copy' })` 后 `system.tapAt` 点面板外关闭。0.9.0 时 iOS 整套中 3 次里失败 1 次（点击后面板未关闭，#87），0.10.0 整套中通过。Android：`system.expectVisible` 后 `pressBack()` |
 | C4 选择器 | ✓ | ✓ | `{ id: 'dup-row', index: 2 }`；`{ label: 'Secret button' }` |
@@ -96,7 +96,7 @@
 
 ## 4. 未解决的问题
 
-- **C1 iOS**：整套能力检查中 `system.tap` 找不到 Face ID 对话框的 “Cancel”（0.10.0、0.11.0 都出现），单独运行可通过。原因未查明（可能是对话框尚未呈现完成时的系统 UI 读取）。
+- **C1 iOS**：整套能力检查中 `system.tap` 找不到 Face ID 对话框的 “Cancel”（0.10.0、0.11.0 都出现）。原因：模拟器启动后第一次出现的 Face ID 对话框只在 `com.apple.LocalAuthenticationUIService` 的树中，Quiesco 不读这个 app（重启后 3 / 3 失败、不重启 2 / 2 通过；本地补丁验证 2 / 2 通过）。已提交 h2nology/quiesco#92，等修复后重测。
 - **S6 Android**：耗时对宿主机负载敏感（35–165 s），正式版保留 300 s 单测超时（W3）。M4 的测量需固定宿主机条件（负载、防睡眠）。
 - **宿主机睡眠**：无人值守运行时 macOS 会在 DarkWake 中被强制睡眠，必须用 `caffeinate -dimsu` 包住运行（M4 harness 需内置）。
 - `quiesco doctor` 新增 1 项 warning（app IDs 无法与 `app.config.ts` 比对），不影响运行。

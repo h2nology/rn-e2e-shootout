@@ -214,3 +214,4 @@
   - S6 Android tracker 开 / 关对照：无差别，耗时由宿主机负载决定（35–165 s）
   - 能力检查：同 0.10.0（iOS C1 整套中失败、单独第 2 次通过；Android C11 ✗）；用户的键盘设置已写回
   - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v7（Quiesco 0.11.0）用户确认，打 tag `methodology-v7`
+  - C1 iOS 调查（用户要求，2026-11-21）：重启后第一次 Face ID 对话框只在 `com.apple.LocalAuthenticationUIService` 的树中、不在 SpringBoard 的树中，Quiesco 不读该 app（重启后 3 / 3 失败、不重启 2 / 2 通过；`OTHER_APPS` 本地补丁 2 / 2 通过，已还原）→ 提交 h2nology/quiesco#92
