@@ -76,6 +76,21 @@
 | V6 | — | 诊断版：iOS 23 / 24、Android 22 / 24 | 命令 | S6 iOS、S22 iOS 通过（#63、#64 修复）。**S12 两平台 app 崩溃**（新问题，读 logcat / iOS crash report 与 agent、Gesture Handler 源码确认，h2nology/quiesco#74）。S6 Android 一步之后空闲超过 10 s（单独 6 次都通过）→ 每步 30 s（W3） |
 | V7 | — | 正式版两平台各 5 轮 | 命令 | 每轮 23 / 24，失败只有 S12（#74） |
 
+## 升级到 0.10.0（2026-11-20）
+
+0.9.0 中发现的问题 h2nology/quiesco#74–#78 在 0.10.0 全部关闭。升级后从诊断版起重跑。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| W1 | — | 用户更新插件（`/plugin`）到 0.10.0 | 命令 | — |
+| W2 | 33 s | 在 `suites/quiesco` 中运行 `npx quiesco@0.10.0 init --upgrade` | 命令 | 两侧的包升级到 0.10.0。与之前相同：依赖写成 `^0.10.0`、加回 `e2e:*` 脚本 → 改回精确版本、删除 |
+| W3 | — | `npx quiesco doctor` | 命令 | 1 项失败（误报）：scripts 检查把 `E2E_TOOL=quiesco quiesco build ios --clean` 读成命令 `quiesco quiesco`（#83）。其余通过。不改脚本 |
+| W4 | iOS 224 s、Android 267 s | `npm run build:ios` / `build:android` | 命令 | 成功。`native-module` tracker 不开启，`metro.config.js` 不需要 0.10.0 新增的 `nativeModules: true` |
+| W5 | — | 诊断版：iOS 23 / 24、Android 23 / 24 | 命令 | S12 两平台通过（#74 修复）、`DBG` 输出消失（#75）。S22 iOS：模拟器的通知设置此前被用户重建，授权丢失 → app 弹出授权弹窗、通知未排程；下一场景开始时 Quiesco 清理残留弹窗点了 “Don't Allow”（#85、#86）。用一次性测试（`setPermission('notifications','reset')` 重装 → `system.allowPermission()`，不入库）恢复为“已授权”，iOS 诊断版重跑 24 / 24。S6 Android：超过 Vitest 的 120 s 单测超时（`scrollTo` 未卡住；中断时每一步的记录不写出，#84） |
+| W6 | — | 正式版两平台各 5 轮 | 命令 | Android 5 × 24 / 24。iOS 第 1 轮 S22 失败（#82：runner 冷启动 11.8 s 错过横幅，通知中心路径上 “Open” 的点击时机），其余 4 轮 24 / 24。用户决定按现状记录、等修复 |
+| W7 | — | 能力检查 | 命令 | Android 同 0.9.0（C2 在 GAPIS 上 ✓）。iOS：C1 整套中失败、单独 2 / 2 通过；S7b 4 次失败（写入 `AppleKeyboards` 后软键盘仍只有英文，模拟器环境，未查明） |
+| W8 | — | 提交 h2nology/quiesco#82–#87（用户要求） | — | 见 findings.md 0.10.0 |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：
@@ -85,7 +100,7 @@ Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、�
 | iOS | mock server `POST /reset` → `app.device.setPermission('location', 'reset')`（`simctl privacy reset`；`clearData` 不撤销权限）→ `app.device.relaunch({ clearData: true })`（清空数据容器、删除 UserDefaults，冷启动） |
 | Android | mock server `POST /reset` → `app.device.relaunch({ clearData: true })`（`pm clear`，同时撤销运行时权限） |
 
-## 外部命令 / 额外配置一览（0.9.0）
+## 外部命令 / 额外配置一览（0.10.0，与 0.9.0 相同）
 
 | 用途 | 做法 | 原因 |
 |---|---|---|

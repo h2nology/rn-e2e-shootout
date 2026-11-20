@@ -192,3 +192,13 @@
   - 其他：`@quiesco/core` 0.9.0 残留 `DBG` 调试输出
   - METHODOLOGY v5（Quiesco 0.9.0）用户确认，打 tag `methodology-v5`
   - 环境恢复：Android 切回 AOSP（GAPIS 已关闭）
+
+- **Quiesco 0.10.0 重跑**（用户要求：0.10.0 发布，#74–#78 已关闭；插件由用户更新）
+  - `init --upgrade`（改回精确版本 0.10.0、删除 `e2e:*` 脚本）；`doctor` 1 项误报（scripts 检查把 `E2E_TOOL=quiesco quiesco build` 读成 `quiesco quiesco`）
+  - 构建：iOS 224 s、Android 267 s
+  - 诊断版：iOS 23/24（S22：模拟器通知权限丢失 → 环境恢复后重跑 24/24）、Android 23/24（S6 超过 120 s 单测超时）。S12 两平台通过（#74 修复）、`DBG` 消失（#75）
+  - 环境：iOS 模拟器的通知设置 13:46 左右被重建（用户的操作）；用一次性测试恢复通知授权
+  - 正式版 5 轮：Android 5 × 24/24（228–268 s）✓；iOS 23、24、24、24、24（341–366 s），第 1 轮 S22：runner 冷启动 11.8 s 错过横幅 → 通知中心路径，iOS 27 上点击只露出 “Open”、Quiesco 3 s 后才点（findings 0.10.0 N3）
+  - 能力检查：Android 同 0.9.0（C11 ✗；C2 GAPIS ✓，已切回 AOSP）。iOS：C1 整套中失败、单独 2/2 ✓；**S7b 失败 4 次**（`AppleKeyboards` 写入后键盘进程不认，重启也一样；0.9.0 时同一方法可用，推测与 13:46 的模拟器设置重建有关，未查明）；其余 ✓
+  - **用户决定**：13:46 的重建是用户的操作；S22 iOS 按现状记录、等修复（不在测试侧绕过）；提交 issue → h2nology/quiesco#82–#87
+  - RESULTS / WAITS / SETUP-LOG 更新；METHODOLOGY v6（Quiesco 0.10.0）用户确认，打 tag `methodology-v6`

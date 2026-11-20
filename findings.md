@@ -299,3 +299,25 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - **N5 app 崩溃时的报告与恢复（已提交，2026-11-20）。** #76：`AGENT_DISCONNECTED` 只报 close code，不说 app 崩溃及原因（Android 的 `FATAL EXCEPTION` 在 device.log 中，iOS 的崩溃报告只在 `~/Library/Logs/DiagnosticReports`）。#77：崩溃后证据收集与下一个测试的 reset 各等 `connectTimeoutMs`（30 s）才重启 app，每次崩溃约浪费 60 s。
 - **N6 `scrollTo` 某一步中的 `SYNC_TIMEOUT` 不带步数 / 偏移（已提交 h2nology/quiesco#78）。** `src/runtime.ts` 的步骤循环中 `syncIfNeeded` 的异常原样抛出；timeline 只有一个 `scrollTo` span；通过的测试不保存证据，S6 Android 的慢步无法与正常运行比较。
 - `init --upgrade` 仍把依赖写成 `^0.9.0`，并在测试工程加回 `e2e:*` 脚本（0.8.0 时相同）→ 改回精确版本、删除。
+
+### Quiesco 0.10.0：#74–#78 的验证结果与新发现（2026-11-20）
+
+0.10.0 关闭了 #73–#78。升级后在本仓库实测：
+
+| 问题 | 0.10.0 实测 |
+|---|---|
+| #74 `native-module` 包装使 S12 崩溃 | 已修复：S12 两平台诊断版通过（iOS 18.8 s、Android 8.5 s）。本仓库不开启该 tracker，`metro.config.js` 不需要 `nativeModules: true` |
+| #75 `DBG` 调试输出 | 已修复：日志中 0 行 |
+| #76 / #77 崩溃的报告与恢复 | 本次没有崩溃，未验证 |
+| #78 `scrollTo` 的每一步 | 可用：`QUIESCO_ARTIFACTS=all` 时 timeline 中有每一步的 span 与 `syncMs`。但测试框架的超时先到时（调用未返回），每一步的记录不写出（见 N2） |
+
+0.10.0 中的新发现（已提交 GitHub issue，h2nology/quiesco，2026-11-20：#82（N3）、#83（N1）、#84（N2）、#85、#86（S22 诊断版的两点）、#87（0.9.0 N4））：
+
+- **N1 `quiesco doctor` 的 scripts 检查误报。** `quiesco/dist/packages.js:35` 的正则 `(?:^|[^\w@/.-])quiesco\s+([a-z][\w:-]*)` 把 `E2E_TOOL=quiesco quiesco build ios --clean` 中 `=` 后的 `quiesco` 当作命令开头，报 `"build:ios" runs \`quiesco quiesco\``（失败）。`build:android` 因为后面是大写的 `GRADLE_OPTS` 没有匹配。只影响 doctor 的结果，构建与测试不受影响。
+- **N2 被外部超时中断的 `scrollTo` 不留下每一步的记录。** 每一步的记录在 agent 中积累，调用返回时（或 SYNC_TIMEOUT 时）才交给宿主（`@quiesco/agent` `src/runtime.ts` 的 `recordStep`）；宿主给 `scrollTo` 的时限约为 60 步 × 每步超时，远长于 Vitest 的单测超时。诊断版 S6 Android 被 Vitest 在 120 s 时中断，timeline 中没有 `scrollTo`。
+- **S6 Android 的耗时波动大，原因未定（不判断为 0.10.0 的退化）。** 正式版 5 轮（整套、每轮前重启）S6 为 34.9–53.6 s，与 0.9.0 的约 33 s 相当。但诊断版（模拟器已连续运行约 4 小时、未重启）超过 120 s 被 Vitest 中断（到第 315 行附近，平均每步约 3.7 s）；重启后单独运行（`QUIESCO_ARTIFACTS=all`，同时录屏）143.6 s：46 步，前 6 步每步约 0.5 s（空闲等待 70–200 ms），第 7 步起每步约 2–3 s（空闲等待 1–2.5 s，最长 7.4 s；忙的是 `timer` 50 ms 分批渲染、`react`、`frame-stable`）。推测与模拟器的负载有关（lavapipe CPU 渲染，Quiesco 输出警告；录屏、长时间运行），未证实。agent 0.9.0 → 0.10.0 中与此可能有关的源码差别只有原生模块包装不再安装（#74）。其他工具 S6 Android：Detox 约 120 s、Maestro 约 190 s。
+- **S22 iOS 诊断版失败：环境（模拟器的通知设置被重建），与 Quiesco 无关。** 插件 `failure-investigator` 读统一日志：模拟器的 `data/Library/BulletinBoard`、`UserNotifications` 在 2026-11-20 13:46 左右重建（用户的操作），rnshootout 的通知授权丢失 → 点击 `notify-in-3s` 时 app 弹出授权弹窗，通知未排程，`openNotification` 10 s 后报 “seen: nothing”。下一场景开始时 Quiesco 清理残留弹窗点了 “Don't Allow”（`dismissButton` 优先 cancel / deny），状态变为“拒绝”。用一次性测试（`setPermission('notifications','reset')` 重装 → 弹窗 `system.allowPermission()`）恢复为“已授权”，S22 单独通过。可反馈给 Quiesco 的两点：`openNotification` 超时的 “seen” 只列 `others` 不列 `alerts`，遮住了屏幕上的授权弹窗；清理残留弹窗时选“拒绝”会在不能用 simctl 重置的权限（iOS 通知）上留下持久状态。
+- **N3 iOS `openNotification` 走通知中心路径时，在 iOS 27 上几乎必败（正式版第 1 轮 S22）。** 插件 `failure-investigator` 读模拟器统一日志（执行者核对）：system UI runner 冷启动 11.8 s（第 2–5 轮 7.7–8.3 s），就绪时横幅已消失（显示约 8.4 s）→ 下拉通知中心。iOS 27 的通知中心是 Cover Sheet（SpringBoard `UILocked: 1`，但 `deviceAuthenticated true`，并未上锁），点击通知不执行默认动作，而是侧滑露出 “Open”（`Hinting side swipe instead of executing action … didExecute? NO`），约 3.1 s 后自动收回。第 1 次点击展开堆叠（#65 的处理正确），第 2 次点中最新通知（坐标正确）；`@quiesco/core` `src/devices/ios.ts` 的 `tapOpened` 先等 `NOTIFICATION_FRONT_MS`（3 s）才找 “Open”，再加 runner 点击约 1.2 s，在提示收回后（4.3 s）才落下 → 又落在通知 cell 上。点 “Open” 也没有“两次读取一致才点”。第 2–5 轮都在横幅上一次点中（`didExecute? YES`），堆叠中有 2 条旧通知也通过。触发条件：runner 冷启动超过约 10–11 s（#64 记录的冷启动为 7–15 s）。警告文案 “a locked device” 不准确。
+- 0.9.0 的 N4（iOS `system.tap` 在系统 UI 呈现动画结束前点击）：0.10.0 中 `src/device.ts`、`src/devices/ios-runner.ts` 与 0.9.0 相同，提交为 #87。
+- **S7b iOS 在 0.10.0 中失败 4 次（环境）。** `simctl spawn booted defaults write -g AppleKeyboards …` 写入后（包括写入后重启模拟器），软键盘只有英文、没有 “Next keyboard” 键。同一方法在 0.9.0 / Appium 时可用；模拟器的设置在 13:46 被用户重建，键盘相关的其他设置可能随之丢失（未查明）。
+- `init --upgrade` 仍把依赖写成 `^0.10.0` 并加回 `e2e:*` 脚本 → 改回精确版本、删除。
