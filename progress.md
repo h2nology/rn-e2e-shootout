@@ -204,3 +204,13 @@
   - RESULTS / WAITS / SETUP-LOG 更新；METHODOLOGY v6（Quiesco 0.10.0）用户确认，打 tag `methodology-v6`
   - S6 Android 的慢（用户询问）：录屏（144 s）与诊断版前未重启模拟器（执行者疏漏）所致；重启后诊断版 24/24（S6 36.8 s），单独约 36 s（平均每步 582 ms）。其他工具 Detox 约 120 s、Maestro 约 190 s
   - S7b iOS 补测：用户在“设置”中手动添加键盘后 2/2 ✓；用户的键盘设置已写回
+
+- **Quiesco 0.11.0 重跑**（用户要求：0.11.0 发布，#82–#87 已关闭；插件由用户更新；2026-11-20 – 21）
+  - `init --upgrade`（改回精确版本、删除 `e2e:*` 脚本）；`doctor` 通过（#83 修复，新增 app IDs warning）；构建 iOS 196 s、Android 211 s
+  - 诊断版两平台 24/24。S6 iOS 68 s / Android 110 s：不是回归（Vitest 排序使 S6 承担重启后冷启动 + 宿主机负载；源码只多了每步一条 `step` 通知）
+  - 正式版 5 轮：iOS 5 × 24/24（#82 修复）；Android 第 1 轮 S18 失败（#67：登录后 `AsyncStorage.setItem` 期间 tap 提前返回）
+  - **用户决定**：开启 `native-module` tracker（`metro.config.js` 的 `nativeModules: true` + config `sync.trackers`），重建后全部重跑
+  - tracker 开启：诊断版两平台 24/24（S12 不崩溃）；Android 5 × 24/24；iOS 第一次 5 轮因 macOS 睡眠（`pmset` 逐秒对应，Dark Wake Thermal Emergency）作废 → `caffeinate -dimsu` 下重跑 5 × 24/24。METHODOLOGY 6.4 本已要求防睡眠，执行者疏漏；`five-runs.sh` 加入 `caffeinate`
+  - S6 Android tracker 开 / 关对照：无差别，耗时由宿主机负载决定（35–165 s）
+  - 能力检查：同 0.10.0（iOS C1 整套中失败、单独第 2 次通过；Android C11 ✗）；用户的键盘设置已写回
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v7 待确认

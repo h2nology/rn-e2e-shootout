@@ -1,8 +1,10 @@
-# Quiesco：等待与同步绕过清单（正式版，0.10.0）
+# Quiesco：等待与同步绕过清单（正式版，0.11.0）
 
 按 METHODOLOGY 4 分类。诊断版（`e2e/diagnostic`）不含以下任何一项；正式版与诊断版的差别只有下表的位置（`diff -r e2e/diagnostic e2e/final`）。
 
 Quiesco 的每个调用都先等 app 空闲（网络、定时器、React、原生转场、元素树稳定等 tracker），动作之后再等一次；断言会重试到成立或超时。这些都是工具默认行为，不计数（METHODOLOGY 4.2）。
+
+0.11.0 起在 `quiesco.config.mts` 中开启 `native-module` tracker（默认关闭，阈值与忽略列表用默认值；app 侧 `withQuiesco(config, { nativeModules: true })`）。这是对整个套件生效的 Quiesco 配置项，不是某个调用点的等待，不计入下表；开启的原因与对照见 RESULTS.md 的 S18。
 
 | # | 文件:行 | 类别 | 平台 | 内容 | 为什么需要 |
 |---|---|---|---|---|---|
@@ -11,7 +13,7 @@ Quiesco 的每个调用都先等 app 空闲（网络、定时器、React、原�
 
 “平台”列为该项是因哪个平台的实测失败而加；代码中都不按平台分支，两个平台都执行。
 
-## 汇总（正式版，0.10.0）
+## 汇总（正式版，0.11.0）
 
 按调用点计数（METHODOLOGY 4.2）。
 
@@ -21,7 +23,7 @@ Quiesco 的每个调用都先等 app 空闲（网络、定时器、React、原�
 | Android 需要 | 0 | 0 | 2（#1、#2） | 0 |
 | 套件合计（代码中的调用点） | 0 | 0 | 2 | 0 |
 
-不包括 S22 iOS：0.10.0 正式版第 1 轮因 Quiesco 的缺陷失败（h2nology/quiesco#82，通知中心路径的 “Open” 点击时机），按用户决定不在测试侧绕过，等修复（测试侧可行的绕过是在发通知前用 `system.expectNotVisible` 预先启动 system UI runner，属 X）。
+0.10.0 时未计入的 S22 iOS（#82）已在 0.11.0 修复，不需要等待。
 
 ### 各版本的差别
 
@@ -31,6 +33,7 @@ Quiesco 的每个调用都先等 app 空闲（网络、定时器、React、原�
 | 0.8.0 | W3×3 | W3×3 / X×1 | `scrollTo` 整体超时（#63）、iOS 通知 runner 启动计时（#64）、原生模块 Promise（#67）、弹窗期间空闲等待挂起（#66） |
 | 0.9.0 | W3×1 | W3×2 | 0.8.0 的 S6 `scrollTo` 300 s、S22 30 s、S18 `expectVisible`、S10b `sync: false` 全部去掉，5 轮通过；S6 Android 改为每步 30 s |
 | 0.10.0 | W3×1 | W3×2 | 与 0.9.0 相同，未增减。诊断版 Android S6 超过 120 s，即 #2 的情形 |
+| 0.11.0 | W3×1 | W3×2 | 调用点与 0.10.0 相同。另开启 `native-module` tracker（配置项）：不开启时 S18 Android 5 轮中 1 次失败（#67），也可以改为在测试中加 W3（`expectVisible('item-row-1')`，0.8.0 的做法），用户选择开启 tracker |
 
 ## S11 / S15 / S16（同步机制相关）
 

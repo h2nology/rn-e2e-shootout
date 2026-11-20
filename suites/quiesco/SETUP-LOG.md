@@ -94,6 +94,28 @@
 | W10 | — | S7b iOS 补测（用户要求） | 命令 | 另写 `com.apple.keyboard.preferences` 的 `KeyboardsCurrentAndNext` 并重启，仍只有英文键盘 → 恢复原值，需在模拟器“设置”中手动添加键盘 |
 | W11 | — | 用户在模拟器“设置”中手动添加中文拼音 / 日文罗马字键盘后补测 S7b iOS | 命令 | 2 / 2 通过。第 2 次运行前 `AppleKeyboards` 已被第 1 次的清理还原为只有英文，仍通过 → 起作用的是手动添加时写入的其他设置（如 `AppleKeyboardsExpanded`），不是 `AppleKeyboards` 本身。补测后把用户的键盘设置写回 |
 
+## 升级到 0.11.0（2026-11-20 – 21）
+
+0.10.0 中提交的 h2nology/quiesco#82–#87 在 0.11.0 全部关闭。升级后从诊断版起重跑。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| X1 | — | 用户更新插件（`/plugin`）到 0.11.0 | 命令 | — |
+| X2 | 8 s | 在 `suites/quiesco` 中运行 `npx quiesco@0.11.0 init --upgrade` | 命令 | 与之前相同：依赖写成 `^0.11.0`、加回 `e2e:*` 脚本 → 改回精确版本、删除 |
+| X3 | — | `npx quiesco doctor` | 命令 | 全部通过。#83 的误报消失；新增 1 项 warning：app IDs 无法与 `app.config.ts` 比对（不影响） |
+| X4 | iOS 196 s、Android 211 s | `npm run build:ios` / `build:android` | 命令 | 成功 |
+| X5 | — | 诊断版：iOS 24 / 24、Android 24 / 24 | 命令 | S6 iOS 68 s、Android 110 s（0.10.0 约 33–37 s）。单独运行与源码对比后判断不是回归：Vitest 按上次耗时把 S6 排到第一个，承担重启后的冷启动；Android 另受宿主机负载影响（findings.md 0.11.0） |
+| X6 | — | 正式版两平台各 5 轮 | 命令 | iOS 5 × 24 / 24（#82 修复）。Android 第 1 轮 S18 失败，其余 24 / 24 |
+| X7 | — | S18 Android 交给 `failure-investigator` | — | #67 的已知限制：登录后 `await AsyncStorage.setItem` 期间默认 tracker 都空闲，登录的 `tap` 提前返回，一次性 500 被首页首次请求用掉 |
+| X8 | — | 能力检查（tracker 关闭） | 命令 | 同 0.10.0：iOS C1 整套中失败；Android C11 ✗ |
+| X9 | — | **用户决定开启 `native-module` tracker**（另两个选项：测试中加 W3、按现状记录） | — | — |
+| X10 | iOS 194 s、Android 184 s | `app/metro.config.js` 改为 `withQuiesco(…, { nativeModules: true })`；`quiesco.config.mts` 加 `sync: { trackers: { 'native-module': true } }`；重建 | 手动编辑 + 命令 | 生成的 build config 含 `nativeModules: true`。0.11.0 不包装 Gesture Handler / Reanimated / Worklets 模块（#74） |
+| X11 | — | 诊断版：iOS 24 / 24（354 s）、Android 24 / 24（230 s） | 命令 | S12 不崩溃 |
+| X12 | — | 正式版两平台各 5 轮 | 命令 | Android 5 × 24 / 24。**iOS 大面积失败**（S9 的 `type` 约 1,000 s 无响应、第 5 轮全部失败）→ `failure-investigator` 与 `pmset -g log` 确认：显示器 00:25 关闭后 macOS 进入 Idle Sleep / Maintenance Sleep，之后反复 “Dark Wake Thermal Emergency” 睡眠（约 1,000 s），每个失败与一次睡眠逐秒对应；不是 tracker。iOS 结果作废 |
+| X13 | — | iOS 正式版 5 轮在 `caffeinate -dimsu` 下重跑 | 命令 | 5 × 24 / 24（337–348 s），运行区间内无睡眠事件 |
+| X14 | — | S6 Android 单独运行 tracker 开 / 关对照（各 2 次，每次前重启） | 命令 | 开 106、143 s；关 109、93 s（宿主机负载 10–16）。无差别，耗时由宿主机负载决定 |
+| X15 | — | 能力检查（tracker 开启，`caffeinate`） | 命令 | iOS C1 整套中失败、单独 2 次中第 2 次通过；其余与 0.10.0 相同。S7b 后把用户的键盘设置写回 |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：
@@ -103,7 +125,7 @@ Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、�
 | iOS | mock server `POST /reset` → `app.device.setPermission('location', 'reset')`（`simctl privacy reset`；`clearData` 不撤销权限）→ `app.device.relaunch({ clearData: true })`（清空数据容器、删除 UserDefaults，冷启动） |
 | Android | mock server `POST /reset` → `app.device.relaunch({ clearData: true })`（`pm clear`，同时撤销运行时权限） |
 
-## 外部命令 / 额外配置一览（0.10.0，与 0.9.0 相同）
+## 外部命令 / 额外配置一览（0.11.0，与 0.9.0 相同）
 
 | 用途 | 做法 | 原因 |
 |---|---|---|

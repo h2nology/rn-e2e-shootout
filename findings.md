@@ -321,3 +321,21 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 0.9.0 的 N4（iOS `system.tap` 在系统 UI 呈现动画结束前点击）：0.10.0 中 `src/device.ts`、`src/devices/ios-runner.ts` 与 0.9.0 相同，提交为 #87。
 - **S7b iOS 在 0.10.0 中失败 4 次（环境）。** `simctl spawn booted defaults write -g AppleKeyboards …` 写入后（包括写入后重启模拟器），软键盘只有英文、没有 “Next keyboard” 键。同一方法在 0.9.0 / Appium 时可用；模拟器的设置在 13:46 被用户重建，键盘相关的其他设置可能随之丢失。用户在“设置”中手动添加中文拼音 / 日文罗马字键盘后 2 / 2 通过（手动添加会另写 `AppleKeyboardsExpanded = 1` 等；第 2 次运行时 `AppleKeyboards` 已被还原为只有英文仍通过，所以生效的是这些其他设置）。
 - `init --upgrade` 仍把依赖写成 `^0.10.0` 并加回 `e2e:*` 脚本 → 改回精确版本、删除。
+
+### Quiesco 0.11.0：#82–#87 的验证结果与新发现（2026-11-20 – 21）
+
+0.11.0 关闭了 #82–#87。升级后在本仓库实测（正式版两平台各 5 轮，每轮前重启模拟器）：
+
+| 问题 | 0.11.0 实测 |
+|---|---|
+| #82 iOS 27 通知中心路径上 “Open” 的点击时机 | iOS 正式版 S22 5 / 5（tracker 关闭、开启各 5 轮，共 10 / 10），默认超时 |
+| #83 doctor 把 `E2E_TOOL=quiesco quiesco build` 读成 `quiesco quiesco` | 已修复。新增 1 项 warning：app IDs 无法与 `app.config.ts` 比对 |
+| #84 被测试框架超时中断的 `scrollTo` 不留每一步的记录 | 未复现中断（S6 未超时），未验证 |
+| #85 / #86 残留通知权限弹窗 | 本轮环境中通知已授权，未出现弹窗，未验证 |
+| #87 系统 UI 动画中的点击丢失 | C3 iOS 整套中通过。C1 iOS 仍在整套中失败，但现象不同（见下 N2） |
+
+- **S6 变慢不是回归。** 诊断版 S6 iOS 68 s、Android 110 s（0.10.0 约 33–37 s）。0.10.0 → 0.11.0 的 `scrollTo` 路径上只多了每一步一条 `step` 通知（#84，`@quiesco/agent` `src/runtime.ts` 的 `recordStep`），单独运行的 timeline 中 iOS 每步约 543 ms，与 0.10.0 相同。原因是 Vitest 按上次耗时排序：0.11.0 起 S6 排在第一个，承担重启后的冷启动 15–20 s（0.10.0 时由第一个的 S22 / S12 承担：S22 40.6 s、S12 16.1 s → 0.11.0 为 19.2 s、10.4 s）；整轮耗时不变（iOS 335–344 s，0.10.0 为 338–366 s）。Android 另受宿主机负载影响：同一构建、同为重启后单独运行，负载约 5 时约 35 s，负载 10–16 时 90–165 s；`native-module` tracker 开 / 关对照（各 2 次）无差别。
+- **N1 S18 Android 失败 1 次（#67 的已知限制，不是回归）。** tracker 关闭时正式版第 1 轮：登录的 `tap` 在 app `await AsyncStorage.setItem`（`app/src/lib/store.ts:44`）期间返回（默认 tracker 都空闲），测试随后注入的一次性 500 被首页首次 `/items` 用掉（mock server 先延迟再匹配规则，`mock-server/src/server.ts:185-186`），之后 `list-reload` 拿到正常结果。0.9.0 / 0.10.0 的 5 / 5 是时机上的运气（0.9.0 的表中已注明“5 轮不能证明消失”）。用户决定开启 `native-module` tracker：两平台诊断版、正式版 5 轮、能力检查全部重跑，S18 两平台 5 / 5，S12 不崩溃，整轮耗时无可见增加。
+- **N2 C1 iOS 整套中 `system.tap({ text: 'Cancel' })` 10 s 内找不到。** 屏幕上的系统 UI 只读到 “Back / Biometric / Unlock / Locked / Toolbar”（0.10.0、0.11.0 同样）。单独运行：0.10.0 2 / 2，0.11.0 重启后第 1 次失败、第 2 次通过。原因未查明，未提交 issue。
+- **环境：无人值守运行时 macOS 睡眠。** tracker 开启后的第一次 iOS 正式版 5 轮大面积失败（S9 的 `type login-email` 约 1,000 s 后 AGENT_TIMEOUT；第 5 轮全部失败）。插件 `failure-investigator` 对照 `pmset -g log`（执行者核对）：显示器 00:25:53 关闭后，00:42 起 Idle Sleep / Maintenance Sleep，01:03 起反复 “Dark Wake Thermal Emergency” 睡眠 936–1,029 s；每个失败调用的起止与一次睡眠逐秒对应（如 01:03:33 起睡眠 1,029 s ↔ `type` 1,029,191 ms），app 的 device.log 在睡眠期间所有线程静止、无崩溃。agent 的 `type` 只执行一次、不重试（`src/actions/native.ts:360-365`），包装函数不阻塞（`src/sync/native-module.ts:158-178`）。用 `caffeinate -dimsu` 包住运行后重跑 5 × 24 / 24、无睡眠事件。METHODOLOGY 6.4 本已规定 `caffeinate -dimsu` 与关闭 Spotlight 索引，M3 的运行没有照做（执行者的疏漏；之前的运行也未防睡眠，只是显示器亮着、未进入睡眠）。M4 的 harness 需内置防睡眠，并在每次运行后检查 `pmset -g log`。
+- `init --upgrade` 仍把依赖写成 `^0.11.0` 并加回 `e2e:*` 脚本 → 改回精确版本、删除。

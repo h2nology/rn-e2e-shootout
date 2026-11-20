@@ -18,6 +18,9 @@ export default defineConfig({
       reversePorts: [4000],
     },
   },
+  // native-module tracker（默认关闭）：await 原生模块 Promise 期间（如登录后的 AsyncStorage.setItem）也算忙碌（h2nology/quiesco#67）。
+  // 需要 app 侧 withQuiesco(config, { nativeModules: true })（app/metro.config.js）。阈值、忽略列表用默认值。
+  sync: { trackers: { 'native-module': true } },
   devices: {
     ios: { device: 'iPhone 17', os: '27.0' },
     // C2 只在 GAPIS 镜像上检查（AOSP 镜像没有浏览器，METHODOLOGY 2.2）：ANDROID_AVD=Medium_Phone_API_36_GAPIS

@@ -2,6 +2,8 @@
 # 正式版连续 N 轮（METHODOLOGY 3 完成标准）。每轮前重启模拟器（METHODOLOGY 6.4）。
 #   PLATFORM=ios|android RUNS=5 scripts/five-runs.sh
 cd "$(dirname "$0")/.."
+# METHODOLOGY 6.4：运行期间防止宿主机睡眠（本脚本退出时 caffeinate 随之结束）
+caffeinate -dimsu -w $$ &
 PLATFORM=${PLATFORM:-ios}
 RUNS=${RUNS:-5}
 mkdir -p logs
