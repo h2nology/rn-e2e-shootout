@@ -90,6 +90,9 @@
 | W6 | — | 正式版两平台各 5 轮 | 命令 | Android 5 × 24 / 24。iOS 第 1 轮 S22 失败（#82：runner 冷启动 11.8 s 错过横幅，通知中心路径上 “Open” 的点击时机），其余 4 轮 24 / 24。用户决定按现状记录、等修复 |
 | W7 | — | 能力检查 | 命令 | Android 同 0.9.0（C2 在 GAPIS 上 ✓）。iOS：C1 整套中失败、单独 2 / 2 通过；S7b 4 次失败（写入 `AppleKeyboards` 后软键盘仍只有英文，模拟器环境，未查明） |
 | W8 | — | 提交 h2nology/quiesco#82–#87（用户要求） | — | 见 findings.md 0.10.0 |
+| W9 | — | S6 Android 变慢的原因（用户询问） | 命令 | 重启后单独运行 2 次（只保存 timeline、不录屏）：约 36 s、平均每步 582 ms。之前的 144 s 是录屏所致；W5 的诊断版运行前未重启模拟器（疏漏），按规则重启后重跑诊断版 24 / 24（S6 36.8 s） |
+| W10 | — | S7b iOS 补测（用户要求） | 命令 | 另写 `com.apple.keyboard.preferences` 的 `KeyboardsCurrentAndNext` 并重启，仍只有英文键盘 → 恢复原值，需在模拟器“设置”中手动添加键盘 |
+| W11 | — | 用户在模拟器“设置”中手动添加中文拼音 / 日文罗马字键盘后补测 S7b iOS | 命令 | 2 / 2 通过。第 2 次运行前 `AppleKeyboards` 已被第 1 次的清理还原为只有英文，仍通过 → 起作用的是手动添加时写入的其他设置（如 `AppleKeyboardsExpanded`），不是 `AppleKeyboards` 本身。补测后把用户的键盘设置写回 |
 
 ## 状态重置（METHODOLOGY 5）
 

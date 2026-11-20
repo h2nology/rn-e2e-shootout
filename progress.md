@@ -202,3 +202,5 @@
   - 能力检查：Android 同 0.9.0（C11 ✗；C2 GAPIS ✓，已切回 AOSP）。iOS：C1 整套中失败、单独 2/2 ✓；**S7b 失败 4 次**（`AppleKeyboards` 写入后键盘进程不认，重启也一样；0.9.0 时同一方法可用，推测与 13:46 的模拟器设置重建有关，未查明）；其余 ✓
   - **用户决定**：13:46 的重建是用户的操作；S22 iOS 按现状记录、等修复（不在测试侧绕过）；提交 issue → h2nology/quiesco#82–#87
   - RESULTS / WAITS / SETUP-LOG 更新；METHODOLOGY v6（Quiesco 0.10.0）用户确认，打 tag `methodology-v6`
+  - S6 Android 的慢（用户询问）：录屏（144 s）与诊断版前未重启模拟器（执行者疏漏）所致；重启后诊断版 24/24（S6 36.8 s），单独约 36 s（平均每步 582 ms）。其他工具 Detox 约 120 s、Maestro 约 190 s
+  - S7b iOS 补测：用户在“设置”中手动添加键盘后 2/2 ✓；用户的键盘设置已写回
