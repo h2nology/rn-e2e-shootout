@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 0.11.0（开启 `native-module` tracker）：两平台连续 5 轮全绿，M3 完成。METHODOLOGY v7（Quiesco 0.11.0）待用户确认后打 tag `methodology-v7`。之后 M4：harness 与汇总脚本（内置防睡眠与 `pmset` 检查，METHODOLOGY 6.4）。
+Quiesco 0.11.0（开启 `native-module` tracker）：两平台连续 5 轮全绿，M3 完成。METHODOLOGY v7（Quiesco 0.11.0）用户确认，已打 tag `methodology-v7`。下一步 M4：harness 与汇总脚本（内置防睡眠与 `pmset` 检查，METHODOLOGY 6.4）。
 
 ## Current Phase
 

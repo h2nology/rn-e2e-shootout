@@ -213,4 +213,4 @@
   - tracker 开启：诊断版两平台 24/24（S12 不崩溃）；Android 5 × 24/24；iOS 第一次 5 轮因 macOS 睡眠（`pmset` 逐秒对应，Dark Wake Thermal Emergency）作废 → `caffeinate -dimsu` 下重跑 5 × 24/24。METHODOLOGY 6.4 本已要求防睡眠，执行者疏漏；`five-runs.sh` 加入 `caffeinate`
   - S6 Android tracker 开 / 关对照：无差别，耗时由宿主机负载决定（35–165 s）
   - 能力检查：同 0.10.0（iOS C1 整套中失败、单独第 2 次通过；Android C11 ✗）；用户的键盘设置已写回
-  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v7 待确认
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v7（Quiesco 0.11.0）用户确认，打 tag `methodology-v7`
