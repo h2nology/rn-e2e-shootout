@@ -215,3 +215,5 @@
   - 能力检查：同 0.10.0（iOS C1 整套中失败、单独第 2 次通过；Android C11 ✗）；用户的键盘设置已写回
   - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v7（Quiesco 0.11.0）用户确认，打 tag `methodology-v7`
   - C1 iOS 调查（用户要求，2026-11-21）：重启后第一次 Face ID 对话框只在 `com.apple.LocalAuthenticationUIService` 的树中、不在 SpringBoard 的树中，Quiesco 不读该 app（重启后 3 / 3 失败、不重启 2 / 2 通过；`OTHER_APPS` 本地补丁 2 / 2 通过，已还原）→ 提交 h2nology/quiesco#92
+  - 速度对比（用户询问）：0.9.0 / 0.10.0 / 0.11.0 各场景中位数基本相同，整轮差别来自 S6（冷启动顺序、负载）、S22 iOS（#82）；tracker 开启后 Android S8 / S10b 各 +2 s → timeline 确认为对话框的原生调用（`RNCDatePicker.open`、`ExpoLocation.requestForegroundPermissionsAsync`）
+  - 提交 issue（用户要求）：h2nology/quiesco#93（对话框 +2 s）、#94（tracker 默认关闭时竞争无提示）、#95（`init --upgrade`）、#96（`doctor` 与 `app.config.ts`）

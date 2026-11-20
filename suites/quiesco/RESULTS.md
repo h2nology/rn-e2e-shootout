@@ -99,7 +99,9 @@
 - **C1 iOS**：整套能力检查中 `system.tap` 找不到 Face ID 对话框的 “Cancel”（0.10.0、0.11.0 都出现）。原因：模拟器启动后第一次出现的 Face ID 对话框只在 `com.apple.LocalAuthenticationUIService` 的树中，Quiesco 不读这个 app（重启后 3 / 3 失败、不重启 2 / 2 通过；本地补丁验证 2 / 2 通过）。已提交 h2nology/quiesco#92，等修复后重测。
 - **S6 Android**：耗时对宿主机负载敏感（35–165 s），正式版保留 300 s 单测超时（W3）。M4 的测量需固定宿主机条件（负载、防睡眠）。
 - **宿主机睡眠**：无人值守运行时 macOS 会在 DarkWake 中被强制睡眠，必须用 `caffeinate -dimsu` 包住运行（M4 harness 需内置）。
-- `quiesco doctor` 新增 1 项 warning（app IDs 无法与 `app.config.ts` 比对），不影响运行。
+- `quiesco doctor` 新增 1 项 warning（app IDs 无法与 `app.config.ts` 比对），不影响运行（h2nology/quiesco#96）。
+- **tracker 的开销**：Android 上打开原生对话框的动作（S8 日期选择器、S10b 权限请求）每次多等约 2 s（tracker 把等待用户的原生调用算作忙碌直到 2 s 上限）；其余场景不变，iOS 不变。按默认设置（不加 `ignore`）测量（h2nology/quiesco#93）。
+- `init --upgrade` 每次把精确版本改为 `^`、加回 `e2e:*` 脚本（h2nology/quiesco#95）；tracker 默认关闭时 S18 的竞争没有提示（h2nology/quiesco#94）。
 
 ## 5. 出处
 
