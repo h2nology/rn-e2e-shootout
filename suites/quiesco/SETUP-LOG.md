@@ -127,7 +127,7 @@
 | Y3 | — | `npx quiesco doctor` | 命令 | 全部通过，**无 warning**（#96 修复） |
 | Y4 | — | `quiesco.config.mts` 删除 `sync: { trackers: { 'native-module': true } }` | 手动编辑 | 0.12.0 起 app 侧包装了原生模块就默认开启（#94；`@quiesco/agent` `runtime.ts` 中 `config.sync.trackers['native-module'] ?? nativeModulesWrapped`） |
 | Y5 | iOS 192 s、Android 212 s | `npm run build:ios` / `build:android` | 命令 | 成功 |
-| Y6 | — | 诊断版：iOS 23 / 24、Android 24 / 24 | 命令 | iOS S22 失败：runner 冷启动 12.3 s → 通知中心路径，前一天的同 app 通知堆叠，第 1 次点击只展开、第 2 次点击露出 “Open” 时已到 10 s 超时（RESULTS 第 4 节）。重启后重跑 iOS 24 / 24（runner 8.2 s） |
+| Y6 | — | 诊断版：iOS 23 / 24、Android 24 / 24 | 命令 | iOS S22 失败：runner 冷启动 12.3 s → 通知中心路径，前一天的同 app 通知堆叠，第 1 次点击只展开、第 2 次点击露出 “Open” 时已到 10 s 超时（RESULTS 第 4 节，h2nology/quiesco#100）。重启后重跑 iOS 24 / 24（runner 8.2 s） |
 | Y7 | — | 正式版两平台各 5 轮 | 命令 | iOS 5 × 24 / 24（336–344 s）、Android 5 × 24 / 24（224–226 s）。Android S8 / S10b 回到 tracker 关闭时的耗时（#93） |
 | Y8 | — | 能力检查 | 命令 | iOS 12 / 12（**C1 在整套中通过**，#92）；Android 同 0.11.0（C11 ✗）。键盘设置已写回；运行区间内无睡眠事件 |
 
