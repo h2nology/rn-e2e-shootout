@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 0.12.1（#100 修复）：iOS 5 × 24/24、Android 4/5（第 5 轮 S6，FlatList 窗口边缘反复增删，处理待用户决定）。METHODOLOGY v9（Quiesco 0.12.1）待用户确认。下一步 M4：harness 与汇总脚本（内置防睡眠与 `pmset` 检查，METHODOLOGY 6.4）。
+Quiesco 0.12.1（#100 修复）：iOS 5 × 24/24、Android 4/5（第 5 轮 S6，FlatList 窗口边缘反复增删，处理待用户决定）。METHODOLOGY v9（Quiesco 0.12.1）用户确认，已打 tag `methodology-v9`。下一步 M4：harness 与汇总脚本（内置防睡眠与 `pmset` 检查，METHODOLOGY 6.4）。
 
 ## Current Phase
 
