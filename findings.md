@@ -357,3 +357,14 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 速度：各场景中位数与 0.11.0 相同（±0.3 s），除 #93 的 Android S8 / S10b。整轮墙钟 iOS 336–344 s、Android 224–226 s（运行时宿主机负载低，S6 Android 约 35 s）。
 - **N1 S22 iOS 诊断版失败 1 次：runner 冷启动 + 通知中心中的通知堆叠。** `sendToBackground()` 时预先启动的 system UI runner 用了 12.3 s（正式版各轮 7.3–11.2 s），通知（3 s 后）的横幅已过 → 通知中心路径。通知中心里留着前一天运行的 2 条同 app 通知（模拟器重启、app 重装都不清除），新通知与之堆叠：第 1 次点击只展开堆叠（`tapOpened` 的 `expanded()` 返回 false），第 2 次点击露出 “Open”，但此时 `openNotification` 的 10 s 默认超时已到，“Open” 需要两次读取一致才点、超时后只读一次 → 失败（报错 `tapped "Hello from rnshootout" 2 time(s)`，`seen` 与截图中都有 “Open”）。重启后重跑通过（runner 8.2 s）；正式版 5 / 5（横幅路径）。两个因素（冷启动慢、堆叠多花一次点击）叠加才失败，超时本身从 runner 就绪后才开始算（`openNotification` 在 `prepareSystemUi()` 之后取 `start`），但就绪后仍先等 `BANNER_WAIT_MS`（5 s）横幅，横幅早已消失，10 s 中白白用掉一半。已提交 h2nology/quiesco#100（2026-11-21）。
 - `full-check.sh` 的睡眠记录过滤把非日期开头的行也列出（误显示多行 “Sleep/Wakes since boot”），已改为只看日期开头的行；按日期直接查 `pmset -g log`，运行区间（17:52–18:57、19:00–19:04）内无睡眠事件。
+
+### Quiesco 0.12.1：#100 的验证结果与新发现（2026-11-21）
+
+0.12.1 关闭了 #100，只改了 `@quiesco/core` `src/devices/ios.ts` 的 `openNotification`：横幅等待从调用开始算（runner 晚于横幅就绪时直接打开通知中心）；点击后在超时之外再给 3 s（`NOTIFICATION_TAP_GRACE_MS`）供展开堆叠、点 “Open”；露出的 “Open” 超时后也会确认并点击；通知在点击后上下移动（通知中心刚拉下时列表还在布局）即视为没点中、立即重点。其他包只有版本号变化。
+
+| 问题 | 0.12.1 实测 |
+|---|---|
+| #100 通知中心中的堆叠 + 横幅等待 → 超时 | **已修复**：iOS 正式版 5 / 5，其中第 2、3 轮走了通知中心路径（runner 10.9 s / 8.7 s；第 2 轮：点击 → 展开 → 再点 → “Open” → 打开，34.4 s；第 3 轮 27.5 s），都通过。诊断版 24 / 24 |
+
+- 速度：各场景中位数与 0.12.0 相同（±0.3 s）。iOS S23 21.7–26.4 s（0.12.0 21.7–25.5 s），改动不在其路径上，视为波动。
+- **N1 S6 Android 正式版第 5 轮 SYNC_TIMEOUT：FlatList 窗口边缘反复增删（推断）。** 插件 `failure-investigator` 读证据（执行者核对行高与 FlatList 设置）：`scrollTo` 第 1–20 步每步 0.52–0.66 s（空闲等待 74–177 ms），第 21 步拖动后空闲等待 29,551 ms 超时。忙碌只有 FlatList 的 50 ms 批处理定时器（`updateCellsBatchingPeriod`）、React 提交与元素树每隔一帧变化；最后一次变化为 268 → 269 行，而超时后抓的树为 268 行 → 一行被加上又去掉。已渲染的行（1–10 与 67–322）已填满 `windowSize` 21 在偏移 9768 时的窗口 [3428, 16742]，两端离行边界 2–4 px；行高 51 / 52 交替，app 未设 `getItemLayout` → VirtualizedList 每次行布局变化都重算窗口，边缘一行可能来回切换。宿主机负载：约 29 fps（该 CPU 渲染模拟器的正常值），日志无 GC、掉帧、ANR；同轮其他场景耗时正常。0.12.1 没有改 Android 代码 → 判断为 app（FlatList）侧的偶发行为，Quiesco 如实报告忙碌。证据只有最后一帧，“持续 30 s 反复增删”是推断（置信度中等）。可能的处理：app 加 `getItemLayout`（改 app，四个工具都需重跑），或按现状记录；放宽超时无意义（不收敛）。

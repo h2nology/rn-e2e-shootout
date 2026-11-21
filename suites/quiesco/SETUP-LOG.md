@@ -131,6 +131,19 @@
 | Y7 | — | 正式版两平台各 5 轮 | 命令 | iOS 5 × 24 / 24（336–344 s）、Android 5 × 24 / 24（224–226 s）。Android S8 / S10b 回到 tracker 关闭时的耗时（#93） |
 | Y8 | — | 能力检查 | 命令 | iOS 12 / 12（**C1 在整套中通过**，#92）；Android 同 0.11.0（C11 ✗）。键盘设置已写回；运行区间内无睡眠事件 |
 
+## 升级到 0.12.1（2026-11-21）
+
+0.12.0 中提交的 h2nology/quiesco#100 在 0.12.1 关闭。0.12.1 只改了 `@quiesco/core` 的 `src/devices/ios.ts`（`openNotification`），其他包只有版本号变化。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| Z1 | — | 用户更新插件（`/plugin`）到 0.12.1 | 命令 | — |
+| Z2 | 6 s | `npx quiesco@0.12.1 init --upgrade` | 命令 | 精确版本、不加脚本，不需要手动改 |
+| Z3 | — | `npx quiesco doctor` | 命令 | 全部通过、无 warning |
+| Z4 | iOS 193 s、Android 202 s | `npm run build:ios` / `build:android` | 命令 | 维护者说不需要重建（agent 只有版本号变化），为了 app 内嵌的 agent 版本一致仍重建 |
+| Z5 | — | `PREFIX=q0121 scripts/full-check.sh` | 命令 | 诊断版两平台 24 / 24；正式版 iOS 5 × 24 / 24（第 2、3 轮 S22 走通知中心路径并通过，#100 ✓）、Android 第 5 轮 S6 失败（FlatList，RESULTS 第 4 节）；能力检查同 0.12.0；键盘已写回；无睡眠事件 |
+| Z6 | — | S6 Android 交给 `failure-investigator` | — | 第 21 步后 FlatList 窗口边缘一行反复增删（推断），不是负载、不是 Quiesco |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：

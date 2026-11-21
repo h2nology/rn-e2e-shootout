@@ -225,3 +225,9 @@
   - 能力检查：iOS 12/12（C1 整套中通过，#92 ✓）；Android C11 ✗；键盘设置已写回；无睡眠事件
   - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v8（Quiesco 0.12.0）用户确认，打 tag `methodology-v8`
   - 提交 issue（用户要求）：h2nology/quiesco#100（S22 iOS 诊断版：通知中心中的堆叠 + 横幅等待 5 s → 10 s 超时）
+
+- **Quiesco 0.12.1 重跑**（用户要求：0.12.1 发布，#100 已关闭；插件由用户更新；2026-11-21）
+  - 只改 `@quiesco/core` `ios.ts`（`openNotification`）；`init --upgrade` 干净、`doctor` 无 warning；重建 iOS 193 s、Android 202 s
+  - `full-check.sh`：诊断版两平台 24/24；正式版 iOS 5 × 24/24（第 2、3 轮 S22 走通知中心路径并通过，#100 ✓）；Android 24、24、24、24、23（第 5 轮 S6 SYNC_TIMEOUT）；能力检查同 0.12.0；无睡眠事件
+  - S6 Android 交给 `failure-investigator`：FlatList 窗口边缘一行反复增删（推断，行高 51/52 交替、无 `getItemLayout`），非负载、非 Quiesco
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v9（Quiesco 0.12.1）待用户确认；S6 的处理待用户决定
