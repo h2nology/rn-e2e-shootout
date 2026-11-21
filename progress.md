@@ -230,4 +230,5 @@
   - 只改 `@quiesco/core` `ios.ts`（`openNotification`）；`init --upgrade` 干净、`doctor` 无 warning；重建 iOS 193 s、Android 202 s
   - `full-check.sh`：诊断版两平台 24/24；正式版 iOS 5 × 24/24（第 2、3 轮 S22 走通知中心路径并通过，#100 ✓）；Android 24、24、24、24、23（第 5 轮 S6 SYNC_TIMEOUT）；能力检查同 0.12.0；无睡眠事件
   - S6 Android 交给 `failure-investigator`：FlatList 窗口边缘一行反复增删（推断，行高 51/52 交替、无 `getItemLayout`），非负载、非 Quiesco
-  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v9（Quiesco 0.12.1）用户确认，打 tag `methodology-v9`；S6 的处理待用户决定
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v9（Quiesco 0.12.1）用户确认，打 tag `methodology-v9`
+  - S6 按现状记录（不改 app）；提交 issue（用户要求）：h2nology/quiesco#102（FlatList 窗口边缘反复增删时的诊断）
