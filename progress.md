@@ -232,3 +232,9 @@
   - S6 Android 交给 `failure-investigator`：FlatList 窗口边缘一行反复增删（推断，行高 51/52 交替、无 `getItemLayout`），非负载、非 Quiesco
   - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v9（Quiesco 0.12.1）用户确认，打 tag `methodology-v9`
   - S6 按现状记录（不改 app）；提交 issue（用户要求）：h2nology/quiesco#102（FlatList 窗口边缘反复增删时的诊断）
+
+- **Quiesco 0.13.0 重跑**（用户要求：0.13.0 发布，#102 已关闭；插件由用户更新；2026-11-22）
+  - 只改 `@quiesco/agent` frame-stable 诊断；`init --upgrade` 干净、`doctor` 无 warning；重建 iOS 191 s、Android 174 s
+  - `full-check.sh`：诊断版 iOS 24/24、Android 23/24（S6 同位置，新报错 `went back and forth in 20 of the last 20 changes` → #102 推断确认）；iOS 正式版 24、24、24、23、24（第 4 轮 S22：login 中 `keyboard moving`，iOS 读剪贴板 10.27 s 使 `didShow` 迟到）
+  - Android 第一次正式版第 2 轮 S7a 中模拟器进程退出（原因不明），脚本停在 `adb wait-for-device` 约 3 小时；冷启动后重跑：Android 5 × 24/24；能力检查同 0.12.0；键盘写回；无睡眠事件
+  - 速度与 0.12.1 相同；RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v10 待确认

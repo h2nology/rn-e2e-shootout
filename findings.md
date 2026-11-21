@@ -368,3 +368,15 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 
 - 速度：各场景中位数与 0.12.0 相同（±0.3 s）。iOS S23 21.7–26.4 s（0.12.0 21.7–25.5 s），改动不在其路径上，视为波动。
 - **N1 S6 Android 正式版第 5 轮 SYNC_TIMEOUT：FlatList 窗口边缘反复增删（推断）。** 插件 `failure-investigator` 读证据（执行者核对行高与 FlatList 设置）：`scrollTo` 第 1–20 步每步 0.52–0.66 s（空闲等待 74–177 ms），第 21 步拖动后空闲等待 29,551 ms 超时。忙碌只有 FlatList 的 50 ms 批处理定时器（`updateCellsBatchingPeriod`）、React 提交与元素树每隔一帧变化；最后一次变化为 268 → 269 行，而超时后抓的树为 268 行 → 一行被加上又去掉。已渲染的行（1–10 与 67–322）已填满 `windowSize` 21 在偏移 9768 时的窗口 [3428, 16742]，两端离行边界 2–4 px；行高 51 / 52 交替，app 未设 `getItemLayout` → VirtualizedList 每次行布局变化都重算窗口，边缘一行可能来回切换。宿主机负载：约 29 fps（该 CPU 渲染模拟器的正常值），日志无 GC、掉帧、ANR；同轮其他场景耗时正常。0.12.1 没有改 Android 代码 → 判断为 app（FlatList）侧的偶发行为，Quiesco 如实报告忙碌。证据只有最后一帧，“持续 30 s 反复增删”是推断（置信度中等）。放宽超时无意义（不收敛）。按现状记录（不改 app）；提交 h2nology/quiesco#102（2026-11-21）：`frame-stable` 只留最后一次变化，看不出 A → B → A；建议记录最近几次变化、检测两态交替并在报错中提示 `getItemLayout`。
+
+### Quiesco 0.13.0：#102 的验证结果与新发现（2026-11-22）
+
+0.13.0 关闭了 #102，只改了 `@quiesco/agent` 的 `src/sync/frame-stable.ts`（及 `tracker.ts` / `wait-for-idle.ts` 的接口）：超时报告列出最近 6 次变化（时刻、节点数、第一个不同的节点）；最近 20 次变化中同一节点来回变化（双向各 ≥ 2 次）时点名，若是元素增删则提示 FlatList / VirtualizedList 无 `getItemLayout`；`idle-state.json` 的 `lastWait` 保留最后一次等待结束时的原因。空闲判定逻辑不变（仍算忙碌）。其他包只有版本号变化。
+
+| 问题 | 0.13.0 实测 |
+|---|---|
+| #102 FlatList 窗口边缘反复增删时的诊断 | **已实现，且实际遇到**：诊断版 Android S6 在与 0.12.1 相同的位置（第 21 步，偏移 9768）超时，报错为 `the same change went back and forth in 20 of the last 20 changes (since +8107ms): RCTView @0,-9584 411x16744 children=269 ↔ … children=268, an element added and removed: a list adding and removing an item at the edge of its render window? …`，`recent changes (109 in 9559ms)`，相邻两次间隔约 67 ms。0.12.1 时的推断（置信度中等）由此确认 |
+
+- 速度：各场景中位数与 0.12.1 相同（±0.5 s）。去掉 S6 / S12 / S22 / S23 与每轮第一个场景后，iOS 每轮 234–239 s（0.12.1 233–237 s）。iOS S22 中位数 17.8 → 21.9 s：runner 就绪 8.1–15.5 s，第 5 轮 S22 排第一个（重启后冷启动，36.3 s）；`@quiesco/core` 未改。
+- **N1 S22 iOS 正式版第 4 轮：iOS 键盘的 `didShow` 迟到 10.4 s。** `login()` 中 `type('login-password', …)` 前的空闲等待 10 s 超时，`native: keyboard moving`；截图中键盘已完全显示、邮箱已输入。设备日志：`willShow` 00:30:34.538 → UIKit 读取剪贴板（`Retrieving local-only general pasteboard` 00:30:34.620，完成 00:30:44.891）→ `didShow` 00:30:44.942。`@quiesco/native` `KeyboardMotion` 在 `keyboardWillShow` 置 `moving`、`keyboardDidShow` 清除（0.12.1 起未改），所以报告字面正确，根因是 iOS 系统侧的一次卡顿（同一时间段其他运行未见）。改进余地：`willShow` 的 userInfo 带动画时长（`UIKeyboardAnimationDurationUserInfoKey` 0.3833），可在时长 + 余量后视为停止；或报错中写明“willShow 之后 N s 没有 didShow”。未提交 issue（待用户决定）。
+- **N2 Android 模拟器进程退出。** 第一次 Android 正式版第 2 轮 S7a 中，`qemu-system` 进程在 00:47 消失：设备日志此前正常（最后一行 00:47:39），无 DiagnosticReports、`pmset` 无睡眠、磁盘剩余 459 GB、Android Studio 未运行。原因不明，不计入结果；冷启动模拟器（`-no-snapshot-load`，AVD 本身 `hw.gpu.enabled=no`）后重跑 5 轮。`reboot-android.sh` 的 `adb wait-for-device` 无超时，`full-check.sh` 停在这里约 3 小时 → M4 harness 需给模拟器重启加超时、检查进程是否存在。

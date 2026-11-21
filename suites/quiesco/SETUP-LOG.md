@@ -144,6 +144,19 @@
 | Z5 | — | `PREFIX=q0121 scripts/full-check.sh` | 命令 | 诊断版两平台 24 / 24；正式版 iOS 5 × 24 / 24（第 2、3 轮 S22 走通知中心路径并通过，#100 ✓）、Android 第 5 轮 S6 失败（FlatList，RESULTS 第 4 节）；能力检查同 0.12.0；键盘已写回；无睡眠事件 |
 | Z6 | — | S6 Android 交给 `failure-investigator` | — | 第 21 步后 FlatList 窗口边缘一行反复增删（推断），不是负载、不是 Quiesco |
 
+## 升级到 0.13.0（2026-11-22）
+
+0.12.1 中提交的 h2nology/quiesco#102 在 0.13.0 关闭。0.13.0 只改了 `@quiesco/agent` 的 frame-stable 诊断（`src/sync/frame-stable.ts` 等），其他包只有版本号变化。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| A1 | — | 用户更新插件（`/plugin`）到 0.13.0 | 命令 | — |
+| A2 | 7 s | `npx quiesco@0.13.0 init --upgrade` | 命令 | 精确版本、不加脚本，不需要手动改 |
+| A3 | — | `npx quiesco doctor` | 命令 | 全部通过、无 warning |
+| A4 | iOS 191 s、Android 174 s | `npm run build:ios` / `build:android` | 命令 | agent 有改动，按 release notes 重建 |
+| A5 | — | `PREFIX=q0130 scripts/full-check.sh` | 命令 | 诊断版 iOS 24 / 24、Android 23 / 24（S6，新报错确认 FlatList 反复增删）；iOS 正式版第 4 轮 S22 失败（键盘通知迟到）；Android 正式版第 2 轮中模拟器进程退出，脚本停在 `adb wait-for-device` 约 3 小时 |
+| A6 | — | 冷启动模拟器，补跑 Android 正式版 5 轮、两平台能力检查，写回键盘 | 命令 | Android 5 × 24 / 24；能力检查同 0.12.0；无睡眠事件 |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：
