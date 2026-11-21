@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 0.12.0（#92–#96 修复）：两平台连续 5 轮全绿、能力检查 iOS 全部 ✓，M3 完成。METHODOLOGY v8（Quiesco 0.12.0）待用户确认后打 tag `methodology-v8`。下一步 M4：harness 与汇总脚本（内置防睡眠与 `pmset` 检查，METHODOLOGY 6.4）。
+Quiesco 0.12.0（#92–#96 修复）：两平台连续 5 轮全绿、能力检查 iOS 全部 ✓，M3 完成。METHODOLOGY v8（Quiesco 0.12.0）用户确认，已打 tag `methodology-v8`。下一步 M4：harness 与汇总脚本（内置防睡眠与 `pmset` 检查，METHODOLOGY 6.4）。
 
 ## Current Phase
 

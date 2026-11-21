@@ -1,6 +1,6 @@
 # Quiesco：接入结果（M3）
 
-- 版本：quiesco / @quiesco/* **0.12.0**（METHODOLOGY v8，待确认；首次接入为 0.7.0，之后 0.8.0、0.9.0、0.10.0、0.11.0、0.12.0），Vitest 5.1.1
+- 版本：quiesco / @quiesco/* **0.12.0**（METHODOLOGY v8；首次接入为 0.7.0，之后 0.8.0、0.9.0、0.10.0、0.11.0、0.12.0），Vitest 5.1.1
 - 设备：iPhone 17 / iOS 27.0 模拟器；Android `Medium_Phone_API_36_AOSP`（C2 在 `Medium_Phone_API_36_GAPIS`，METHODOLOGY v3）
 - 构建：Release，`npx quiesco build ios|android --clean`（`npm run build:*`；Android 另加 `GRADLE_OPTS=-Dorg.gradle.jvmargs=-Xmx4g`，与其他工具相同）
 - **对 app 的改动**：`@quiesco/agent`、`@quiesco/native`、`@quiesco/expo-plugin` 依赖；`app.json` 的 config plugin；`metro.config.js`（`withQuiesco(config, { nativeModules: true })`，0.11.0 起加 `nativeModules`，见下）；`index.ts` 入口（第一行 import agent）；根布局包 `<QuiescoRoot>`。非 e2e 构建中 plugin 把 native 模块排除出自动链接、metro 把 agent 换成空实现。0.7.0 时 C10 需要的 `CFBundleLocalizations` 在 0.8.0 中已去掉

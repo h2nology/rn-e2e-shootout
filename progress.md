@@ -223,4 +223,4 @@
   - `scripts/full-check.sh`（新增）：诊断版 iOS 23/24（S22：runner 冷启动 12.3 s + 通知中心中前一天的通知堆叠 → 10 s 超时；重跑 24/24）、Android 24/24
   - 正式版 5 轮：iOS 5 × 24/24（336–344 s）、Android 5 × 24/24（224–226 s）；Android S8 / S10b 回到 tracker 关闭水平（#93 ✓）
   - 能力检查：iOS 12/12（C1 整套中通过，#92 ✓）；Android C11 ✗；键盘设置已写回；无睡眠事件
-  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v8（Quiesco 0.12.0）待用户确认
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v8（Quiesco 0.12.0）用户确认，打 tag `methodology-v8`
