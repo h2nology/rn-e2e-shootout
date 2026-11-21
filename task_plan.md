@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 0.13.0（#102 实现）：iOS 24/24/24/23/24（第 4 轮 S22，iOS 键盘 didShow 迟到 10.4 s）、Android 5 × 24/24（第一次 5 轮中模拟器进程退出，重跑）；诊断版 Android S6 再现，新报错确认 FlatList 反复增删。METHODOLOGY v10（Quiesco 0.13.0）用户确认，已打 tag `methodology-v10`。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时，METHODOLOGY 6.4）。
+Quiesco 0.13.0（#102 实现）：iOS 24/24/24/23/24（第 4 轮 S22，iOS 键盘 didShow 迟到 10.4 s，h2nology/quiesco#104）、Android 5 × 24/24（第一次 5 轮中模拟器进程退出，重跑）；诊断版 Android S6 再现，新报错确认 FlatList 反复增删。METHODOLOGY v10（Quiesco 0.13.0）用户确认，已打 tag `methodology-v10`。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时，METHODOLOGY 6.4）。
 
 ## Current Phase
 

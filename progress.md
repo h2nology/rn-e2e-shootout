@@ -238,3 +238,4 @@
   - `full-check.sh`：诊断版 iOS 24/24、Android 23/24（S6 同位置，新报错 `went back and forth in 20 of the last 20 changes` → #102 推断确认）；iOS 正式版 24、24、24、23、24（第 4 轮 S22：login 中 `keyboard moving`，iOS 读剪贴板 10.27 s 使 `didShow` 迟到）
   - Android 第一次正式版第 2 轮 S7a 中模拟器进程退出（原因不明），脚本停在 `adb wait-for-device` 约 3 小时；冷启动后重跑：Android 5 × 24/24；能力检查同 0.12.0；键盘写回；无睡眠事件
   - 速度与 0.12.1 相同；RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v10（Quiesco 0.13.0）用户确认，打 tag `methodology-v10`
+  - 提交 issue（用户要求）：h2nology/quiesco#104（iOS `keyboardDidShow` 迟到时 `keyboard moving` 一直忙碌到超时）
