@@ -116,6 +116,21 @@
 | X14 | — | S6 Android 单独运行 tracker 开 / 关对照（各 2 次，每次前重启） | 命令 | 开 106、143 s；关 109、93 s（宿主机负载 10–16）。无差别，耗时由宿主机负载决定 |
 | X15 | — | 能力检查（tracker 开启，`caffeinate`） | 命令 | iOS C1 整套中失败、单独 2 次中第 2 次通过；其余与 0.10.0 相同。S7b 后把用户的键盘设置写回 |
 
+## 升级到 0.12.0（2026-11-21）
+
+0.11.0 中提交的 h2nology/quiesco#92–#96 在 0.12.0 全部关闭。升级后从诊断版起重跑（`scripts/full-check.sh`：诊断版 → 正式版各 5 轮 → 能力检查，每次运行前重启模拟器，整段在 `caffeinate` 下运行，结束后写回键盘设置并列出睡眠记录）。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| Y1 | — | 用户更新插件（`/plugin`）到 0.12.0 | 命令 | — |
+| Y2 | — | 在 `suites/quiesco` 中运行 `npx quiesco@0.12.0 init --upgrade` | 命令 | **依赖直接写成精确版本、不再加回 `e2e:*` 脚本**（#95 修复），不需要手动改 |
+| Y3 | — | `npx quiesco doctor` | 命令 | 全部通过，**无 warning**（#96 修复） |
+| Y4 | — | `quiesco.config.mts` 删除 `sync: { trackers: { 'native-module': true } }` | 手动编辑 | 0.12.0 起 app 侧包装了原生模块就默认开启（#94；`@quiesco/agent` `runtime.ts` 中 `config.sync.trackers['native-module'] ?? nativeModulesWrapped`） |
+| Y5 | iOS 192 s、Android 212 s | `npm run build:ios` / `build:android` | 命令 | 成功 |
+| Y6 | — | 诊断版：iOS 23 / 24、Android 24 / 24 | 命令 | iOS S22 失败：runner 冷启动 12.3 s → 通知中心路径，前一天的同 app 通知堆叠，第 1 次点击只展开、第 2 次点击露出 “Open” 时已到 10 s 超时（RESULTS 第 4 节）。重启后重跑 iOS 24 / 24（runner 8.2 s） |
+| Y7 | — | 正式版两平台各 5 轮 | 命令 | iOS 5 × 24 / 24（336–344 s）、Android 5 × 24 / 24（224–226 s）。Android S8 / S10b 回到 tracker 关闭时的耗时（#93） |
+| Y8 | — | 能力检查 | 命令 | iOS 12 / 12（**C1 在整套中通过**，#92）；Android 同 0.11.0（C11 ✗）。键盘设置已写回；运行区间内无睡眠事件 |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：
@@ -125,7 +140,7 @@ Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、�
 | iOS | mock server `POST /reset` → `app.device.setPermission('location', 'reset')`（`simctl privacy reset`；`clearData` 不撤销权限）→ `app.device.relaunch({ clearData: true })`（清空数据容器、删除 UserDefaults，冷启动） |
 | Android | mock server `POST /reset` → `app.device.relaunch({ clearData: true })`（`pm clear`，同时撤销运行时权限） |
 
-## 外部命令 / 额外配置一览（0.11.0，与 0.9.0 相同）
+## 外部命令 / 额外配置一览（0.12.0，与 0.9.0 相同）
 
 | 用途 | 做法 | 原因 |
 |---|---|---|

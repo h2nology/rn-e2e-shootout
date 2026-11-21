@@ -341,3 +341,19 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - `init --upgrade` 仍把依赖写成 `^0.11.0` 并加回 `e2e:*` 脚本 → 改回精确版本、删除。
 - **N3 tracker 开启后，打开原生对话框的动作多等约 2 s（h2nology/quiesco#93）。** Android 同一构建 tracker 开 / 关对照（宿主机负载约 2，timeline 全部保存）：S8 `tap('control-date')`（`DateTimePickerAndroid.open` → `RNCDatePicker.open`）之后的空闲等待 227 → 2,105 ms；S10b `tap('request-location')`（`ExpoLocation.requestForegroundPermissionsAsync`）142 → 2,319 ms；其余动作不变。原因：这类调用要等测试回答对话框才返回，tracker 把它算作忙碌直到 `thresholdMs`（默认 2 s）。文档已写明、可用 `ignore` 排除，本仓库按默认值（不加 `ignore`）。S14 在 5 轮中偶有 +3 s，单独对照无差别（负载）。iOS 无差别。
 - 其余提交的 issue（2026-11-21）：#94 tracker 默认关闭时 #67 的竞争无提示（S18 的报错只是 `expect visible failed`，证据中看不出原生调用）；#95 `init --upgrade` 把精确版本改为 `^`、加回 `e2e:*` 脚本（npm 默认不 `--save-exact`；`ensureScripts` 补回缺少的脚本）；#96 `doctor` 遇到 `app.config.ts` 总是 warning（建议用 `expo config --json --type public` 解析，本仓库约 0.6 s）。
+
+### Quiesco 0.12.0：#92–#96 的验证结果与新发现（2026-11-21）
+
+0.12.0 关闭了 #92–#96。升级后在本仓库实测（`suites/quiesco/scripts/full-check.sh`：诊断版 → 正式版两平台各 5 轮 → 能力检查，每次运行前重启模拟器，`caffeinate` 下运行，区间内无睡眠事件）：
+
+| 问题 | 0.12.0 实测 |
+|---|---|
+| #92 重启后第一次 Face ID 对话框读不到 | **已修复**：C1 iOS 在整套能力检查中（重启后）通过（0.10.0 / 0.11.0 整套中 3 / 3 失败）。`SystemUIServer.swift` 的 `OTHER_APPS` 加入 `com.apple.LocalAuthenticationUIService` |
+| #93 打开原生对话框的动作多等约 2 s | **已修复**：Android 正式版中位数 S8 14.8 → 12.8 s、S10b 11.6 → 8.9 s，与 tracker 关闭时（12.7 s、8.7 s）相同。默认忽略列表（`DEFAULT_IGNORED_NATIVE_CALLS`）含 `RNCDatePicker.open`、权限请求等 |
+| #94 tracker 默认关闭时竞争无提示 | **已修复**（改为默认开启）：config 中删除 `sync.trackers` 后，S18 两平台 5 / 5。`@quiesco/agent` `runtime.ts:304` 为 `config.sync.trackers['native-module'] ?? nativeModulesWrapped`，连接日志为 `native module true` |
+| #95 `init --upgrade` 改写版本、加回脚本 | **已修复**：直接写成精确版本，不加 `e2e:*` 脚本 |
+| #96 `doctor` 与 `app.config.ts` | **已修复**：`doctor` 全部通过、无 warning |
+
+- 速度：各场景中位数与 0.11.0 相同（±0.3 s），除 #93 的 Android S8 / S10b。整轮墙钟 iOS 336–344 s、Android 224–226 s（运行时宿主机负载低，S6 Android 约 35 s）。
+- **N1 S22 iOS 诊断版失败 1 次：runner 冷启动 + 通知中心中的通知堆叠。** `sendToBackground()` 时预先启动的 system UI runner 用了 12.3 s（正式版各轮 7.3–11.2 s），通知（3 s 后）的横幅已过 → 通知中心路径。通知中心里留着前一天运行的 2 条同 app 通知（模拟器重启、app 重装都不清除），新通知与之堆叠：第 1 次点击只展开堆叠（`tapOpened` 的 `expanded()` 返回 false），第 2 次点击露出 “Open”，但此时 `openNotification` 的 10 s 默认超时已到，“Open” 需要两次读取一致才点、超时后只读一次 → 失败（报错 `tapped "Hello from rnshootout" 2 time(s)`，`seen` 与截图中都有 “Open”）。重启后重跑通过（runner 8.2 s）；正式版 5 / 5（横幅路径）。两个因素（冷启动慢、堆叠多花一次点击）叠加才失败，Quiesco 侧可考虑：超时从 runner 就绪后再算、或展开后同一轮中直接处理 “Open”。尚未提交 issue。
+- `full-check.sh` 的睡眠记录过滤把非日期开头的行也列出（误显示多行 “Sleep/Wakes since boot”），已改为只看日期开头的行；按日期直接查 `pmset -g log`，运行区间（17:52–18:57、19:00–19:04）内无睡眠事件。

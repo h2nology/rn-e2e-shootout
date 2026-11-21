@@ -217,3 +217,10 @@
   - C1 iOS 调查（用户要求，2026-11-21）：重启后第一次 Face ID 对话框只在 `com.apple.LocalAuthenticationUIService` 的树中、不在 SpringBoard 的树中，Quiesco 不读该 app（重启后 3 / 3 失败、不重启 2 / 2 通过；`OTHER_APPS` 本地补丁 2 / 2 通过，已还原）→ 提交 h2nology/quiesco#92
   - 速度对比（用户询问）：0.9.0 / 0.10.0 / 0.11.0 各场景中位数基本相同，整轮差别来自 S6（冷启动顺序、负载）、S22 iOS（#82）；tracker 开启后 Android S8 / S10b 各 +2 s → timeline 确认为对话框的原生调用（`RNCDatePicker.open`、`ExpoLocation.requestForegroundPermissionsAsync`）
   - 提交 issue（用户要求）：h2nology/quiesco#93（对话框 +2 s）、#94（tracker 默认关闭时竞争无提示）、#95（`init --upgrade`）、#96（`doctor` 与 `app.config.ts`）
+
+- **Quiesco 0.12.0 重跑**（用户要求：0.12.0 发布，#92–#96 已关闭；插件由用户更新；2026-11-21）
+  - `init --upgrade`：精确版本、不加脚本（#95 ✓）；`doctor` 无 warning（#96 ✓）；config 删除 `sync.trackers`（#94 默认开启）；构建 iOS 192 s、Android 212 s
+  - `scripts/full-check.sh`（新增）：诊断版 iOS 23/24（S22：runner 冷启动 12.3 s + 通知中心中前一天的通知堆叠 → 10 s 超时；重跑 24/24）、Android 24/24
+  - 正式版 5 轮：iOS 5 × 24/24（336–344 s）、Android 5 × 24/24（224–226 s）；Android S8 / S10b 回到 tracker 关闭水平（#93 ✓）
+  - 能力检查：iOS 12/12（C1 整套中通过，#92 ✓）；Android C11 ✗；键盘设置已写回；无睡眠事件
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v8（Quiesco 0.12.0）待用户确认
