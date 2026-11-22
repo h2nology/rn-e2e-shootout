@@ -391,5 +391,5 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 
 - 速度：各场景中位数与 0.13.0 相同（±0.5 s），例外都能由排序或负载解释（iOS S18 第 1 轮排第一个；Android S8 第 1–3 轮负载高）。
 - **N1 S6 Android 高负载下失败 2 次**（诊断版单测 120 s 超时；正式版第 1 轮 60 步上限，offset 19,476 px，第 400 行约 20,600 px）。正式版第 1 轮每步从 0.53 s 增到中位数 1.84 s，日志 GC 频繁，平均每步约 325 px（正常约 465 px）→ 负载下拖动的滚动距离变短。full-check 在 Android 构建结束后立即开始，开始时 load average 31–40，结束时约 7；第 2 轮 73 s，第 3–5 轮 35 s。宿主机负载问题（已知），不是 0.13.1。
-- **N2 S18 iOS 正式版第 1 轮：登录 `tap` 在 30 ms 的空档内返回。** 登录响应 21.101 → 首页首次 GET /items 21.132（得到测试注入的 500）。`tap` 的动作后空闲等待 277 ms（期间可见 `network: POST /login`），在 `AsyncStorage.setItem` → `router.replace` → 首页 `useEffect` 发请求之间判定为空闲。键盘收起在请求之后、无 `no Did notification` → 与 0.13.1 无关。`native-module` tracker 开启后 15 轮中首次；证据不足以确定哪个间隙（推测 React 提交后、passive effect 之前），未提交 issue（待用户决定）。
+- **N2 S18 iOS 正式版第 1 轮：登录 `tap` 在 30 ms 的空档内返回。** 登录响应 21.101 → 首页首次 GET /items 21.132（得到测试注入的 500）。`tap` 的动作后空闲等待 277 ms（期间可见 `network: POST /login`），在 `AsyncStorage.setItem` → `router.replace` → 首页 `useEffect` 发请求之间判定为空闲。键盘收起在请求之后、无 `no Did notification` → 与 0.13.1 无关。`native-module` tracker 开启后 15 轮中首次；证据不足以确定哪个间隙（推测 React 提交后、passive effect 之前）。`waitForIdle` 的确认只隔一个 macrotask（`sleep(0)`）。已提交 h2nology/quiesco#107（2026-11-22）：请求在 timeline 中记录等待结束前各次检查的忙碌 tracker 与 native 调用，并考虑更长的确认。
 - 运行脚本加固：`reboot-android.sh` 设备不在线立即失败、开机超时 300 s；`full-check.sh` 重启失败即停止并在退出时写回键盘、列出睡眠记录。

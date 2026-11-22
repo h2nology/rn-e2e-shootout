@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 0.13.1（#104 修复）：iOS 23/24/24/24/24（第 1 轮 S18，登录 tap 在 30 ms 空档内返回）、Android 23/24/24/24/24（第 1 轮 S6，高负载下 60 步上限）；诊断版 Android S6（高负载，120 s）。METHODOLOGY v11（Quiesco 0.13.1）用户确认，已打 tag `methodology-v11`。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时、开始前等宿主机负载降下来，METHODOLOGY 6.4）。
+Quiesco 0.13.1（#104 修复）：iOS 23/24/24/24/24（第 1 轮 S18，登录 tap 在 30 ms 空档内返回，h2nology/quiesco#107）、Android 23/24/24/24/24（第 1 轮 S6，高负载下 60 步上限）；诊断版 Android S6（高负载，120 s）。METHODOLOGY v11（Quiesco 0.13.1）用户确认，已打 tag `methodology-v11`。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时、开始前等宿主机负载降下来，METHODOLOGY 6.4）。
 
 ## Current Phase
 
