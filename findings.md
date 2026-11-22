@@ -393,3 +393,15 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - **N1 S6 Android 高负载下失败 2 次**（诊断版单测 120 s 超时；正式版第 1 轮 60 步上限，offset 19,476 px，第 400 行约 20,600 px）。正式版第 1 轮每步从 0.53 s 增到中位数 1.84 s，日志 GC 频繁，平均每步约 325 px（正常约 465 px）→ 负载下拖动的滚动距离变短。full-check 在 Android 构建结束后立即开始，开始时 load average 31–40，结束时约 7；第 2 轮 73 s，第 3–5 轮 35 s。宿主机负载问题（已知），不是 0.13.1。
 - **N2 S18 iOS 正式版第 1 轮：登录 `tap` 在 30 ms 的空档内返回。** 登录响应 21.101 → 首页首次 GET /items 21.132（得到测试注入的 500）。`tap` 的动作后空闲等待 277 ms（期间可见 `network: POST /login`），在 `AsyncStorage.setItem` → `router.replace` → 首页 `useEffect` 发请求之间判定为空闲。键盘收起在请求之后、无 `no Did notification` → 与 0.13.1 无关。`native-module` tracker 开启后 15 轮中首次；证据不足以确定哪个间隙（推测 React 提交后、passive effect 之前）。`waitForIdle` 的确认只隔一个 macrotask（`sleep(0)`）。已提交 h2nology/quiesco#107（2026-11-22）：请求在 timeline 中记录等待结束前各次检查的忙碌 tracker 与 native 调用，并考虑更长的确认。
 - 运行脚本加固：`reboot-android.sh` 设备不在线立即失败、开机超时 300 s；`full-check.sh` 重启失败即停止并在退出时写回键盘、列出睡眠记录。
+
+### Quiesco 0.13.2：#107 的验证结果与新发现（2026-11-22）
+
+0.13.2 关闭了 #107，只改了 `@quiesco/agent`：① `native-module` tracker 把参数中有函数的原生调用算作忙碌，直到第一次回调（`src/sync/native-module.ts:240`；AsyncStorage 2 的 `setItem` → `multiSet(pairs, callback)` 不返回 Promise，原先看不到）；警告框、操作表、`NativeAnimatedModule` 默认忽略；② timeline 中记录每次空闲等待如何结束（设备时刻、最后几次检查各自忙碌的 tracker、等待期间开始 / 结束的原生调用）。维护者对 #107 的另两点建议：更长的确认未采用（间隙有具体原因）；pending passive effect 已由 `react` tracker 覆盖。
+
+| 问题 | 0.13.2 实测 |
+|---|---|
+| #107 登录 `tap` 在 AsyncStorage 写入期间返回 | **已修复**：S18 两平台 5 / 5，诊断版 24 / 24。timeline 中 Android 登录 `tap` 的等待持续到首页工作结束（S1 1,726 ms） |
+
+- **N1 Android 每个场景 +1.4–1.8 s（0.13.2 引入）。** 各场景中位数之和 451 → 543 s，最简单的 S2 4.2 → 5.9 s；iOS 不变（671 → 665 s）。`QUIESCO_ARTIFACTS=all` 重跑 S1 / S2：每次 `relaunch` 后第一个操作的等待约 2,000 ms，`busy: native-module: ExpoNotificationsEmitter.addListener() 1970ms`；`during that wait` 中还有 `ExpoPushTokenManager.addListener()`、`ExpoNotificationsHandlerModule.addListener()` ×4，都 `→pending`（已超过 2 s，不再计入）。根布局 `Notifications.addNotificationResponseReceivedListener(…)` → Expo 模块 `addListener(eventName, listener)`（`expo-modules-core` `TurboModuleToExpoModuleProxy.native.ts` 把监听函数传给原生）→ 0.13.2 的规则把订阅当成等待回调 → 等到 `nativeCallThresholdMs`（2,000 ms）。iOS 同一测试的等待中没有这些调用（原因未查）。不影响通过率。可用 `sync.ignoreNativeCalls` 绕过，但保持默认值。已提交 h2nology/quiesco#109（2026-11-22）。
+- **N2 S6 Android 正式版第 3、5 轮：FlatList 反复增删，第 5 轮的报错漏列 frame-stable。** 第 3 轮报错同 0.13.0（`children=268 ↔ 269`，20 / 20 次）。第 5 轮只有 `timer: setTimeout(anonymous, 50ms)`；`failure-investigator` 读证据（执行者核对源码）：元素树与第 3 轮相同（4318 节点、268 个子元素、已渲染 1–10 与 67–322 行），设备日志无错误 / GC / 掉帧，app 中唯一的 50 ms 定时器是 VirtualizedList 的批处理 → 同一原因（推断，置信度中高）。`wait-for-idle.ts` `timeoutError()` 只列出超时那一刻忙碌的 tracker；`frame-stable.ts:176` `endWait()` 在最后一次采样稳定时丢弃整个等待的变化记录；“等待如何结束”只附在成功的动作等待上（失败的等待、`scrollTo` 每一步都没有）。已提交 h2nology/quiesco#110（2026-11-22）。
+- 运行前等负载降下来：构建结束时 load average 41，等 1 分钟降到 9.8 再开始 full-check（0.13.1 时立即开始，S6 因负载失败 2 次）。阈值 10 是执行者选的（15 核），METHODOLOGY 6.4 没有数值 → M4 harness 需定下阈值。

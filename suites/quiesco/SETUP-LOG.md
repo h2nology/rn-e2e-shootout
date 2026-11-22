@@ -170,6 +170,20 @@
 | B5 | — | 运行脚本加固（0.13.0 时模拟器进程退出后停了约 3 小时） | 脚本 | `reboot-android.sh`：设备不在线立即报错、开机最多等 300 s；`five-runs.sh` / `full-check.sh`：重启失败即停止，停止时也写回键盘、列出睡眠记录，正式版日志移到 `logs/$PREFIX-final/` |
 | B6 | — | `PREFIX=q0131 scripts/full-check.sh` | 命令 | 诊断版 iOS 24 / 24、Android 23 / 24（S6）；正式版 iOS 第 1 轮 S18、Android 第 1 轮 S6 各失败 1 次（RESULTS 第 4 节）；能力检查同 0.12.0；键盘已写回；无睡眠事件 |
 
+## 升级到 0.13.2（2026-11-22）
+
+0.13.1 中提交的 h2nology/quiesco#107 在 0.13.2 关闭。0.13.2 改了 `@quiesco/agent`：`native-module` tracker 把参数中有函数的原生调用算作忙碌，直到第一次回调；timeline 记录每次空闲等待如何结束。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| C1 | — | 用户更新插件（`/plugin`）到 0.13.2 | 命令 | — |
+| C2 | 7 s | `npx quiesco@0.13.2 init --upgrade` | 命令 | 精确版本、不加脚本，不需要手动改 |
+| C3 | — | `npx quiesco doctor` | 命令 | 全部通过、无 warning |
+| C4 | iOS 186 s、Android 251 s | `npm run build:ios` / `build:android` | 命令 | agent 有改动，按 release notes 重建 |
+| C5 | — | 等 1 分钟 load average 降到 10 以下（构建结束时 41），再 `PREFIX=q0132 scripts/full-check.sh` | 命令 | 诊断版两平台 24 / 24；正式版 iOS 5 × 24 / 24、Android 第 3、5 轮 S6 失败；能力检查同 0.12.0；键盘已写回；无睡眠事件 |
+| C6 | — | S6 Android 第 5 轮交给 `failure-investigator` | — | 与第 3 轮同为 FlatList 反复增删（推断）；报错漏列 frame-stable（#110） |
+| C7 | — | `QUIESCO_ARTIFACTS=all` 重跑 S1 / S2（Android）、S2（iOS），读 timeline | 命令 | Android 每次启动后第一个操作等 `ExpoNotificationsEmitter.addListener()` 2 s（#109）；iOS 无此调用 |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：

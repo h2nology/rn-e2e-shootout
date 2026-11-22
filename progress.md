@@ -246,3 +246,11 @@
   - `full-check.sh`：诊断版 iOS 24/24、Android 23/24（S6 120 s，开始时 load 31–40）；正式版 iOS 23、24、24、24、24（第 1 轮 S18：登录 tap 在登录响应与首页 GET /items 之间 30 ms 内返回，注入的 500 被首页首次加载用掉）；Android 23、24、24、24、24（第 1 轮 S6：60 步上限，每步 0.53 → 1.84 s，负载）；能力检查同 0.12.0；键盘写回；无睡眠事件
   - #104 的上限路径本次未触发；速度与 0.13.0 相同；RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v11（Quiesco 0.13.1）用户确认，打 tag `methodology-v11`
   - 提交 issue（用户要求）：h2nology/quiesco#107（S18 iOS：登录 tap 在登录响应与首页首次请求之间 31 ms 的空档返回，请求诊断与更长的确认）
+
+- **Quiesco 0.13.2 重跑**（用户要求：0.13.2 发布，#107 已关闭；插件由用户更新；2026-11-22）
+  - 只改 `@quiesco/agent`（带回调的原生调用算忙碌、timeline 记录等待如何结束）；`init --upgrade` 干净、`doctor` 无 warning；重建 iOS 186 s、Android 251 s
+  - 等 load average 降到 10 以下（构建后 41 → 9.8）再 `full-check.sh`：诊断版两平台 24/24；正式版 iOS 5 × 24/24（S18 ✓，#107 修复确认）；Android 24、24、23、24、23（第 3、5 轮 S6，FlatList 反复增删）；能力检查同 0.12.0；键盘写回；无睡眠事件
+  - Android 每个场景 +1.4–1.8 s（中位数之和 451 → 543 s）：timeline 实测为每次启动后第一个操作等 `ExpoNotificationsEmitter.addListener()` 到 2 s 上限（0.13.2 引入）；iOS 不变
+  - S6 第 5 轮交给 `failure-investigator`：同一反复增删（推断），报错只列 timer（frame-stable 的记录在最后一帧稳定时被丢弃）
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v12 待确认
+  - 提交 issue（用户要求）：h2nology/quiesco#109（Android `addListener` 订阅被算作等待回调，每次启动 +2 s）、#110（SYNC_TIMEOUT 漏列 frame-stable、丢弃变化记录）
