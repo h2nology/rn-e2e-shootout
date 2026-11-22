@@ -380,3 +380,16 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 速度：各场景中位数与 0.12.1 相同（±0.5 s）。去掉 S6 / S12 / S22 / S23 与每轮第一个场景后，iOS 每轮 234–239 s（0.12.1 233–237 s）。iOS S22 中位数 17.8 → 21.9 s：runner 就绪 8.1–15.5 s，第 5 轮 S22 排第一个（重启后冷启动，36.3 s）；`@quiesco/core` 未改。
 - **N1 S22 iOS 正式版第 4 轮：iOS 键盘的 `didShow` 迟到 10.4 s。** `login()` 中 `type('login-password', …)` 前的空闲等待 10 s 超时，`native: keyboard moving`；截图中键盘已完全显示、邮箱已输入。设备日志：`willShow` 00:30:34.538 → UIKit 读取剪贴板（`Retrieving local-only general pasteboard` 00:30:34.620，完成 00:30:44.891）→ `didShow` 00:30:44.942。`@quiesco/native` `KeyboardMotion` 在 `keyboardWillShow` 置 `moving`、`keyboardDidShow` 清除（0.12.1 起未改），所以报告字面正确，根因是 iOS 系统侧的一次卡顿（同一时间段其他运行未见）。改进余地：`willShow` 的 userInfo 带动画时长（`UIKeyboardAnimationDurationUserInfoKey` 0.3833），可在时长 + 余量后视为停止；或报错中写明“willShow 之后 N s 没有 didShow”。已提交 h2nology/quiesco#104（2026-11-22）。
 - **N2 Android 模拟器进程退出。** 第一次 Android 正式版第 2 轮 S7a 中，`qemu-system` 进程在 00:47 消失：设备日志此前正常（最后一行 00:47:39），无 DiagnosticReports、`pmset` 无睡眠、磁盘剩余 459 GB、Android Studio 未运行。原因不明，不计入结果；冷启动模拟器（`-no-snapshot-load`，AVD 本身 `hw.gpu.enabled=no`）后重跑 5 轮。`reboot-android.sh` 的 `adb wait-for-device` 无超时，`full-check.sh` 停在这里约 3 小时 → M4 harness 需给模拟器重启加超时、检查进程是否存在。
+
+### Quiesco 0.13.1：#104 的验证结果与新发现（2026-11-22）
+
+0.13.1 关闭了 #104，只改了 `@quiesco/native` `ios/QuiescoNativeModule.swift` 的 `KeyboardMotion`：`keyboardWill…` 之后最长按动画时长（`UIKeyboardAnimationDurationUserInfoKey`）+ 0.5 s 算作 moving；忙碌原因写成 `keyboard moving (willShow 0.12s ago, animation 0.38s)`；`Did` 通知没按时来时设备日志记一行 `[Quiesco] keyboard: no Did notification …`。其他包只有版本号变化。
+
+| 问题 | 0.13.1 实测 |
+|---|---|
+| #104 `didShow` 迟到时 `keyboard moving` 一直忙碌到超时 | **修复已确认在代码中**；这次运行没有出现迟到的 `didShow`（无 `keyboard moving` 报错、失败证据的设备日志中无 `no Did notification`），上限路径未被实测触发。键盘相关场景（S3、S7a、S20、每个场景的登录）iOS 5 / 5、耗时不变 |
+
+- 速度：各场景中位数与 0.13.0 相同（±0.5 s），例外都能由排序或负载解释（iOS S18 第 1 轮排第一个；Android S8 第 1–3 轮负载高）。
+- **N1 S6 Android 高负载下失败 2 次**（诊断版单测 120 s 超时；正式版第 1 轮 60 步上限，offset 19,476 px，第 400 行约 20,600 px）。正式版第 1 轮每步从 0.53 s 增到中位数 1.84 s，日志 GC 频繁，平均每步约 325 px（正常约 465 px）→ 负载下拖动的滚动距离变短。full-check 在 Android 构建结束后立即开始，开始时 load average 31–40，结束时约 7；第 2 轮 73 s，第 3–5 轮 35 s。宿主机负载问题（已知），不是 0.13.1。
+- **N2 S18 iOS 正式版第 1 轮：登录 `tap` 在 30 ms 的空档内返回。** 登录响应 21.101 → 首页首次 GET /items 21.132（得到测试注入的 500）。`tap` 的动作后空闲等待 277 ms（期间可见 `network: POST /login`），在 `AsyncStorage.setItem` → `router.replace` → 首页 `useEffect` 发请求之间判定为空闲。键盘收起在请求之后、无 `no Did notification` → 与 0.13.1 无关。`native-module` tracker 开启后 15 轮中首次；证据不足以确定哪个间隙（推测 React 提交后、passive effect 之前），未提交 issue（待用户决定）。
+- 运行脚本加固：`reboot-android.sh` 设备不在线立即失败、开机超时 300 s；`full-check.sh` 重启失败即停止并在退出时写回键盘、列出睡眠记录。

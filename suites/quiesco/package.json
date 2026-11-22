@@ -9,10 +9,10 @@
     "test:android": "quiesco test --platform android"
   },
   "devDependencies": {
-    "@quiesco/core": "0.13.0",
-    "@quiesco/vitest": "0.13.0",
+    "@quiesco/core": "0.13.1",
+    "@quiesco/vitest": "0.13.1",
     "@types/node": "24.19.2",
-    "quiesco": "0.13.0",
+    "quiesco": "0.13.1",
     "vitest": "5.1.1"
   }
 }

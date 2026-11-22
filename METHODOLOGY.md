@@ -1,6 +1,6 @@
 # 测量方法
 
-> 方法版本：**v10**（2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
+> 方法版本：**v11**（2026-11-22，待确认；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
 
 场景定义见 [`scenarios.md`](scenarios.md)。本文件定义**怎么跑、怎么计数、怎么统计、怎么报告**。
 
@@ -18,7 +18,7 @@
 
 | 工具 | 版本 | 测试写法 |
 |---|---|---|
-| Quiesco | `quiesco` 0.13.0（含 `@quiesco/*` 0.13.0） | Vitest（`@quiesco/vitest`） |
+| Quiesco | `quiesco` 0.13.1（含 `@quiesco/*` 0.13.1） | Vitest（`@quiesco/vitest`） |
 | Detox | 20.51.4 | Jest |
 | Appium | 4.0.0（XCUITest / UiAutomator2 driver 版本在接入时记录） | WebdriverIO 10.2.0 |
 | Maestro | 2.11.0 | YAML flows |
@@ -271,3 +271,4 @@ CI     = [center − half, center + half]
 | v8 | 2026-11-21 | ① 2.1 Quiesco 0.11.0 → 0.12.0；② 插件披露的版本加上 `quiesco@h2nology` 0.12.0（内容不变） | ① M3 期间 Quiesco 发布 0.12.0（关闭 #92–#96），按第 2.1 节“正式测量开始前统一升级”的规则升级（用户要求，2026-11-21）；其他工具版本不变。v8 制定时尚无正式测量数据（M3 实现阶段） |
 | v9 | 2026-11-21 | ① 2.1 Quiesco 0.12.0 → 0.12.1；② 插件披露的版本加上 `quiesco@h2nology` 0.12.1（内容不变） | ① M3 期间 Quiesco 发布 0.12.1（关闭 #100），按第 2.1 节“正式测量开始前统一升级”的规则升级（用户要求，2026-11-21）；其他工具版本不变。v9 制定时尚无正式测量数据（M3 实现阶段） |
 | v10 | 2026-11-22 | ① 2.1 Quiesco 0.12.1 → 0.13.0；② 插件披露的版本加上 `quiesco@h2nology` 0.13.0（内容不变） | ① M3 期间 Quiesco 发布 0.13.0（关闭 #102，只改 `@quiesco/agent` 的 frame-stable 诊断输出，空闲判定不变），按第 2.1 节“正式测量开始前统一升级”的规则升级（用户要求，2026-11-21）；其他工具版本不变。v10 制定时尚无正式测量数据（M3 实现阶段） |
+| v11 | 2026-11-22 | ① 2.1 Quiesco 0.13.0 → 0.13.1；② 插件披露的版本加上 `quiesco@h2nology` 0.13.1（内容不变） | ① M3 期间 Quiesco 发布 0.13.1（关闭 #104，只改 iOS `@quiesco/native` 的键盘 “moving” 判定），按第 2.1 节“正式测量开始前统一升级”的规则升级（用户要求，2026-11-22）；其他工具版本不变。v11 制定时尚无正式测量数据（M3 实现阶段） |

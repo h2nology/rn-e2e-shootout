@@ -157,6 +157,19 @@
 | A5 | — | `PREFIX=q0130 scripts/full-check.sh` | 命令 | 诊断版 iOS 24 / 24、Android 23 / 24（S6，新报错确认 FlatList 反复增删）；iOS 正式版第 4 轮 S22 失败（键盘通知迟到）；Android 正式版第 2 轮中模拟器进程退出，脚本停在 `adb wait-for-device` 约 3 小时 |
 | A6 | — | 冷启动模拟器，补跑 Android 正式版 5 轮、两平台能力检查，写回键盘 | 命令 | Android 5 × 24 / 24；能力检查同 0.12.0；无睡眠事件 |
 
+## 升级到 0.13.1（2026-11-22）
+
+0.13.0 中提交的 h2nology/quiesco#104 在 0.13.1 关闭。0.13.1 只改了 `@quiesco/native` 的 `KeyboardMotion`（iOS），其他包只有版本号变化。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| B1 | — | 用户更新插件（`/plugin`）到 0.13.1 | 命令 | — |
+| B2 | 10 s | `npx quiesco@0.13.1 init --upgrade` | 命令 | 精确版本、不加脚本，不需要手动改 |
+| B3 | — | `npx quiesco doctor` | 命令 | 全部通过、无 warning |
+| B4 | iOS 194 s、Android 203 s | `npm run build:ios` / `build:android` | 命令 | release notes 只要求重建 iOS，为了 app 内嵌的 agent 版本一致两平台都重建 |
+| B5 | — | 运行脚本加固（0.13.0 时模拟器进程退出后停了约 3 小时） | 脚本 | `reboot-android.sh`：设备不在线立即报错、开机最多等 300 s；`five-runs.sh` / `full-check.sh`：重启失败即停止，停止时也写回键盘、列出睡眠记录，正式版日志移到 `logs/$PREFIX-final/` |
+| B6 | — | `PREFIX=q0131 scripts/full-check.sh` | 命令 | 诊断版 iOS 24 / 24、Android 23 / 24（S6）；正式版 iOS 第 1 轮 S18、Android 第 1 轮 S6 各失败 1 次（RESULTS 第 4 节）；能力检查同 0.12.0；键盘已写回；无睡眠事件 |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：

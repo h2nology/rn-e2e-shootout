@@ -239,3 +239,9 @@
   - Android 第一次正式版第 2 轮 S7a 中模拟器进程退出（原因不明），脚本停在 `adb wait-for-device` 约 3 小时；冷启动后重跑：Android 5 × 24/24；能力检查同 0.12.0；键盘写回；无睡眠事件
   - 速度与 0.12.1 相同；RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v10（Quiesco 0.13.0）用户确认，打 tag `methodology-v10`
   - 提交 issue（用户要求）：h2nology/quiesco#104（iOS `keyboardDidShow` 迟到时 `keyboard moving` 一直忙碌到超时）
+
+- **Quiesco 0.13.1 重跑**（用户要求：0.13.1 发布，#104 已关闭；插件由用户更新；2026-11-22）
+  - 只改 `@quiesco/native` `KeyboardMotion`（iOS）；`init --upgrade` 干净、`doctor` 无 warning；重建 iOS 194 s、Android 203 s
+  - 运行脚本加固：`reboot-android.sh` 超时 / 设备不在线即失败；`full-check.sh` 重启失败即停止、退出时写回键盘
+  - `full-check.sh`：诊断版 iOS 24/24、Android 23/24（S6 120 s，开始时 load 31–40）；正式版 iOS 23、24、24、24、24（第 1 轮 S18：登录 tap 在登录响应与首页 GET /items 之间 30 ms 内返回，注入的 500 被首页首次加载用掉）；Android 23、24、24、24、24（第 1 轮 S6：60 步上限，每步 0.53 → 1.84 s，负载）；能力检查同 0.12.0；键盘写回；无睡眠事件
+  - #104 的上限路径本次未触发；速度与 0.13.0 相同；RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v11 待确认

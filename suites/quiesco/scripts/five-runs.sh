@@ -8,7 +8,7 @@ PLATFORM=${PLATFORM:-ios}
 RUNS=${RUNS:-5}
 mkdir -p logs
 for i in $(seq "$RUNS"); do
-  if [ "$PLATFORM" = ios ]; then ../maestro/scripts/reboot-ios.sh >/dev/null; else ../maestro/scripts/reboot-android.sh; fi
+  if [ "$PLATFORM" = ios ]; then ../maestro/scripts/reboot-ios.sh >/dev/null; else ../maestro/scripts/reboot-android.sh; fi || { echo "run $i: reboot failed, stopping"; exit 1; }
   t0=$(date +%s)
   VARIANT=final npx quiesco test --platform "$PLATFORM" > "logs/$PLATFORM-final-run$i.log" 2>&1
   t1=$(date +%s)
