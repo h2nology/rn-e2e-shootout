@@ -259,7 +259,7 @@
   - 只改 `@quiesco/agent`（事件订阅不算等待回调；SYNC_TIMEOUT 列出最近忙碌过的 tracker）与 `@quiesco/core` 的 timeline；`init --upgrade` 干净、`doctor` 无 warning；重建 iOS 190 s、Android 201 s
   - 插件第一次更新后本项目记录仍为 0.13.2，用户再次 `/plugin` 更新后为 0.13.3
   - 等 load average 降到 10 以下（构建后 51 → 8.4）再 `full-check.sh`：诊断版两平台 24/24；正式版**两平台 5 × 24/24**；能力检查同 0.12.0；键盘写回；无睡眠事件
-  - #109 修复确认：Android 各场景回到 0.13.1 的耗时（中位数之和 224 s），每轮 224–228 s；#110 未触发（S6 未失败）、未验证
+  - #109 修复确认：Android 各场景回到 0.13.1 的耗时（中位数之和 224 s），每轮 224–228 s；#110 在 full-check 中未触发；之后单独反复运行诊断版 S6（Android）7 次，第 7 次碰上“超时落在稳定帧”，报错列出 frame-stable（idle at the timeout），修复确认
   - iOS S8 13.7 → 26.0 s：Vitest 排序后 S8 排第 2 个，承担 XCUITest runner 启动（timeline + 设备日志确认），不是 0.13.3；M4 需固定顺序或预先启动 runner
   - 更正 0.13.2 记录中“中位数之和”的重复计数（451 → 543 s 应为 225 → 272 s）
   - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v13（Quiesco 0.13.3）用户确认，打 tag `methodology-v13`

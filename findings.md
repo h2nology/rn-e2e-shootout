@@ -413,7 +413,7 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 | 问题 | 0.13.3 实测 |
 |---|---|
 | #109 Android 每次启动后第一个操作等 `addListener()` 2 s | **已修复**：Android 各场景中位数回到 0.13.1（之和 224 s，0.13.1 225 s，0.13.2 272 s），每轮 224–228 s |
-| #110 SYNC_TIMEOUT 漏列 frame-stable | **未验证**：本次 S6 Android 5 / 5 + 诊断版均未失败，改进后的报错没有出现 |
+| #110 SYNC_TIMEOUT 漏列 frame-stable | **已修复**（之后单独实测）：诊断版 S6 Android 反复运行 7 次中失败 2 次；第 7 次超时落在稳定帧（frame-stable `idle: true`、`lastWait` 保留），报错列出 `frame-stable (idle at the timeout, busy 45ms before it)` 与反复增删说明；第 3 次出现 `react (idle at the timeout, busy 87ms before it)`；失败的等待与 `scrollTo` 每一步都有等待记录 |
 
 - **N1 iOS S8 13.7 → 26.0 s（中位数），每轮 +14 s：测试顺序，不是 0.13.3。** 5 轮中 S8 都排在 S6 之后的第 2 个（Vitest 按上次耗时排序），成为每轮第一个用 `system.*` 的测试，承担 XCUITest runner 启动（`ready in 8302–12299 ms`）。timeline（`QUIESCO_ARTIFACTS=all`，3 次 22.1–24.8 s）：`system.tap({ text: '25' })` 约 5.3 s，设备日志中 XCTest 守护进程在其后才连上 app。0.13.1 / 0.13.2 时由 S22 / S23 承担：S22 的 `openNotification()` 在等通知期间启动 runner（不计入其超时），启动时间被等待盖住，所以整轮不显慢；S8 没有可重叠的等待 → 整轮多出约 10–13 s。S8 慢了下次仍排在前面（自我强化）。**M4：harness 需固定测试顺序，或在计时外预先启动 runner**（单场景耗时与排序有关；METHODOLOGY 的交错 / 预热规则需覆盖这一点）。
 - 0.13.2 的“中位数之和”数字为重复计数（Vitest 输出中文件行与测试行各算一次），已在 RESULTS / findings / progress 中更正；结论不变。
