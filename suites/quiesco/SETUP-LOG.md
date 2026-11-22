@@ -184,6 +184,19 @@
 | C6 | — | S6 Android 第 5 轮交给 `failure-investigator` | — | 与第 3 轮同为 FlatList 反复增删（推断）；报错漏列 frame-stable（#110） |
 | C7 | — | `QUIESCO_ARTIFACTS=all` 重跑 S1 / S2（Android）、S2（iOS），读 timeline | 命令 | Android 每次启动后第一个操作等 `ExpoNotificationsEmitter.addListener()` 2 s（#109）；iOS 无此调用 |
 
+## 升级到 0.13.3（2026-11-23）
+
+0.13.2 中提交的 h2nology/quiesco#109、#110 在 0.13.3 关闭。0.13.3 改了 `@quiesco/agent`：名为 `add…Listener` / `remove…Listener(s)` 的原生调用视为事件订阅，只在返回 Promise 时计入（#109）；`SYNC_TIMEOUT` 也列出超时前 1 秒内忙碌过的 tracker，frame-stable 在超时的等待中保留变化记录（#110）。`@quiesco/core` 只改了 timeline。
+
+| # | 用时 | 操作 | 类型 | 结果 / 问题 |
+|---|---|---|---|---|
+| D1 | — | 用户更新插件（`/plugin`、`/reload-plugins`）到 0.13.3 | 命令 | 第一次更新后本项目的插件记录仍为 0.13.2，用户再次更新后为 0.13.3（测试代码只依赖 npm 包，不受影响） |
+| D2 | 6 s | `npx quiesco@0.13.3 init --upgrade` | 命令 | 精确版本、不加脚本，不需要手动改 |
+| D3 | — | `npx quiesco doctor` | 命令 | 全部通过、无 warning |
+| D4 | iOS 190 s、Android 201 s | `npm run build:ios` / `build:android` | 命令 | agent 有改动，按 release notes 重建 |
+| D5 | — | 等 1 分钟 load average 降到 10 以下（构建结束时 51，等 121 s 后 8.4），再 `PREFIX=q0133 scripts/full-check.sh` | 命令 | 诊断版两平台 24 / 24；正式版两平台 5 × 24 / 24；能力检查同 0.12.0；键盘已写回；无睡眠事件 |
+| D6 | — | `QUIESCO_ARTIFACTS=all` 重跑 S8（iOS）3 次，读 timeline 与设备日志 | 命令 | S8 变慢来自 XCUITest runner 启动转到 S8（测试顺序），不是 0.13.3 |
+
 ## 状态重置（METHODOLOGY 5）
 
 Quiesco 默认在每个测试前做 **soft reset**（app 内清 AsyncStorage、把 Expo Router 的导航恢复到初始状态并重新挂载，不重启进程），粒度与 METHODOLOGY 5 不同。按规则另外补齐，全部用 Quiesco 的 API：

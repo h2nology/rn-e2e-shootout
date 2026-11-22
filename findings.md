@@ -402,6 +402,20 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 |---|---|
 | #107 登录 `tap` 在 AsyncStorage 写入期间返回 | **已修复**：S18 两平台 5 / 5，诊断版 24 / 24。timeline 中 Android 登录 `tap` 的等待持续到首页工作结束（S1 1,726 ms） |
 
-- **N1 Android 每个场景 +1.4–1.8 s（0.13.2 引入）。** 各场景中位数之和 451 → 543 s，最简单的 S2 4.2 → 5.9 s；iOS 不变（671 → 665 s）。`QUIESCO_ARTIFACTS=all` 重跑 S1 / S2：每次 `relaunch` 后第一个操作的等待约 2,000 ms，`busy: native-module: ExpoNotificationsEmitter.addListener() 1970ms`；`during that wait` 中还有 `ExpoPushTokenManager.addListener()`、`ExpoNotificationsHandlerModule.addListener()` ×4，都 `→pending`（已超过 2 s，不再计入）。根布局 `Notifications.addNotificationResponseReceivedListener(…)` → Expo 模块 `addListener(eventName, listener)`（`expo-modules-core` `TurboModuleToExpoModuleProxy.native.ts` 把监听函数传给原生）→ 0.13.2 的规则把订阅当成等待回调 → 等到 `nativeCallThresholdMs`（2,000 ms）。iOS 同一测试的等待中没有这些调用（原因未查）。不影响通过率。可用 `sync.ignoreNativeCalls` 绕过，但保持默认值。已提交 h2nology/quiesco#109（2026-11-22）。
+- **N1 Android 每个场景 +1.4–1.8 s（0.13.2 引入）。** 各场景中位数之和 225 → 272 s，最简单的 S2 4.2 → 5.9 s；iOS 不变（336 → 333 s）（原记 451 → 543 s / 671 → 665 s，为文件行与测试行的重复计数，0.13.3 时更正）。`QUIESCO_ARTIFACTS=all` 重跑 S1 / S2：每次 `relaunch` 后第一个操作的等待约 2,000 ms，`busy: native-module: ExpoNotificationsEmitter.addListener() 1970ms`；`during that wait` 中还有 `ExpoPushTokenManager.addListener()`、`ExpoNotificationsHandlerModule.addListener()` ×4，都 `→pending`（已超过 2 s，不再计入）。根布局 `Notifications.addNotificationResponseReceivedListener(…)` → Expo 模块 `addListener(eventName, listener)`（`expo-modules-core` `TurboModuleToExpoModuleProxy.native.ts` 把监听函数传给原生）→ 0.13.2 的规则把订阅当成等待回调 → 等到 `nativeCallThresholdMs`（2,000 ms）。iOS 同一测试的等待中没有这些调用（原因未查）。不影响通过率。可用 `sync.ignoreNativeCalls` 绕过，但保持默认值。已提交 h2nology/quiesco#109（2026-11-22）。
 - **N2 S6 Android 正式版第 3、5 轮：FlatList 反复增删，第 5 轮的报错漏列 frame-stable。** 第 3 轮报错同 0.13.0（`children=268 ↔ 269`，20 / 20 次）。第 5 轮只有 `timer: setTimeout(anonymous, 50ms)`；`failure-investigator` 读证据（执行者核对源码）：元素树与第 3 轮相同（4318 节点、268 个子元素、已渲染 1–10 与 67–322 行），设备日志无错误 / GC / 掉帧，app 中唯一的 50 ms 定时器是 VirtualizedList 的批处理 → 同一原因（推断，置信度中高）。`wait-for-idle.ts` `timeoutError()` 只列出超时那一刻忙碌的 tracker；`frame-stable.ts:176` `endWait()` 在最后一次采样稳定时丢弃整个等待的变化记录；“等待如何结束”只附在成功的动作等待上（失败的等待、`scrollTo` 每一步都没有）。已提交 h2nology/quiesco#110（2026-11-22）。
 - 运行前等负载降下来：构建结束时 load average 41，等 1 分钟降到 9.8 再开始 full-check（0.13.1 时立即开始，S6 因负载失败 2 次）。阈值 10 是执行者选的（15 核），METHODOLOGY 6.4 没有数值 → M4 harness 需定下阈值。
+
+### Quiesco 0.13.3：#109 / #110 的验证结果与新发现（2026-11-23）
+
+0.13.3 关闭了 #109、#110，改了 `@quiesco/agent`：① 名为 `add…Listener` / `remove…Listener(s)` 的原生调用视为事件订阅，只在返回 Promise 时计入；② `SYNC_TIMEOUT` 报错也列出超时时空闲、但 1 秒内忙碌过的 tracker，frame-stable 在超时的等待中保留 `lastWait`；③ 失败的等待与 `scrollTo` 每一步也记录“等待如何结束”。`@quiesco/core` 只改了 `src/timeline.ts`（`npm diff`）。
+
+| 问题 | 0.13.3 实测 |
+|---|---|
+| #109 Android 每次启动后第一个操作等 `addListener()` 2 s | **已修复**：Android 各场景中位数回到 0.13.1（之和 224 s，0.13.1 225 s，0.13.2 272 s），每轮 224–228 s |
+| #110 SYNC_TIMEOUT 漏列 frame-stable | **未验证**：本次 S6 Android 5 / 5 + 诊断版均未失败，改进后的报错没有出现 |
+
+- **N1 iOS S8 13.7 → 26.0 s（中位数），每轮 +14 s：测试顺序，不是 0.13.3。** 5 轮中 S8 都排在 S6 之后的第 2 个（Vitest 按上次耗时排序），成为每轮第一个用 `system.*` 的测试，承担 XCUITest runner 启动（`ready in 8302–12299 ms`）。timeline（`QUIESCO_ARTIFACTS=all`，3 次 22.1–24.8 s）：`system.tap({ text: '25' })` 约 5.3 s，设备日志中 XCTest 守护进程在其后才连上 app。0.13.1 / 0.13.2 时由 S22 / S23 承担：S22 的 `openNotification()` 在等通知期间启动 runner（不计入其超时），启动时间被等待盖住，所以整轮不显慢；S8 没有可重叠的等待 → 整轮多出约 10–13 s。S8 慢了下次仍排在前面（自我强化）。**M4：harness 需固定测试顺序，或在计时外预先启动 runner**（单场景耗时与排序有关；METHODOLOGY 的交错 / 预热规则需覆盖这一点）。
+- 0.13.2 的“中位数之和”数字为重复计数（Vitest 输出中文件行与测试行各算一次），已在 RESULTS / findings / progress 中更正；结论不变。
+- 运行前等负载降下来：构建结束时 load average 51，等 121 s 降到 8.4 再开始（阈值 10，同 0.13.2）。
+

@@ -250,7 +250,17 @@
 - **Quiesco 0.13.2 重跑**（用户要求：0.13.2 发布，#107 已关闭；插件由用户更新；2026-11-22）
   - 只改 `@quiesco/agent`（带回调的原生调用算忙碌、timeline 记录等待如何结束）；`init --upgrade` 干净、`doctor` 无 warning；重建 iOS 186 s、Android 251 s
   - 等 load average 降到 10 以下（构建后 41 → 9.8）再 `full-check.sh`：诊断版两平台 24/24；正式版 iOS 5 × 24/24（S18 ✓，#107 修复确认）；Android 24、24、23、24、23（第 3、5 轮 S6，FlatList 反复增删）；能力检查同 0.12.0；键盘写回；无睡眠事件
-  - Android 每个场景 +1.4–1.8 s（中位数之和 451 → 543 s）：timeline 实测为每次启动后第一个操作等 `ExpoNotificationsEmitter.addListener()` 到 2 s 上限（0.13.2 引入）；iOS 不变
+  - Android 每个场景 +1.4–1.8 s（中位数之和 225 → 272 s；原记 451 → 543 s 为重复计数，0.13.3 时更正）：timeline 实测为每次启动后第一个操作等 `ExpoNotificationsEmitter.addListener()` 到 2 s 上限（0.13.2 引入）；iOS 不变
   - S6 第 5 轮交给 `failure-investigator`：同一反复增删（推断），报错只列 timer（frame-stable 的记录在最后一帧稳定时被丢弃）
   - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v12（Quiesco 0.13.2）用户确认，打 tag `methodology-v12`
   - 提交 issue（用户要求）：h2nology/quiesco#109（Android `addListener` 订阅被算作等待回调，每次启动 +2 s）、#110（SYNC_TIMEOUT 漏列 frame-stable、丢弃变化记录）
+
+- **Quiesco 0.13.3 重跑**（用户要求：0.13.3 发布，#109、#110 已关闭；插件由用户更新；2026-11-22 → 23）
+  - 只改 `@quiesco/agent`（事件订阅不算等待回调；SYNC_TIMEOUT 列出最近忙碌过的 tracker）与 `@quiesco/core` 的 timeline；`init --upgrade` 干净、`doctor` 无 warning；重建 iOS 190 s、Android 201 s
+  - 插件第一次更新后本项目记录仍为 0.13.2，用户再次 `/plugin` 更新后为 0.13.3
+  - 等 load average 降到 10 以下（构建后 51 → 8.4）再 `full-check.sh`：诊断版两平台 24/24；正式版**两平台 5 × 24/24**；能力检查同 0.12.0；键盘写回；无睡眠事件
+  - #109 修复确认：Android 各场景回到 0.13.1 的耗时（中位数之和 224 s），每轮 224–228 s；#110 未触发（S6 未失败）、未验证
+  - iOS S8 13.7 → 26.0 s：Vitest 排序后 S8 排第 2 个，承担 XCUITest runner 启动（timeline + 设备日志确认），不是 0.13.3；M4 需固定顺序或预先启动 runner
+  - 更正 0.13.2 记录中“中位数之和”的重复计数（451 → 543 s 应为 225 → 272 s）
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v13 待确认
+
