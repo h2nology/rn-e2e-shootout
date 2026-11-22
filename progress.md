@@ -252,5 +252,5 @@
   - 等 load average 降到 10 以下（构建后 41 → 9.8）再 `full-check.sh`：诊断版两平台 24/24；正式版 iOS 5 × 24/24（S18 ✓，#107 修复确认）；Android 24、24、23、24、23（第 3、5 轮 S6，FlatList 反复增删）；能力检查同 0.12.0；键盘写回；无睡眠事件
   - Android 每个场景 +1.4–1.8 s（中位数之和 451 → 543 s）：timeline 实测为每次启动后第一个操作等 `ExpoNotificationsEmitter.addListener()` 到 2 s 上限（0.13.2 引入）；iOS 不变
   - S6 第 5 轮交给 `failure-investigator`：同一反复增删（推断），报错只列 timer（frame-stable 的记录在最后一帧稳定时被丢弃）
-  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v12 待确认
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v12（Quiesco 0.13.2）用户确认，打 tag `methodology-v12`
   - 提交 issue（用户要求）：h2nology/quiesco#109（Android `addListener` 订阅被算作等待回调，每次启动 +2 s）、#110（SYNC_TIMEOUT 漏列 frame-stable、丢弃变化记录）
