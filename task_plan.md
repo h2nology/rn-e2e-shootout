@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 0.13.3（#109、#110 修复）：两平台诊断版 24/24、正式版 5 × 24/24；Android 每场景 +1.7 s 消失（#109 确认）；#110 未触发；iOS S8 因 Vitest 排序承担 XCUITest runner 启动（+12 s，不是工具回退，M4 需固定顺序或预先启动 runner）。METHODOLOGY v13（Quiesco 0.13.3）待用户确认。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时、开始前等宿主机负载降下来、固定测试顺序，METHODOLOGY 6.4）。
+Quiesco 0.13.3（#109、#110 修复）：两平台诊断版 24/24、正式版 5 × 24/24；Android 每场景 +1.7 s 消失（#109 确认）；#110 未触发；iOS S8 因 Vitest 排序承担 XCUITest runner 启动（+12 s，不是工具回退，M4 需固定顺序或预先启动 runner）。METHODOLOGY v13（Quiesco 0.13.3）用户确认，已打 tag `methodology-v13`。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时、开始前等宿主机负载降下来、固定测试顺序，METHODOLOGY 6.4）。
 
 ## Current Phase
 
@@ -41,7 +41,7 @@ Phase 3（M3）
 - [x] detox（Jest），记录易用性数据（结果见 `suites/detox/RESULTS.md`）；SDK 58 不在 Detox 官方支持范围内，按社区 `expo-detox-config-plugin`（≥13.1.0）+ Android ProGuard keep 规则接入，额外配置计入易用性；跑不通记 ✗ 并附来源
 - [x] appium（WebdriverIO），记录易用性数据（结果见 `suites/appium/RESULTS.md`）；app 零改动，重置全部用 Appium API
 - [x] maestro（YAML），记录易用性数据（结果见 `suites/maestro/RESULTS.md`）；app 零改动；iOS 重置与工具缺失的系统操作经 `scripts/device-helper.mjs`（本地 HTTP）执行外部命令
-- [x] quiesco（0.13.3 + Vitest，METHODOLOGY v13 待确认；用 quiesco@h2nology 插件接入），记录易用性数据（结果见 `suites/quiesco/RESULTS.md`）。0.11.0 修复 S22 iOS（#82）；开启 `native-module` tracker（用户决定，S18 / #67）后两平台 5 × 24/24；0.12.0 tracker 默认开启、C1 iOS 修复（#92），两平台 5 × 24/24
+- [x] quiesco（0.13.3 + Vitest，METHODOLOGY v13；用 quiesco@h2nology 插件接入），记录易用性数据（结果见 `suites/quiesco/RESULTS.md`）。0.11.0 修复 S22 iOS（#82）；开启 `native-module` tracker（用户决定，S18 / #67）后两平台 5 × 24/24；0.12.0 tracker 默认开启、C1 iOS 修复（#92），两平台 5 × 24/24
 - [x] 每套正式版 iOS / Android 连续 5 次全绿，或记录 ✗ 原因；C1–C11 逐项检查
 - **Status:** complete
 

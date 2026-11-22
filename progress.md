@@ -262,5 +262,5 @@
   - #109 修复确认：Android 各场景回到 0.13.1 的耗时（中位数之和 224 s），每轮 224–228 s；#110 未触发（S6 未失败）、未验证
   - iOS S8 13.7 → 26.0 s：Vitest 排序后 S8 排第 2 个，承担 XCUITest runner 启动（timeline + 设备日志确认），不是 0.13.3；M4 需固定顺序或预先启动 runner
   - 更正 0.13.2 记录中“中位数之和”的重复计数（451 → 543 s 应为 225 → 272 s）
-  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v13 待确认
+  - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v13（Quiesco 0.13.3）用户确认，打 tag `methodology-v13`
 
