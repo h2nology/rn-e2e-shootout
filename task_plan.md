@@ -8,7 +8,7 @@
 
 ## Next Step
 
-Quiesco 0.13.3（#109、#110 修复）：两平台诊断版 24/24、正式版 5 × 24/24；Android 每场景 +1.7 s 消失（#109 确认）；#110 未触发；iOS S8 因 Vitest 排序承担 XCUITest runner 启动（+12 s，不是工具回退，M4 需固定顺序或预先启动 runner）。METHODOLOGY v13（Quiesco 0.13.3）用户确认，已打 tag `methodology-v13`。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时、开始前等宿主机负载降下来、固定测试顺序，METHODOLOGY 6.4）。
+Quiesco 0.13.3（#109、#110 修复）：两平台诊断版 24/24、正式版 5 × 24/24；Android 每场景 +1.7 s 消失（#109 确认）；#110 未触发；iOS S8 因 Vitest 排序承担 XCUITest runner 启动（+12 s，不是工具回退，M4 需固定顺序或预先启动 runner）。METHODOLOGY v13（Quiesco 0.13.3）用户确认，已打 tag `methodology-v13`。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时、开始前等宿主机负载降下来、固定测试顺序，METHODOLOGY 6.4）；两平台各录一整轮 timeline，按环节解释 iOS 比 Android 慢的原因（findings.md 初步结论）。
 
 ## Current Phase
 

@@ -419,3 +419,23 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 0.13.2 的“中位数之和”数字为重复计数（Vitest 输出中文件行与测试行各算一次），已在 RESULTS / findings / progress 中更正；结论不变。
 - 运行前等负载降下来：构建结束时 load average 51，等 121 s 降到 8.4 再开始（阈值 10，同 0.13.2）。
 
+
+### iOS 比 Android 慢的原因（初步，Quiesco 0.13.3，2026-11-23）
+
+0.13.3 正式版各场景中位数之和 iOS 346 s、Android 224 s（差 122 s）。约 80 s 来自大部分场景各 +3–4.5 s（S1 / S2 +3.4、S3 +4.2、S20 +4.7 s），约 45 s 来自 S6 +15 s（iOS 每步滚动更慢）、S8 +13 s（XCUITest runner 启动，测试顺序，见上节 N1）、S21 +10.6 s、S23 +7.7 s（后两者未拆解）。
+
+`QUIESCO_ARTIFACTS=all` 单独运行 S2 各 1 次（`logs/q0133-{ios,android}-s2-probe2.log`），测试本体 iOS 7.8 s、Android 3.8 s：
+
+| 环节 | iOS | Android | 差 |
+|---|---|---|---|
+| Quiesco 默认 soft reset | 1.09 s | 0.22 s | +0.9 s |
+| beforeEach（`/reset`、iOS `setPermission('location', 'reset')`、`relaunch({ clearData: true })`） | 2.68 s | 2.36 s | +0.3 s |
+| 第 1 个 `type()`（含空闲等待） | 2.66 s | 0.47 s | +2.2 s |
+| 第 2 个 `type()` | 0.68 s | 0.22 s | +0.5 s |
+| 之后的 tap / 断言 | 约 0.35 s | 约 0.35 s | 0 |
+
+- **iOS app 启动更慢**：第 1 个操作开始时 iOS 上 splash 的 1.5 s 最短显示定时器（`app/src/app/_layout.tsx:15` `SPLASH_MIN_MS`）仍未触发（`timer: setTimeout(anonymous, 1462ms), fires in 86ms`），Android 同一时刻已触发 → iOS 第 1 个操作多等启动完成（约 1.4 s，由 timeline 推算）。
+- **iOS 键盘稳定等待（Quiesco 有意设计）**：`@quiesco/native` iOS `KeyboardMotion` 在键盘动画期间及最后一次活动后 `quietSeconds = 0.4` s 内报 `keyboard just used`（`QuiescoNativeModule.swift:852`；注释：iOS 27 实测输入后 0 ms 的点击会被丢弃，300 ms 后送达）。每个输入操作多等约 0.4–0.8 s；Android 无此 tracker。
+- 大部分场景以 `login()`（2 × `type` + `tap`）开始，以上开销每个场景都付一次。
+- **是平台差异，不是 Quiesco 特有**：Detox iOS 642–653 s / Android 399–440 s，Appium 530–542 s / 368–519 s，Quiesco 349–351 s / 224–228 s；Maestro 相反（iOS 9 分 46 秒–9 分 51 秒 / Android 13 分 11 秒–14 分 29 秒）。
+- 局限：只有 S2 的 1 次单独运行（含冷启动），套件内 S2 的差距 3.4 s 与 timeline 的 4.0 s 大致一致；第 1 个操作前的等待为推算。**M4：两平台各录一整轮 timeline，按环节汇总全部场景**（发布文引用前替换本节结论）。
