@@ -9,6 +9,10 @@ import { api, type Item } from '@/lib/api';
 import { items as itemStore, useStore } from '@/lib/store';
 
 const SEARCH_DEBOUNCE_MS = 300;
+// 行高固定（styles.row）。FlatList 用 getItemLayout 而不是实测布局计算渲染窗口：
+// 52 dp 在 Android（2.625x）上是 136.5 px，实测行高按像素取整在 51 / 52 dp 间交替，
+// 渲染窗口边缘的一行会被无限反复增删（findings.md：S6 FlatList 反复增删）。
+const ROW_HEIGHT = 52;
 
 function useDebouncedSearch(query: string) {
   const [results, setResults] = useState<Item[] | null>(null);
@@ -126,6 +130,7 @@ export default function Home() {
           testID="item-list"
           data={data}
           keyExtractor={(i) => String(i.id)}
+          getItemLayout={(_, index) => ({ length: ROW_HEIGHT, offset: ROW_HEIGHT * index, index })}
           renderItem={({ item }) => <Row item={item} onDelete={setConfirmId} onLongPress={setMenuId} />}
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         />
@@ -171,7 +176,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
-    height: 52,
+    height: ROW_HEIGHT,
     backgroundColor: 'white',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: colors.border,
