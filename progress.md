@@ -282,3 +282,4 @@
   - S6 FlatList 反复增删：没有 Quiesco 时也会发生（app 侧，findings.md）；用户决定改 app → A5 FlatList 加 `getItemLayout`（bc38067），Quiesco Android S6 帧稳定关闭时 0/20 超时（修改前 4/20、7/20）；METHODOLOGY v14 ⑤（待确认）
   - 全部 8 个组合重建（各 3–4 分钟）+ 冒烟第 3 轮（`smoke2-*`）：Quiesco iOS 22/24（S22 通知权限弹窗未授权 → S23 被残留弹窗连带）、Quiesco Android 24/24、Detox iOS 22 + 跳过 1 / S21、Detox Android 22 + 跳过 2、Appium iOS 24/24、Appium Android 23/24（S21）、Maestro iOS 21/24（S3 / S20 / S22，同上轮）、Maestro Android 24/24
   - Quiesco iOS S22 依赖“模拟器上已授权过通知”这一隐藏状态：harness 每次卸载重装，iOS 通知权限随之清除；Appium（`appium:permissions`）、Maestro（`setPermissions`）在场景内自行预先授权，Quiesco iOS 不能（simctl privacy 无 notifications 服务，`setPermission('notifications')` 在 iOS 不支持）→ 待用户决定处理方式
+  - 用户决定向 Quiesco 提 issue：h2nology/quiesco#113（iOS 预先授予通知权限）。实测：通知设置在模拟器 `Library/BulletinBoard/VersionedSectionInfo.plist` 的 BBSectionInfo，`simctl uninstall` 会删除；applesimutils 写入该项并重启 SpringBoard；S22 单独运行：重装→授予 通过、授予→安装 通过、重装不授予 失败（弹窗）
