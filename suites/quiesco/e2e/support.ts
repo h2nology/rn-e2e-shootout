@@ -25,6 +25,23 @@ export async function resetApp(app: Driver): Promise<void> {
   await app.device.relaunch({ clearData: true });
 }
 
+/**
+ * harness 的计时标记（METHODOLOGY 7）：场景开始（重置开始）、重置结束、场景结束各发一次到 mock server。
+ * 只用于计时，不影响测试；mock server 不可用时忽略。
+ */
+export async function harnessMark(event: 'scenario-start' | 'reset-end' | 'scenario-end', scenario: string): Promise<void> {
+  try {
+    await fetch(`${MOCK}/harness/mark`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ event, scenario }),
+      signal: AbortSignal.timeout(2000),
+    });
+  } catch {
+    // 计时标记失败不影响测试
+  }
+}
+
 export async function login(app: Driver): Promise<void> {
   await app.type('login-email', 'user@example.com');
   await app.type('login-password', 'Passw0rd!');

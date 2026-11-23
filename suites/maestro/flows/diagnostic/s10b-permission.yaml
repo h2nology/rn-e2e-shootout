@@ -3,6 +3,12 @@ appId: com.rnshootout.app
 name: S10b
 onFlowStart:
   - runFlow: ../common/reset.yaml
+# harness 计时标记：场景结束（失败时也执行）
+onFlowComplete:
+  - runScript:
+      file: ../common/mark.js
+      env:
+        EVENT: scenario-end
 ---
 - runFlow: ../common/login.yaml
 - tapOn:

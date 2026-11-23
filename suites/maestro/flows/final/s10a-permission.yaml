@@ -3,6 +3,12 @@ appId: com.rnshootout.app
 name: S10a
 onFlowStart:
   - runFlow: ../common/reset.yaml
+# harness 计时标记：场景结束（失败时也执行）
+onFlowComplete:
+  - runScript:
+      file: ../common/mark.js
+      env:
+        EVENT: scenario-end
 ---
 # iOS 的定位权限取值为 always / inuse / never（allow 报错 “wrong argument value”）
 - runFlow:

@@ -37,7 +37,10 @@ const capabilities = {
 export const config = {
   runner: 'local',
   port: 4723,
-  specs: [process.env.SPEC ?? `./test/${VARIANT}/**/*.js`],
+  // 固定按文件名（场景编号）顺序执行（METHODOLOGY 6.3）
+  specs: process.env.SPEC
+    ? [process.env.SPEC]
+    : fs.readdirSync(path.join(import.meta.dirname, 'test', VARIANT)).filter((f) => f.endsWith('.js')).sort().map((f) => `./test/${VARIANT}/${f}`),
   maxInstances: 1,
   capabilities: [capabilities],
   logLevel: 'warn',
@@ -46,7 +49,8 @@ export const config = {
   bail: 0,
   services: [['appium', { logPath: './logs' }]],
   framework: 'mocha',
-  mochaOpts: { ui: 'bdd', timeout: 60000, retries: 0 },
+  // harness 计时标记的 root hook（test/harness.js）
+  mochaOpts: { ui: 'bdd', timeout: 60000, retries: 0, require: [path.join(import.meta.dirname, 'test', 'harness.js')] },
   // Android 模拟器内的 app 通过 localhost:4000 访问 mock server，需要 adb reverse。
   // Appium 没有对应的 capability（Detox 有 reversePorts），用外部命令补齐。
   onPrepare() {

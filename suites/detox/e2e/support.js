@@ -2,6 +2,7 @@
 const { execSync } = require('child_process');
 const BUNDLE = 'com.rnshootout.app';
 const MOCK = 'http://localhost:4000';
+const { harnessMark } = require('./harness-mark');
 
 async function resetServer() {
   await fetch(`${MOCK}/reset`, { method: 'POST' });
@@ -34,6 +35,8 @@ async function resetApp(launchArgs = {}) {
     execSync(`adb -s ${device.id} shell pm clear ${BUNDLE}`);
   }
   await device.launchApp({ newInstance: true, ...launchArgs });
+  // 场景中第一次重置的结束时刻（harness 只取每个场景的第一次）
+  await harnessMark('reset-end');
 }
 
 async function login() {

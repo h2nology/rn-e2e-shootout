@@ -1,0 +1,29 @@
+# 固定按场景编号顺序执行（METHODOLOGY 6.3）。不指定时 Maestro 的执行顺序不固定（M3 实测：S13 排第一、S1 排最后）。
+# continueOnFailure：某个 flow 失败后继续执行后面的 flow（与其他工具相同）。
+executionOrder:
+  continueOnFailure: true
+  flowsOrder:
+    - S1
+    - S2
+    - S3
+    - S4
+    - S5
+    - S6
+    - S7
+    - S8
+    - S9
+    - S10a
+    - S10b
+    - S11
+    - S12
+    - S13
+    - S14
+    - S15
+    - S16
+    - S17
+    - S18
+    - S19
+    - S20
+    - S21
+    - S22
+    - S23

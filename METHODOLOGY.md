@@ -1,6 +1,6 @@
 # 测量方法
 
-> 方法版本：**v13**（2026-11-23，tag `methodology-v13`；v12 为 2026-11-22，tag `methodology-v12`；v11 为 2026-11-22，tag `methodology-v11`；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11、v12、v13 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
+> 方法版本：**v14**（2026-11-23，待确认；v13 为 2026-11-23，tag `methodology-v13`；v12 为 2026-11-22，tag `methodology-v12`；v11 为 2026-11-22，tag `methodology-v11`；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11、v12、v13、v14 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
 
 场景定义见 [`scenarios.md`](scenarios.md)。本文件定义**怎么跑、怎么计数、怎么统计、怎么报告**。
 
@@ -119,6 +119,8 @@
 
 正式测量时，不按工具连续跑完。把全部（工具 × 平台 × 运行序号）组合打乱后依次执行，一个单元是一次完整的套件运行。打乱用固定随机种子，种子写进结果目录的 `run-order.json`。同一时刻只运行一个模拟器 / 浏览器。
 
+套件内的场景按场景编号**固定顺序**执行（S1、S2 … S23；四个工具都由配置固定：Vitest / Jest 自定义 sequencer、WebdriverIO 排序后的 spec 列表、Maestro `config.yaml` 的 `executionOrder`）。runner 默认按上次耗时排序（Vitest、Jest）或顺序不固定（Maestro），一次性的启动开销（如 iOS 上第一次使用系统 UI 时启动 XCUITest runner）会落在不同的场景上，单个场景的耗时随排序变化（findings.md：Quiesco 0.13.3 S8）。
+
 ### 6.4 环境控制
 
 - 宿主机接电源；用 `caffeinate -dimsu` 防止休眠。
@@ -131,9 +133,13 @@
 | 语言 / 地区 | `en` / `en_US` | `en-US` | locale `en-US` |
 | 动画 | 关闭“减弱动态效果”（Reduce Motion） | 窗口 / 转场 / Animator 动画缩放均为 1.0 | `prefers-reduced-motion: no-preference` |
 | 外观 | 浅色 | 浅色 | `prefers-color-scheme: light` |
+| 当前键盘 | 英文（`en_US`；登记的键盘列表不变。系统记住上次使用的键盘，S7b 之后会停在中日文键盘） | LatinIME（AOSP 唯一的输入法） | — |
 
   C8（深色模式）、C10（系统语言）在检查过程中按需临时改变上述设置。
 - 测量期间不在宿主机上做其他工作。
+- 每次套件运行前等宿主机 1 分钟 load average 降到 **8** 以下（15 核的约一半），模拟器开机后再等一次；最多等 20 分钟，超过则停止。两次的值写进结果 JSON。阈值的依据：M3 中 load average 30–40 时 Android S6 两次因拖动距离变短失败（findings.md：Quiesco 0.13.1）。
+- 模拟器每次以相同方式启动：iOS 为 `simctl shutdown` → `boot`；Android 结束模拟器进程后以固定参数冷启动（`-avd Medium_Phone_API_36_AOSP -port 5554 -no-snapshot-load -no-audio -no-window`；headless：带窗口启动且窗口不在前台时 macOS 把模拟器进程限速为后台优先级，耗时变为 2–3 倍；`slow-cpu` 另加 `-cores 2`）。开机最多等 5 分钟，超时则停止且不写该次结果。
+- 运行期间宿主机如有睡眠 / 唤醒事件（`pmset -g log`），该次运行标为无效（`invalid`），保留结果但不计入统计。
 
 ### 6.5 超时
 
@@ -147,7 +153,7 @@
 |---|---|---|
 | `buildMs` | 开始 e2e 构建 | 构建产物生成 |
 | `installMs` | 开始安装到模拟器 | 安装完成 |
-| `launchMs` | 发出启动命令 | 第一个场景的第一步开始 |
+| `launchMs` | harness 发出工具的测试命令（含工具自身的启动、会话建立） | 第一个场景的重置开始 |
 | `resetMs` | 场景开始前的重置开始 | 重置完成（app 冷启动完成） |
 | `durationMs`（场景） | 场景第一步开始 | 场景最后一个断言完成 |
 | `suiteMs` | 第一个场景开始 | 最后一个场景结束（含场景之间的重置） |
@@ -157,7 +163,10 @@
   - **冷构建**：清除 `ios/build`、DerivedData、Gradle 构建缓存后构建。
   - **热构建**：在一次成功构建之后，修改一个 JS 文件中的字符串再构建。
   - 各测 5 次，报告 median。
-- 场景耗时取自各工具输出的 JUnit XML（Vitest、Jest、WebdriverIO、Maestro 都能输出），harness 统一解析；`suiteMs` 等由 harness 在外部计时。
+- 场景与重置的起止由**计时标记**确定：各套测试在场景的重置开始前、场景中第一次重置结束后、场景结束时（失败时也发）向 mock server 发一个标记（只用于计时，不影响测试）。`durationMs` = 场景结束 − 重置结束，`resetMs` = 重置结束 − 重置开始。不用 JUnit 的 `time`：各工具对 `beforeEach` / `onFlowStart` 的计入方式不同（Vitest / Jest 计入，mocha 不计入，Maestro 计入），且第一个场景的 `time` 含 runner 的启动。JUnit 只用于通过 / 失败 / 跳过与报错信息（Detox 为此加 `jest-junit` reporter）。
+- `suiteMs` 含场景之间 runner 自身的开销（如 Quiesco 的 soft reset），不计入任何场景。
+- `installMs`：harness 在每次套件运行前卸载后安装该工具的构建，只计安装；工具自身的安装步骤能跳过的都跳过（Detox `--reuse`、Maestro 不安装、Appium `noReset` 时同版本不重装）。
+- 构建由 `harness build` 单独计时，各工具的产物复制到 `suites/<tool>/build/`（避免被其他工具的 `prebuild --clean` 清掉）。
 
 ---
 
@@ -208,7 +217,8 @@ CI     = [center − half, center + half]
 
 - 报告 median、p90、min、max。
 - 分场景耗时和整套耗时两个粒度。
-- 只统计**通过**的场景的耗时；失败的场景只计入稳定性。
+- 只统计**通过**的场景的耗时；失败的场景只计入稳定性。整套耗时只统计全部场景通过（跳过的除外）的运行。
+- p90 等分位数用线性插值（R 的 type 7）。
 
 ---
 
@@ -274,3 +284,4 @@ CI     = [center − half, center + half]
 | v11 | 2026-11-22 | ① 2.1 Quiesco 0.13.0 → 0.13.1；② 插件披露的版本加上 `quiesco@h2nology` 0.13.1（内容不变） | ① M3 期间 Quiesco 发布 0.13.1（关闭 #104，只改 iOS `@quiesco/native` 的键盘 “moving” 判定），按第 2.1 节“正式测量开始前统一升级”的规则升级（用户要求，2026-11-22）；其他工具版本不变。v11 制定时尚无正式测量数据（M3 实现阶段） |
 | v12 | 2026-11-22 | ① 2.1 Quiesco 0.13.1 → 0.13.2；② 插件披露的版本加上 `quiesco@h2nology` 0.13.2（内容不变） | ① M3 期间 Quiesco 发布 0.13.2（关闭 #107，只改 `@quiesco/agent`：带回调的原生调用在第一次回调前算忙碌，timeline 记录空闲等待如何结束），按第 2.1 节“正式测量开始前统一升级”的规则升级（用户要求，2026-11-22）；其他工具版本不变。v12 制定时尚无正式测量数据（M3 实现阶段） |
 | v13 | 2026-11-23 | ① 2.1 Quiesco 0.13.2 → 0.13.3；② 插件披露的版本加上 `quiesco@h2nology` 0.13.3（内容不变） | ① M3 期间 Quiesco 发布 0.13.3（关闭 #109、#110，只改 `@quiesco/agent`：事件订阅 `add…Listener` 不再算作等待回调，`SYNC_TIMEOUT` 报错列出最近忙碌过的 tracker；`@quiesco/core` 只改 timeline），按第 2.1 节“正式测量开始前统一升级”的规则升级（用户要求，2026-11-22）；其他工具版本不变。v13 制定时尚无正式测量数据（M3 实现阶段） |
+| v14 | 2026-11-23 | ① 6.3 套件内的场景按编号固定顺序执行；② 6.4 负载阈值（1 分钟 load average < 8，开机前后各等一次）、模拟器的启动方式与开机上限、运行中宿主机睡眠则该次运行无效；③ 7 场景 / 重置耗时改由计时标记计算（不用 JUnit 的 `time`），`launchMs` 的终点改为第一个场景的重置开始，`installMs` 由 harness 统一计时；④ 9 整套耗时只统计全绿运行，分位数用线性插值 | M4 实现 harness 时确定。① M3 中 Vitest 按上次耗时排序使 S8 承担 XCUITest runner 启动（Quiesco 0.13.3），Maestro 的执行顺序不固定；② M3 中高负载导致 S6 失败、模拟器开机曾无限等待、宿主机睡眠导致整轮失败；③ 各工具 JUnit 对重置的计入方式不同，无法满足第 5 节“重置耗时不计入场景耗时”；④ v1–v13 未规定。v14 制定时尚无正式测量数据（M4 阶段） |

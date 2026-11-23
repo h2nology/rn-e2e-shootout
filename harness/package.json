@@ -1,0 +1,10 @@
+{
+  "name": "rn-e2e-shootout-harness",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "bin": { "harness": "bin/harness" },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\""
+  }
+}

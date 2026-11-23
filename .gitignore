@@ -13,3 +13,6 @@ app/android/
 .run/
 # 本地执行日志（构建日志、旧版本代码备份等）
 /logs/
+# harness 冒烟 / 调试用的 session 与其汇总（正式测量的 session 提交）
+/results/raw/smoke-*/
+/results/smoke/

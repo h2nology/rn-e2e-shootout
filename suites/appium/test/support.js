@@ -1,4 +1,6 @@
 // 共用辅助：选择器、状态重置（METHODOLOGY 5）、界面登录（scenarios.md 0.4）、平台差异的小封装
+import { harnessMark } from './harness.js';
+
 export const BUNDLE = 'com.rnshootout.app';
 export const MOCK = 'http://localhost:4000';
 
@@ -51,6 +53,8 @@ export async function resetApp() {
     await driver.execute('mobile: clearApp', { appId: BUNDLE });
     await driver.execute('mobile: activateApp', { appId: BUNDLE });
   }
+  // 场景中第一次重置的结束时刻（harness 只取每个场景的第一次）
+  await harnessMark('reset-end');
 }
 
 const FINAL = (process.env.VARIANT ?? 'final') === 'final';

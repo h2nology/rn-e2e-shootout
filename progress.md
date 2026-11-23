@@ -264,3 +264,16 @@
   - 更正 0.13.2 记录中“中位数之和”的重复计数（451 → 543 s 应为 225 → 272 s）
   - RESULTS / WAITS / SETUP-LOG / findings 更新；METHODOLOGY v13（Quiesco 0.13.3）用户确认，打 tag `methodology-v13`
 
+- **M4 harness**（用户要求开始 M4；2026-11-23）
+  - `harness/`：run / plan / execute / build / summarize；设备控制（iOS shutdown→boot、Android 以固定参数冷启动、设备环境设置与读回、5 分钟开机上限）、宿主机检查（电源、Spotlight、负载阈值 8、caffeinate、pmset 睡眠 → invalid）、mock server 持有、卸载后安装计时、30 分钟上限
+  - 计时标记：mock server 加 `/harness/mark(s)`；Quiesco setupFiles、Detox setupFilesAfterEnv、Appium mocha root hook、Maestro reset.yaml / onFlowComplete；`resetApp` 末尾发 reset-end
+  - 固定顺序：Vitest / Jest 自定义 sequencer、wdio 排序后的 specs、Maestro `config.yaml` executionOrder（M3 时 Maestro 顺序不固定）
+  - Detox：加 jest-junit 17.0.0、`build.sh`（产物复制到 suites/detox/build/）
+  - 单元测试 5 个通过；冒烟：Quiesco iOS 24/24（S1 JUnit 26.1 s 中 runner 启动约 16 s 被排除）、Appium iOS 24/24、Maestro iOS 21/24（S3 / S20 `Couldn't hide the keyboard`、S22 通知未找到；改动前的 flow 同样失败，键盘恢复默认也失败 → M3 后的环境变化，M5 前需查）
+  - 发现：Maestro 开始时 load 37（负载检查在开机前）→ 开机后再等一次；Detox Android 构建 67 分钟被 60 分钟上限结束（官方命令编译全部子项目 Debug androidTest × 4 ABI，宿主机 load 103：公司安全软件、locationd、Spotlight）→ 上限改 2 小时
+  - METHODOLOGY v14 草稿（待确认）
+  - 冒烟第 2 轮：Android 三工具每场景慢 2.5–3 倍 → harness 带窗口启动的 qemu 被 macOS 限速（PRI 4）→ 改 `-no-window`（PRI 31），Quiesco Android 733 → 232 s（S6 FlatList 已知偶发失败 1 次）；运行期间每 30 s 采样 load 写入结果
+  - Detox iOS 1 / 23 → ① 全局 `expect` 被 Detox 替换（计时标记取测试名改读 Jest 全局状态）② 模拟器 `KeyboardLastUsed` 停在日文罗马字键盘（S7b 之后）→ harness 关机期间恢复英文键盘 → 22 / 1 跳过 / 1 失败（S21），同 M3
+  - Maestro iOS 恢复英文键盘后仍 21 / 24（S3 / S20 hideKeyboard、S22）→ 另查
+  - 冒烟 session（`results/raw/smoke-*`）不提交（.gitignore）
+

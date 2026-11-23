@@ -7,7 +7,18 @@ module.exports = {
   maxWorkers: 1,
   globalSetup: 'detox/runners/jest/globalSetup',
   globalTeardown: 'detox/runners/jest/globalTeardown',
-  reporters: ['detox/runners/jest/reporter'],
+  setupFilesAfterEnv: ['<rootDir>/e2e/harness.js'],
+  testSequencer: '<rootDir>/e2e/sequencer.js',
+  // JUnit：harness 读取各场景的结果（METHODOLOGY 7）。输出到 reports/<platform>-<variant>/
+  reporters: [
+    'detox/runners/jest/reporter',
+    ['jest-junit', {
+      outputDirectory: `reports/${process.env.PLATFORM ?? 'ios'}-${process.env.VARIANT ?? 'final'}`,
+      outputName: `junit-${Date.now()}.xml`,
+      classNameTemplate: '{classname}',
+      titleTemplate: '{title}',
+    }],
+  ],
   testEnvironment: 'detox/runners/jest/testEnvironment',
   verbose: true,
 };

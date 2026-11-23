@@ -1,7 +1,7 @@
 // 由 `detox init` 生成后按本项目修改：只用 Release 构建（METHODOLOGY 2.2）。
 // app 在 ../../app；构建前以 E2E_TOOL=detox 重新 prebuild，使 expo-detox-config-plugin 生效。
-const APP = '../../app';
-const PREBUILD = `cd ${APP} && E2E_TOOL=detox CI=1 npx expo prebuild --clean --no-install`;
+// 构建：./build.sh ios|android（产物复制到 ./build，避免被其他工具的 prebuild --clean 清掉）
+const BUILD = './build';
 
 /** @type {Detox.DetoxConfig} */
 module.exports = {
@@ -17,15 +17,14 @@ module.exports = {
   apps: {
     'ios.release': {
       type: 'ios.app',
-      binaryPath: `${APP}/ios/build-detox/Build/Products/Release-iphonesimulator/rnshootout.app`,
-      build: `${PREBUILD} --platform ios && cd ios && pod install && xcodebuild -workspace rnshootout.xcworkspace -scheme rnshootout -configuration Release -sdk iphonesimulator -derivedDataPath build-detox`,
+      binaryPath: `${BUILD}/rnshootout.app`,
+      build: './build.sh ios',
     },
-    // -Xmx4g：Expo 生成的 gradle.properties 默认 2 GB，R8 压缩测试 APK 时 OOM（实测）
     'android.release': {
       type: 'android.apk',
-      binaryPath: `${APP}/android/app/build/outputs/apk/release/app-release.apk`,
-      testBinaryPath: `${APP}/android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk`,
-      build: `${PREBUILD} --platform android && cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release -Dorg.gradle.jvmargs=-Xmx4g`,
+      binaryPath: `${BUILD}/app-release.apk`,
+      testBinaryPath: `${BUILD}/app-release-androidTest.apk`,
+      build: './build.sh android',
       reversePorts: [4000],
     },
   },

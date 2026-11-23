@@ -439,3 +439,11 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 大部分场景以 `login()`（2 × `type` + `tap`）开始，以上开销每个场景都付一次。
 - **是平台差异，不是 Quiesco 特有**：Detox iOS 642–653 s / Android 399–440 s，Appium 530–542 s / 368–519 s，Quiesco 349–351 s / 224–228 s；Maestro 相反（iOS 9 分 46 秒–9 分 51 秒 / Android 13 分 11 秒–14 分 29 秒）。
 - 局限：只有 S2 的 1 次单独运行（含冷启动），套件内 S2 的差距 3.4 s 与 timeline 的 4.0 s 大致一致；第 1 个操作前的等待为推算。**M4：两平台各录一整轮 timeline，按环节汇总全部场景**（发布文引用前替换本节结论）。
+
+### M4 harness 冒烟中发现的环境问题（2026-11-23）
+
+- **Android 模拟器带窗口启动时被 macOS 限速**：harness 以 `emulator -avd …`（后台进程，窗口不在前台）冷启动时，宿主机上 `qemu-system-aarch64` 的调度优先级为 PRI 4（后台限速），正常进程为 31。Quiesco Android 整套 733–794 s、Appium 826 s（M3 368–519 s）、Maestro 1443 s，每个场景约 2.5–3 倍、S6 108–172 s。加 `-no-window`（`qemu-system-aarch64-headless`）后为 PRI 31，Quiesco Android 整套 232 s，各场景回到 M3 水平（S2 3.0 s、S8 11.3 s、S6 46 s）。运行期间 load 中位数 7.5（带窗口时 11.9，模拟器本身被限速后拖长了运行、也让宿主机负载更高）。harness 改为 headless 启动，并在结果中记录 qemu 的优先级（`environment.device.qemuPriority`）。M3 时模拟器另行启动、耗时正常，推测窗口在前台（未验证）。
+- **iOS 模拟器的当前键盘停在日文罗马字键盘**：`com.apple.keyboard.preferences` 的 `KeyboardLastUsed` 为 `ja_JP-Romaji…`（更新时间 2026-11-22 16:04 UTC，S7b 能力检查之后；系统记住上次使用的键盘）。Detox iOS 冒烟 1 / 23（`typeText` 经输入法组字，登录失败，只有 S2 校验提示通过）；恢复英文键盘后 22 通过 / 1 跳过（S22）/ 1 失败（S21），与 M3 相同。Maestro iOS 的 S3 / S20 `Couldn't hide the keyboard`、S22 通知未找到在恢复英文键盘后仍失败（21 / 24）→ 不是这个原因，M5 前另查。Quiesco / Appium iOS 不受影响（输入不经键盘按键）。harness 在 iOS 关机期间把 `KeyboardLastUsed` / `KeyboardsCurrentAndNext` 恢复为 `en_US`（登记的键盘列表 `AppleKeyboards` 不动，S7b 仍可用），开机后读回记录。
+- **Detox 的全局 `expect` 没有 `getState`**：Detox 把 Jest 的 `expect` 换成自己的，计时标记取当前测试名改为读 Jest 的全局状态（`Symbol.for('$$jest-matchers-object')`）。
+- **S6 Android（Quiesco，headless 冒烟）失败**：`scrollTo` 第 21 步 30 s 不空闲，报错指出 FlatList 窗口边缘 `children=268 ↔ 269` 反复增删（与 0.12.1 / 0.13.0 / 0.13.2 同一位置），是 app 侧已知的偶发行为，按现状计入。
+- **Appium Android S23（带窗口、限速时）**：`list-top-title` 未找到。headless 后待重测。

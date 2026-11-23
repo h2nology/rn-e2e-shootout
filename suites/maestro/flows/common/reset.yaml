@@ -4,6 +4,11 @@
 # launchApp 默认授予全部权限（官方文档）；为与“清除数据后的初始状态”一致，显式改为 unset。
 appId: com.rnshootout.app
 ---
+# harness 计时标记：重置开始（= 场景开始）
+- runScript:
+    file: mark.js
+    env:
+      EVENT: scenario-start
 - runScript: reset.js
 - runFlow:
     when:
@@ -28,3 +33,8 @@ appId: com.rnshootout.app
       - launchApp:
           permissions:
             all: unset
+# harness 计时标记：重置结束
+- runScript:
+    file: mark.js
+    env:
+      EVENT: reset-end

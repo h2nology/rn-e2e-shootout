@@ -12,7 +12,7 @@ Quiesco 0.13.3（#109、#110 修复）：两平台诊断版 24/24、正式版 5 
 
 ## Current Phase
 
-Phase 3（M3）
+Phase 4（M4）
 
 ## Phases
 
@@ -47,11 +47,14 @@ Phase 3（M3）
 
 ### Phase 4: M4 harness 与汇总脚本
 
-- [ ] `harness run --tool --platform --runs --variant --stress`
-- [ ] 每次运行输出计划书第 5 节格式的 JSON
-- [ ] 预热、交错执行（固定种子）、caffeinate
-- [ ] 汇总：median / p90 / min / max、Wilson 95% 区间（整套 + 按场景）、图表
-- **Status:** pending
+- [x] `harness run --tool --platform --runs --variant --stress`（`harness/`，Node 24、无依赖；另有 plan / execute / build / summarize）
+- [x] 每次运行输出计划书第 5 节格式的 JSON（+ totalMs、exitCode、timedOut、invalid、sleepEvents、environment）
+- [x] 预热、交错执行（固定种子，run-order.json，可断点续跑）、caffeinate、电源 / Spotlight 检查、负载阈值（开机前后各一次）、模拟器开机上限、睡眠事件 → invalid
+- [x] 计时标记（mock server `/harness/mark`；四套测试的全局 hook），套件内固定场景顺序（四个工具）
+- [x] 汇总：median / p90 / min / max、Wilson 95% 区间（整套 + 按场景）、SVG 图表（results/charts）
+- [ ] 四个工具 × 两平台经 harness 跑通（冒烟：Quiesco iOS 24/24、Appium iOS 24/24、Maestro iOS 21/24（`hideKeyboard` 环境问题，M3 后出现，原始 flow 同样失败）；Android 与 Detox 进行中；Detox Android 构建超时，待重建）
+- [ ] METHODOLOGY v14（6.3 / 6.4 / 7 / 9）用户确认
+- **Status:** in_progress
 
 ### Phase 5: M5 本地正式测量
 

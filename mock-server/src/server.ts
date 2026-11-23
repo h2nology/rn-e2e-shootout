@@ -55,6 +55,8 @@ let nextId: number;
 let failRules: FailRule[];
 let delayRules: DelayRule[];
 let pollTick: number;
+/** harness 的计时标记（METHODOLOGY 7）：测试在重置开始 / 重置结束 / 场景结束时各发一次。/reset 不清除 */
+let marks: { t: number; event: string; scenario: string }[] = [];
 
 function seedItems(): Item[] {
   return Array.from({ length: 500 }, (_, i) => ({
@@ -174,6 +176,17 @@ async function handle(req: http.IncomingMessage, res: http.ServerResponse) {
     return send(res, 200, item);
   }
   if (path === '/health') return send(res, 200, { ok: true });
+  // harness 计时标记（不加延迟、不受错误注入影响）
+  if (path === '/harness/mark' && method === 'POST') {
+    const body = await readJson(req);
+    marks.push({ t: Date.now(), event: String(body.event ?? ''), scenario: String(body.scenario ?? '') });
+    return send(res, 200, { ok: true });
+  }
+  if (path === '/harness/marks' && method === 'GET') return send(res, 200, marks);
+  if (path === '/harness/marks' && method === 'DELETE') {
+    marks = [];
+    return send(res, 200, { ok: true });
+  }
 
   // 页面（WebView / OAuth）：不加网络延迟
   if (path === '/webview' && method === 'GET') return send(res, 200, pages.webview());

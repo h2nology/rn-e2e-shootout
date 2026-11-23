@@ -3,6 +3,12 @@ appId: com.rnshootout.app
 name: S6
 onFlowStart:
   - runFlow: ../common/reset.yaml
+# harness 计时标记：场景结束（失败时也执行）
+onFlowComplete:
+  - runScript:
+      file: ../common/mark.js
+      env:
+        EVENT: scenario-end
 ---
 - runFlow: ../common/login.yaml
 # [W3] 默认 timeout 20 s 只能滚到约第 50 行，放宽到 300 s（METHODOLOGY 6.5：改超时计入 W3）。
