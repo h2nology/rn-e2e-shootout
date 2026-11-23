@@ -165,7 +165,11 @@ export async function installAndroid(apks) {
   await adb(['uninstall', `${BUNDLE}.test`], { allowFail: true });
   const t0 = Date.now();
   for (const apk of apks) await adb(['install', '-r', '-t', apk], { timeoutMs: 300_000 });
-  return Date.now() - t0;
+  const ms = Date.now() - t0;
+  // app 经 localhost:4000 访问 mock server。冷启动后 adb reverse 消失；Detox 只在自己安装 app 时设置 reversePorts，
+  // harness 让它 --reuse（不重装）→ 由 harness 统一设置（四个工具相同，Appium onPrepare 中的重复设置无害）
+  await adb(['reverse', 'tcp:4000', 'tcp:4000']);
+  return ms;
 }
 
 /** slow-cpu：在模拟器内运行一个占用 1 核的后台进程（METHODOLOGY 8.4）。 */

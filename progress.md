@@ -276,4 +276,6 @@
   - Detox iOS 1 / 23 → ① 全局 `expect` 被 Detox 替换（计时标记取测试名改读 Jest 全局状态）② 模拟器 `KeyboardLastUsed` 停在日文罗马字键盘（S7b 之后）→ harness 关机期间恢复英文键盘 → 22 / 1 跳过 / 1 失败（S21），同 M3
   - Maestro iOS 恢复英文键盘后仍 21 / 24（S3 / S20 hideKeyboard、S22）→ 另查
   - 冒烟 session（`results/raw/smoke-*`）不提交（.gitignore）
+  - Appium / Maestro Android headless 重跑：23/24（S21 偶发，M3 5 × 全过）/ 24/24；Detox Android 重建 250 s（低负载；上次 67 分钟），冒烟 1/22 → Detox 只在自己安装时设 `reversePorts`，`--reuse` 时冷启动后无 `adb reverse` → harness 安装后统一设置 → 22 + 跳过 2，同 M3
+  - `summarize`（8 个 session → `results/smoke/summary.json` + 2 张 SVG）：8 组齐全；发现口径问题：整套耗时只统计全绿运行时，有固定 ✗ 场景的组合永远没有值
 

@@ -1,0 +1,8 @@
+{
+  "tool": "detox",
+  "toolVersion": "20.51.4",
+  "platform": "android",
+  "startedAt": "2026-11-23T03:29:07.298Z",
+  "buildMs": 250225,
+  "exitCode": 0
+}

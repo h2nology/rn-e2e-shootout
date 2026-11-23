@@ -446,4 +446,4 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - **iOS 模拟器的当前键盘停在日文罗马字键盘**：`com.apple.keyboard.preferences` 的 `KeyboardLastUsed` 为 `ja_JP-Romaji…`（更新时间 2026-11-22 16:04 UTC，S7b 能力检查之后；系统记住上次使用的键盘）。Detox iOS 冒烟 1 / 23（`typeText` 经输入法组字，登录失败，只有 S2 校验提示通过）；恢复英文键盘后 22 通过 / 1 跳过（S22）/ 1 失败（S21），与 M3 相同。Maestro iOS 的 S3 / S20 `Couldn't hide the keyboard`、S22 通知未找到在恢复英文键盘后仍失败（21 / 24）→ 不是这个原因，M5 前另查。Quiesco / Appium iOS 不受影响（输入不经键盘按键）。harness 在 iOS 关机期间把 `KeyboardLastUsed` / `KeyboardsCurrentAndNext` 恢复为 `en_US`（登记的键盘列表 `AppleKeyboards` 不动，S7b 仍可用），开机后读回记录。
 - **Detox 的全局 `expect` 没有 `getState`**：Detox 把 Jest 的 `expect` 换成自己的，计时标记取当前测试名改为读 Jest 的全局状态（`Symbol.for('$$jest-matchers-object')`）。
 - **S6 Android（Quiesco，headless 冒烟）失败**：`scrollTo` 第 21 步 30 s 不空闲，报错指出 FlatList 窗口边缘 `children=268 ↔ 269` 反复增删（与 0.12.1 / 0.13.0 / 0.13.2 同一位置），是 app 侧已知的偶发行为，按现状计入。
-- **Appium Android S23（带窗口、限速时）**：`list-top-title` 未找到。headless 后待重测。
+- **Appium Android 偶发失败**：带窗口（限速）时 S23 `list-top-title` 未找到；headless 重跑 S23 通过、S21 `item-detail-title` 未找到（深链接后详情页），整套 355 s（M3 368–519 s）。M3 时 Android 5 × 23 / 23 spec 全过；两次各失败一个不同场景，M5 正式测量的失败率会体现，冒烟阶段不追。Maestro Android headless 24 / 24（784 s）。
