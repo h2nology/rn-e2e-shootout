@@ -8,11 +8,11 @@
 
 ## Next Step
 
-Quiesco 0.13.3（#109、#110 修复）：两平台诊断版 24/24、正式版 5 × 24/24；Android 每场景 +1.7 s 消失（#109 确认）；#110 实测确认（S6 单独反复运行，第 7 次碰上原情形）；iOS S8 因 Vitest 排序承担 XCUITest runner 启动（+12 s，不是工具回退，M4 需固定顺序或预先启动 runner）。METHODOLOGY v13（Quiesco 0.13.3）用户确认，已打 tag `methodology-v13`。下一步 M4：harness 与汇总脚本（内置防睡眠、`pmset` 检查、模拟器重启超时、开始前等宿主机负载降下来、固定测试顺序，METHODOLOGY 6.4）；两平台各录一整轮 timeline，按环节解释 iOS 比 Android 慢的原因（findings.md 初步结论）。
+M4 完成（METHODOLOGY v15，tag `methodology-v15`）：harness、计时标记、固定顺序、环境检查、冒烟问题修复、iOS / Android 差距的按环节拆解、共同场景集的整套耗时。下一步 M5 正式测量：由用户确定 N、预热次数、施压条件后 `harness plan` + `execute`。
 
 ## Current Phase
 
-Phase 4（M4）：只剩 METHODOLOGY v15 确认
+Phase 5（M5）：待用户确定正式测量的规模（N、预热、施压条件）
 
 ## Phases
 
@@ -57,8 +57,8 @@ Phase 4（M4）：只剩 METHODOLOGY v15 确认
 - [x] 冒烟中发现的问题修复（2026-11-24）：Quiesco iOS S22 通知权限（#113 → 0.13.4）；Maestro iOS S3 / S20（按回车收起键盘）、S22（场景内点 Allow，限制）；Appium Android S21（登录后等 Home，W3 #15）；harness 检查管理之外的 Android 模拟器。冒烟：Quiesco、Maestro、Appium iOS 24/24（Appium Android S21 单独 5/5）
 - [x] 两平台整轮 timeline，按环节解释 iOS 比 Android 慢的原因（findings.md 2026-11-24）
 - [x] 整套耗时的口径：用户选“共同场景集”（2026-11-24）→ harness `commonSuiteMs` 实现；METHODOLOGY v15 草稿
-- [ ] METHODOLOGY v15 用户确认 → tag `methodology-v15`
-- **Status:** in_progress
+- [x] METHODOLOGY v15 用户确认，tag `methodology-v15`（2026-11-24）
+- **Status:** complete
 
 ### Phase 5: M5 本地正式测量
 
