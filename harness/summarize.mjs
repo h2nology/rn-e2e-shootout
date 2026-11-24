@@ -1,10 +1,11 @@
 // 汇总（计划书第 5 节、METHODOLOGY 8 / 9）：results/raw 下的结果 JSON → summary.json（+ 图表）。
 // - 预热（warmup）与无效运行（运行中宿主机睡眠）不计入。
-// - 耗时：median / p90 / min / max，只统计通过的场景；整套耗时只统计全部场景通过的运行。
+// - 耗时：median / p90 / min / max，只统计通过的场景；整套耗时只统计全部场景通过的运行；
+//   各工具比较用共同场景集的整套耗时（METHODOLOGY 9 v15）。
 // - 失败率：比例 + 95% Wilson 区间，整套与按场景两个粒度；skipped 不计入分母；N 次全部失败的场景标为“未通过”（不是 flake）。
 import fs from 'node:fs';
 import path from 'node:path';
-import { RESULTS_RAW, SCENARIOS } from './lib/config.mjs';
+import { COMMON_EXCLUDED, RESULTS_RAW, SCENARIOS } from './lib/config.mjs';
 
 /** 95% Wilson 区间（METHODOLOGY 8.2） */
 export function wilson(k, n, z = 1.96) {
@@ -30,6 +31,29 @@ export function stats(values) {
   const v = values.filter((x) => Number.isFinite(x)).sort((a, b) => a - b);
   if (v.length === 0) return { n: 0, median: null, p90: null, min: null, max: null };
   return { n: v.length, median: quantile(v, 0.5), p90: quantile(v, 0.9), min: v[0], max: v[v.length - 1] };
+}
+
+/**
+ * 共同场景集的整套耗时（METHODOLOGY 9，v15）：共同场景集中的场景全部通过时，取这些场景各自“时段”之和；
+ * 一个场景的时段 = 上一个有结束标记的场景结束（第一个场景：开始）→ 本场景结束，所以含场景之间 runner 的开销，
+ * 全部场景的时段之和等于 suiteMs。不满足条件时返回 null。旧结果没有 endOffsetMs 时退回 resetMs + durationMs。
+ */
+export function commonSuiteMs(run) {
+  const excluded = new Set(COMMON_EXCLUDED[run.platform] ?? []);
+  const common = run.scenarios.filter((s) => !excluded.has(s.id));
+  if (common.length === 0 || common.some((s) => !OK.has(s.status))) return null;
+  if (run.scenarios.every((s) => s.endOffsetMs === undefined)) {
+    const parts = common.map((s) => (s.resetMs ?? NaN) + (s.durationMs ?? NaN));
+    return parts.every(Number.isFinite) ? parts.reduce((a, b) => a + b, 0) : null;
+  }
+  const ended = run.scenarios.filter((s) => Number.isFinite(s.endOffsetMs)).sort((a, b) => a.endOffsetMs - b.endOffsetMs);
+  let prev = 0;
+  let sum = 0;
+  for (const s of ended) {
+    if (!excluded.has(s.id)) sum += s.endOffsetMs - prev;
+    prev = s.endOffsetMs;
+  }
+  return common.every((s) => Number.isFinite(s.endOffsetMs)) ? sum : null;
 }
 
 function loadRuns(sessions) {
@@ -101,6 +125,10 @@ export function summarize({ sessions = null, out } = {}) {
         failures: suiteFailures,
         failureRate: wilson(suiteFailures, runs.length),
         // 全绿运行的整套耗时：不含安装与启动 / 含安装与启动（METHODOLOGY 7）
+        // 共同场景集的整套耗时（各工具比较用，METHODOLOGY 9 v15）
+        commonScenarios: SCENARIOS.filter((id) => !(COMMON_EXCLUDED[platform] ?? []).includes(id)),
+        commonSuiteMs: stats(runs.map(commonSuiteMs).filter((v) => v !== null)),
+        commonGreenRuns: runs.filter((r) => commonSuiteMs(r) !== null).length,
         suiteMs: stats(green.map((r) => r.suiteMs)),
         totalMs: stats(green.map((r) => r.totalMs)),
         installMs: stats(runs.map((r) => r.installMs)),
@@ -118,7 +146,7 @@ export function summarize({ sessions = null, out } = {}) {
     definitions: {
       percentile: 'linear interpolation (R type 7)',
       failureRateCI: '95% Wilson score interval',
-      durations: 'passed scenarios only; suite time from all-green runs only',
+      durations: 'passed scenarios only; suiteMs from all-green runs only; commonSuiteMs over the common scenario set (COMMON_EXCLUDED per platform) from runs where those all passed',
     },
     groups: result,
   };

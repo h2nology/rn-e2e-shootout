@@ -12,7 +12,7 @@ Quiesco 0.13.3（#109、#110 修复）：两平台诊断版 24/24、正式版 5 
 
 ## Current Phase
 
-Phase 4（M4）：只剩整套耗时口径待定
+Phase 4（M4）：只剩 METHODOLOGY v15 确认
 
 ## Phases
 
@@ -56,7 +56,8 @@ Phase 4（M4）：只剩整套耗时口径待定
 - [x] METHODOLOGY v14（6.3 / 6.4 / 7 / 9 / 2.2 app getItemLayout / Quiesco 0.13.4）用户确认，tag `methodology-v14`（2026-11-24）
 - [x] 冒烟中发现的问题修复（2026-11-24）：Quiesco iOS S22 通知权限（#113 → 0.13.4）；Maestro iOS S3 / S20（按回车收起键盘）、S22（场景内点 Allow，限制）；Appium Android S21（登录后等 Home，W3 #15）；harness 检查管理之外的 Android 模拟器。冒烟：Quiesco、Maestro、Appium iOS 24/24（Appium Android S21 单独 5/5）
 - [x] 两平台整轮 timeline，按环节解释 iOS 比 Android 慢的原因（findings.md 2026-11-24）
-- [ ] 整套耗时的口径（v14 ④ “只统计全绿运行”）：Detox iOS S21 每轮失败 → 永远没有整套耗时；Detox 跳过的场景（iOS S22、Android S10b / S22）使各工具的场景集不同 → 用户决定，改动需 v15
+- [x] 整套耗时的口径：用户选“共同场景集”（2026-11-24）→ harness `commonSuiteMs` 实现；METHODOLOGY v15 草稿
+- [ ] METHODOLOGY v15 用户确认 → tag `methodology-v15`
 - **Status:** in_progress
 
 ### Phase 5: M5 本地正式测量

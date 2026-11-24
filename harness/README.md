@@ -51,7 +51,7 @@ harness/bin/harness <command> …
 
 - `results/raw/<session>/run-order.json`：计划（种子、条目）。
 - `results/raw/<session>/NNNN-<tool>-<platform>-<variant>-<stress>-{w,r}<i>.json`：每次运行一个，字段见计划书第 5 节，另有 `totalMs`、`toolWallMs`、`exitCode`、`timedOut`、`invalid`、`sleepEvents`、`environment`（负载、设备环境、模拟器参数、mock 配置）。场景的 `status`：passed / failed / skipped / timeout / missing。
-- `results/summary.json`：按（工具 × 平台 × 版本 × 施压）分组。耗时 median / p90（线性插值）/ min / max，只统计通过的场景；整套耗时只统计全绿的运行。失败率 + 95% Wilson 区间（整套 / 按场景），skipped 不计入分母，N 次全部失败的场景标为 `neverPassed`。
+- `results/summary.json`：按（工具 × 平台 × 版本 × 施压）分组。耗时 median / p90（线性插值）/ min / max，只统计通过的场景。整套耗时：工具之间比较用共同场景集的 `commonSuiteMs`（按平台去掉至少一个工具 ✗ / 跳过的场景，`lib/config.mjs` `COMMON_EXCLUDED`；这些场景全部通过的运行中，各场景“时段”之和，时段 = 上一个场景结束 → 本场景结束；METHODOLOGY 9 v15），各工具全部场景的 `suiteMs` 只统计全绿的运行。失败率 + 95% Wilson 区间（整套 / 按场景），skipped 不计入分母，N 次全部失败的场景标为 `neverPassed`。
 
 ## 测试
 

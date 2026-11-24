@@ -1,5 +1,5 @@
 // summary.json → 静态 SVG 图表（results/charts/）。每个（版本 × 施压条件）两张：
-//   suite-time-<variant>-<stress>.svg：全绿运行的整套耗时（suiteMs）：中位数点、p90 刻度、min–max 线
+//   suite-time-<variant>-<stress>.svg：共同场景集的整套耗时（commonSuiteMs，METHODOLOGY 9 v15）：中位数点、p90 刻度、min–max 线
 //   suite-failure-<variant>-<stress>.svg：整套失败率与 95% Wilson 区间
 // 一行一个（工具 × 平台），行标签写明工具与平台（颜色不是唯一的识别方式）；每个标记带 <title>（悬停提示）；
 // 精确数值见 summary.json。配色：categorical 前 4 个槽位（dataviz 参考调色板，已用 validate_palette.js 验证两种模式）。
@@ -74,20 +74,20 @@ function frame({ title, subtitle, rowsData, maxX, fmt, axisLabel, body }) {
 }
 
 function timeChart(groups, variant, stress) {
-  const data = rows(groups).filter((g) => g.suite.suiteMs.n > 0);
+  const data = rows(groups).filter((g) => g.suite.commonSuiteMs.n > 0);
   if (!data.length) return null;
   const sec = (ms) => ms / 1000;
-  const maxX = Math.max(...data.map((g) => sec(g.suite.suiteMs.max)));
+  const maxX = Math.max(...data.map((g) => sec(g.suite.commonSuiteMs.max)));
   return frame({
-    title: `Suite time (all-green runs), ${variant} / ${stress}`,
-    subtitle: 'dot = median, tick = p90, line = min–max; install and launch excluded',
+    title: `Suite time (common scenario set), ${variant} / ${stress}`,
+    subtitle: 'dot = median, tick = p90, line = min–max; scenarios every tool runs on this platform; install and launch excluded',
     rowsData: data,
     maxX,
     fmt: (v) => `${v}`,
     axisLabel: 'seconds',
     body: (g, y, x, color, labelX) => {
-      const t = g.suite.suiteMs;
-      const tip = `${TOOL_NAME[g.tool]} ${PLATFORM_NAME[g.platform]}: median ${sec(t.median).toFixed(1)} s, p90 ${sec(t.p90).toFixed(1)} s, min ${sec(t.min).toFixed(1)} s, max ${sec(t.max).toFixed(1)} s (n = ${t.n} green of ${g.runs})`;
+      const t = g.suite.commonSuiteMs;
+      const tip = `${TOOL_NAME[g.tool]} ${PLATFORM_NAME[g.platform]}: median ${sec(t.median).toFixed(1)} s, p90 ${sec(t.p90).toFixed(1)} s, min ${sec(t.min).toFixed(1)} s, max ${sec(t.max).toFixed(1)} s (n = ${t.n} of ${g.runs} runs with the common set all passed)`;
       return (
         `<rect class="hit" x="${x(0)}" y="${y - 13}" width="${labelX - x(0)}" height="26"><title>${esc(tip)}</title></rect>` +
         `<g pointer-events="none"><line class="range" stroke="${color}" x1="${x(sec(t.min))}" x2="${x(sec(t.max))}" y1="${y}" y2="${y}"/>` +

@@ -292,3 +292,4 @@
   - Appium Android S21（findings.md 2026-11-24）：login() 不等登录完成，登录后的 router.replace 把深链接打开的详情页换回 Home（M3 带窗口模拟器慢，未暴露）→ 正式版登录后等 item-row-1（W3 #15），单独 5/5
   - harness：运行前检查 harness 管理之外的 Android 模拟器（发现带窗口的 Medium_Phone_API_37.0 / emulator-5556 自 2026-11-23 21:28 起一直运行，smoke2 / smoke3 期间都在）→ 环境错误停止；待用户关闭
   - iOS 比 Android 慢的原因（findings.md 2026-11-24，替换初步结论）：harness 各一轮 timeline（QUIESCO_TIMELINE=all），差 95 s 中 type +66 s（第 1 次 type：启动收尾约 1.4 s + 首次键盘约 0.6 s；之后键盘稳定等待）、timeline 外 +28 s（权限重置、relaunch、S8 runner 启动），点击 / 滚动基本相同；scripts/timeline-breakdown.py
+  - 整套耗时口径：用户选共同场景集（iOS 去掉 S21 / S22，Android 去掉 S10b / S22）→ harness commonSuiteMs（场景时段之和，结果 JSON 加 endOffsetMs）、图表改用它、单元测试 7 个通过；METHODOLOGY v15 草稿（待确认）

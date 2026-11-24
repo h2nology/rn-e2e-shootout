@@ -72,3 +72,22 @@ test('composeScenarios: timing from marks, first reset only', () => {
   assert.equal(s.find((x) => x.id === 'S1').status, 'missing');
   assert.equal(composeScenarios([], [], true).find((x) => x.id === 'S1').status, 'timeout');
 });
+
+import { commonSuiteMs } from '../summarize.mjs';
+
+test('commonSuiteMs: slots of the common scenario set, excluded scenarios and their gaps left out', () => {
+  const sc = (id, status, endOffsetMs) => ({ id, status, endOffsetMs, resetMs: 1, durationMs: 1 });
+  const run = {
+    platform: 'ios',
+    scenarios: [sc('S20', 'passed', 100), sc('S21', 'failed', 160), sc('S22', 'skipped', null), sc('S23', 'passed', 200)],
+  };
+  // S20: 0→100, S21 (excluded): 100→160, S23: 160→200
+  assert.equal(commonSuiteMs(run), 100 + 40);
+  run.scenarios[0].status = 'failed';
+  assert.equal(commonSuiteMs(run), null);
+});
+
+test('commonSuiteMs: falls back to resetMs + durationMs for results without endOffsetMs', () => {
+  const run = { platform: 'android', scenarios: [{ id: 'S1', status: 'passed', resetMs: 2, durationMs: 3 }, { id: 'S22', status: 'skipped' }] };
+  assert.equal(commonSuiteMs(run), 5);
+});

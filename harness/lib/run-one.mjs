@@ -139,7 +139,8 @@ export async function runOne(entry, ctx) {
       emulatorArgs: dev.emulatorArgs ?? null,
       mockConfig,
     },
-    scenarios: scenarios.map(({ _start, _end, ...s }) => s),
+    // endOffsetMs：场景结束相对第一个场景开始的时刻（共同场景集的整套耗时按它切分，METHODOLOGY 9）
+    scenarios: scenarios.map(({ _start, _end, ...s }) => ({ ...s, endOffsetMs: Number.isFinite(_end) && firstStart !== null ? _end - firstStart : null })),
     files: {
       log: path.relative(ctx.sessionDir, toolLog),
       junit: path.relative(ctx.sessionDir, junitCopyDir),

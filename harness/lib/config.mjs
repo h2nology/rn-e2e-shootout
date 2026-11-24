@@ -32,6 +32,13 @@ export const SCENARIOS = [
   'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23',
 ];
 
+/**
+ * 整套耗时的共同场景集（METHODOLOGY 9，v15）：按平台去掉至少一个工具不能实现（✗ / 跳过）的场景，
+ * 四个工具在同一组场景上比较整套耗时。iOS：S21（Detox 冷启动深链接 ✗）、S22（Detox 不能操作通知中心）；
+ * Android：S10b（Detox 跳过）、S22（Detox 不能操作通知中心）。被去掉的场景照常运行，单场景耗时与稳定性照常报告。
+ */
+export const COMMON_EXCLUDED = { ios: ['S21', 'S22'], android: ['S10b', 'S22'] };
+
 export const LIMITS = {
   // METHODOLOGY 6.5：整套运行的硬上限
   suiteTimeoutMs: 30 * 60_000,
