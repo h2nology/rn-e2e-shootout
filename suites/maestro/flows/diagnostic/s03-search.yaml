@@ -15,7 +15,19 @@ onFlowComplete:
     id: search-input
 - inputText: Item 04
 # 软键盘会盖住列表下半部分（#item-row-49），先收起
-- hideKeyboard
+# iOS：Maestro 的 hideKeyboard 在屏幕中央小幅滑动来收起键盘，本 app 的列表 / 表单滑动不收起键盘（RN 默认
+# keyboardDismissMode none）→ 软键盘显示时必定失败（M4 harness 冒烟；M3 时通过的原因见 RESULTS.md）。改按回车
+# （单行 TextInput 提交时失去焦点）。Android：hideKeyboard（返回键）
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - pressKey: Enter
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - hideKeyboard
 - assertVisible:
     id: search-count
     text: 10 results
