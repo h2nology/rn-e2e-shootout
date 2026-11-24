@@ -43,6 +43,20 @@ function resetIosKeyboard(udid) {
   set(['-replace', 'KeyboardsCurrentAndNext', '-json', JSON.stringify([EN_KEYBOARD, EN_KEYBOARD])]);
 }
 
+/**
+ * 语言 / 地区在关机状态下写入全局偏好（开机后写的值要到下次开机才对系统 UI 生效）。
+ * 2026-11-24 新建的专用模拟器第一次开机时系统 UI 是日文（宿主机语言），S10b 找不到 “Allow While Using App”。
+ */
+function presetIosLocale(udid) {
+  const f = `${process.env.HOME}/Library/Developer/CoreSimulator/Devices/${udid}/data/Library/Preferences/.GlobalPreferences.plist`;
+  if (!fs.existsSync(f)) {
+    fs.mkdirSync(f.slice(0, f.lastIndexOf('/')), { recursive: true });
+    execFileSync('plutil', ['-create', 'binary1', f]);
+  }
+  execFileSync('plutil', ['-replace', 'AppleLanguages', '-json', '["en"]', f]);
+  execFileSync('plutil', ['-replace', 'AppleLocale', '-string', 'en_US', f]);
+}
+
 /** iOS：关闭 Android 模拟器与其他 iOS 模拟器，重启目标模拟器，设置环境。返回设备信息。 */
 export async function prepareIos(log) {
   await killEmulator(log);
@@ -51,6 +65,7 @@ export async function prepareIos(log) {
   const t0 = Date.now();
   await run('xcrun', ['simctl', 'shutdown', udid], { allowFail: true, timeoutMs: 120_000 });
   resetIosKeyboard(udid);
+  presetIosLocale(udid);
   await run('xcrun', ['simctl', 'boot', udid], { timeoutMs: 120_000 });
   await run('xcrun', ['simctl', 'bootstatus', udid, '-b'], { timeoutMs: LIMITS.bootTimeoutMs });
   const rebootMs = Date.now() - t0;

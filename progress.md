@@ -296,3 +296,5 @@
   - METHODOLOGY v15（共同场景集的整套耗时）用户确认（2026-11-24），打 tag `methodology-v15`；M4 完成
   - 用户要求正式测量不用现有模拟器 → 新建专用设备：iOS `Shootout iPhone 17`（59C18B64…，iPhone 17 / iOS 27.0）、Android `Shootout_API_36_AOSP`（配置与 Medium_Phone_API_36_AOSP 相同）；harness 与四个工具的配置改为指向新设备；METHODOLOGY v16 草稿（待确认）；新设备上 8 组合冒烟（smoke4-*）进行中。M5 计划 `m5-final-none` 已生成（824 次，种子 20261124），Spotlight 已由用户关闭
   - METHODOLOGY v16（专用模拟器）用户确认（2026-11-24），打 tag `methodology-v16`；冒烟通过后开始 m5-final-none
+  - 新设备冒烟 smoke4-*：Quiesco Android / Detox Android / Appium 两平台 / Maestro 两平台 符合预期；Quiesco iOS 10/24（新模拟器第一次开机系统 UI 是日文：harness 开机后才写 AppleLanguages，下次开机才生效 → S10b 找不到 “Allow While Using App”，残留弹窗连带 S11–S23）→ harness 改为关机状态下写入 .GlobalPreferences.plist；Detox iOS S23 beforeEach 中 launchApp 卡在 waitForActive 5 分钟（app inactive，之前的运行未出现）→ 在已初始化的新设备上重跑两组（smoke5-*）确认
+  - smoke5-*（已初始化的新设备 + 开机前写语言）：Quiesco iOS 24/24（suite 323 s）、Detox iOS 22 + 跳过 1 / S21（已知 ✗；S23 通过，smoke4 的 waitForActive 卡住只出现在新设备第一次运行）→ 8 组合冒烟通过，开始 m5-final-none
