@@ -299,3 +299,4 @@
   - 新设备冒烟 smoke4-*：Quiesco Android / Detox Android / Appium 两平台 / Maestro 两平台 符合预期；Quiesco iOS 10/24（新模拟器第一次开机系统 UI 是日文：harness 开机后才写 AppleLanguages，下次开机才生效 → S10b 找不到 “Allow While Using App”，残留弹窗连带 S11–S23）→ harness 改为关机状态下写入 .GlobalPreferences.plist；Detox iOS S23 beforeEach 中 launchApp 卡在 waitForActive 5 分钟（app inactive，之前的运行未出现）→ 在已初始化的新设备上重跑两组（smoke5-*）确认
   - smoke5-*（已初始化的新设备 + 开机前写语言）：Quiesco iOS 24/24（suite 323 s）、Detox iOS 22 + 跳过 1 / S21（已知 ✗；S23 通过，smoke4 的 waitForActive 卡住只出现在新设备第一次运行）→ 8 组合冒烟通过，开始 m5-final-none
   - m5-final-none 29 次后暂停（22:25）：专用 iOS 模拟器 PosterBoard 数据损坏、崩溃循环（findings.md）；#60（Quiesco iOS）SpringBoard 稳定 16.3 s。数据重建后不再崩溃。用户决定每次开机前重建 + 系统 UI 崩溃则运行无效 → harness 实现（resetPosterBoard / iosSystemCrashesSince），#60 补标无效，METHODOLOGY v17 草稿（待确认）；Quiesco iOS 冒烟 smoke5-quiesco-ios-v17 确认中
+  - METHODOLOGY v17（PosterBoard 重建 + 系统 UI 崩溃则无效）用户确认（2026-11-24），打 tag `methodology-v17`；冒烟通过后继续 m5-final-none
