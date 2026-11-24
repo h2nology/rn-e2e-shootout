@@ -504,4 +504,6 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 影响：#60 中 Quiesco 重启 SpringBoard 后的稳定时间 16.3 s（其他运行 5.4–6.3 s，预热 w3 10.3 s），launch 23.7 s（平时 12.6 s）；场景 24/24、suite 316 s 与平时相同。之后的 Appium iOS #50 运行中仍崩溃 → 测量暂停（该次未写结果，恢复时重跑）。
 - 诱因：未确定。两次损坏都发生在 Quiesco 会重启 SpringBoard（`permissions: ['notifications']`，#113）的模拟器上；旧模拟器那次是 #114 初版验证中在场景中途重启 SpringBoard。其他三个工具不重启 SpringBoard。损坏的数据备份在 scratchpad（posterboard-corrupt-20261124），未进仓库。
 - 修复：关机状态下删除 `data/Library/Application Support/PRBPosterExtensionDataStore`，开机时系统重建，之后无崩溃；重建对开机时间无影响（保留 5.7 / 5.6 s，重建 4.6 / 5.6 s）。
-- 对策（用户决定，METHODOLOGY v17 待确认）：每次 iOS 开机前都重建；开机到套件结束之间系统 UI 进程（PosterBoard / SpringBoard / backboardd）有崩溃报告则该次运行无效（结果 JSON `systemCrashes`）。#60 按此补标为无效。
+- 对策（用户决定，METHODOLOGY v17）：每次 iOS 开机前都重建；开机到套件结束之间系统 UI 进程（PosterBoard / SpringBoard / backboardd）有崩溃报告则该次运行无效（结果 JSON `systemCrashes`）。#60 按此补标为无效。
+- v17 的副作用（2026-11-25）：每次删除后重建时 PosterBoard 本身会崩溃（`+[NSURL(PosterFoundation) pf_posterPathInstanceURLForVersionsURL:version:]` 断言，`PBFPosterModelStoreCoordinator addNewVersionWithContents` 中，与上面的 `_initWithPath` 不是同一处）。恢复后的 37 次 iOS 运行（四个工具都有）中 9 次在开机后 15–50 s 内崩溃 1–3 次，按 v17 判为无效（约 1/4）；v17 之前不删除的 28 次运行中没有。场景结果与耗时看不出影响（suite 与同组合其他运行相同）。
+- 对策修订（用户决定，METHODOLOGY v18）：只在上次开机以来有系统 UI 进程崩溃时删除（上次开机时刻记在模拟器数据目录的 `.shootout-last-boot`）；无效运行在计划内运行完成后按组合补跑到 N = 100。m5-final-none 第 88 次（2026-11-25 07:51）后切换。

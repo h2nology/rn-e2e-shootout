@@ -12,7 +12,7 @@ import { PLATFORMS, RESULTS_RAW, STRESS_PROFILES, TOOLS, VARIANTS } from './lib/
 import * as host from './lib/host.mjs';
 import * as mock from './lib/mock.mjs';
 import { runOne } from './lib/run-one.mjs';
-import { createPlan, loadPlan, pending, sessionDir } from './lib/session.mjs';
+import { createPlan, loadPlan, loadResults, makeupEntries, pending, savePlan, sessionDir } from './lib/session.mjs';
 import { runLogged } from './lib/sh.mjs';
 import { TOOL_ADAPTERS } from './lib/tools.mjs';
 import { summarize } from './summarize.mjs';
@@ -66,19 +66,29 @@ async function execute(name, limit) {
   const hostInfo = await host.hostInfo();
   fs.writeFileSync(path.join(dir, 'host.json'), JSON.stringify({ ...hostInfo, power, spotlight, checkedAt: new Date().toISOString() }, null, 2) + '\n');
   await mock.startMock(path.join(dir, 'mock-server.log'));
-  const todo = pending(plan).slice(0, limit ? Number(limit) : undefined);
-  log(`session ${name}: ${todo.length} of ${plan.entries.length} runs to do`);
   let failures = 0;
+  let todo = pending(plan).slice(0, limit ? Number(limit) : undefined);
+  log(`session ${name}: ${todo.length} of ${plan.entries.length} runs to do`);
   try {
-    for (const e of todo) {
-      try {
-        await runOne({ ...e, file: path.join(dir, e.file) }, { sessionDir: dir, hostInfo, log });
-      } catch (err) {
-        // 环境错误（开机超时等）：记录后停止，不写结果，可修复后用 execute 继续
-        log(`ERROR in ${e.file}: ${err.stack ?? err}`);
-        failures++;
-        throw err;
+    // 计划内的运行做完后，无效运行按组合补跑到有效 N = runs（METHODOLOGY 6.2 v18）；--limit 时不补跑
+    for (let round = 0; todo.length > 0 && round < 10; round++) {
+      for (const e of todo) {
+        try {
+          await runOne({ ...e, file: path.join(dir, e.file) }, { sessionDir: dir, hostInfo, log });
+        } catch (err) {
+          // 环境错误（开机超时等）：记录后停止，不写结果，可修复后用 execute 继续
+          log(`ERROR in ${e.file}: ${err.stack ?? err}`);
+          failures++;
+          throw err;
+        }
       }
+      if (limit) break;
+      const add = makeupEntries(plan, loadResults(plan));
+      if (add.length === 0) break;
+      plan.entries.push(...add);
+      savePlan(plan);
+      todo = add;
+      log(`session ${name}: ${add.length} make-up runs appended for invalid runs (round ${add[0].makeupRound})`);
     }
   } finally {
     mock.stopMock();

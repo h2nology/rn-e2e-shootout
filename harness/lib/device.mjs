@@ -58,16 +58,37 @@ function presetIosLocale(udid) {
 }
 
 /**
- * PosterBoard（锁屏 / 壁纸）的数据在关机状态下删除，开机时重建（METHODOLOGY 6.4 v17）。
+ * PosterBoard（锁屏 / 壁纸）的数据在关机状态下删除，开机时重建（METHODOLOGY 6.4 v18）。
  * 2026-11-23 旧模拟器、2026-11-24 专用模拟器各损坏一次（`PRPosterDescriptor _initWithPath` 断言），
  * 之后每次开机都崩溃循环，SpringBoard 重启后的稳定时间 5–6 s → 16 s。诱因未确定（只有 Quiesco 会重启 SpringBoard）。
- * 重建不影响开机时间（实测 5–6 s）。
+ * v17 每次开机前都删除，但重建时 PosterBoard 本身约 1/4 的开机会崩溃 1–3 次（addNewVersionWithContents，
+ * m5-final-none 37 次中 9 次）→ v18 只在上次开机以来有系统 UI 崩溃时删除。
  */
 function resetPosterBoard(udid) {
-  fs.rmSync(`${process.env.HOME}/Library/Developer/CoreSimulator/Devices/${udid}/data/Library/Application Support/PRBPosterExtensionDataStore`, {
+  fs.rmSync(`${simData(udid)}/Library/Application Support/PRBPosterExtensionDataStore`, {
     recursive: true,
     force: true,
   });
+}
+
+const simData = (udid) => `${process.env.HOME}/Library/Developer/CoreSimulator/Devices/${udid}/data`;
+// 上次开机的时刻（harness 写入；进程重启后也能判断上次开机以来有没有崩溃）
+const lastBootFile = (udid) => `${simData(udid)}/.shootout-last-boot`;
+
+/** 上次开机以来有系统 UI 进程崩溃 → 删除 PosterBoard 数据。返回是否删除了。 */
+function resetPosterBoardIfCrashed(udid, log) {
+  let since;
+  try {
+    since = new Date(fs.readFileSync(lastBootFile(udid), 'utf8').trim());
+  } catch {
+    return false;
+  }
+  if (Number.isNaN(since.getTime())) return false;
+  const crashes = iosSystemCrashesSince(udid, since);
+  if (crashes.length === 0) return false;
+  log(`system UI crashed since last boot (${[...new Set(crashes.map((c) => c.process))].join(', ')} × ${crashes.length}); resetting PosterBoard data`);
+  resetPosterBoard(udid);
+  return true;
 }
 
 // 系统 UI 进程：运行期间崩溃则该次运行无效（METHODOLOGY 6.4 v17）。其他守护进程（assistantd 等）每次开机都可能崩溃，不算
@@ -113,7 +134,8 @@ export async function prepareIos(log) {
   await run('xcrun', ['simctl', 'shutdown', udid], { allowFail: true, timeoutMs: 120_000 });
   resetIosKeyboard(udid);
   presetIosLocale(udid);
-  resetPosterBoard(udid);
+  const posterBoardReset = resetPosterBoardIfCrashed(udid, log);
+  fs.writeFileSync(lastBootFile(udid), new Date().toISOString() + '\n');
   await run('xcrun', ['simctl', 'boot', udid], { timeoutMs: 120_000 });
   await run('xcrun', ['simctl', 'bootstatus', udid, '-b'], { timeoutMs: LIMITS.bootTimeoutMs });
   const rebootMs = Date.now() - t0;
@@ -131,7 +153,7 @@ export async function prepareIos(log) {
     keyboardLastUsed: (await sp(['defaults', 'read', 'com.apple.keyboard.preferences', 'KeyboardLastUsed']).catch(() => '')).trim(),
   };
   log(`iOS ${udid} rebooted in ${rebootMs} ms; env ${JSON.stringify(env)}`);
-  return { udid, rebootMs, env, device: `${IOS.deviceName} / iOS ${IOS.osVersion} simulator (${udid})` };
+  return { udid, rebootMs, env: { ...env, posterBoardReset }, device: `${IOS.deviceName} / iOS ${IOS.osVersion} simulator (${udid})` };
 }
 
 /** iOS：卸载后安装（installMs 只计安装）。 */

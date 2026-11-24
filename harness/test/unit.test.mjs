@@ -91,3 +91,36 @@ test('commonSuiteMs: falls back to resetMs + durationMs for results without endO
   const run = { platform: 'android', scenarios: [{ id: 'S1', status: 'passed', resetMs: 2, durationMs: 3 }, { id: 'S22', status: 'skipped' }] };
   assert.equal(commonSuiteMs(run), 5);
 });
+
+import { makeupEntries } from '../lib/session.mjs';
+
+test('makeupEntries: one entry per missing valid run, numbered after the plan, repeated rounds', () => {
+  const a = { tool: 'quiesco', platform: 'ios', variant: 'final', stress: 'none' };
+  const b = { tool: 'detox', platform: 'android', variant: 'final', stress: 'none' };
+  const entries = [
+    { seq: 1, ...a, runIndex: 1, warmup: true, seed: 1, file: 'w' },
+    ...[1, 2, 3].map((i) => ({ seq: 1 + i, ...a, runIndex: i, warmup: false, seed: 1, file: `a${i}` })),
+    ...[1, 2, 3].map((i) => ({ seq: 4 + i, ...b, runIndex: i, warmup: false, seed: 1, file: `b${i}` })),
+  ];
+  const plan = { name: 't', shuffleSeed: 7, runs: 3, combos: [a, b], entries };
+  const results = [
+    { ...a, warmup: true, invalid: true },
+    { ...a, warmup: false, invalid: false },
+    { ...a, warmup: false, invalid: true },
+    { ...a, warmup: false, invalid: true },
+    ...[1, 2, 3].map(() => ({ ...b, warmup: false, invalid: false })),
+  ];
+  const add = makeupEntries(plan, results);
+  assert.equal(add.length, 2);
+  assert.deepEqual(add.map((e) => e.runIndex).sort(), [4, 5]);
+  assert.deepEqual(add.map((e) => e.seq), [8, 9]);
+  assert.ok(add.every((e) => e.tool === 'quiesco' && e.makeup && e.makeupRound === 1 && !e.warmup));
+  assert.match(add[0].file, /^0008-quiesco-ios-final-none-r[45]\.json$/);
+  // 补跑中一次又无效 → 第 2 轮补 1 次，序号接着编
+  plan.entries.push(...add);
+  const add2 = makeupEntries(plan, [...results, { ...a, warmup: false, invalid: false }, { ...a, warmup: false, invalid: true }]);
+  assert.equal(add2.length, 1);
+  assert.equal(add2[0].runIndex, 6);
+  assert.equal(add2[0].makeupRound, 2);
+  assert.deepEqual(makeupEntries(plan, [...results, ...[1, 2].map(() => ({ ...a, warmup: false, invalid: false }))]), []);
+});

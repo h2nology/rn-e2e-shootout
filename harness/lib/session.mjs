@@ -65,3 +65,38 @@ export function pending(plan) {
   const dir = sessionDir(plan.name);
   return plan.entries.filter((e) => !fs.existsSync(path.join(dir, e.file)));
 }
+
+/**
+ * 补跑（METHODOLOGY 6.2 v18）：计划内的运行全部完成后，各组合的有效正式运行（非预热、非无效）不足 runs 次时，
+ * 按不足的次数追加条目（序号接着编，同样用固定种子打乱后交错执行），补跑本身无效时再追加。
+ * results：已有结果 [{ tool, platform, variant, stress, warmup, invalid }]。返回追加的条目（不写文件）。
+ */
+export function makeupEntries(plan, results) {
+  const key = (e) => `${e.tool}/${e.platform}/${e.variant}/${e.stress}`;
+  const valid = new Map();
+  for (const r of results) if (!r.warmup && !r.invalid) valid.set(key(r), (valid.get(key(r)) ?? 0) + 1);
+  const maxIndex = new Map();
+  for (const e of plan.entries) if (!e.warmup) maxIndex.set(key(e), Math.max(maxIndex.get(key(e)) ?? 0, e.runIndex));
+  const add = [];
+  for (const c of plan.combos) {
+    const short = plan.runs - (valid.get(key(c)) ?? 0);
+    for (let i = 1; i <= short; i++) add.push({ ...c, runIndex: (maxIndex.get(key(c)) ?? 0) + i, warmup: false, makeup: true });
+  }
+  if (add.length === 0) return [];
+  const round = Math.max(0, ...plan.entries.map((e) => e.makeupRound ?? 0)) + 1;
+  const ordered = plan.shuffleSeed !== null ? shuffle(add, plan.shuffleSeed + 1 + round) : add;
+  const seed = plan.entries[0]?.seed ?? 1;
+  return ordered.map((e, i) => {
+    const seq = plan.entries.length + i + 1;
+    return { seq, ...e, makeupRound: round, seed, file: `${String(seq).padStart(4, '0')}-${e.tool}-${e.platform}-${e.variant}-${e.stress}-r${e.runIndex}.json` };
+  });
+}
+
+export function savePlan(plan) {
+  fs.writeFileSync(path.join(sessionDir(plan.name), 'run-order.json'), JSON.stringify(plan, null, 2) + '\n');
+}
+
+export function loadResults(plan) {
+  const dir = sessionDir(plan.name);
+  return plan.entries.filter((e) => fs.existsSync(path.join(dir, e.file))).map((e) => JSON.parse(fs.readFileSync(path.join(dir, e.file), 'utf8')));
+}
