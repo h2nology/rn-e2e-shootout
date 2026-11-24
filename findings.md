@@ -463,3 +463,10 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 
 - **S3 / S20 `Couldn't hide the keyboard`**：Maestro 2.11.0 iOS 的 `hideKeyboard`（`IOSDriver.hideKeyboard`）先找 id 为 `delete` 的键判断键盘是否显示，显示时在屏幕中央做两次 3% 的短滑动，再用 XCTest `keyboards.firstMatch.exists` 检查。本 app 的列表 / 表单滑动不收起键盘（RN `keyboardDismissMode` 默认 none），所以只要软键盘显示就必定失败（单独运行稳定复现）。M3 时的 Maestro iOS 运行日志已不在（`~/.maestro/tests` 只留 14 天），M3 通过时软键盘是否显示无法确认；harness 用 `simctl` 无窗口启动模拟器，软键盘必定显示。改为 iOS 按回车（`pressKey: Enter`，单行 TextInput 提交后失去焦点；scenarios.md S20 允许“按回车”），Android 仍用 `hideKeyboard`（返回键）。S3 / S20 单独运行通过。
 - **S22 通知未找到**：① Maestro 2.11.0 iOS 的 `setPermissions` 支持的权限（`LocalSimulatorUtils.allPermissions` + simctl 的 location）里没有 `notifications`，`notifications: allow` 被静默忽略（日志中“through applesimutils”耗时 0 ms）。harness 每次卸载重装后，点“Notify in 3 s”时弹出通知权限请求，`pressKey: home` 后通知不会送达。M3 时依赖模拟器上之前允许过的状态（与 Quiesco 0.13.3 相同，h2nology/quiesco#113）。② flow 中 `tapOn: Allow` 在同一 flow 内找不到元素（`when: visible: Allow` 为真、`maestro hierarchy` 能看到 `accessibilityText=Allow`，单独会话中 `tapOn: Allow` 也能点中），按坐标（68%, 59%）点击可以。③ 重装后通知中心只有一条通知（不再折叠），iOS 27 中对卡片的点击被识别为横向滑动、app 不打开；flow 原本只在折叠展开后走“右滑 → Open”。原型（坐标点 Allow + 通知仍可见时右滑 → Open）在重装后 5 / 5 通过；不重装、已授权时 1 次失败（通知中心里找不到通知，harness 不走这条路径，未查）。处理方式待用户决定。
+
+### Appium Android S21 在 harness 下必定失败：登录未完成就打开深链接（2026-11-24）
+
+- 冒烟 2 次都失败（`item-detail-title` 未找到，热启动那一步），单独运行稳定复现。截图：深链接 intent 已送达 `MainActivity`，app 在前台但停在 Home。
+- 原因：Appium 的 `login()` 点完登录按钮即返回；登录请求完成后 app 执行 `router.replace('/')`，把深链接已打开的详情页换回 Home。M3 时 Android 模拟器带窗口运行、被 macOS 限速，登录总是先完成；M4 harness 改为无窗口模拟器后变快，顺序反过来。
+- 排查过程：切后台后停 1 s 再打开深链接 2/2 通过、不停 0/2；等 `queryAppState` < 4、等前台包名变为桌面都仍失败（不是切后台的时机）。
+- 修复：S21 正式版登录后等 `item-row-1` 显示（W3，Appium WAITS.md #15），5/5 通过。其他工具：Quiesco 在动作后等待 app 空闲（包括网络请求）；Maestro 冒烟通过。

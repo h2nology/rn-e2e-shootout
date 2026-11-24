@@ -20,6 +20,7 @@ WebdriverIO 的元素命令（`click`、`setValue` 等）和 `expect` 断言自�
 | 12 | `test/final/s22-notification.js:53` | W3 | iOS | 等通知标题出现在通知中心 | 之后用 `isExisting()`（不等待）判断通知是否被折叠成组，判断前通知必须已送达（3 秒后） |
 | 13 | `test/final/s22-notification.js:61` | W3 | iOS | 展开通知组后等 “Show less” 显示 | 等展开动画结束，否则取到的通知卡片位置不对 |
 | 14 | `test/final/s23-background.js:16` | W3 | 两平台 | 保存后等 `item-row-501` 出现再结束 app | Appium 不跟踪 app 的网络请求：立刻结束 app 会切断保存请求（诊断版 Android 实测，服务端收到 ECONNRESET） |
+| 15 | `test/final/s21-deeplink.js:10` | W3 | Android | 登录后等 `item-row-1` 显示再切后台、打开深链接 | `login()` 点完登录按钮即返回；登录请求完成后 app 执行 `router.replace('/')`，深链接已打开的详情页被换回 Home。M3（带窗口的模拟器）时登录总是先完成；M4 harness 改为无窗口模拟器后 0/4（等待后 5/5，2026-11-24） |
 
 “平台”列为该项是因哪个平台的实测失败而加；代码中除 #1、#6、#7、#10、#13 外两平台都执行。
 
@@ -30,8 +31,8 @@ WebdriverIO 的元素命令（`click`、`setValue` 等）和 `expect` 断言自�
 | 平台 | W1 固定 sleep | W2 手写重试 | W3 条件等待 | X 同步绕过 |
 |---|---|---|---|---|
 | iOS 需要 | 0 | 2（#5、#6） | 10（#1–#4、#8、#9、#11–#14） | 0 |
-| Android 需要 | 0 | 0 | 2（#2、#14） | 2（#7、#10） |
-| 套件合计（代码中的调用点） | 0 | 2 | 10 | 2 |
+| Android 需要 | 0 | 0 | 3（#2、#14、#15） | 2（#7、#10） |
+| 套件合计（代码中的调用点） | 0 | 2 | 11 | 2 |
 
 ## 不计入的项
 
