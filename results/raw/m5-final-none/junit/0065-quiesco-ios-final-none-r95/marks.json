@@ -1,0 +1,362 @@
+[
+ {
+  "t": 1795546433178,
+  "event": "scenario-start",
+  "scenario": "S1 登录成功后进入列表"
+ },
+ {
+  "t": 1795546435764,
+  "event": "reset-end",
+  "scenario": "S1 登录成功后进入列表"
+ },
+ {
+  "t": 1795546441096,
+  "event": "scenario-end",
+  "scenario": "S1 登录成功后进入列表"
+ },
+ {
+  "t": 1795546442355,
+  "event": "scenario-start",
+  "scenario": "S2 错误邮箱的校验提示"
+ },
+ {
+  "t": 1795546444962,
+  "event": "reset-end",
+  "scenario": "S2 错误邮箱的校验提示"
+ },
+ {
+  "t": 1795546448581,
+  "event": "scenario-end",
+  "scenario": "S2 错误邮箱的校验提示"
+ },
+ {
+  "t": 1795546449244,
+  "event": "scenario-start",
+  "scenario": "S3 防抖搜索"
+ },
+ {
+  "t": 1795546451825,
+  "event": "reset-end",
+  "scenario": "S3 防抖搜索"
+ },
+ {
+  "t": 1795546459067,
+  "event": "scenario-end",
+  "scenario": "S3 防抖搜索"
+ },
+ {
+  "t": 1795546460322,
+  "event": "scenario-start",
+  "scenario": "S4 新增条目并在刷新后保留"
+ },
+ {
+  "t": 1795546462919,
+  "event": "reset-end",
+  "scenario": "S4 新增条目并在刷新后保留"
+ },
+ {
+  "t": 1795546470828,
+  "event": "scenario-end",
+  "scenario": "S4 新增条目并在刷新后保留"
+ },
+ {
+  "t": 1795546472088,
+  "event": "scenario-start",
+  "scenario": "S5 删除条目，确认 Modal"
+ },
+ {
+  "t": 1795546474648,
+  "event": "reset-end",
+  "scenario": "S5 删除条目，确认 Modal"
+ },
+ {
+  "t": 1795546480777,
+  "event": "scenario-end",
+  "scenario": "S5 删除条目，确认 Modal"
+ },
+ {
+  "t": 1795546482038,
+  "event": "scenario-start",
+  "scenario": "S6 长列表滚动到第 400 行"
+ },
+ {
+  "t": 1795546484602,
+  "event": "reset-end",
+  "scenario": "S6 长列表滚动到第 400 行"
+ },
+ {
+  "t": 1795546513181,
+  "event": "scenario-end",
+  "scenario": "S6 长列表滚动到第 400 行"
+ },
+ {
+  "t": 1795546514511,
+  "event": "scenario-start",
+  "scenario": "S7a 中文 / 日文输入"
+ },
+ {
+  "t": 1795546517089,
+  "event": "reset-end",
+  "scenario": "S7a 中文 / 日文输入"
+ },
+ {
+  "t": 1795546525259,
+  "event": "scenario-end",
+  "scenario": "S7a 中文 / 日文输入"
+ },
+ {
+  "t": 1795546526527,
+  "event": "scenario-start",
+  "scenario": "S8 原生控件"
+ },
+ {
+  "t": 1795546529071,
+  "event": "reset-end",
+  "scenario": "S8 原生控件"
+ },
+ {
+  "t": 1795546545644,
+  "event": "scenario-end",
+  "scenario": "S8 原生控件"
+ },
+ {
+  "t": 1795546546921,
+  "event": "scenario-start",
+  "scenario": "S9 WebView"
+ },
+ {
+  "t": 1795546550251,
+  "event": "reset-end",
+  "scenario": "S9 WebView"
+ },
+ {
+  "t": 1795546558129,
+  "event": "scenario-end",
+  "scenario": "S9 WebView"
+ },
+ {
+  "t": 1795546559488,
+  "event": "scenario-start",
+  "scenario": "S10a 预先授权后显示 Granted"
+ },
+ {
+  "t": 1795546563062,
+  "event": "reset-end",
+  "scenario": "S10a 预先授权后显示 Granted"
+ },
+ {
+  "t": 1795546569011,
+  "event": "scenario-end",
+  "scenario": "S10a 预先授权后显示 Granted"
+ },
+ {
+  "t": 1795546570305,
+  "event": "scenario-start",
+  "scenario": "S10b 点击系统弹窗“允许”"
+ },
+ {
+  "t": 1795546573386,
+  "event": "reset-end",
+  "scenario": "S10b 点击系统弹窗“允许”"
+ },
+ {
+  "t": 1795546580444,
+  "event": "scenario-end",
+  "scenario": "S10b 点击系统弹窗“允许”"
+ },
+ {
+  "t": 1795546581723,
+  "event": "scenario-start",
+  "scenario": "S11 永不静止的动画"
+ },
+ {
+  "t": 1795546584867,
+  "event": "reset-end",
+  "scenario": "S11 永不静止的动画"
+ },
+ {
+  "t": 1795546590877,
+  "event": "scenario-end",
+  "scenario": "S11 永不静止的动画"
+ },
+ {
+  "t": 1795546592160,
+  "event": "scenario-start",
+  "scenario": "S12 左滑删除"
+ },
+ {
+  "t": 1795546595154,
+  "event": "reset-end",
+  "scenario": "S12 左滑删除"
+ },
+ {
+  "t": 1795546601227,
+  "event": "scenario-end",
+  "scenario": "S12 左滑删除"
+ },
+ {
+  "t": 1795546602504,
+  "event": "scenario-start",
+  "scenario": "S13 下拉刷新"
+ },
+ {
+  "t": 1795546605532,
+  "event": "reset-end",
+  "scenario": "S13 下拉刷新"
+ },
+ {
+  "t": 1795546611625,
+  "event": "scenario-end",
+  "scenario": "S13 下拉刷新"
+ },
+ {
+  "t": 1795546612911,
+  "event": "scenario-start",
+  "scenario": "S14 长按菜单与拖拽排序"
+ },
+ {
+  "t": 1795546615965,
+  "event": "reset-end",
+  "scenario": "S14 长按菜单与拖拽排序"
+ },
+ {
+  "t": 1795546624912,
+  "event": "scenario-end",
+  "scenario": "S14 长按菜单与拖拽排序"
+ },
+ {
+  "t": 1795546626177,
+  "event": "scenario-start",
+  "scenario": "S15 Reanimated 动画"
+ },
+ {
+  "t": 1795546629183,
+  "event": "reset-end",
+  "scenario": "S15 Reanimated 动画"
+ },
+ {
+  "t": 1795546636294,
+  "event": "scenario-end",
+  "scenario": "S15 Reanimated 动画"
+ },
+ {
+  "t": 1795546637571,
+  "event": "scenario-start",
+  "scenario": "S16 轮询与 WebSocket"
+ },
+ {
+  "t": 1795546640594,
+  "event": "reset-end",
+  "scenario": "S16 轮询与 WebSocket"
+ },
+ {
+  "t": 1795546647993,
+  "event": "scenario-end",
+  "scenario": "S16 轮询与 WebSocket"
+ },
+ {
+  "t": 1795546649337,
+  "event": "scenario-start",
+  "scenario": "S17 自动消失的 Toast"
+ },
+ {
+  "t": 1795546652383,
+  "event": "reset-end",
+  "scenario": "S17 自动消失的 Toast"
+ },
+ {
+  "t": 1795546659643,
+  "event": "scenario-end",
+  "scenario": "S17 自动消失的 Toast"
+ },
+ {
+  "t": 1795546660908,
+  "event": "scenario-start",
+  "scenario": "S18 错误态与重试"
+ },
+ {
+  "t": 1795546663836,
+  "event": "reset-end",
+  "scenario": "S18 错误态与重试"
+ },
+ {
+  "t": 1795546670242,
+  "event": "scenario-end",
+  "scenario": "S18 错误态与重试"
+ },
+ {
+  "t": 1795546671554,
+  "event": "scenario-start",
+  "scenario": "S19 Tab 与嵌套导航"
+ },
+ {
+  "t": 1795546674548,
+  "event": "reset-end",
+  "scenario": "S19 Tab 与嵌套导航"
+ },
+ {
+  "t": 1795546682710,
+  "event": "scenario-end",
+  "scenario": "S19 Tab 与嵌套导航"
+ },
+ {
+  "t": 1795546684005,
+  "event": "scenario-start",
+  "scenario": "S20 键盘遮挡"
+ },
+ {
+  "t": 1795546687047,
+  "event": "reset-end",
+  "scenario": "S20 键盘遮挡"
+ },
+ {
+  "t": 1795546694694,
+  "event": "scenario-end",
+  "scenario": "S20 键盘遮挡"
+ },
+ {
+  "t": 1795546695944,
+  "event": "scenario-start",
+  "scenario": "S21 深链接"
+ },
+ {
+  "t": 1795546698944,
+  "event": "reset-end",
+  "scenario": "S21 深链接"
+ },
+ {
+  "t": 1795546713414,
+  "event": "scenario-end",
+  "scenario": "S21 深链接"
+ },
+ {
+  "t": 1795546713927,
+  "event": "scenario-start",
+  "scenario": "S22 本地通知"
+ },
+ {
+  "t": 1795546716947,
+  "event": "reset-end",
+  "scenario": "S22 本地通知"
+ },
+ {
+  "t": 1795546729844,
+  "event": "scenario-end",
+  "scenario": "S22 本地通知"
+ },
+ {
+  "t": 1795546731171,
+  "event": "scenario-start",
+  "scenario": "S23 前后台切换与持久化"
+ },
+ {
+  "t": 1795546734086,
+  "event": "reset-end",
+  "scenario": "S23 前后台切换与持久化"
+ },
+ {
+  "t": 1795546749193,
+  "event": "scenario-end",
+  "scenario": "S23 前后台切换与持久化"
+ }
+]

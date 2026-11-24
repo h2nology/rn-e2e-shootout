@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S2" timestamp="2026-11-25T00:55:53" time="7.132" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S2"/>
+      <property name="capabilities" value="ios.shootoutiphone17"/>
+      <property name="file" value="file://./test/final/s02-invalid-email.js"/>
+    </properties>
+    <testcase classname="ios.shootoutiphone17.S2" name="" time="7.13">
+      <system-out><![CDATA[
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/elements - {"using":"accessibility id","value":"login-email"}
+RESULT: {"using":"accessibility id","value":"login-email"}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/2B000000-0000-0000-9645-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/2B000000-0000-0000-9645-000000000000/value - {"text":"n"}
+RESULT: {"text":"n"}
+COMMAND: GET /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/2B000000-0000-0000-9645-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/2B000000-0000-0000-9645-000000000000/value - {"text":"ot-an-email"}
+RESULT: {"text":"ot-an-email"}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/elements - {"using":"accessibility id","value":"login-password"}
+RESULT: {"using":"accessibility id","value":"login-password"}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/2D000000-0000-0000-9645-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/2D000000-0000-0000-9645-000000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/2D000000-0000-0000-9645-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/2D000000-0000-0000-9645-000000000000/value - {"text":"assw0rd!"}
+RESULT: {"text":"assw0rd!"}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/elements - {"using":"accessibility id","value":"login-submit"}
+RESULT: {"using":"accessibility id","value":"login-submit"}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/29000000-0000-0000-9645-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/elements - {"using":"accessibility id","value":"login-email-error"}
+RESULT: {"using":"accessibility id","value":"login-email-error"}
+COMMAND: GET /session/10e402ac-c957-47fd-a430-31d66078ccd2/element/91000000-0000-0000-9645-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/elements - {"using":"accessibility id","value":"item-list"}
+RESULT: {"using":"accessibility id","value":"item-list"}
+COMMAND: POST /session/10e402ac-c957-47fd-a430-31d66078ccd2/elements - {"using":"accessibility id","value":"item-list"}
+RESULT: {"using":"accessibility id","value":"item-list"}
+COMMAND: DELETE /session/10e402ac-c957-47fd-a430-31d66078ccd2 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

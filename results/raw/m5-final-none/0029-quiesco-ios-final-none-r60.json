@@ -1,0 +1,488 @@
+{
+  "tool": "quiesco",
+  "toolVersion": "0.13.4",
+  "methodologyVersion": "v16",
+  "variant": "final",
+  "platform": "ios",
+  "device": "Shootout iPhone 17 / iOS 27.0 simulator (59C18B64-C4A9-473E-91DC-24CCC9996644)",
+  "host": "Apple M5 Pro, 15 cores, 24 GB, macOS 26.7.3 (25G342)",
+  "expoSdk": 58,
+  "runIndex": 60,
+  "warmup": false,
+  "stress": "none",
+  "seed": 1,
+  "buildMs": null,
+  "installMs": 6376,
+  "launchMs": 23675,
+  "suiteMs": 316411,
+  "totalMs": 346462,
+  "toolWallMs": 340505,
+  "startedAt": "2026-11-24T13:11:15.240Z",
+  "exitCode": 0,
+  "timedOut": false,
+  "invalid": true,
+  "invalidReason": "simulator system UI crashed during the run (PosterBoard × 32); marked retroactively under METHODOLOGY v17",
+  "sleepEvents": [],
+  "environment": {
+    "loadBefore": {
+      "one": 4.97,
+      "five": 5.46,
+      "fifteen": 6.33
+    },
+    "loadWaitedMs": 3,
+    "loadAfterBoot": {
+      "one": 6.8,
+      "five": 6.75,
+      "fifteen": 6.79
+    },
+    "loadAfterBootWaitedMs": 90088,
+    "loadAtStart": {
+      "one": 6.43,
+      "five": 6.67,
+      "fifteen": 6.76
+    },
+    "loadDuring": {
+      "samples": 11,
+      "median": 5.37,
+      "max": 6.82,
+      "values": [
+        5.9,
+        6.11,
+        5,
+        4.88,
+        6.82,
+        6.47,
+        5.37,
+        5.23,
+        4.45,
+        4.37,
+        5.47
+      ]
+    },
+    "deviceRebootMs": 7837,
+    "device": {
+      "languages": "(en)",
+      "locale": "en_US",
+      "reduceMotion": "0",
+      "appearance": "light",
+      "keyboardLastUsed": "en_US@sw=QWERTY;hw=Automatic"
+    },
+    "emulatorArgs": null,
+    "mockConfig": {
+      "stress": "none",
+      "netDelayMinMs": 200,
+      "netDelayMaxMs": 200,
+      "animScaleMin": 1,
+      "animScaleMax": 1,
+      "seed": 1
+    }
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "status": "passed",
+      "durationMs": 5603,
+      "resetMs": 2684,
+      "junitTimeMs": 30973,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 8287
+    },
+    {
+      "id": "S2",
+      "status": "passed",
+      "durationMs": 3610,
+      "resetMs": 2593,
+      "junitTimeMs": 7411,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 15706
+    },
+    {
+      "id": "S3",
+      "status": "passed",
+      "durationMs": 7212,
+      "resetMs": 2627,
+      "junitTimeMs": 10509,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 26226
+    },
+    {
+      "id": "S4",
+      "status": "passed",
+      "durationMs": 7996,
+      "resetMs": 2660,
+      "junitTimeMs": 11889,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 38127
+    },
+    {
+      "id": "S5",
+      "status": "passed",
+      "durationMs": 6132,
+      "resetMs": 2665,
+      "junitTimeMs": 10052,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 48187
+    },
+    {
+      "id": "S6",
+      "status": "passed",
+      "durationMs": 28586,
+      "resetMs": 2610,
+      "junitTimeMs": 32433,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 80627
+    },
+    {
+      "id": "S7a",
+      "status": "passed",
+      "durationMs": 8161,
+      "resetMs": 2706,
+      "junitTimeMs": 12252,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 92890
+    },
+    {
+      "id": "S8",
+      "status": "passed",
+      "durationMs": 16880,
+      "resetMs": 2560,
+      "junitTimeMs": 20684,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 113579
+    },
+    {
+      "id": "S9",
+      "status": "passed",
+      "durationMs": 8079,
+      "resetMs": 3446,
+      "junitTimeMs": 12807,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 126393
+    },
+    {
+      "id": "S10a",
+      "status": "passed",
+      "durationMs": 5961,
+      "resetMs": 3455,
+      "junitTimeMs": 10741,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 137140
+    },
+    {
+      "id": "S10b",
+      "status": "passed",
+      "durationMs": 6819,
+      "resetMs": 3054,
+      "junitTimeMs": 11146,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 148291
+    },
+    {
+      "id": "S11",
+      "status": "passed",
+      "durationMs": 5852,
+      "resetMs": 3053,
+      "junitTimeMs": 10159,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 158459
+    },
+    {
+      "id": "S12",
+      "status": "passed",
+      "durationMs": 5816,
+      "resetMs": 3139,
+      "junitTimeMs": 10240,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 168707
+    },
+    {
+      "id": "S13",
+      "status": "passed",
+      "durationMs": 5855,
+      "resetMs": 3034,
+      "junitTimeMs": 10174,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 178890
+    },
+    {
+      "id": "S14",
+      "status": "passed",
+      "durationMs": 8767,
+      "resetMs": 3101,
+      "junitTimeMs": 13111,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 192009
+    },
+    {
+      "id": "S15",
+      "status": "passed",
+      "durationMs": 6949,
+      "resetMs": 3007,
+      "junitTimeMs": 11225,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 203242
+    },
+    {
+      "id": "S16",
+      "status": "passed",
+      "durationMs": 7395,
+      "resetMs": 3146,
+      "junitTimeMs": 11776,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 215027
+    },
+    {
+      "id": "S17",
+      "status": "passed",
+      "durationMs": 7207,
+      "resetMs": 3103,
+      "junitTimeMs": 11584,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 226614
+    },
+    {
+      "id": "S18",
+      "status": "passed",
+      "durationMs": 6247,
+      "resetMs": 3242,
+      "junitTimeMs": 10705,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 237325
+    },
+    {
+      "id": "S19",
+      "status": "passed",
+      "durationMs": 8121,
+      "resetMs": 3102,
+      "junitTimeMs": 12494,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 249827
+    },
+    {
+      "id": "S20",
+      "status": "passed",
+      "durationMs": 7648,
+      "resetMs": 3037,
+      "junitTimeMs": 11959,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 261794
+    },
+    {
+      "id": "S21",
+      "status": "passed",
+      "durationMs": 14416,
+      "resetMs": 3026,
+      "junitTimeMs": 18693,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 280495
+    },
+    {
+      "id": "S22",
+      "status": "passed",
+      "durationMs": 12939,
+      "resetMs": 3113,
+      "junitTimeMs": 16509,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 297011
+    },
+    {
+      "id": "S23",
+      "status": "passed",
+      "durationMs": 14964,
+      "resetMs": 3060,
+      "junitTimeMs": 19393,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 316411
+    }
+  ],
+  "files": {
+    "log": "logs/0029-quiesco-ios-final-none-r60.log",
+    "junit": "junit/0029-quiesco-ios-final-none-r60"
+  },
+  "systemCrashes": [
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:11:28.000Z",
+      "file": "PosterBoard-2026-11-24-221135.000.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:11:31.000Z",
+      "file": "PosterBoard-2026-11-24-221135.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:11:38.000Z",
+      "file": "PosterBoard-2026-11-24-221139.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:11:40.000Z",
+      "file": "PosterBoard-2026-11-24-221141.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:11:48.000Z",
+      "file": "PosterBoard-2026-11-24-221149.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:11:50.000Z",
+      "file": "PosterBoard-2026-11-24-221151.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:11:59.000Z",
+      "file": "PosterBoard-2026-11-24-221159.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:00.000Z",
+      "file": "PosterBoard-2026-11-24-221201.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:09.000Z",
+      "file": "PosterBoard-2026-11-24-221209.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:10.000Z",
+      "file": "PosterBoard-2026-11-24-221211.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:19.000Z",
+      "file": "PosterBoard-2026-11-24-221220.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:21.000Z",
+      "file": "PosterBoard-2026-11-24-221221.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:30.000Z",
+      "file": "PosterBoard-2026-11-24-221230.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:32.000Z",
+      "file": "PosterBoard-2026-11-24-221232.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:40.000Z",
+      "file": "PosterBoard-2026-11-24-221241.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:42.000Z",
+      "file": "PosterBoard-2026-11-24-221243.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:51.000Z",
+      "file": "PosterBoard-2026-11-24-221251.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:12:53.000Z",
+      "file": "PosterBoard-2026-11-24-221253.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:13:01.000Z",
+      "file": "PosterBoard-2026-11-24-221302.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:13:03.000Z",
+      "file": "PosterBoard-2026-11-24-221304.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:13:11.000Z",
+      "file": "PosterBoard-2026-11-24-221312.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:13:16.000Z",
+      "file": "PosterBoard-2026-11-24-221317.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:13:21.000Z",
+      "file": "PosterBoard-2026-11-24-221322.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:13:23.000Z",
+      "file": "PosterBoard-2026-11-24-221324.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:13:32.000Z",
+      "file": "PosterBoard-2026-11-24-221332.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:13:33.000Z",
+      "file": "PosterBoard-2026-11-24-221334.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:14:15.000Z",
+      "file": "PosterBoard-2026-11-24-221416.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:15:18.000Z",
+      "file": "PosterBoard-2026-11-24-221518.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:15:58.000Z",
+      "file": "PosterBoard-2026-11-24-221559.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:16:10.000Z",
+      "file": "PosterBoard-2026-11-24-221611.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:17:34.000Z",
+      "file": "PosterBoard-2026-11-24-221734.ips"
+    },
+    {
+      "process": "PosterBoard",
+      "time": "2026-11-24T13:18:03.000Z",
+      "file": "PosterBoard-2026-11-24-221804.ips"
+    }
+  ]
+}

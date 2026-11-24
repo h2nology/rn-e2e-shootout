@@ -1,0 +1,332 @@
+[
+ {
+  "t": 1795514228715,
+  "event": "scenario-start",
+  "scenario": "S1 登录成功后进入列表"
+ },
+ {
+  "t": 1795514236273,
+  "event": "reset-end",
+  "scenario": "S1 登录成功后进入列表"
+ },
+ {
+  "t": 1795514239616,
+  "event": "scenario-end",
+  "scenario": "S1 登录成功后进入列表"
+ },
+ {
+  "t": 1795514239750,
+  "event": "scenario-start",
+  "scenario": "S2 输入错误邮箱时出现校验提示"
+ },
+ {
+  "t": 1795514247439,
+  "event": "reset-end",
+  "scenario": "S2 输入错误邮箱时出现校验提示"
+ },
+ {
+  "t": 1795514249508,
+  "event": "scenario-end",
+  "scenario": "S2 输入错误邮箱时出现校验提示"
+ },
+ {
+  "t": 1795514249635,
+  "event": "scenario-start",
+  "scenario": "S3 搜索关键字后只显示匹配项"
+ },
+ {
+  "t": 1795514257320,
+  "event": "reset-end",
+  "scenario": "S3 搜索关键字后只显示匹配项"
+ },
+ {
+  "t": 1795514263814,
+  "event": "scenario-end",
+  "scenario": "S3 搜索关键字后只显示匹配项"
+ },
+ {
+  "t": 1795514263914,
+  "event": "scenario-start",
+  "scenario": "S4 新增条目出现在顶部，刷新后仍在"
+ },
+ {
+  "t": 1795514271560,
+  "event": "reset-end",
+  "scenario": "S4 新增条目出现在顶部，刷新后仍在"
+ },
+ {
+  "t": 1795514277250,
+  "event": "scenario-end",
+  "scenario": "S4 新增条目出现在顶部，刷新后仍在"
+ },
+ {
+  "t": 1795514277363,
+  "event": "scenario-start",
+  "scenario": "S5 确认 Modal 出现，确认后条目消失"
+ },
+ {
+  "t": 1795514284988,
+  "event": "reset-end",
+  "scenario": "S5 确认 Modal 出现，确认后条目消失"
+ },
+ {
+  "t": 1795514289258,
+  "event": "scenario-end",
+  "scenario": "S5 确认 Modal 出现，确认后条目消失"
+ },
+ {
+  "t": 1795514289379,
+  "event": "scenario-start",
+  "scenario": "S6 滚动到第 400 行并进入详情"
+ },
+ {
+  "t": 1795514297006,
+  "event": "reset-end",
+  "scenario": "S6 滚动到第 400 行并进入详情"
+ },
+ {
+  "t": 1795514369439,
+  "event": "scenario-end",
+  "scenario": "S6 滚动到第 400 行并进入详情"
+ },
+ {
+  "t": 1795514369563,
+  "event": "scenario-start",
+  "scenario": "S7 S7a 输入中文和日文标题并保存"
+ },
+ {
+  "t": 1795514377204,
+  "event": "reset-end",
+  "scenario": "S7 S7a 输入中文和日文标题并保存"
+ },
+ {
+  "t": 1795514382438,
+  "event": "scenario-end",
+  "scenario": "S7 S7a 输入中文和日文标题并保存"
+ },
+ {
+  "t": 1795514382548,
+  "event": "scenario-start",
+  "scenario": "S8 调整开关、滑块、日期后提交"
+ },
+ {
+  "t": 1795514390207,
+  "event": "reset-end",
+  "scenario": "S8 调整开关、滑块、日期后提交"
+ },
+ {
+  "t": 1795514398805,
+  "event": "scenario-end",
+  "scenario": "S8 调整开关、滑块、日期后提交"
+ },
+ {
+  "t": 1795514398924,
+  "event": "scenario-start",
+  "scenario": "S9 点击 WebView 内按钮，原生侧显示结果"
+ },
+ {
+  "t": 1795514406549,
+  "event": "reset-end",
+  "scenario": "S9 点击 WebView 内按钮，原生侧显示结果"
+ },
+ {
+  "t": 1795514411938,
+  "event": "scenario-end",
+  "scenario": "S9 点击 WebView 内按钮，原生侧显示结果"
+ },
+ {
+  "t": 1795514412052,
+  "event": "scenario-start",
+  "scenario": "S10 S10a 预先授权后显示 Granted"
+ },
+ {
+  "t": 1795514419680,
+  "event": "reset-end",
+  "scenario": "S10 S10a 预先授权后显示 Granted"
+ },
+ {
+  "t": 1795514424834,
+  "event": "scenario-end",
+  "scenario": "S10 S10a 预先授权后显示 Granted"
+ },
+ {
+  "t": 1795514424966,
+  "event": "scenario-start",
+  "scenario": "S11 在有无限动画的页面上点击按钮"
+ },
+ {
+  "t": 1795514432616,
+  "event": "reset-end",
+  "scenario": "S11 在有无限动画的页面上点击按钮"
+ },
+ {
+  "t": 1795514437428,
+  "event": "scenario-end",
+  "scenario": "S11 在有无限动画的页面上点击按钮"
+ },
+ {
+  "t": 1795514437518,
+  "event": "scenario-start",
+  "scenario": "S12 左滑后点删除，条目消失"
+ },
+ {
+  "t": 1795514445175,
+  "event": "reset-end",
+  "scenario": "S12 左滑后点删除，条目消失"
+ },
+ {
+  "t": 1795514449381,
+  "event": "scenario-end",
+  "scenario": "S12 左滑后点删除，条目消失"
+ },
+ {
+  "t": 1795514449474,
+  "event": "scenario-start",
+  "scenario": "S13 下拉刷新后显示服务端新增的数据"
+ },
+ {
+  "t": 1795514457093,
+  "event": "reset-end",
+  "scenario": "S13 下拉刷新后显示服务端新增的数据"
+ },
+ {
+  "t": 1795514462738,
+  "event": "scenario-end",
+  "scenario": "S13 下拉刷新后显示服务端新增的数据"
+ },
+ {
+  "t": 1795514462861,
+  "event": "scenario-start",
+  "scenario": "S14 长按置顶，拖拽 R5 到 R1 的位置"
+ },
+ {
+  "t": 1795514470474,
+  "event": "reset-end",
+  "scenario": "S14 长按置顶，拖拽 R5 到 R1 的位置"
+ },
+ {
+  "t": 1795514478639,
+  "event": "scenario-end",
+  "scenario": "S14 长按置顶，拖拽 R5 到 R1 的位置"
+ },
+ {
+  "t": 1795514478744,
+  "event": "scenario-start",
+  "scenario": "S15 卡片展开后点击卡片内按钮"
+ },
+ {
+  "t": 1795514486376,
+  "event": "reset-end",
+  "scenario": "S15 卡片展开后点击卡片内按钮"
+ },
+ {
+  "t": 1795514492366,
+  "event": "scenario-end",
+  "scenario": "S15 卡片展开后点击卡片内按钮"
+ },
+ {
+  "t": 1795514492479,
+  "event": "scenario-start",
+  "scenario": "S16 在有轮询和 WebSocket 的页面上提交表单"
+ },
+ {
+  "t": 1795514500157,
+  "event": "reset-end",
+  "scenario": "S16 在有轮询和 WebSocket 的页面上提交表单"
+ },
+ {
+  "t": 1795514505898,
+  "event": "scenario-end",
+  "scenario": "S16 在有轮询和 WebSocket 的页面上提交表单"
+ },
+ {
+  "t": 1795514506021,
+  "event": "scenario-start",
+  "scenario": "S17 Toast 出现后消失"
+ },
+ {
+  "t": 1795514513674,
+  "event": "reset-end",
+  "scenario": "S17 Toast 出现后消失"
+ },
+ {
+  "t": 1795514519609,
+  "event": "scenario-end",
+  "scenario": "S17 Toast 出现后消失"
+ },
+ {
+  "t": 1795514519716,
+  "event": "scenario-start",
+  "scenario": "S18 500 后显示错误页，重试后恢复"
+ },
+ {
+  "t": 1795514527337,
+  "event": "reset-end",
+  "scenario": "S18 500 后显示错误页，重试后恢复"
+ },
+ {
+  "t": 1795514532008,
+  "event": "scenario-end",
+  "scenario": "S18 500 后显示错误页，重试后恢复"
+ },
+ {
+  "t": 1795514532118,
+  "event": "scenario-start",
+  "scenario": "S19 嵌套页返回后 Tab 状态保持"
+ },
+ {
+  "t": 1795514539740,
+  "event": "reset-end",
+  "scenario": "S19 嵌套页返回后 Tab 状态保持"
+ },
+ {
+  "t": 1795514547345,
+  "event": "scenario-end",
+  "scenario": "S19 嵌套页返回后 Tab 状态保持"
+ },
+ {
+  "t": 1795514547465,
+  "event": "scenario-start",
+  "scenario": "S20 填写被键盘遮挡的输入框后提交"
+ },
+ {
+  "t": 1795514555091,
+  "event": "reset-end",
+  "scenario": "S20 填写被键盘遮挡的输入框后提交"
+ },
+ {
+  "t": 1795514562158,
+  "event": "scenario-end",
+  "scenario": "S20 填写被键盘遮挡的输入框后提交"
+ },
+ {
+  "t": 1795514562273,
+  "event": "scenario-start",
+  "scenario": "S21 热启动与冷启动打开深链接"
+ },
+ {
+  "t": 1795514569892,
+  "event": "reset-end",
+  "scenario": "S21 热启动与冷启动打开深链接"
+ },
+ {
+  "t": 1795514581558,
+  "event": "scenario-end",
+  "scenario": "S21 热启动与冷启动打开深链接"
+ },
+ {
+  "t": 1795514581781,
+  "event": "scenario-start",
+  "scenario": "S23 草稿在前后台切换后保持，保存后重启仍在"
+ },
+ {
+  "t": 1795514589397,
+  "event": "reset-end",
+  "scenario": "S23 草稿在前后台切换后保持，保存后重启仍在"
+ },
+ {
+  "t": 1795514603644,
+  "event": "scenario-end",
+  "scenario": "S23 草稿在前后台切换后保持，保存后重启仍在"
+ }
+]

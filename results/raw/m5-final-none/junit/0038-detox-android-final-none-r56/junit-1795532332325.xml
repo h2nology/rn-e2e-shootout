@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="24" failures="1" errors="0" time="375.928">
+  <testsuite name="S1" errors="0" failures="0" skipped="0" timestamp="2026-11-24T14:58:52" time="11.24" tests="1">
+    <testcase classname="S1" name="登录成功后进入列表" time="10.89">
+    </testcase>
+  </testsuite>
+  <testsuite name="S2" errors="0" failures="0" skipped="0" timestamp="2026-11-24T14:59:03" time="9.827" tests="1">
+    <testcase classname="S2" name="输入错误邮箱时出现校验提示" time="9.722">
+    </testcase>
+  </testsuite>
+  <testsuite name="S3" errors="0" failures="0" skipped="0" timestamp="2026-11-24T14:59:13" time="14.26" tests="1">
+    <testcase classname="S3" name="搜索关键字后只显示匹配项" time="14.15">
+    </testcase>
+  </testsuite>
+  <testsuite name="S4" errors="0" failures="0" skipped="0" timestamp="2026-11-24T14:59:27" time="13.526" tests="1">
+    <testcase classname="S4" name="新增条目出现在顶部，刷新后仍在" time="13.405">
+    </testcase>
+  </testsuite>
+  <testsuite name="S5" errors="0" failures="0" skipped="0" timestamp="2026-11-24T14:59:41" time="12.023" tests="1">
+    <testcase classname="S5" name="确认 Modal 出现，确认后条目消失" time="11.897">
+    </testcase>
+  </testsuite>
+  <testsuite name="S6" errors="0" failures="0" skipped="0" timestamp="2026-11-24T14:59:53" time="80.04" tests="1">
+    <testcase classname="S6" name="滚动到第 400 行并进入详情" time="79.94">
+    </testcase>
+  </testsuite>
+  <testsuite name="S7" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:01:13" time="13.286" tests="1">
+    <testcase classname="S7" name="S7a 输入中文和日文标题并保存" time="13.173">
+    </testcase>
+  </testsuite>
+  <testsuite name="S8" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:01:26" time="16.986" tests="1">
+    <testcase classname="S8" name="调整开关、滑块、日期后提交" time="16.86">
+    </testcase>
+  </testsuite>
+  <testsuite name="S9" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:01:43" time="13.085" tests="1">
+    <testcase classname="S9" name="点击 WebView 内按钮，原生侧显示结果" time="12.971">
+    </testcase>
+  </testsuite>
+  <testsuite name="S10" errors="0" failures="0" skipped="1" timestamp="2026-11-24T15:01:56" time="12.879" tests="2">
+    <testcase classname="S10" name="S10a 预先授权后显示 Granted" time="12.769">
+    </testcase>
+    <testcase classname="S10" name="S10b 点击系统弹窗“允许”" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="S11" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:02:09" time="12.491" tests="1">
+    <testcase classname="S11" name="在有无限动画的页面上点击按钮" time="12.379">
+    </testcase>
+  </testsuite>
+  <testsuite name="S12" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:02:22" time="11.921" tests="1">
+    <testcase classname="S12" name="左滑后点删除，条目消失" time="11.821">
+    </testcase>
+  </testsuite>
+  <testsuite name="S13" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:02:34" time="13.303" tests="1">
+    <testcase classname="S13" name="下拉刷新后显示服务端新增的数据" time="13.215">
+    </testcase>
+  </testsuite>
+  <testsuite name="S14" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:02:47" time="15.853" tests="1">
+    <testcase classname="S14" name="长按置顶，拖拽 R5 到 R1 的位置" time="15.764">
+    </testcase>
+  </testsuite>
+  <testsuite name="S15" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:03:03" time="13.745" tests="1">
+    <testcase classname="S15" name="卡片展开后点击卡片内按钮" time="13.635">
+    </testcase>
+  </testsuite>
+  <testsuite name="S16" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:03:17" time="13.51" tests="1">
+    <testcase classname="S16" name="在有轮询和 WebSocket 的页面上提交表单" time="13.4">
+    </testcase>
+  </testsuite>
+  <testsuite name="S17" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:03:30" time="13.812" tests="1">
+    <testcase classname="S17" name="Toast 出现后消失" time="13.678">
+    </testcase>
+  </testsuite>
+  <testsuite name="S18" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:03:44" time="12.472" tests="1">
+    <testcase classname="S18" name="500 后显示错误页，重试后恢复" time="12.381">
+    </testcase>
+  </testsuite>
+  <testsuite name="S19" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:03:57" time="15.293" tests="1">
+    <testcase classname="S19" name="嵌套页返回后 Tab 状态保持" time="15.208">
+    </testcase>
+  </testsuite>
+  <testsuite name="S20" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:04:12" time="14.763" tests="1">
+    <testcase classname="S20" name="填写被键盘遮挡的输入框后提交" time="14.677">
+    </testcase>
+  </testsuite>
+  <testsuite name="S21" errors="0" failures="0" skipped="0" timestamp="2026-11-24T15:04:27" time="19.472" tests="1">
+    <testcase classname="S21" name="热启动与冷启动打开深链接" time="19.367">
+    </testcase>
+  </testsuite>
+  <testsuite name="S22" errors="0" failures="0" skipped="1" timestamp="2026-11-24T15:04:46" time="0.095" tests="1">
+    <testcase classname="S22" name="从通知中心点击通知（Detox 不支持操作通知中心）" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="S23" errors="0" failures="1" skipped="0" timestamp="2026-11-24T15:04:46" time="21.741" tests="1">
+    <testcase classname="S23" name="草稿在前后台切换后保持，保存后重启仍在" time="21.637">
+      <failure>Test Failed: &apos;(an instance of android.widget.TextView and view.getText() with or without transformation to match: is &quot;Top: Persisted&quot; and view has effective visibility &lt;VISIBLE&gt;)&apos; doesn&apos;t match the selected view.
+Expected: (an instance of android.widget.TextView and view.getText() with or without transformation to match: is &quot;Top: Persisted&quot; and view has effective visibility &lt;VISIBLE&gt;)
+     Got: an instance of android.widget.TextView and view.getText() with or without transformation to match: is &quot;Top: Persisted&quot; view.getText() was &quot;Top: Item 001&quot; transformed text was &quot;Top: Item 001&quot;
+View Details: dn4{id=58, visibility=VISIBLE, width=257, height=57, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.view.ViewGroup$LayoutParams@YYYYYY, tag=list-top-title, root-is-layout-requested=false, has-input-connection=false, x=31.0, y=404.0, text=Top: Item 001, input-type=0, ime-target=false, has-links=false}
+
+
+    at Object.toHaveText (/Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/suites/detox/e2e/final/s23-background.test.js:17:52)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

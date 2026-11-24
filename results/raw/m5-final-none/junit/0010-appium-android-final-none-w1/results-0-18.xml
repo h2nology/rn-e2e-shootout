@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S19" timestamp="2026-11-24T19:14:40" time="12.022" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S19"/>
+      <property name="capabilities" value="android.emulator-5554"/>
+      <property name="file" value="file://./test/final/s19-tabs.js"/>
+    </properties>
+    <testcase classname="android.emulator-5554.S19" name="Tab" time="12.02">
+      <system-out><![CDATA[
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000014/clear - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000014/value - {"text":"user@example.com"}
+RESULT: {"text":"user@example.com"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000016/clear - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000016/value - {"text":"Passw0rd!"}
+RESULT: {"text":"Passw0rd!"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000017/click - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff0000002f/click - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000121/click - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000121/click - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000121/click - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"open-explore-detail\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"open-explore-detail\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000124/click - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-detail-title\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-detail-title\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-detail-title\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-detail-title\")"}
+COMMAND: GET /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff0000013e/text - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/back - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter-value\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter-value\")"}
+COMMAND: GET /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000123/text - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-home\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-home\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000029/click - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff0000002f/click - {}
+RESULT: {}
+COMMAND: POST /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter-value\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"explore-counter-value\")"}
+COMMAND: GET /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5/element/00000000-0000-00d5-ffff-ffff00000123/text - {}
+RESULT: {}
+COMMAND: DELETE /session/54e9f007-6823-4f2c-95f3-e6723aa2aac5 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

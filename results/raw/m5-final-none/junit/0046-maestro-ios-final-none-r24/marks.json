@@ -1,0 +1,362 @@
+[
+ {
+  "t": 1795536993015,
+  "event": "scenario-start",
+  "scenario": "s01-login"
+ },
+ {
+  "t": 1795536994680,
+  "event": "reset-end",
+  "scenario": "s01-login"
+ },
+ {
+  "t": 1795537007028,
+  "event": "scenario-end",
+  "scenario": "s01-login"
+ },
+ {
+  "t": 1795537007265,
+  "event": "scenario-start",
+  "scenario": "s02-invalid-email"
+ },
+ {
+  "t": 1795537008559,
+  "event": "reset-end",
+  "scenario": "s02-invalid-email"
+ },
+ {
+  "t": 1795537017693,
+  "event": "scenario-end",
+  "scenario": "s02-invalid-email"
+ },
+ {
+  "t": 1795537017748,
+  "event": "scenario-start",
+  "scenario": "s03-search"
+ },
+ {
+  "t": 1795537018752,
+  "event": "reset-end",
+  "scenario": "s03-search"
+ },
+ {
+  "t": 1795537031887,
+  "event": "scenario-end",
+  "scenario": "s03-search"
+ },
+ {
+  "t": 1795537031928,
+  "event": "scenario-start",
+  "scenario": "s04-add"
+ },
+ {
+  "t": 1795537032932,
+  "event": "reset-end",
+  "scenario": "s04-add"
+ },
+ {
+  "t": 1795537048230,
+  "event": "scenario-end",
+  "scenario": "s04-add"
+ },
+ {
+  "t": 1795537048282,
+  "event": "scenario-start",
+  "scenario": "s05-delete"
+ },
+ {
+  "t": 1795537049292,
+  "event": "reset-end",
+  "scenario": "s05-delete"
+ },
+ {
+  "t": 1795537063353,
+  "event": "scenario-end",
+  "scenario": "s05-delete"
+ },
+ {
+  "t": 1795537063407,
+  "event": "scenario-start",
+  "scenario": "s06-long-list"
+ },
+ {
+  "t": 1795537064415,
+  "event": "reset-end",
+  "scenario": "s06-long-list"
+ },
+ {
+  "t": 1795537242568,
+  "event": "scenario-end",
+  "scenario": "s06-long-list"
+ },
+ {
+  "t": 1795537242637,
+  "event": "scenario-start",
+  "scenario": "s07-cjk"
+ },
+ {
+  "t": 1795537243657,
+  "event": "reset-end",
+  "scenario": "s07-cjk"
+ },
+ {
+  "t": 1795537258921,
+  "event": "scenario-end",
+  "scenario": "s07-cjk"
+ },
+ {
+  "t": 1795537258975,
+  "event": "scenario-start",
+  "scenario": "s08-controls"
+ },
+ {
+  "t": 1795537260010,
+  "event": "reset-end",
+  "scenario": "s08-controls"
+ },
+ {
+  "t": 1795537278410,
+  "event": "scenario-end",
+  "scenario": "s08-controls"
+ },
+ {
+  "t": 1795537278461,
+  "event": "scenario-start",
+  "scenario": "s09-webview"
+ },
+ {
+  "t": 1795537279468,
+  "event": "reset-end",
+  "scenario": "s09-webview"
+ },
+ {
+  "t": 1795537300183,
+  "event": "scenario-end",
+  "scenario": "s09-webview"
+ },
+ {
+  "t": 1795537300255,
+  "event": "scenario-start",
+  "scenario": "s10a-permission"
+ },
+ {
+  "t": 1795537301350,
+  "event": "reset-end",
+  "scenario": "s10a-permission"
+ },
+ {
+  "t": 1795537313274,
+  "event": "scenario-end",
+  "scenario": "s10a-permission"
+ },
+ {
+  "t": 1795537313326,
+  "event": "scenario-start",
+  "scenario": "s10b-permission"
+ },
+ {
+  "t": 1795537314386,
+  "event": "reset-end",
+  "scenario": "s10b-permission"
+ },
+ {
+  "t": 1795537327176,
+  "event": "scenario-end",
+  "scenario": "s10b-permission"
+ },
+ {
+  "t": 1795537327225,
+  "event": "scenario-start",
+  "scenario": "s11-busy"
+ },
+ {
+  "t": 1795537328240,
+  "event": "reset-end",
+  "scenario": "s11-busy"
+ },
+ {
+  "t": 1795537350460,
+  "event": "scenario-end",
+  "scenario": "s11-busy"
+ },
+ {
+  "t": 1795537350520,
+  "event": "scenario-start",
+  "scenario": "s12-swipe-delete"
+ },
+ {
+  "t": 1795537351604,
+  "event": "reset-end",
+  "scenario": "s12-swipe-delete"
+ },
+ {
+  "t": 1795537365433,
+  "event": "scenario-end",
+  "scenario": "s12-swipe-delete"
+ },
+ {
+  "t": 1795537365487,
+  "event": "scenario-start",
+  "scenario": "s13-pull-refresh"
+ },
+ {
+  "t": 1795537366598,
+  "event": "reset-end",
+  "scenario": "s13-pull-refresh"
+ },
+ {
+  "t": 1795537377446,
+  "event": "scenario-end",
+  "scenario": "s13-pull-refresh"
+ },
+ {
+  "t": 1795537377493,
+  "event": "scenario-start",
+  "scenario": "s14-longpress-drag"
+ },
+ {
+  "t": 1795537378514,
+  "event": "reset-end",
+  "scenario": "s14-longpress-drag"
+ },
+ {
+  "t": 1795537396823,
+  "event": "scenario-end",
+  "scenario": "s14-longpress-drag"
+ },
+ {
+  "t": 1795537396869,
+  "event": "scenario-start",
+  "scenario": "s15-reanimated"
+ },
+ {
+  "t": 1795537397868,
+  "event": "reset-end",
+  "scenario": "s15-reanimated"
+ },
+ {
+  "t": 1795537411003,
+  "event": "scenario-end",
+  "scenario": "s15-reanimated"
+ },
+ {
+  "t": 1795537411055,
+  "event": "scenario-start",
+  "scenario": "s16-live"
+ },
+ {
+  "t": 1795537412071,
+  "event": "reset-end",
+  "scenario": "s16-live"
+ },
+ {
+  "t": 1795537426421,
+  "event": "scenario-end",
+  "scenario": "s16-live"
+ },
+ {
+  "t": 1795537426475,
+  "event": "scenario-start",
+  "scenario": "s17-toast"
+ },
+ {
+  "t": 1795537427510,
+  "event": "reset-end",
+  "scenario": "s17-toast"
+ },
+ {
+  "t": 1795537440321,
+  "event": "scenario-end",
+  "scenario": "s17-toast"
+ },
+ {
+  "t": 1795537440376,
+  "event": "scenario-start",
+  "scenario": "s18-error-retry"
+ },
+ {
+  "t": 1795537441414,
+  "event": "reset-end",
+  "scenario": "s18-error-retry"
+ },
+ {
+  "t": 1795537452136,
+  "event": "scenario-end",
+  "scenario": "s18-error-retry"
+ },
+ {
+  "t": 1795537452183,
+  "event": "scenario-start",
+  "scenario": "s19-tabs"
+ },
+ {
+  "t": 1795537453188,
+  "event": "reset-end",
+  "scenario": "s19-tabs"
+ },
+ {
+  "t": 1795537468498,
+  "event": "scenario-end",
+  "scenario": "s19-tabs"
+ },
+ {
+  "t": 1795537468558,
+  "event": "scenario-start",
+  "scenario": "s20-keyboard"
+ },
+ {
+  "t": 1795537469705,
+  "event": "reset-end",
+  "scenario": "s20-keyboard"
+ },
+ {
+  "t": 1795537483830,
+  "event": "scenario-end",
+  "scenario": "s20-keyboard"
+ },
+ {
+  "t": 1795537483885,
+  "event": "scenario-start",
+  "scenario": "s21-deeplink"
+ },
+ {
+  "t": 1795537484974,
+  "event": "reset-end",
+  "scenario": "s21-deeplink"
+ },
+ {
+  "t": 1795537512296,
+  "event": "scenario-end",
+  "scenario": "s21-deeplink"
+ },
+ {
+  "t": 1795537512370,
+  "event": "scenario-start",
+  "scenario": "s22-notification"
+ },
+ {
+  "t": 1795537513367,
+  "event": "reset-end",
+  "scenario": "s22-notification"
+ },
+ {
+  "t": 1795537536627,
+  "event": "scenario-end",
+  "scenario": "s22-notification"
+ },
+ {
+  "t": 1795537536686,
+  "event": "scenario-start",
+  "scenario": "s23-background"
+ },
+ {
+  "t": 1795537537782,
+  "event": "reset-end",
+  "scenario": "s23-background"
+ },
+ {
+  "t": 1795537565588,
+  "event": "scenario-end",
+  "scenario": "s23-background"
+ }
+]

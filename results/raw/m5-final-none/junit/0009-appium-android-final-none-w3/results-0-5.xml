@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S6" timestamp="2026-11-24T19:04:39" time="91.088" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S6"/>
+      <property name="capabilities" value="android.emulator-5554"/>
+      <property name="file" value="file://./test/final/s06-long-list.js"/>
+    </properties>
+    <testcase classname="android.emulator-5554.S6" name="400" time="91.085">
+      <system-out><![CDATA[
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000014/clear - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000014/value - {"text":"user@example.com"}
+RESULT: {"text":"user@example.com"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000016/clear - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000016/value - {"text":"Passw0rd!"}
+RESULT: {"text":"Passw0rd!"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000017/click - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-list\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-list\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-list\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-list\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/displayed - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer2","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer2","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer3","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer3","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer4","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer4","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer5","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer5","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer6","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer6","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer7","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer7","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer8","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer8","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer9","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer9","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer10","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer10","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer11","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer11","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer12","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer12","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer13","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer13","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer14","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer14","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer15","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer15","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer16","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer16","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer17","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer17","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer18","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer18","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer19","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer19","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer20","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer20","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer21","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer21","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer22","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer22","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer23","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer23","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer24","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer24","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer25","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer25","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer26","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer26","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer27","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer27","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer28","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer28","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer29","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer29","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer30","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer30","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer31","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer31","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer32","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer32","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer33","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer33","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer34","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer34","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer35","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer35","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer36","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer36","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer37","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer37","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00000052/rect - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {"actions":[{"id":"pointer38","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer38","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":540,"y":1979,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":540,"y":648,"duration":1000,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/actions - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff000017c1/displayed - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-400\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff000017c1/click - {}
+RESULT: {}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+COMMAND: POST /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+COMMAND: GET /session/fe6e8e99-7d70-41fb-a701-8ad119319b57/element/00000000-0000-0040-ffff-ffff00001866/text - {}
+RESULT: {}
+COMMAND: DELETE /session/fe6e8e99-7d70-41fb-a701-8ad119319b57 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

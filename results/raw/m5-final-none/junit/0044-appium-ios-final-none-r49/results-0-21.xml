@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S22" timestamp="2026-11-25T01:03:14" time="36.937" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S22"/>
+      <property name="capabilities" value="ios.shootoutiphone17"/>
+      <property name="file" value="file://./test/final/s22-notification.js"/>
+    </properties>
+    <testcase classname="ios.shootoutiphone17.S22" name="" time="36.934">
+      <system-out><![CDATA[
+COMMAND: POST /session/f7b9aca8-9f1f-4dc1-b902-980ac049707c/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/f7b9aca8-9f1f-4dc1-b902-980ac049707c/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/f7b9aca8-9f1f-4dc1-b902-980ac049707c/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: DELETE /session/f7b9aca8-9f1f-4dc1-b902-980ac049707c - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/timeouts - {"script":"<script> [8 bytes]"}
+RESULT: {"script":"<script> [8 bytes]"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"login-email"}
+RESULT: {"using":"accessibility id","value":"login-email"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/2B000000-0000-0000-A0A3-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/2B000000-0000-0000-A0A3-000000000000/value - {"text":"u"}
+RESULT: {"text":"u"}
+COMMAND: GET /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/2B000000-0000-0000-A0A3-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/2B000000-0000-0000-A0A3-000000000000/value - {"text":"ser@example.com"}
+RESULT: {"text":"ser@example.com"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"login-password"}
+RESULT: {"using":"accessibility id","value":"login-password"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/2D000000-0000-0000-A0A3-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/2D000000-0000-0000-A0A3-000000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/2D000000-0000-0000-A0A3-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/2D000000-0000-0000-A0A3-000000000000/value - {"text":"assw0rd!"}
+RESULT: {"text":"assw0rd!"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"login-submit"}
+RESULT: {"using":"accessibility id","value":"login-submit"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/29000000-0000-0000-A0A3-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/A3000000-0000-0000-A0A3-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/BF000000-0000-0000-A0A3-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/execute/sync - {"script":"<script> [19 bytes]","args":[{"seconds":-1}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"seconds":-1}]}
+COMMAND: GET /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/window/rect - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/actions - {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":80,"y":2,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":80,"y":524,"duration":500,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":80,"y":2,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":80,"y":524,"duration":500,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/actions - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: GET /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/5A010000-0000-0000-FA9E-000000000000/name - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Grouped\" AND label CONTAINS \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Grouped\" AND label CONTAINS \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Grouped\" AND label CONTAINS \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Grouped\" AND label CONTAINS \"Hello from rnshootout\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Hello from rnshootout\" AND NOT (label CONTAINS \"Grouped\")"}
+RESULT: {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Hello from rnshootout\" AND NOT (label CONTAINS \"Grouped\")"}
+COMMAND: GET /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/49010000-0000-0000-FA9E-000000000000/rect - {}
+RESULT: {}
+COMMAND: GET /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/49010000-0000-0000-FA9E-000000000000/rect - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/actions - {"actions":[{"id":"pointer2","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":54,"y":757,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":238,"y":757,"duration":400,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer2","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":54,"y":757,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":238,"y":757,"duration":400,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/actions - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/67010000-0000-0000-FA9E-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/elements - {"using":"accessibility id","value":"notification-target"}
+RESULT: {"using":"accessibility id","value":"notification-target"}
+COMMAND: GET /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510/element/CF000000-0000-0000-A0A3-000000000000/text - {}
+RESULT: {}
+COMMAND: DELETE /session/90f07e64-8ce8-47c8-b062-6ad3ee7d9510 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

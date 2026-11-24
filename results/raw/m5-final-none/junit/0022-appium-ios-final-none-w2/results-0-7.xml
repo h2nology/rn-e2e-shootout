@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S8" timestamp="2026-11-24T21:13:56" time="12.165" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S8"/>
+      <property name="capabilities" value="ios.shootoutiphone17"/>
+      <property name="file" value="file://./test/final/s08-controls.js"/>
+    </properties>
+    <testcase classname="ios.shootoutiphone17.S8" name="" time="12.162">
+      <system-out><![CDATA[
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"login-email"}
+RESULT: {"using":"accessibility id","value":"login-email"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/1F000000-0000-0000-DA72-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/1F000000-0000-0000-DA72-010000000000/value - {"text":"u"}
+RESULT: {"text":"u"}
+COMMAND: GET /session/4559b535-40ed-472d-b1a9-9163084be98f/element/1F000000-0000-0000-DA72-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/1F000000-0000-0000-DA72-010000000000/value - {"text":"ser@example.com"}
+RESULT: {"text":"ser@example.com"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"login-password"}
+RESULT: {"using":"accessibility id","value":"login-password"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/21000000-0000-0000-DA72-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/21000000-0000-0000-DA72-010000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/4559b535-40ed-472d-b1a9-9163084be98f/element/21000000-0000-0000-DA72-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/21000000-0000-0000-DA72-010000000000/value - {"text":"assw0rd!"}
+RESULT: {"text":"assw0rd!"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"login-submit"}
+RESULT: {"using":"accessibility id","value":"login-submit"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/1D000000-0000-0000-DA72-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/98000000-0000-0000-DA72-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"open-controls"}
+RESULT: {"using":"accessibility id","value":"open-controls"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"open-controls"}
+RESULT: {"using":"accessibility id","value":"open-controls"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"open-controls"}
+RESULT: {"using":"accessibility id","value":"open-controls"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"open-controls"}
+RESULT: {"using":"accessibility id","value":"open-controls"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"open-controls"}
+RESULT: {"using":"accessibility id","value":"open-controls"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/B1000000-0000-0000-DA72-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"control-switch"}
+RESULT: {"using":"accessibility id","value":"control-switch"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/D5000000-0000-0000-DA72-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"control-slider"}
+RESULT: {"using":"accessibility id","value":"control-slider"}
+COMMAND: GET /session/4559b535-40ed-472d-b1a9-9163084be98f/element/D0000000-0000-0000-DA72-010000000000/rect - {}
+RESULT: {}
+COMMAND: GET /session/4559b535-40ed-472d-b1a9-9163084be98f/element/D0000000-0000-0000-DA72-010000000000/rect - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/actions - {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":37,"y":220,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":294,"y":220,"duration":500,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":37,"y":220,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":294,"y":220,"duration":500,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/4559b535-40ed-472d-b1a9-9163084be98f/actions - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"control-date"}
+RESULT: {"using":"accessibility id","value":"control-date"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/D2000000-0000-0000-DA72-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"-ios predicate string","value":"label CONTAINS \"December 25\""}
+RESULT: {"using":"-ios predicate string","value":"label CONTAINS \"December 25\""}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/03010000-0000-0000-DA72-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"control-date-done"}
+RESULT: {"using":"accessibility id","value":"control-date-done"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/E0000000-0000-0000-DA72-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"control-submit"}
+RESULT: {"using":"accessibility id","value":"control-submit"}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/element/D3000000-0000-0000-DA72-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/4559b535-40ed-472d-b1a9-9163084be98f/elements - {"using":"accessibility id","value":"control-result"}
+RESULT: {"using":"accessibility id","value":"control-result"}
+COMMAND: GET /session/4559b535-40ed-472d-b1a9-9163084be98f/element/96010000-0000-0000-DA72-010000000000/text - {}
+RESULT: {}
+COMMAND: DELETE /session/4559b535-40ed-472d-b1a9-9163084be98f - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

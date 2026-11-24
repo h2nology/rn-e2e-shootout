@@ -1,0 +1,12 @@
+{
+  "hostname": "S-MAC-395",
+  "cpu": "Apple M5 Pro",
+  "cores": 15,
+  "memoryGB": 24,
+  "macos": "26.7.3 (25G342)",
+  "xcode": "Xcode 27.2 Build version 27B52",
+  "node": "v24.22.1",
+  "power": "AC Power",
+  "spotlight": "disabled",
+  "checkedAt": "2026-11-24T13:42:48.572Z"
+}

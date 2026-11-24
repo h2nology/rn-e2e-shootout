@@ -1,0 +1,334 @@
+{
+  "tool": "detox",
+  "toolVersion": "20.51.4",
+  "methodologyVersion": "v17",
+  "variant": "final",
+  "platform": "android",
+  "device": "Shootout_API_36_AOSP emulator (android-36 default arm64-v8a; -port 5554 -no-snapshot-load -no-audio -no-window)",
+  "host": "Apple M5 Pro, 15 cores, 24 GB, macOS 26.7.3 (25G342)",
+  "expoSdk": 58,
+  "runIndex": 56,
+  "warmup": false,
+  "stress": "none",
+  "seed": 1,
+  "buildMs": null,
+  "installMs": 569,
+  "launchMs": 1056,
+  "suiteMs": 375512,
+  "totalMs": 377137,
+  "toolWallMs": 376733,
+  "startedAt": "2026-11-24T14:58:26.595Z",
+  "exitCode": 1,
+  "timedOut": false,
+  "invalid": false,
+  "invalidReason": null,
+  "sleepEvents": [],
+  "systemCrashes": [],
+  "environment": {
+    "loadBefore": {
+      "one": 6.44,
+      "five": 8.31,
+      "fifteen": 8.61
+    },
+    "loadWaitedMs": 4,
+    "loadAfterBoot": {
+      "one": 5.29,
+      "five": 7.9,
+      "fifteen": 8.45
+    },
+    "loadAfterBootWaitedMs": 2,
+    "loadAtStart": {
+      "one": 5.29,
+      "five": 7.9,
+      "fifteen": 8.45
+    },
+    "loadDuring": {
+      "samples": 12,
+      "median": 4.74,
+      "max": 7.31,
+      "values": [
+        4.73,
+        4.7,
+        5.89,
+        4.75,
+        3.73,
+        3.42,
+        3.66,
+        5.81,
+        7.31,
+        5.01,
+        5.92,
+        4.56
+      ]
+    },
+    "deviceRebootMs": 21128,
+    "device": {
+      "locale": "en-US",
+      "animationScales": "1.0/1.0/1.0",
+      "nightMode": "Night mode: no",
+      "cores": "4",
+      "qemuPriority": 31
+    },
+    "emulatorArgs": [
+      "-port",
+      "5554",
+      "-no-snapshot-load",
+      "-no-audio",
+      "-no-window"
+    ],
+    "mockConfig": {
+      "stress": "none",
+      "netDelayMinMs": 200,
+      "netDelayMaxMs": 200,
+      "animScaleMin": 1,
+      "animScaleMax": 1,
+      "seed": 1
+    }
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "status": "passed",
+      "durationMs": 3286,
+      "resetMs": 7597,
+      "junitTimeMs": 10890,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 10883
+    },
+    {
+      "id": "S2",
+      "status": "passed",
+      "durationMs": 2083,
+      "resetMs": 7637,
+      "junitTimeMs": 9722,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 20723
+    },
+    {
+      "id": "S3",
+      "status": "passed",
+      "durationMs": 6491,
+      "resetMs": 7658,
+      "junitTimeMs": 14150,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 34998
+    },
+    {
+      "id": "S4",
+      "status": "passed",
+      "durationMs": 5726,
+      "resetMs": 7677,
+      "junitTimeMs": 13405,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 48533
+    },
+    {
+      "id": "S5",
+      "status": "passed",
+      "durationMs": 4264,
+      "resetMs": 7631,
+      "junitTimeMs": 11897,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 60570
+    },
+    {
+      "id": "S6",
+      "status": "passed",
+      "durationMs": 72315,
+      "resetMs": 7623,
+      "junitTimeMs": 79940,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 140621
+    },
+    {
+      "id": "S7a",
+      "status": "passed",
+      "durationMs": 5499,
+      "resetMs": 7673,
+      "junitTimeMs": 13173,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 153921
+    },
+    {
+      "id": "S8",
+      "status": "passed",
+      "durationMs": 9188,
+      "resetMs": 7672,
+      "junitTimeMs": 16860,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 170916
+    },
+    {
+      "id": "S9",
+      "status": "passed",
+      "durationMs": 5360,
+      "resetMs": 7609,
+      "junitTimeMs": 12971,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 184016
+    },
+    {
+      "id": "S10a",
+      "status": "passed",
+      "durationMs": 5103,
+      "resetMs": 7665,
+      "junitTimeMs": 12769,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 196912
+    },
+    {
+      "id": "S10b",
+      "status": "skipped",
+      "durationMs": null,
+      "resetMs": null,
+      "junitTimeMs": 0,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": null
+    },
+    {
+      "id": "S11",
+      "status": "passed",
+      "durationMs": 4738,
+      "resetMs": 7640,
+      "junitTimeMs": 12379,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 209413
+    },
+    {
+      "id": "S12",
+      "status": "passed",
+      "durationMs": 4195,
+      "resetMs": 7625,
+      "junitTimeMs": 11821,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 221346
+    },
+    {
+      "id": "S13",
+      "status": "passed",
+      "durationMs": 5586,
+      "resetMs": 7628,
+      "junitTimeMs": 13215,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 234658
+    },
+    {
+      "id": "S14",
+      "status": "passed",
+      "durationMs": 8133,
+      "resetMs": 7630,
+      "junitTimeMs": 15764,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 250521
+    },
+    {
+      "id": "S15",
+      "status": "passed",
+      "durationMs": 6015,
+      "resetMs": 7620,
+      "junitTimeMs": 13635,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 264275
+    },
+    {
+      "id": "S16",
+      "status": "passed",
+      "durationMs": 5733,
+      "resetMs": 7665,
+      "junitTimeMs": 13400,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 277795
+    },
+    {
+      "id": "S17",
+      "status": "passed",
+      "durationMs": 5966,
+      "resetMs": 7711,
+      "junitTimeMs": 13678,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 291622
+    },
+    {
+      "id": "S18",
+      "status": "passed",
+      "durationMs": 4711,
+      "resetMs": 7669,
+      "junitTimeMs": 12381,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 304105
+    },
+    {
+      "id": "S19",
+      "status": "passed",
+      "durationMs": 7566,
+      "resetMs": 7640,
+      "junitTimeMs": 15208,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 319406
+    },
+    {
+      "id": "S20",
+      "status": "passed",
+      "durationMs": 7057,
+      "resetMs": 7618,
+      "junitTimeMs": 14677,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 334179
+    },
+    {
+      "id": "S21",
+      "status": "passed",
+      "durationMs": 11708,
+      "resetMs": 7657,
+      "junitTimeMs": 19367,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 353663
+    },
+    {
+      "id": "S22",
+      "status": "skipped",
+      "durationMs": null,
+      "resetMs": null,
+      "junitTimeMs": 0,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": null
+    },
+    {
+      "id": "S23",
+      "status": "failed",
+      "durationMs": 14016,
+      "resetMs": 7620,
+      "junitTimeMs": 21637,
+      "error": "Test Failed: '(an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"Top: Persisted\" and view has effective visibility <VISIBLE>)' doesn't match the selected view.\nExpected: (an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"Top: Persisted\" and view has effective visibility <VISIBLE>)\n     Got: an instance of android.widget.TextView and view.getText() with or without transformation to match: is \"Top: Persisted\" view.getText() was \"Top: Item 001\" transformed text was \"Top: Item 001\"\nView Details: dn4{id=58, visibility=VISIBLE, width=257, height=57, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.view.ViewGroup$LayoutParams@YYYYYY, tag=list-top-title, root-is-layout-requested=false, has-input-connection=false, x=31.0, y=404.0, text=Top: Item 001, input-type=0, ime-target=false, has-links=false}\n\n\n    at Object.toHaveText (/Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/suites/detox/e2e/final/s23-background.test.js:17:52)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)",
+      "retries": 0,
+      "endOffsetMs": 375512
+    }
+  ],
+  "files": {
+    "log": "logs/0038-detox-android-final-none-r56.log",
+    "junit": "junit/0038-detox-android-final-none-r56"
+  }
+}

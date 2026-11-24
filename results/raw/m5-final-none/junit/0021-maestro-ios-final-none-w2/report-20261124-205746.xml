@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Shootout iPhone 17 - iOS 27.0 - 59C18B64-C4A9-473E-91DC-24CCC9996644" tests="24" failures="0" time="576.401" timestamp="2026-11-24T20:57:58">
+    <testcase id="S1" name="S1" classname="S1" file="flows/final/s01-login.yaml" time="13.201" timestamp="2026-11-24T20:57:58" status="SUCCESS"/>
+    <testcase id="S2" name="S2" classname="S2" file="flows/final/s02-invalid-email.yaml" time="10.132" timestamp="2026-11-24T20:58:11" status="SUCCESS"/>
+    <testcase id="S3" name="S3" classname="S3" file="flows/final/s03-search.yaml" time="13.603" timestamp="2026-11-24T20:58:22" status="SUCCESS"/>
+    <testcase id="S4" name="S4" classname="S4" file="flows/final/s04-add.yaml" time="16.878" timestamp="2026-11-24T20:58:35" status="SUCCESS"/>
+    <testcase id="S5" name="S5" classname="S5" file="flows/final/s05-delete.yaml" time="15.371" timestamp="2026-11-24T20:58:52" status="SUCCESS"/>
+    <testcase id="S6" name="S6" classname="S6" file="flows/final/s06-long-list.yaml" time="179.616" timestamp="2026-11-24T20:59:07" status="SUCCESS"/>
+    <testcase id="S7" name="S7" classname="S7" file="flows/final/s07-cjk.yaml" time="16.107" timestamp="2026-11-24T21:02:07" status="SUCCESS"/>
+    <testcase id="S8" name="S8" classname="S8" file="flows/final/s08-controls.yaml" time="19.619" timestamp="2026-11-24T21:02:23" status="SUCCESS"/>
+    <testcase id="S9" name="S9" classname="S9" file="flows/final/s09-webview.yaml" time="21.852" timestamp="2026-11-24T21:02:43" status="SUCCESS"/>
+    <testcase id="S10a" name="S10a" classname="S10a" file="flows/final/s10a-permission.yaml" time="13.073" timestamp="2026-11-24T21:03:05" status="SUCCESS"/>
+    <testcase id="S10b" name="S10b" classname="S10b" file="flows/final/s10b-permission.yaml" time="14.069" timestamp="2026-11-24T21:03:18" status="SUCCESS"/>
+    <testcase id="S11" name="S11" classname="S11" file="flows/final/s11-busy.yaml" time="22.92" timestamp="2026-11-24T21:03:32" status="SUCCESS"/>
+    <testcase id="S12" name="S12" classname="S12" file="flows/final/s12-swipe-delete.yaml" time="15.027" timestamp="2026-11-24T21:03:55" status="SUCCESS"/>
+    <testcase id="S13" name="S13" classname="S13" file="flows/final/s13-pull-refresh.yaml" time="12.157" timestamp="2026-11-24T21:04:10" status="SUCCESS"/>
+    <testcase id="S14" name="S14" classname="S14" file="flows/final/s14-longpress-drag.yaml" time="19.143" timestamp="2026-11-24T21:04:22" status="SUCCESS"/>
+    <testcase id="S15" name="S15" classname="S15" file="flows/final/s15-reanimated.yaml" time="14.496" timestamp="2026-11-24T21:04:41" status="SUCCESS"/>
+    <testcase id="S16" name="S16" classname="S16" file="flows/final/s16-live.yaml" time="16.308" timestamp="2026-11-24T21:04:55" status="SUCCESS"/>
+    <testcase id="S17" name="S17" classname="S17" file="flows/final/s17-toast.yaml" time="14.133" timestamp="2026-11-24T21:05:12" status="SUCCESS"/>
+    <testcase id="S18" name="S18" classname="S18" file="flows/final/s18-error-retry.yaml" time="11.91" timestamp="2026-11-24T21:05:26" status="SUCCESS"/>
+    <testcase id="S19" name="S19" classname="S19" file="flows/final/s19-tabs.yaml" time="16.735" timestamp="2026-11-24T21:05:38" status="SUCCESS"/>
+    <testcase id="S20" name="S20" classname="S20" file="flows/final/s20-keyboard.yaml" time="15.823" timestamp="2026-11-24T21:05:55" status="SUCCESS"/>
+    <testcase id="S21" name="S21" classname="S21" file="flows/final/s21-deeplink.yaml" time="27.998" timestamp="2026-11-24T21:06:10" status="SUCCESS"/>
+    <testcase id="S22" name="S22" classname="S22" file="flows/final/s22-notification.yaml" time="27.105" timestamp="2026-11-24T21:06:38" status="SUCCESS"/>
+    <testcase id="S23" name="S23" classname="S23" file="flows/final/s23-background.yaml" time="29.044" timestamp="2026-11-24T21:07:06" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

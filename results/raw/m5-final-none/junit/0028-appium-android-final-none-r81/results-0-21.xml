@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S22" timestamp="2026-11-24T22:10:41" time="13.965" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S22"/>
+      <property name="capabilities" value="android.emulator-5554"/>
+      <property name="file" value="file://./test/final/s22-notification.js"/>
+    </properties>
+    <testcase classname="android.emulator-5554.S22" name="" time="13.963">
+      <system-out><![CDATA[
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/execute/sync - {"script":"<script> [19 bytes]","args":[{"permissions":["android.permission.POST_NOTIFICATIONS"],"appPackage":"com.rnshootout.app","action":"grant"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"permissions":["android.permission.POST_NOTIFICATIONS"],"appPackage":"com.rnshootout.app","action":"grant"}]}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f8-ffff-ffff00000014/clear - {}
+RESULT: {}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f8-ffff-ffff00000014/value - {"text":"user@example.com"}
+RESULT: {"text":"user@example.com"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f8-ffff-ffff00000016/clear - {}
+RESULT: {}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f8-ffff-ffff00000016/value - {"text":"Passw0rd!"}
+RESULT: {"text":"Passw0rd!"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f8-ffff-ffff00000017/click - {}
+RESULT: {}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f8-ffff-ffff00000035/click - {}
+RESULT: {}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notify-in-3s\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notify-in-3s\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notify-in-3s\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notify-in-3s\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notify-in-3s\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notify-in-3s\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notify-in-3s\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notify-in-3s\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f8-ffff-ffff00000125/click - {}
+RESULT: {}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/execute/sync - {"script":"<script> [19 bytes]","args":[{"seconds":-1}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"seconds":-1}]}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/execute/sync - {"script":"<script> [19 bytes]","args":[{}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{}]}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().text(\"Hello from rnshootout\")"}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f0-ffff-ffff00000370/click - {}
+RESULT: {}
+COMMAND: POST /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notification-target\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"notification-target\")"}
+COMMAND: GET /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6/element/00000000-0000-00f8-ffff-ffff00000137/text - {}
+RESULT: {}
+COMMAND: DELETE /session/9ab78b03-f391-4556-be09-d2d2a7e1d5f6 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

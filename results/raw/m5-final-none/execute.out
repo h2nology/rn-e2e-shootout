@@ -1,0 +1,815 @@
+2026-11-24T08:50:05.477Z session m5-final-none: 824 of 824 runs to do
+2026-11-24T08:50:25.528Z [detox/ios/final/none #2 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7773 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T08:50:25.533Z [detox/ios/final/none #2 warmup] load 16.14 ≥ 8, waiting
+2026-11-24T08:50:40.543Z [detox/ios/final/none #2 warmup] load 25.34 ≥ 8, waiting
+2026-11-24T08:50:55.555Z [detox/ios/final/none #2 warmup] load 23.94 ≥ 8, waiting
+2026-11-24T08:51:10.565Z [detox/ios/final/none #2 warmup] load 19.22 ≥ 8, waiting
+2026-11-24T08:51:25.576Z [detox/ios/final/none #2 warmup] load 15.12 ≥ 8, waiting
+2026-11-24T08:51:40.586Z [detox/ios/final/none #2 warmup] load 12.21 ≥ 8, waiting
+2026-11-24T08:51:55.601Z [detox/ios/final/none #2 warmup] load 9.94 ≥ 8, waiting
+2026-11-24T08:52:08.606Z [detox/ios/final/none #2 warmup] load 14.23 ≥ 8, waiting
+2026-11-24T08:52:23.623Z [detox/ios/final/none #2 warmup] load 11.46 ≥ 8, waiting
+2026-11-24T08:52:38.633Z [detox/ios/final/none #2 warmup] load 9.22 ≥ 8, waiting
+2026-11-24T08:52:59.954Z [detox/ios/final/none #2 warmup] running npx detox test -c ios.sim.release --reuse (load 7.12)
+2026-11-24T09:01:49.412Z [detox/ios/final/none #2 warmup] done: 22 passed, 1 failed (S21:failed), suite 525802 ms, launch 1818 ms, install 5450 ms, load during median 2.4 / max 5.66
+2026-11-24T09:02:14.168Z [detox/android/final/none #1 warmup] Android emulator-5554 booted in 21176 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T09:02:14.170Z [detox/android/final/none #1 warmup] load 32.56 ≥ 8, waiting
+2026-11-24T09:02:29.180Z [detox/android/final/none #1 warmup] load 26.9 ≥ 8, waiting
+2026-11-24T09:02:44.190Z [detox/android/final/none #1 warmup] load 21.36 ≥ 8, waiting
+2026-11-24T09:02:59.201Z [detox/android/final/none #1 warmup] load 16.85 ≥ 8, waiting
+2026-11-24T09:03:14.211Z [detox/android/final/none #1 warmup] load 13.33 ≥ 8, waiting
+2026-11-24T09:03:29.222Z [detox/android/final/none #1 warmup] load 10.67 ≥ 8, waiting
+2026-11-24T09:03:44.232Z [detox/android/final/none #1 warmup] load 9.18 ≥ 8, waiting
+2026-11-24T09:04:00.047Z [detox/android/final/none #1 warmup] running npx detox test -c android.att.release --reuse (load 7.29)
+2026-11-24T09:10:17.315Z [detox/android/final/none #1 warmup] done: 22 passed, 0 failed, suite 374220 ms, launch 1122 ms, install 672 ms, load during median 4.445 / max 6.92
+2026-11-24T09:10:17.339Z [quiesco/ios/final/none #1 warmup] stopping Android emulator
+2026-11-24T09:10:38.476Z [quiesco/ios/final/none #1 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 4694 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T09:10:38.500Z [quiesco/ios/final/none #1 warmup] load 18.71 ≥ 8, waiting
+2026-11-24T09:10:53.513Z [quiesco/ios/final/none #1 warmup] load 74.53 ≥ 8, waiting
+2026-11-24T09:11:08.525Z [quiesco/ios/final/none #1 warmup] load 65.94 ≥ 8, waiting
+2026-11-24T09:11:23.535Z [quiesco/ios/final/none #1 warmup] load 52.41 ≥ 8, waiting
+2026-11-24T09:11:38.555Z [quiesco/ios/final/none #1 warmup] load 40.94 ≥ 8, waiting
+2026-11-24T09:11:53.565Z [quiesco/ios/final/none #1 warmup] load 32.45 ≥ 8, waiting
+2026-11-24T09:12:08.574Z [quiesco/ios/final/none #1 warmup] load 26.63 ≥ 8, waiting
+2026-11-24T09:12:23.584Z [quiesco/ios/final/none #1 warmup] load 21.47 ≥ 8, waiting
+2026-11-24T09:12:38.598Z [quiesco/ios/final/none #1 warmup] load 17.08 ≥ 8, waiting
+2026-11-24T09:12:53.609Z [quiesco/ios/final/none #1 warmup] load 13.5 ≥ 8, waiting
+2026-11-24T09:13:08.618Z [quiesco/ios/final/none #1 warmup] load 11.09 ≥ 8, waiting
+2026-11-24T09:13:23.630Z [quiesco/ios/final/none #1 warmup] load 9.14 ≥ 8, waiting
+2026-11-24T09:13:44.377Z [quiesco/ios/final/none #1 warmup] running npx quiesco test --platform ios (load 6.98)
+2026-11-24T09:19:20.627Z [quiesco/ios/final/none #1 warmup] done: 24 passed, 0 failed, suite 319878 ms, launch 14481 ms, install 4986 ms, load during median 4.5 / max 6.51
+2026-11-24T09:19:45.456Z [maestro/android/final/none #1 warmup] Android emulator-5554 booted in 21256 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T09:19:45.970Z [maestro/android/final/none #1 warmup] running ./run.sh  (load 2.52)
+2026-11-24T09:32:46.004Z [maestro/android/final/none #1 warmup] done: 24 passed, 0 failed, suite 768299 ms, launch 6253 ms, install 401 ms, load during median 4.46 / max 7.8
+2026-11-24T09:32:46.308Z [quiesco/android/final/none #3 warmup] stopping Android emulator
+2026-11-24T09:33:10.695Z [quiesco/android/final/none #3 warmup] Android emulator-5554 booted in 21133 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T09:33:11.198Z [quiesco/android/final/none #3 warmup] running npx quiesco test --platform android (load 3.94)
+2026-11-24T09:36:52.985Z [quiesco/android/final/none #3 warmup] done: 24 passed, 0 failed, suite 215419 ms, launch 4630 ms, install 413 ms, load during median 7.19 / max 8.3
+2026-11-24T09:36:53.009Z [quiesco/ios/final/none #3 warmup] stopping Android emulator
+2026-11-24T09:37:12.586Z [quiesco/ios/final/none #3 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8045 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T09:37:12.592Z [quiesco/ios/final/none #3 warmup] load 11.3 ≥ 8, waiting
+2026-11-24T09:37:27.604Z [quiesco/ios/final/none #3 warmup] load 12.76 ≥ 8, waiting
+2026-11-24T09:37:42.614Z [quiesco/ios/final/none #3 warmup] load 14.57 ≥ 8, waiting
+2026-11-24T09:37:57.624Z [quiesco/ios/final/none #3 warmup] load 11.77 ≥ 8, waiting
+2026-11-24T09:38:12.634Z [quiesco/ios/final/none #3 warmup] load 9.31 ≥ 8, waiting
+2026-11-24T09:38:27.643Z [quiesco/ios/final/none #3 warmup] load 8.17 ≥ 8, waiting
+2026-11-24T09:38:48.857Z [quiesco/ios/final/none #3 warmup] running npx quiesco test --platform ios (load 6.21)
+2026-11-24T09:44:25.666Z [quiesco/ios/final/none #3 warmup] done: 24 passed, 0 failed, suite 317837 ms, launch 16992 ms, install 5452 ms, load during median 4.46 / max 6.13
+2026-11-24T09:44:42.726Z [appium/ios/final/none #1 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7805 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T09:44:42.747Z [appium/ios/final/none #1 warmup] load 60.42 ≥ 8, waiting
+2026-11-24T09:44:57.758Z [appium/ios/final/none #1 warmup] load 54.43 ≥ 8, waiting
+2026-11-24T09:45:12.770Z [appium/ios/final/none #1 warmup] load 43.72 ≥ 8, waiting
+2026-11-24T09:45:27.780Z [appium/ios/final/none #1 warmup] load 34.98 ≥ 8, waiting
+2026-11-24T09:45:42.790Z [appium/ios/final/none #1 warmup] load 29.77 ≥ 8, waiting
+2026-11-24T09:45:57.800Z [appium/ios/final/none #1 warmup] load 23.92 ≥ 8, waiting
+2026-11-24T09:46:12.811Z [appium/ios/final/none #1 warmup] load 18.9 ≥ 8, waiting
+2026-11-24T09:46:27.822Z [appium/ios/final/none #1 warmup] load 15.07 ≥ 8, waiting
+2026-11-24T09:46:42.832Z [appium/ios/final/none #1 warmup] load 12.19 ≥ 8, waiting
+2026-11-24T09:46:57.842Z [appium/ios/final/none #1 warmup] load 9.71 ≥ 8, waiting
+2026-11-24T09:47:12.851Z [appium/ios/final/none #1 warmup] load 8.06 ≥ 8, waiting
+2026-11-24T09:47:34.680Z [appium/ios/final/none #1 warmup] running npx wdio run wdio.conf.js (load 7.07)
+2026-11-24T09:56:26.948Z [appium/ios/final/none #1 warmup] done: 24 passed, 0 failed, suite 513654 ms, launch 16551 ms, install 6053 ms, load during median 4.96 / max 14.32
+2026-11-24T09:56:26.951Z [detox/android/final/none #2 warmup] load 8.78 ≥ 8, waiting
+2026-11-24T09:57:06.812Z [detox/android/final/none #2 warmup] Android emulator-5554 booted in 21275 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T09:57:07.471Z [detox/android/final/none #2 warmup] running npx detox test -c android.att.release --reuse (load 5.78)
+2026-11-24T10:03:25.361Z [detox/android/final/none #2 warmup] done: 22 passed, 0 failed, suite 374929 ms, launch 1244 ms, install 579 ms, load during median 6.5 / max 21.94
+2026-11-24T10:03:25.544Z [appium/android/final/none #3 warmup] stopping Android emulator
+2026-11-24T10:03:49.940Z [appium/android/final/none #3 warmup] Android emulator-5554 booted in 21144 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T10:03:50.473Z [appium/android/final/none #3 warmup] running npx wdio run wdio.conf.js (load 3.13)
+2026-11-24T10:09:37.575Z [appium/android/final/none #3 warmup] done: 24 passed, 0 failed, suite 340700 ms, launch 4040 ms, install 411 ms, load during median 5.56 / max 7.22
+2026-11-24T10:09:37.884Z [appium/android/final/none #1 warmup] stopping Android emulator
+2026-11-24T10:10:02.278Z [appium/android/final/none #1 warmup] Android emulator-5554 booted in 21136 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T10:10:02.778Z [appium/android/final/none #1 warmup] running npx wdio run wdio.conf.js (load 4.92)
+2026-11-24T10:15:51.371Z [appium/android/final/none #1 warmup] done: 24 passed, 0 failed, suite 342591 ms, launch 3880 ms, install 415 ms, load during median 5.89 / max 6.77
+2026-11-24T10:15:51.374Z [detox/ios/final/none #1 warmup] load 11.86 ≥ 8, waiting
+2026-11-24T10:16:06.384Z [detox/ios/final/none #1 warmup] load 9.61 ≥ 8, waiting
+2026-11-24T10:16:21.430Z [detox/ios/final/none #1 warmup] stopping Android emulator
+2026-11-24T10:16:41.533Z [detox/ios/final/none #1 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 6923 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T10:16:41.537Z [detox/ios/final/none #1 warmup] load 15.93 ≥ 8, waiting
+2026-11-24T10:16:56.550Z [detox/ios/final/none #1 warmup] load 52.65 ≥ 8, waiting
+2026-11-24T10:17:11.560Z [detox/ios/final/none #1 warmup] load 42.43 ≥ 8, waiting
+2026-11-24T10:17:26.569Z [detox/ios/final/none #1 warmup] load 33.33 ≥ 8, waiting
+2026-11-24T10:17:41.577Z [detox/ios/final/none #1 warmup] load 25.94 ≥ 8, waiting
+2026-11-24T10:17:56.588Z [detox/ios/final/none #1 warmup] load 20.42 ≥ 8, waiting
+2026-11-24T10:18:11.596Z [detox/ios/final/none #1 warmup] load 17.35 ≥ 8, waiting
+2026-11-24T10:18:26.604Z [detox/ios/final/none #1 warmup] load 13.8 ≥ 8, waiting
+2026-11-24T10:18:41.613Z [detox/ios/final/none #1 warmup] load 11.35 ≥ 8, waiting
+2026-11-24T10:18:56.621Z [detox/ios/final/none #1 warmup] load 9.21 ≥ 8, waiting
+2026-11-24T10:19:17.085Z [detox/ios/final/none #1 warmup] running npx detox test -c ios.sim.release --reuse (load 8.83)
+2026-11-24T10:28:13.177Z [detox/ios/final/none #1 warmup] done: 22 passed, 1 failed (S21:failed), suite 532238 ms, launch 1993 ms, install 4607 ms, load during median 4.61 / max 9.48
+2026-11-24T10:28:37.903Z [quiesco/android/final/none #1 warmup] Android emulator-5554 booted in 21155 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T10:28:38.440Z [quiesco/android/final/none #1 warmup] running npx quiesco test --platform android (load 5.47)
+2026-11-24T10:32:19.212Z [quiesco/android/final/none #1 warmup] done: 24 passed, 0 failed, suite 214441 ms, launch 4454 ms, install 453 ms, load during median 5.31 / max 6.31
+2026-11-24T10:32:19.234Z [maestro/ios/final/none #1 warmup] stopping Android emulator
+2026-11-24T10:32:42.393Z [maestro/ios/final/none #1 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7870 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T10:32:42.399Z [maestro/ios/final/none #1 warmup] load 15.3 ≥ 8, waiting
+2026-11-24T10:32:57.423Z [maestro/ios/final/none #1 warmup] load 26.43 ≥ 8, waiting
+2026-11-24T10:33:12.433Z [maestro/ios/final/none #1 warmup] load 69.59 ≥ 8, waiting
+2026-11-24T10:33:27.441Z [maestro/ios/final/none #1 warmup] load 57.22 ≥ 8, waiting
+2026-11-24T10:33:42.450Z [maestro/ios/final/none #1 warmup] load 45.3 ≥ 8, waiting
+2026-11-24T10:33:57.472Z [maestro/ios/final/none #1 warmup] load 35.72 ≥ 8, waiting
+2026-11-24T10:34:12.480Z [maestro/ios/final/none #1 warmup] load 28.16 ≥ 8, waiting
+2026-11-24T10:34:27.491Z [maestro/ios/final/none #1 warmup] load 22.14 ≥ 8, waiting
+2026-11-24T10:34:42.498Z [maestro/ios/final/none #1 warmup] load 17.46 ≥ 8, waiting
+2026-11-24T10:34:57.515Z [maestro/ios/final/none #1 warmup] load 14.09 ≥ 8, waiting
+2026-11-24T10:35:12.528Z [maestro/ios/final/none #1 warmup] load 11.62 ≥ 8, waiting
+2026-11-24T10:35:27.537Z [maestro/ios/final/none #1 warmup] load 9.27 ≥ 8, waiting
+2026-11-24T10:35:48.161Z [maestro/ios/final/none #1 warmup] running ./run.sh  (load 7.09)
+2026-11-24T10:45:44.269Z [maestro/ios/final/none #1 warmup] done: 24 passed, 0 failed, suite 572864 ms, launch 16473 ms, install 4757 ms, load during median 3.54 / max 8.46
+2026-11-24T10:46:03.058Z [quiesco/ios/final/none #2 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7820 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T10:46:03.063Z [quiesco/ios/final/none #2 warmup] load 19.44 ≥ 8, waiting
+2026-11-24T10:46:18.076Z [quiesco/ios/final/none #2 warmup] load 24.17 ≥ 8, waiting
+2026-11-24T10:46:33.085Z [quiesco/ios/final/none #2 warmup] load 19.91 ≥ 8, waiting
+2026-11-24T10:46:48.099Z [quiesco/ios/final/none #2 warmup] load 15.87 ≥ 8, waiting
+2026-11-24T10:47:03.107Z [quiesco/ios/final/none #2 warmup] load 12.59 ≥ 8, waiting
+2026-11-24T10:47:18.115Z [quiesco/ios/final/none #2 warmup] load 10.23 ≥ 8, waiting
+2026-11-24T10:47:33.124Z [quiesco/ios/final/none #2 warmup] load 8.26 ≥ 8, waiting
+2026-11-24T10:47:54.358Z [quiesco/ios/final/none #2 warmup] running npx quiesco test --platform ios (load 6.71)
+2026-11-24T10:53:26.042Z [quiesco/ios/final/none #2 warmup] done: 24 passed, 0 failed, suite 317269 ms, launch 12441 ms, install 5417 ms, load during median 5.27 / max 10.52
+2026-11-24T10:53:44.499Z [maestro/ios/final/none #3 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7758 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T10:53:44.513Z [maestro/ios/final/none #3 warmup] load 12.46 ≥ 8, waiting
+2026-11-24T10:53:59.522Z [maestro/ios/final/none #3 warmup] load 15.92 ≥ 8, waiting
+2026-11-24T10:54:14.531Z [maestro/ios/final/none #3 warmup] load 12.67 ≥ 8, waiting
+2026-11-24T10:54:29.542Z [maestro/ios/final/none #3 warmup] load 10.41 ≥ 8, waiting
+2026-11-24T10:54:44.553Z [maestro/ios/final/none #3 warmup] load 8.25 ≥ 8, waiting
+2026-11-24T10:55:06.104Z [maestro/ios/final/none #3 warmup] running ./run.sh  (load 6.5)
+2026-11-24T11:04:55.890Z [maestro/ios/final/none #3 warmup] done: 24 passed, 0 failed, suite 570111 ms, launch 13218 ms, install 5822 ms, load during median 3.95 / max 25.53
+2026-11-24T11:04:55.894Z [detox/ios/final/none #3 warmup] load 9.08 ≥ 8, waiting
+2026-11-24T11:05:29.051Z [detox/ios/final/none #3 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7832 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T11:05:29.054Z [detox/ios/final/none #3 warmup] load 14.52 ≥ 8, waiting
+2026-11-24T11:05:44.063Z [detox/ios/final/none #3 warmup] load 43.47 ≥ 8, waiting
+2026-11-24T11:05:59.075Z [detox/ios/final/none #3 warmup] load 37.21 ≥ 8, waiting
+2026-11-24T11:06:14.086Z [detox/ios/final/none #3 warmup] load 29.26 ≥ 8, waiting
+2026-11-24T11:06:29.097Z [detox/ios/final/none #3 warmup] load 22.91 ≥ 8, waiting
+2026-11-24T11:06:44.111Z [detox/ios/final/none #3 warmup] load 18.05 ≥ 8, waiting
+2026-11-24T11:06:59.124Z [detox/ios/final/none #3 warmup] load 14.57 ≥ 8, waiting
+2026-11-24T11:07:14.135Z [detox/ios/final/none #3 warmup] load 11.92 ≥ 8, waiting
+2026-11-24T11:07:29.146Z [detox/ios/final/none #3 warmup] load 9.71 ≥ 8, waiting
+2026-11-24T11:07:44.156Z [detox/ios/final/none #3 warmup] load 8.38 ≥ 8, waiting
+2026-11-24T11:08:06.250Z [detox/ios/final/none #3 warmup] running npx detox test -c ios.sim.release --reuse (load 6.56)
+2026-11-24T11:16:56.830Z [detox/ios/final/none #3 warmup] done: 22 passed, 1 failed (S21:failed), suite 526933 ms, launch 1882 ms, install 6209 ms, load during median 5.01 / max 34.74
+2026-11-24T11:17:21.712Z [detox/android/final/none #3 warmup] Android emulator-5554 booted in 21302 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T11:17:21.715Z [detox/android/final/none #3 warmup] load 28.45 ≥ 8, waiting
+2026-11-24T11:17:36.723Z [detox/android/final/none #3 warmup] load 22.36 ≥ 8, waiting
+2026-11-24T11:17:51.734Z [detox/android/final/none #3 warmup] load 18.01 ≥ 8, waiting
+2026-11-24T11:18:06.746Z [detox/android/final/none #3 warmup] load 14.24 ≥ 8, waiting
+2026-11-24T11:18:21.755Z [detox/android/final/none #3 warmup] load 11.24 ≥ 8, waiting
+2026-11-24T11:18:36.766Z [detox/android/final/none #3 warmup] load 8.97 ≥ 8, waiting
+2026-11-24T11:18:52.549Z [detox/android/final/none #3 warmup] running npx detox test -c android.att.release --reuse (load 7.51)
+2026-11-24T11:25:11.073Z [detox/android/final/none #3 warmup] done: 22 passed, 0 failed, suite 375613 ms, launch 1180 ms, install 652 ms, load during median 5.98 / max 8.17
+2026-11-24T11:25:11.256Z [maestro/android/final/none #3 warmup] stopping Android emulator
+2026-11-24T11:25:34.646Z [maestro/android/final/none #3 warmup] Android emulator-5554 booted in 21169 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T11:25:35.174Z [maestro/android/final/none #3 warmup] running ./run.sh  (load 3.59)
+2026-11-24T11:38:25.801Z [maestro/android/final/none #3 warmup] done: 24 passed, 0 failed, suite 758851 ms, launch 6431 ms, install 406 ms, load during median 3.81 / max 10.71
+2026-11-24T11:38:25.843Z [appium/ios/final/none #3 warmup] stopping Android emulator
+2026-11-24T11:38:46.207Z [appium/ios/final/none #3 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 4845 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T11:38:46.212Z [appium/ios/final/none #3 warmup] load 21.05 ≥ 8, waiting
+2026-11-24T11:39:01.218Z [appium/ios/final/none #3 warmup] load 35.43 ≥ 8, waiting
+2026-11-24T11:39:16.224Z [appium/ios/final/none #3 warmup] load 38.81 ≥ 8, waiting
+2026-11-24T11:39:31.239Z [appium/ios/final/none #3 warmup] load 31.9 ≥ 8, waiting
+2026-11-24T11:39:46.247Z [appium/ios/final/none #3 warmup] load 25.06 ≥ 8, waiting
+2026-11-24T11:40:01.256Z [appium/ios/final/none #3 warmup] load 20.34 ≥ 8, waiting
+2026-11-24T11:40:16.267Z [appium/ios/final/none #3 warmup] load 16.71 ≥ 8, waiting
+2026-11-24T11:40:31.279Z [appium/ios/final/none #3 warmup] load 13.53 ≥ 8, waiting
+2026-11-24T11:40:46.288Z [appium/ios/final/none #3 warmup] load 10.75 ≥ 8, waiting
+2026-11-24T11:41:01.298Z [appium/ios/final/none #3 warmup] load 9.4 ≥ 8, waiting
+2026-11-24T11:41:22.163Z [appium/ios/final/none #3 warmup] running npx wdio run wdio.conf.js (load 7.12)
+2026-11-24T11:50:24.555Z [appium/ios/final/none #3 warmup] done: 23 passed, 1 failed (S22:failed), suite 525809 ms, launch 14554 ms, install 5083 ms, load during median 4.135 / max 10.18
+2026-11-24T11:50:49.476Z [appium/android/final/none #2 warmup] Android emulator-5554 booted in 21309 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T11:50:49.965Z [appium/android/final/none #2 warmup] running npx wdio run wdio.conf.js (load 5.07)
+2026-11-24T11:56:36.930Z [appium/android/final/none #2 warmup] done: 24 passed, 0 failed, suite 340772 ms, launch 4087 ms, install 408 ms, load during median 5.53 / max 8.94
+2026-11-24T11:56:36.954Z [maestro/ios/final/none #2 warmup] stopping Android emulator
+2026-11-24T11:56:55.451Z [maestro/ios/final/none #2 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 4704 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T11:56:55.463Z [maestro/ios/final/none #2 warmup] load 9.52 ≥ 8, waiting
+2026-11-24T11:57:10.471Z [maestro/ios/final/none #2 warmup] load 9.65 ≥ 8, waiting
+2026-11-24T11:57:25.480Z [maestro/ios/final/none #2 warmup] load 8.06 ≥ 8, waiting
+2026-11-24T11:57:46.298Z [maestro/ios/final/none #2 warmup] running ./run.sh  (load 6.47)
+2026-11-24T12:07:41.710Z [maestro/ios/final/none #2 warmup] done: 24 passed, 0 failed, suite 575648 ms, launch 13069 ms, install 5080 ms, load during median 7.52 / max 44.91
+2026-11-24T12:08:00.493Z [appium/ios/final/none #2 warmup] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7832 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T12:08:00.496Z [appium/ios/final/none #2 warmup] load 13.42 ≥ 8, waiting
+2026-11-24T12:08:15.504Z [appium/ios/final/none #2 warmup] load 15.63 ≥ 8, waiting
+2026-11-24T12:08:30.513Z [appium/ios/final/none #2 warmup] load 12.46 ≥ 8, waiting
+2026-11-24T12:08:45.521Z [appium/ios/final/none #2 warmup] load 10.21 ≥ 8, waiting
+2026-11-24T12:09:00.530Z [appium/ios/final/none #2 warmup] load 8.17 ≥ 8, waiting
+2026-11-24T12:09:22.696Z [appium/ios/final/none #2 warmup] running npx wdio run wdio.conf.js (load 6.32)
+2026-11-24T12:18:17.808Z [appium/ios/final/none #2 warmup] done: 24 passed, 0 failed, suite 518655 ms, launch 14374 ms, install 6313 ms, load during median 5.63 / max 17.84
+2026-11-24T12:18:17.813Z [maestro/android/final/none #2 warmup] load 11.48 ≥ 8, waiting
+2026-11-24T12:18:32.821Z [maestro/android/final/none #2 warmup] load 9.07 ≥ 8, waiting
+2026-11-24T12:19:12.741Z [maestro/android/final/none #2 warmup] Android emulator-5554 booted in 21272 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T12:19:13.250Z [maestro/android/final/none #2 warmup] running ./run.sh  (load 5.6)
+2026-11-24T12:32:14.132Z [maestro/android/final/none #2 warmup] done: 24 passed, 0 failed, suite 769541 ms, launch 5954 ms, install 426 ms, load during median 5.27 / max 8.67
+2026-11-24T12:32:14.139Z [quiesco/android/final/none #2 warmup] load 30.55 ≥ 8, waiting
+2026-11-24T12:32:29.149Z [quiesco/android/final/none #2 warmup] load 24.06 ≥ 8, waiting
+2026-11-24T12:32:44.161Z [quiesco/android/final/none #2 warmup] load 19.18 ≥ 8, waiting
+2026-11-24T12:32:59.175Z [quiesco/android/final/none #2 warmup] load 15.52 ≥ 8, waiting
+2026-11-24T12:33:14.185Z [quiesco/android/final/none #2 warmup] load 12.31 ≥ 8, waiting
+2026-11-24T12:33:29.196Z [quiesco/android/final/none #2 warmup] load 9.79 ≥ 8, waiting
+2026-11-24T12:33:44.522Z [quiesco/android/final/none #2 warmup] stopping Android emulator
+2026-11-24T12:34:08.896Z [quiesco/android/final/none #2 warmup] Android emulator-5554 booted in 21135 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T12:34:09.408Z [quiesco/android/final/none #2 warmup] running npx quiesco test --platform android (load 7.22)
+2026-11-24T12:37:50.572Z [quiesco/android/final/none #2 warmup] done: 24 passed, 0 failed, suite 214768 ms, launch 4602 ms, install 424 ms, load during median 6 / max 8.17
+2026-11-24T12:37:50.596Z [maestro/ios/final/none #64] stopping Android emulator
+2026-11-24T12:38:11.926Z [maestro/ios/final/none #64] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 5862 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T12:38:11.932Z [maestro/ios/final/none #64] load 55.82 ≥ 8, waiting
+2026-11-24T12:38:26.940Z [maestro/ios/final/none #64] load 47.16 ≥ 8, waiting
+2026-11-24T12:38:41.947Z [maestro/ios/final/none #64] load 40.96 ≥ 8, waiting
+2026-11-24T12:38:56.954Z [maestro/ios/final/none #64] load 32.48 ≥ 8, waiting
+2026-11-24T12:39:11.960Z [maestro/ios/final/none #64] load 26.69 ≥ 8, waiting
+2026-11-24T12:39:26.968Z [maestro/ios/final/none #64] load 21.08 ≥ 8, waiting
+2026-11-24T12:39:42.118Z [maestro/ios/final/none #64] load 16.71 ≥ 8, waiting
+2026-11-24T12:39:57.128Z [maestro/ios/final/none #64] load 13.3 ≥ 8, waiting
+2026-11-24T12:40:12.136Z [maestro/ios/final/none #64] load 10.81 ≥ 8, waiting
+2026-11-24T12:40:27.144Z [maestro/ios/final/none #64] load 8.55 ≥ 8, waiting
+2026-11-24T12:40:47.665Z [maestro/ios/final/none #64] running ./run.sh  (load 6.94)
+2026-11-24T12:50:40.540Z [maestro/ios/final/none #64] done: 24 passed, 0 failed, suite 571504 ms, launch 14820 ms, install 4724 ms, load during median 4.62 / max 12.2
+2026-11-24T12:50:59.741Z [quiesco/ios/final/none #61] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7826 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T12:50:59.746Z [quiesco/ios/final/none #61] load 12.94 ≥ 8, waiting
+2026-11-24T12:51:14.756Z [quiesco/ios/final/none #61] load 16.56 ≥ 8, waiting
+2026-11-24T12:51:29.765Z [quiesco/ios/final/none #61] load 14.69 ≥ 8, waiting
+2026-11-24T12:51:44.777Z [quiesco/ios/final/none #61] load 11.96 ≥ 8, waiting
+2026-11-24T12:51:59.788Z [quiesco/ios/final/none #61] load 10.04 ≥ 8, waiting
+2026-11-24T12:52:14.803Z [quiesco/ios/final/none #61] load 8.19 ≥ 8, waiting
+2026-11-24T12:52:35.806Z [quiesco/ios/final/none #61] running npx quiesco test --platform ios (load 7.28)
+2026-11-24T12:58:07.311Z [quiesco/ios/final/none #61] done: 24 passed, 0 failed, suite 316884 ms, launch 12672 ms, install 5167 ms, load during median 6.5 / max 24.86
+2026-11-24T12:58:32.178Z [detox/android/final/none #54] Android emulator-5554 booted in 21250 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T12:58:32.918Z [detox/android/final/none #54] running npx detox test -c android.att.release --reuse (load 3.9)
+2026-11-24T13:04:50.374Z [detox/android/final/none #54] done: 22 passed, 0 failed, suite 374521 ms, launch 1169 ms, install 663 ms, load during median 4.4350000000000005 / max 5.86
+2026-11-24T13:04:50.378Z [appium/android/final/none #81] load 8.79 ≥ 8, waiting
+2026-11-24T13:05:05.636Z [appium/android/final/none #81] stopping Android emulator
+2026-11-24T13:05:29.011Z [appium/android/final/none #81] Android emulator-5554 booted in 21145 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T13:05:29.538Z [appium/android/final/none #81] running npx wdio run wdio.conf.js (load 5.91)
+2026-11-24T13:11:15.239Z [appium/android/final/none #81] done: 24 passed, 0 failed, suite 339412 ms, launch 4207 ms, install 413 ms, load during median 5.5 / max 8.04
+2026-11-24T13:11:15.263Z [quiesco/ios/final/none #60] stopping Android emulator
+2026-11-24T13:11:31.845Z [quiesco/ios/final/none #60] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7837 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T13:11:31.849Z [quiesco/ios/final/none #60] load 11.24 ≥ 8, waiting
+2026-11-24T13:11:46.872Z [quiesco/ios/final/none #60] load 11.73 ≥ 8, waiting
+2026-11-24T13:12:01.883Z [quiesco/ios/final/none #60] load 11.62 ≥ 8, waiting
+2026-11-24T13:12:16.894Z [quiesco/ios/final/none #60] load 10.16 ≥ 8, waiting
+2026-11-24T13:12:31.903Z [quiesco/ios/final/none #60] load 8.98 ≥ 8, waiting
+2026-11-24T13:12:46.921Z [quiesco/ios/final/none #60] load 8.09 ≥ 8, waiting
+2026-11-24T13:13:09.655Z [quiesco/ios/final/none #60] running npx quiesco test --platform ios (load 6.43)
+2026-11-24T13:18:51.752Z [quiesco/ios/final/none #60] done: 24 passed, 0 failed, suite 316411 ms, launch 23675 ms, install 6376 ms, load during median 5.37 / max 6.82
+2026-11-24T13:19:07.719Z [appium/ios/final/none #50] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7820 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T13:19:07.723Z [appium/ios/final/none #50] load 49.62 ≥ 8, waiting
+2026-11-24T13:19:22.729Z [appium/ios/final/none #50] load 40.84 ≥ 8, waiting
+2026-11-24T13:19:37.735Z [appium/ios/final/none #50] load 32.97 ≥ 8, waiting
+2026-11-24T13:19:52.744Z [appium/ios/final/none #50] load 26.7 ≥ 8, waiting
+2026-11-24T13:20:07.752Z [appium/ios/final/none #50] load 22.24 ≥ 8, waiting
+2026-11-24T13:20:22.764Z [appium/ios/final/none #50] load 18.52 ≥ 8, waiting
+2026-11-24T13:20:37.771Z [appium/ios/final/none #50] load 15.63 ≥ 8, waiting
+2026-11-24T13:20:52.780Z [appium/ios/final/none #50] load 12.56 ≥ 8, waiting
+2026-11-24T13:21:07.787Z [appium/ios/final/none #50] load 10.35 ≥ 8, waiting
+2026-11-24T13:21:22.797Z [appium/ios/final/none #50] load 8.99 ≥ 8, waiting
+2026-11-24T13:21:45.343Z [appium/ios/final/none #50] running npx wdio run wdio.conf.js (load 6.88)
+2026-11-24T13:42:48.605Z session m5-final-none: 795 of 824 runs to do
+2026-11-24T13:43:08.828Z [appium/ios/final/none #50] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8536 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T13:43:08.835Z [appium/ios/final/none #50] load 18.15 ≥ 8, waiting
+2026-11-24T13:43:23.847Z [appium/ios/final/none #50] load 20.08 ≥ 8, waiting
+2026-11-24T13:43:38.856Z [appium/ios/final/none #50] load 17.06 ≥ 8, waiting
+2026-11-24T13:43:53.868Z [appium/ios/final/none #50] load 13.72 ≥ 8, waiting
+2026-11-24T13:44:08.877Z [appium/ios/final/none #50] load 11.06 ≥ 8, waiting
+2026-11-24T13:44:23.886Z [appium/ios/final/none #50] load 9.27 ≥ 8, waiting
+2026-11-24T13:44:45.210Z [appium/ios/final/none #50] running npx wdio run wdio.conf.js (load 7.17)
+2026-11-24T13:53:44.062Z [appium/ios/final/none #50] done: 23 passed, 1 failed (S22:failed), suite 522308 ms, launch 14406 ms, install 5497 ms, load during median 5.75 / max 22.74
+2026-11-24T13:54:04.471Z [appium/ios/final/none #73] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8270 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T13:54:04.475Z [appium/ios/final/none #73] load 15.78 ≥ 8, waiting
+2026-11-24T13:54:19.483Z [appium/ios/final/none #73] load 16.98 ≥ 8, waiting
+2026-11-24T13:54:34.491Z [appium/ios/final/none #73] load 14.61 ≥ 8, waiting
+2026-11-24T13:54:49.500Z [appium/ios/final/none #73] load 11.52 ≥ 8, waiting
+2026-11-24T13:55:04.508Z [appium/ios/final/none #73] load 9.26 ≥ 8, waiting
+2026-11-24T13:55:25.113Z [appium/ios/final/none #73] running npx wdio run wdio.conf.js (load 7.15)
+2026-11-24T14:04:12.958Z [appium/ios/final/none #73] done: 24 passed, 0 failed, suite 512561 ms, launch 13209 ms, install 4914 ms, load during median 4.42 / max 10.93
+2026-11-24T14:04:37.829Z [quiesco/android/final/none #53] Android emulator-5554 booted in 21296 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T14:04:38.344Z [quiesco/android/final/none #53] running npx quiesco test --platform android (load 5.82)
+2026-11-24T14:08:21.047Z [quiesco/android/final/none #53] done: 24 passed, 0 failed, suite 216343 ms, launch 4590 ms, install 431 ms, load during median 5.92 / max 8.24
+2026-11-24T14:08:21.051Z [maestro/android/final/none #53] load 10.22 ≥ 8, waiting
+2026-11-24T14:08:36.062Z [maestro/android/final/none #53] load 8.32 ≥ 8, waiting
+2026-11-24T14:08:51.286Z [maestro/android/final/none #53] stopping Android emulator
+2026-11-24T14:09:13.667Z [maestro/android/final/none #53] Android emulator-5554 booted in 19136 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T14:09:14.166Z [maestro/android/final/none #53] running ./run.sh  (load 5.72)
+2026-11-24T14:22:13.635Z [maestro/android/final/none #53] done: 24 passed, 0 failed, suite 768091 ms, launch 6112 ms, install 418 ms, load during median 4.97 / max 24.44
+2026-11-24T14:22:13.664Z [detox/ios/final/none #26] stopping Android emulator
+2026-11-24T14:22:34.816Z [detox/ios/final/none #26] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 6498 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T14:22:34.820Z [detox/ios/final/none #26] load 11.23 ≥ 8, waiting
+2026-11-24T14:22:49.829Z [detox/ios/final/none #26] load 16.25 ≥ 8, waiting
+2026-11-24T14:23:04.845Z [detox/ios/final/none #26] load 16.73 ≥ 8, waiting
+2026-11-24T14:23:19.856Z [detox/ios/final/none #26] load 13.77 ≥ 8, waiting
+2026-11-24T14:23:34.869Z [detox/ios/final/none #26] load 11.23 ≥ 8, waiting
+2026-11-24T14:23:49.875Z [detox/ios/final/none #26] load 9.61 ≥ 8, waiting
+2026-11-24T14:24:04.883Z [detox/ios/final/none #26] load 8.51 ≥ 8, waiting
+2026-11-24T14:24:25.742Z [detox/ios/final/none #26] running npx detox test -c ios.sim.release --reuse (load 8.27)
+2026-11-24T14:33:19.022Z [detox/ios/final/none #26] done: 22 passed, 1 failed (S21:failed), suite 529679 ms, launch 1846 ms, install 4941 ms, load during median 4.47 / max 8.73 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T14:33:40.407Z [quiesco/ios/final/none #31] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8433 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T14:33:40.412Z [quiesco/ios/final/none #31] load 11.2 ≥ 8, waiting
+2026-11-24T14:33:55.422Z [quiesco/ios/final/none #31] load 14.6 ≥ 8, waiting
+2026-11-24T14:34:10.434Z [quiesco/ios/final/none #31] load 14.15 ≥ 8, waiting
+2026-11-24T14:34:25.444Z [quiesco/ios/final/none #31] load 11.75 ≥ 8, waiting
+2026-11-24T14:34:40.453Z [quiesco/ios/final/none #31] load 9.43 ≥ 8, waiting
+2026-11-24T14:35:01.856Z [quiesco/ios/final/none #31] running npx quiesco test --platform ios (load 7.54)
+2026-11-24T14:40:35.258Z [quiesco/ios/final/none #31] done: 24 passed, 0 failed, suite 317099 ms, launch 14299 ms, install 5635 ms, load during median 4.07 / max 6.51
+2026-11-24T14:40:54.710Z [detox/ios/final/none #6] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8543 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T14:40:54.714Z [detox/ios/final/none #6] load 60.67 ≥ 8, waiting
+2026-11-24T14:41:09.721Z [detox/ios/final/none #6] load 72.96 ≥ 8, waiting
+2026-11-24T14:41:24.727Z [detox/ios/final/none #6] load 57.39 ≥ 8, waiting
+2026-11-24T14:41:39.733Z [detox/ios/final/none #6] load 45.03 ≥ 8, waiting
+2026-11-24T14:41:54.737Z [detox/ios/final/none #6] load 35.64 ≥ 8, waiting
+2026-11-24T14:42:09.742Z [detox/ios/final/none #6] load 28.1 ≥ 8, waiting
+2026-11-24T14:42:24.748Z [detox/ios/final/none #6] load 22.17 ≥ 8, waiting
+2026-11-24T14:42:39.752Z [detox/ios/final/none #6] load 17.7 ≥ 8, waiting
+2026-11-24T14:42:54.758Z [detox/ios/final/none #6] load 14.24 ≥ 8, waiting
+2026-11-24T14:43:09.764Z [detox/ios/final/none #6] load 11.23 ≥ 8, waiting
+2026-11-24T14:43:24.770Z [detox/ios/final/none #6] load 8.89 ≥ 8, waiting
+2026-11-24T14:43:46.244Z [detox/ios/final/none #6] running npx detox test -c ios.sim.release --reuse (load 7.4)
+2026-11-24T14:52:35.378Z [detox/ios/final/none #6] done: 22 passed, 1 failed (S21:failed), suite 525592 ms, launch 1790 ms, install 5593 ms, load during median 4.38 / max 7.87
+2026-11-24T14:53:00.265Z [quiesco/android/final/none #64] Android emulator-5554 booted in 21310 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T14:53:00.268Z [quiesco/android/final/none #64] load 31.5 ≥ 8, waiting
+2026-11-24T14:53:15.278Z [quiesco/android/final/none #64] load 24.74 ≥ 8, waiting
+2026-11-24T14:53:30.288Z [quiesco/android/final/none #64] load 19.71 ≥ 8, waiting
+2026-11-24T14:53:45.298Z [quiesco/android/final/none #64] load 15.43 ≥ 8, waiting
+2026-11-24T14:54:00.305Z [quiesco/android/final/none #64] load 12.31 ≥ 8, waiting
+2026-11-24T14:54:15.315Z [quiesco/android/final/none #64] load 9.95 ≥ 8, waiting
+2026-11-24T14:54:30.324Z [quiesco/android/final/none #64] load 8.41 ≥ 8, waiting
+2026-11-24T14:54:45.878Z [quiesco/android/final/none #64] running npx quiesco test --platform android (load 7.11)
+2026-11-24T14:58:26.595Z [quiesco/android/final/none #64] done: 24 passed, 0 failed, suite 214489 ms, launch 4412 ms, install 424 ms, load during median 6.96 / max 10.12
+2026-11-24T14:58:26.820Z [detox/android/final/none #56] stopping Android emulator
+2026-11-24T14:58:51.190Z [detox/android/final/none #56] Android emulator-5554 booted in 21128 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T14:58:51.843Z [detox/android/final/none #56] running npx detox test -c android.att.release --reuse (load 5.29)
+2026-11-24T15:05:10.186Z [detox/android/final/none #56] done: 21 passed, 1 failed (S23:failed), suite 375512 ms, launch 1056 ms, install 569 ms, load during median 4.74 / max 7.31
+2026-11-24T15:05:10.210Z [maestro/ios/final/none #33] stopping Android emulator
+2026-11-24T15:05:28.239Z [maestro/ios/final/none #33] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7873 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T15:05:28.246Z [maestro/ios/final/none #33] load 21.91 ≥ 8, waiting
+2026-11-24T15:05:43.258Z [maestro/ios/final/none #33] load 98.61 ≥ 8, waiting
+2026-11-24T15:05:58.271Z [maestro/ios/final/none #33] load 80.48 ≥ 8, waiting
+2026-11-24T15:06:13.285Z [maestro/ios/final/none #33] load 63.84 ≥ 8, waiting
+2026-11-24T15:06:28.302Z [maestro/ios/final/none #33] load 54.18 ≥ 8, waiting
+2026-11-24T15:06:43.313Z [maestro/ios/final/none #33] load 42.66 ≥ 8, waiting
+2026-11-24T15:06:58.327Z [maestro/ios/final/none #33] load 33.95 ≥ 8, waiting
+2026-11-24T15:07:13.338Z [maestro/ios/final/none #33] load 26.59 ≥ 8, waiting
+2026-11-24T15:07:28.351Z [maestro/ios/final/none #33] load 21 ≥ 8, waiting
+2026-11-24T15:07:43.362Z [maestro/ios/final/none #33] load 16.7 ≥ 8, waiting
+2026-11-24T15:07:58.377Z [maestro/ios/final/none #33] load 13.23 ≥ 8, waiting
+2026-11-24T15:08:13.388Z [maestro/ios/final/none #33] load 10.53 ≥ 8, waiting
+2026-11-24T15:08:28.401Z [maestro/ios/final/none #33] load 8.7 ≥ 8, waiting
+2026-11-24T15:08:50.258Z [maestro/ios/final/none #33] running ./run.sh  (load 13.08)
+2026-11-24T15:18:40.301Z [maestro/ios/final/none #33] done: 24 passed, 0 failed, suite 568680 ms, launch 15462 ms, install 6042 ms, load during median 5.26 / max 31.32
+2026-11-24T15:19:00.598Z [appium/ios/final/none #84] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8386 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T15:19:00.601Z [appium/ios/final/none #84] load 19.51 ≥ 8, waiting
+2026-11-24T15:19:15.613Z [appium/ios/final/none #84] load 19.62 ≥ 8, waiting
+2026-11-24T15:19:30.618Z [appium/ios/final/none #84] load 17.14 ≥ 8, waiting
+2026-11-24T15:19:45.625Z [appium/ios/final/none #84] load 14.81 ≥ 8, waiting
+2026-11-24T15:20:00.632Z [appium/ios/final/none #84] load 11.88 ≥ 8, waiting
+2026-11-24T15:20:15.640Z [appium/ios/final/none #84] load 9.54 ≥ 8, waiting
+2026-11-24T15:20:36.853Z [appium/ios/final/none #84] running npx wdio run wdio.conf.js (load 7.32)
+2026-11-24T15:29:22.924Z [appium/ios/final/none #84] done: 24 passed, 0 failed, suite 510717 ms, launch 13611 ms, install 5411 ms, load during median 3.29 / max 14.42
+2026-11-24T15:29:44.601Z [quiesco/ios/final/none #54] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8240 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T15:29:44.605Z [quiesco/ios/final/none #54] load 66.12 ≥ 8, waiting
+2026-11-24T15:29:59.613Z [quiesco/ios/final/none #54] load 65.18 ≥ 8, waiting
+2026-11-24T15:30:14.621Z [quiesco/ios/final/none #54] load 51.94 ≥ 8, waiting
+2026-11-24T15:30:29.632Z [quiesco/ios/final/none #54] load 40.86 ≥ 8, waiting
+2026-11-24T15:30:44.644Z [quiesco/ios/final/none #54] load 32.85 ≥ 8, waiting
+2026-11-24T15:30:59.653Z [quiesco/ios/final/none #54] load 25.87 ≥ 8, waiting
+2026-11-24T15:31:14.664Z [quiesco/ios/final/none #54] load 20.6 ≥ 8, waiting
+2026-11-24T15:31:29.675Z [quiesco/ios/final/none #54] load 16.25 ≥ 8, waiting
+2026-11-24T15:31:44.689Z [quiesco/ios/final/none #54] load 14.7 ≥ 8, waiting
+2026-11-24T15:31:59.702Z [quiesco/ios/final/none #54] load 11.81 ≥ 8, waiting
+2026-11-24T15:32:14.714Z [quiesco/ios/final/none #54] load 9.71 ≥ 8, waiting
+2026-11-24T15:32:29.724Z [quiesco/ios/final/none #54] load 8.16 ≥ 8, waiting
+2026-11-24T15:32:50.953Z [quiesco/ios/final/none #54] running npx quiesco test --platform ios (load 6.45)
+2026-11-24T15:38:25.364Z [quiesco/ios/final/none #54] done: 24 passed, 0 failed, suite 318051 ms, launch 14630 ms, install 5354 ms, load during median 5.15 / max 19.6
+2026-11-24T15:38:50.170Z [quiesco/android/final/none #94] Android emulator-5554 booted in 21245 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T15:38:50.709Z [quiesco/android/final/none #94] running npx quiesco test --platform android (load 5.31)
+2026-11-24T15:42:30.526Z [quiesco/android/final/none #94] done: 24 passed, 0 failed, suite 213739 ms, launch 4498 ms, install 427 ms, load during median 5.02 / max 7.27
+2026-11-24T15:42:30.553Z [detox/ios/final/none #27] stopping Android emulator
+2026-11-24T15:42:51.003Z [detox/ios/final/none #27] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7434 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T15:42:51.007Z [detox/ios/final/none #27] load 11.81 ≥ 8, waiting
+2026-11-24T15:43:06.017Z [detox/ios/final/none #27] load 19.42 ≥ 8, waiting
+2026-11-24T15:43:21.022Z [detox/ios/final/none #27] load 16.33 ≥ 8, waiting
+2026-11-24T15:43:36.030Z [detox/ios/final/none #27] load 13.17 ≥ 8, waiting
+2026-11-24T15:43:51.034Z [detox/ios/final/none #27] load 10.48 ≥ 8, waiting
+2026-11-24T15:44:06.038Z [detox/ios/final/none #27] load 8.58 ≥ 8, waiting
+2026-11-24T15:44:27.196Z [detox/ios/final/none #27] running npx detox test -c ios.sim.release --reuse (load 6.99)
+2026-11-24T15:53:16.910Z [detox/ios/final/none #27] done: 22 passed, 1 failed (S21:failed), suite 526146 ms, launch 1914 ms, install 5381 ms, load during median 3.54 / max 6.69
+2026-11-24T15:53:38.876Z [appium/ios/final/none #49] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 9522 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T15:53:38.881Z [appium/ios/final/none #49] load 18.23 ≥ 8, waiting
+2026-11-24T15:53:53.891Z [appium/ios/final/none #49] load 21.24 ≥ 8, waiting
+2026-11-24T15:54:08.900Z [appium/ios/final/none #49] load 18.58 ≥ 8, waiting
+2026-11-24T15:54:23.917Z [appium/ios/final/none #49] load 14.83 ≥ 8, waiting
+2026-11-24T15:54:38.927Z [appium/ios/final/none #49] load 11.9 ≥ 8, waiting
+2026-11-24T15:54:53.936Z [appium/ios/final/none #49] load 9.71 ≥ 8, waiting
+2026-11-24T15:55:08.947Z [appium/ios/final/none #49] load 8.01 ≥ 8, waiting
+2026-11-24T15:55:29.773Z [appium/ios/final/none #49] running npx wdio run wdio.conf.js (load 6.64)
+2026-11-24T16:04:13.593Z [appium/ios/final/none #49] done: 24 passed, 0 failed, suite 509508 ms, launch 12555 ms, install 5050 ms, load during median 5.5 / max 19.9
+2026-11-24T16:04:13.597Z [quiesco/ios/final/none #12] load 12.19 ≥ 8, waiting
+2026-11-24T16:04:28.614Z [quiesco/ios/final/none #12] load 9.78 ≥ 8, waiting
+2026-11-24T16:04:43.625Z [quiesco/ios/final/none #12] load 8.11 ≥ 8, waiting
+2026-11-24T16:05:17.717Z [quiesco/ios/final/none #12] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8277 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T16:05:17.722Z [quiesco/ios/final/none #12] load 51.99 ≥ 8, waiting
+2026-11-24T16:05:32.737Z [quiesco/ios/final/none #12] load 51.22 ≥ 8, waiting
+2026-11-24T16:05:47.748Z [quiesco/ios/final/none #12] load 43.91 ≥ 8, waiting
+2026-11-24T16:06:02.760Z [quiesco/ios/final/none #12] load 34.78 ≥ 8, waiting
+2026-11-24T16:06:17.770Z [quiesco/ios/final/none #12] load 27.85 ≥ 8, waiting
+2026-11-24T16:06:32.783Z [quiesco/ios/final/none #12] load 22.05 ≥ 8, waiting
+2026-11-24T16:06:47.792Z [quiesco/ios/final/none #12] load 17.53 ≥ 8, waiting
+2026-11-24T16:07:02.802Z [quiesco/ios/final/none #12] load 14.12 ≥ 8, waiting
+2026-11-24T16:07:17.814Z [quiesco/ios/final/none #12] load 11.15 ≥ 8, waiting
+2026-11-24T16:07:32.829Z [quiesco/ios/final/none #12] load 9.21 ≥ 8, waiting
+2026-11-24T16:07:53.909Z [quiesco/ios/final/none #12] running npx quiesco test --platform ios (load 7.28)
+2026-11-24T16:13:22.597Z [quiesco/ios/final/none #12] done: 24 passed, 0 failed, suite 314716 ms, launch 12227 ms, install 5292 ms, load during median 9.875 / max 24.31
+2026-11-24T16:13:39.455Z [maestro/ios/final/none #24] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8503 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T16:13:39.459Z [maestro/ios/final/none #24] load 55.59 ≥ 8, waiting
+2026-11-24T16:13:54.465Z [maestro/ios/final/none #24] load 48.27 ≥ 8, waiting
+2026-11-24T16:14:09.470Z [maestro/ios/final/none #24] load 41.08 ≥ 8, waiting
+2026-11-24T16:14:24.475Z [maestro/ios/final/none #24] load 32.96 ≥ 8, waiting
+2026-11-24T16:14:39.482Z [maestro/ios/final/none #24] load 25.94 ≥ 8, waiting
+2026-11-24T16:14:54.488Z [maestro/ios/final/none #24] load 21.21 ≥ 8, waiting
+2026-11-24T16:15:09.492Z [maestro/ios/final/none #24] load 17.39 ≥ 8, waiting
+2026-11-24T16:15:24.497Z [maestro/ios/final/none #24] load 14.04 ≥ 8, waiting
+2026-11-24T16:15:39.502Z [maestro/ios/final/none #24] load 11.22 ≥ 8, waiting
+2026-11-24T16:15:54.507Z [maestro/ios/final/none #24] load 9.25 ≥ 8, waiting
+2026-11-24T16:16:16.982Z [maestro/ios/final/none #24] running ./run.sh  (load 7.63)
+2026-11-24T16:26:11.721Z [maestro/ios/final/none #24] done: 24 passed, 0 failed, suite 572573 ms, launch 16032 ms, install 6707 ms, load during median 5.08 / max 13.61 — INVALID (simulator system UI crashed during the run (PosterBoard × 3))
+2026-11-24T16:26:11.726Z [detox/ios/final/none #36] load 9.4 ≥ 8, waiting
+2026-11-24T16:26:26.735Z [detox/ios/final/none #36] load 8.21 ≥ 8, waiting
+2026-11-24T16:26:59.237Z [detox/ios/final/none #36] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8286 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T16:26:59.241Z [detox/ios/final/none #36] load 65.7 ≥ 8, waiting
+2026-11-24T16:27:14.249Z [detox/ios/final/none #36] load 58.53 ≥ 8, waiting
+2026-11-24T16:27:29.259Z [detox/ios/final/none #36] load 47.53 ≥ 8, waiting
+2026-11-24T16:27:44.268Z [detox/ios/final/none #36] load 37.74 ≥ 8, waiting
+2026-11-24T16:27:59.277Z [detox/ios/final/none #36] load 30.21 ≥ 8, waiting
+2026-11-24T16:28:14.287Z [detox/ios/final/none #36] load 24.4 ≥ 8, waiting
+2026-11-24T16:28:29.299Z [detox/ios/final/none #36] load 20.43 ≥ 8, waiting
+2026-11-24T16:28:44.307Z [detox/ios/final/none #36] load 16.66 ≥ 8, waiting
+2026-11-24T16:28:59.316Z [detox/ios/final/none #36] load 13.5 ≥ 8, waiting
+2026-11-24T16:29:14.329Z [detox/ios/final/none #36] load 11.48 ≥ 8, waiting
+2026-11-24T16:29:29.339Z [detox/ios/final/none #36] load 9.62 ≥ 8, waiting
+2026-11-24T16:29:51.635Z [detox/ios/final/none #36] running npx detox test -c ios.sim.release --reuse (load 7.8)
+2026-11-24T16:38:40.455Z [detox/ios/final/none #36] done: 22 passed, 1 failed (S21:failed), suite 525420 ms, launch 1718 ms, install 6483 ms, load during median 4.28 / max 8.83
+2026-11-24T16:39:05.317Z [quiesco/android/final/none #54] Android emulator-5554 booted in 21300 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T16:39:05.838Z [quiesco/android/final/none #54] running npx quiesco test --platform android (load 4.75)
+2026-11-24T16:42:46.850Z [quiesco/android/final/none #54] done: 24 passed, 0 failed, suite 215140 ms, launch 4424 ms, install 443 ms, load during median 5.86 / max 7.44
+2026-11-24T16:42:47.031Z [maestro/android/final/none #75] stopping Android emulator
+2026-11-24T16:43:10.388Z [maestro/android/final/none #75] Android emulator-5554 booted in 21148 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T16:43:10.867Z [maestro/android/final/none #75] running ./run.sh  (load 5.89)
+2026-11-24T16:56:10.919Z [maestro/android/final/none #75] done: 24 passed, 0 failed, suite 768731 ms, launch 6091 ms, install 397 ms, load during median 5.85 / max 8.16
+2026-11-24T16:56:10.956Z [quiesco/ios/final/none #6] stopping Android emulator
+2026-11-24T16:56:33.741Z [quiesco/ios/final/none #6] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 5177 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T16:56:33.745Z [quiesco/ios/final/none #6] load 61.07 ≥ 8, waiting
+2026-11-24T16:56:48.752Z [quiesco/ios/final/none #6] load 63.81 ≥ 8, waiting
+2026-11-24T16:57:03.764Z [quiesco/ios/final/none #6] load 52.22 ≥ 8, waiting
+2026-11-24T16:57:18.775Z [quiesco/ios/final/none #6] load 40.87 ≥ 8, waiting
+2026-11-24T16:57:33.785Z [quiesco/ios/final/none #6] load 32.5 ≥ 8, waiting
+2026-11-24T16:57:48.794Z [quiesco/ios/final/none #6] load 25.8 ≥ 8, waiting
+2026-11-24T16:58:03.807Z [quiesco/ios/final/none #6] load 20.39 ≥ 8, waiting
+2026-11-24T16:58:18.817Z [quiesco/ios/final/none #6] load 16.31 ≥ 8, waiting
+2026-11-24T16:58:33.827Z [quiesco/ios/final/none #6] load 13.31 ≥ 8, waiting
+2026-11-24T16:58:48.837Z [quiesco/ios/final/none #6] load 10.98 ≥ 8, waiting
+2026-11-24T16:59:03.847Z [quiesco/ios/final/none #6] load 8.9 ≥ 8, waiting
+2026-11-24T16:59:24.902Z [quiesco/ios/final/none #6] running npx quiesco test --platform ios (load 6.73)
+2026-11-24T17:04:58.130Z [quiesco/ios/final/none #6] done: 24 passed, 0 failed, suite 316956 ms, launch 14515 ms, install 5245 ms, load during median 3.91 / max 5.7
+2026-11-24T17:05:17.312Z [quiesco/ios/final/none #49] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8351 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T17:05:17.319Z [quiesco/ios/final/none #49] load 18.58 ≥ 8, waiting
+2026-11-24T17:05:32.340Z [quiesco/ios/final/none #49] load 27.08 ≥ 8, waiting
+2026-11-24T17:05:47.352Z [quiesco/ios/final/none #49] load 22.66 ≥ 8, waiting
+2026-11-24T17:06:02.364Z [quiesco/ios/final/none #49] load 18.16 ≥ 8, waiting
+2026-11-24T17:06:17.375Z [quiesco/ios/final/none #49] load 15.43 ≥ 8, waiting
+2026-11-24T17:06:32.391Z [quiesco/ios/final/none #49] load 12.73 ≥ 8, waiting
+2026-11-24T17:06:47.399Z [quiesco/ios/final/none #49] load 10.26 ≥ 8, waiting
+2026-11-24T17:07:02.408Z [quiesco/ios/final/none #49] load 8.26 ≥ 8, waiting
+2026-11-24T17:07:23.809Z [quiesco/ios/final/none #49] running npx quiesco test --platform ios (load 6.82)
+2026-11-24T17:12:56.243Z [quiesco/ios/final/none #49] done: 24 passed, 0 failed, suite 314881 ms, launch 15837 ms, install 5541 ms, load during median 4.22 / max 6.69
+2026-11-24T17:13:15.094Z [appium/ios/final/none #41] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8310 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T17:13:15.099Z [appium/ios/final/none #41] load 15.87 ≥ 8, waiting
+2026-11-24T17:13:30.108Z [appium/ios/final/none #41] load 16.15 ≥ 8, waiting
+2026-11-24T17:13:45.118Z [appium/ios/final/none #41] load 27.2 ≥ 8, waiting
+2026-11-24T17:14:00.129Z [appium/ios/final/none #41] load 21.87 ≥ 8, waiting
+2026-11-24T17:14:15.140Z [appium/ios/final/none #41] load 17.32 ≥ 8, waiting
+2026-11-24T17:14:30.151Z [appium/ios/final/none #41] load 14.12 ≥ 8, waiting
+2026-11-24T17:14:45.158Z [appium/ios/final/none #41] load 11.56 ≥ 8, waiting
+2026-11-24T17:15:00.166Z [appium/ios/final/none #41] load 9.76 ≥ 8, waiting
+2026-11-24T17:15:22.135Z [appium/ios/final/none #41] running npx wdio run wdio.conf.js (load 7.81)
+2026-11-24T17:24:15.230Z [appium/ios/final/none #41] done: 24 passed, 0 failed, suite 517844 ms, launch 13455 ms, install 6198 ms, load during median 4.34 / max 12.66
+2026-11-24T17:24:40.138Z [detox/android/final/none #91] Android emulator-5554 booted in 21320 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T17:24:40.141Z [detox/android/final/none #91] load 27.86 ≥ 8, waiting
+2026-11-24T17:24:55.151Z [detox/android/final/none #91] load 22.19 ≥ 8, waiting
+2026-11-24T17:25:10.161Z [detox/android/final/none #91] load 18.06 ≥ 8, waiting
+2026-11-24T17:25:25.171Z [detox/android/final/none #91] load 14.28 ≥ 8, waiting
+2026-11-24T17:25:40.173Z [detox/android/final/none #91] load 11.4 ≥ 8, waiting
+2026-11-24T17:25:55.178Z [detox/android/final/none #91] load 9.23 ≥ 8, waiting
+2026-11-24T17:26:10.913Z [detox/android/final/none #91] running npx detox test -c android.att.release --reuse (load 7.42)
+2026-11-24T17:32:28.535Z [detox/android/final/none #91] done: 22 passed, 0 failed, suite 374847 ms, launch 1244 ms, install 626 ms, load during median 8.52 / max 9.57
+2026-11-24T17:32:28.711Z [appium/android/final/none #9] stopping Android emulator
+2026-11-24T17:32:50.082Z [appium/android/final/none #9] Android emulator-5554 booted in 19151 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T17:32:50.611Z [appium/android/final/none #9] running npx wdio run wdio.conf.js (load 5.06)
+2026-11-24T17:38:35.987Z [appium/android/final/none #9] done: 24 passed, 0 failed, suite 339517 ms, launch 4030 ms, install 422 ms, load during median 5.42 / max 7.79
+2026-11-24T17:38:36.188Z [detox/android/final/none #33] stopping Android emulator
+2026-11-24T17:38:59.563Z [detox/android/final/none #33] Android emulator-5554 booted in 21155 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T17:39:00.217Z [detox/android/final/none #33] running npx detox test -c android.att.release --reuse (load 5.17)
+2026-11-24T17:45:17.412Z [detox/android/final/none #33] done: 22 passed, 0 failed, suite 374541 ms, launch 1142 ms, install 569 ms, load during median 5.575 / max 11.27
+2026-11-24T17:45:17.415Z [quiesco/android/final/none #88] load 8.64 ≥ 8, waiting
+2026-11-24T17:45:32.678Z [quiesco/android/final/none #88] stopping Android emulator
+2026-11-24T17:45:57.067Z [quiesco/android/final/none #88] Android emulator-5554 booted in 21134 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T17:45:57.616Z [quiesco/android/final/none #88] running npx quiesco test --platform android (load 5.89)
+2026-11-24T17:49:38.101Z [quiesco/android/final/none #88] done: 24 passed, 0 failed, suite 214457 ms, launch 4551 ms, install 441 ms, load during median 6.88 / max 9.32
+2026-11-24T17:49:38.105Z [maestro/ios/final/none #84] load 8.26 ≥ 8, waiting
+2026-11-24T17:49:53.153Z [maestro/ios/final/none #84] stopping Android emulator
+2026-11-24T17:50:14.932Z [maestro/ios/final/none #84] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8400 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T17:50:14.937Z [maestro/ios/final/none #84] load 11.78 ≥ 8, waiting
+2026-11-24T17:50:29.946Z [maestro/ios/final/none #84] load 13.34 ≥ 8, waiting
+2026-11-24T17:50:44.957Z [maestro/ios/final/none #84] load 11.74 ≥ 8, waiting
+2026-11-24T17:50:59.969Z [maestro/ios/final/none #84] load 10.97 ≥ 8, waiting
+2026-11-24T17:51:14.980Z [maestro/ios/final/none #84] load 8.97 ≥ 8, waiting
+2026-11-24T17:51:35.828Z [maestro/ios/final/none #84] running ./run.sh  (load 7.33)
+2026-11-24T18:01:42.647Z [maestro/ios/final/none #84] done: 24 passed, 0 failed, suite 586989 ms, launch 13153 ms, install 5066 ms, load during median 11.8 / max 44.33
+2026-11-24T18:01:42.651Z [quiesco/ios/final/none #68] load 9.93 ≥ 8, waiting
+2026-11-24T18:01:57.661Z [quiesco/ios/final/none #68] load 8.93 ≥ 8, waiting
+2026-11-24T18:02:35.212Z [quiesco/ios/final/none #68] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 9974 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T18:02:35.216Z [quiesco/ios/final/none #68] load 32.41 ≥ 8, waiting
+2026-11-24T18:02:50.241Z [quiesco/ios/final/none #68] load 34.47 ≥ 8, waiting
+2026-11-24T18:03:05.251Z [quiesco/ios/final/none #68] load 30.3 ≥ 8, waiting
+2026-11-24T18:03:20.264Z [quiesco/ios/final/none #68] load 24.93 ≥ 8, waiting
+2026-11-24T18:03:35.273Z [quiesco/ios/final/none #68] load 20.59 ≥ 8, waiting
+2026-11-24T18:03:50.285Z [quiesco/ios/final/none #68] load 17.03 ≥ 8, waiting
+2026-11-24T18:04:05.295Z [quiesco/ios/final/none #68] load 13.71 ≥ 8, waiting
+2026-11-24T18:04:20.309Z [quiesco/ios/final/none #68] load 11.18 ≥ 8, waiting
+2026-11-24T18:04:35.322Z [quiesco/ios/final/none #68] load 9.23 ≥ 8, waiting
+2026-11-24T18:04:55.896Z [quiesco/ios/final/none #68] running npx quiesco test --platform ios (load 7.42)
+2026-11-24T18:10:27.843Z [quiesco/ios/final/none #68] done: 24 passed, 0 failed, suite 316950 ms, launch 13234 ms, install 4556 ms, load during median 4.63 / max 8.33 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T18:10:47.245Z [quiesco/ios/final/none #69] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 9444 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T18:10:47.250Z [quiesco/ios/final/none #69] load 66.63 ≥ 8, waiting
+2026-11-24T18:11:02.257Z [quiesco/ios/final/none #69] load 55.28 ≥ 8, waiting
+2026-11-24T18:11:17.269Z [quiesco/ios/final/none #69] load 43.93 ≥ 8, waiting
+2026-11-24T18:11:32.283Z [quiesco/ios/final/none #69] load 34.73 ≥ 8, waiting
+2026-11-24T18:11:47.293Z [quiesco/ios/final/none #69] load 27.76 ≥ 8, waiting
+2026-11-24T18:12:02.318Z [quiesco/ios/final/none #69] load 22.33 ≥ 8, waiting
+2026-11-24T18:12:17.327Z [quiesco/ios/final/none #69] load 18.46 ≥ 8, waiting
+2026-11-24T18:12:32.343Z [quiesco/ios/final/none #69] load 14.67 ≥ 8, waiting
+2026-11-24T18:12:47.356Z [quiesco/ios/final/none #69] load 11.92 ≥ 8, waiting
+2026-11-24T18:13:02.370Z [quiesco/ios/final/none #69] load 9.57 ≥ 8, waiting
+2026-11-24T18:13:23.285Z [quiesco/ios/final/none #69] running npx quiesco test --platform ios (load 9.91)
+2026-11-24T18:18:52.145Z [quiesco/ios/final/none #69] done: 24 passed, 0 failed, suite 314782 ms, launch 12355 ms, install 5110 ms, load during median 7.715 / max 16.6
+2026-11-24T18:19:10.943Z [detox/ios/final/none #99] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8335 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T18:19:10.948Z [detox/ios/final/none #99] load 20.99 ≥ 8, waiting
+2026-11-24T18:19:25.957Z [detox/ios/final/none #99] load 21.89 ≥ 8, waiting
+2026-11-24T18:19:40.966Z [detox/ios/final/none #99] load 19.35 ≥ 8, waiting
+2026-11-24T18:19:55.976Z [detox/ios/final/none #99] load 15.28 ≥ 8, waiting
+2026-11-24T18:20:10.986Z [detox/ios/final/none #99] load 12.32 ≥ 8, waiting
+2026-11-24T18:20:25.995Z [detox/ios/final/none #99] load 10.12 ≥ 8, waiting
+2026-11-24T18:20:41.005Z [detox/ios/final/none #99] load 16.45 ≥ 8, waiting
+2026-11-24T18:20:56.014Z [detox/ios/final/none #99] load 13.23 ≥ 8, waiting
+2026-11-24T18:21:11.022Z [detox/ios/final/none #99] load 10.66 ≥ 8, waiting
+2026-11-24T18:21:26.034Z [detox/ios/final/none #99] load 8.58 ≥ 8, waiting
+2026-11-24T18:21:47.704Z [detox/ios/final/none #99] running npx detox test -c ios.sim.release --reuse (load 7.12)
+2026-11-24T18:30:36.920Z [detox/ios/final/none #99] done: 22 passed, 1 failed (S21:failed), suite 525934 ms, launch 1763 ms, install 5813 ms, load during median 2.85 / max 9.29
+2026-11-24T18:31:01.823Z [quiesco/android/final/none #43] Android emulator-5554 booted in 21331 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T18:31:02.336Z [quiesco/android/final/none #43] running npx quiesco test --platform android (load 3.74)
+2026-11-24T18:34:43.731Z [quiesco/android/final/none #43] done: 24 passed, 0 failed, suite 215203 ms, launch 4578 ms, install 429 ms, load during median 3.87 / max 7.21
+2026-11-24T18:34:43.735Z [quiesco/ios/final/none #92] load 8.72 ≥ 8, waiting
+2026-11-24T18:34:58.778Z [quiesco/ios/final/none #92] stopping Android emulator
+2026-11-24T18:35:18.231Z [quiesco/ios/final/none #92] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 5521 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T18:35:18.249Z [quiesco/ios/final/none #92] load 20.63 ≥ 8, waiting
+2026-11-24T18:35:33.263Z [quiesco/ios/final/none #92] load 31.6 ≥ 8, waiting
+2026-11-24T18:35:48.289Z [quiesco/ios/final/none #92] load 29.09 ≥ 8, waiting
+2026-11-24T18:36:03.318Z [quiesco/ios/final/none #92] load 23.78 ≥ 8, waiting
+2026-11-24T18:36:18.333Z [quiesco/ios/final/none #92] load 20.41 ≥ 8, waiting
+2026-11-24T18:36:33.348Z [quiesco/ios/final/none #92] load 16.8 ≥ 8, waiting
+2026-11-24T18:36:48.357Z [quiesco/ios/final/none #92] load 13.45 ≥ 8, waiting
+2026-11-24T18:37:03.367Z [quiesco/ios/final/none #92] load 11.21 ≥ 8, waiting
+2026-11-24T18:37:18.378Z [quiesco/ios/final/none #92] load 9.92 ≥ 8, waiting
+2026-11-24T18:37:33.389Z [quiesco/ios/final/none #92] load 8.17 ≥ 8, waiting
+2026-11-24T18:37:54.737Z [quiesco/ios/final/none #92] running npx quiesco test --platform ios (load 6.21)
+2026-11-24T18:43:29.627Z [quiesco/ios/final/none #92] done: 24 passed, 0 failed, suite 316104 ms, launch 17061 ms, install 5523 ms, load during median 4.55 / max 10.08 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T18:43:54.375Z [quiesco/android/final/none #21] Android emulator-5554 booted in 21167 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T18:43:54.898Z [quiesco/android/final/none #21] running npx quiesco test --platform android (load 3.83)
+2026-11-24T18:47:35.460Z [quiesco/android/final/none #21] done: 24 passed, 0 failed, suite 214620 ms, launch 4465 ms, install 437 ms, load during median 6.41 / max 7.65
+2026-11-24T18:47:35.646Z [quiesco/android/final/none #34] stopping Android emulator
+2026-11-24T18:47:59.015Z [quiesco/android/final/none #34] Android emulator-5554 booted in 21151 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T18:47:59.527Z [quiesco/android/final/none #34] running npx quiesco test --platform android (load 5.63)
+2026-11-24T18:51:40.591Z [quiesco/android/final/none #34] done: 24 passed, 0 failed, suite 215289 ms, launch 4324 ms, install 416 ms, load during median 6.51 / max 7.72
+2026-11-24T18:51:40.613Z [quiesco/ios/final/none #95] stopping Android emulator
+2026-11-24T18:52:00.335Z [quiesco/ios/final/none #95] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 5179 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T18:52:00.341Z [quiesco/ios/final/none #95] load 21.26 ≥ 8, waiting
+2026-11-24T18:52:15.355Z [quiesco/ios/final/none #95] load 19.72 ≥ 8, waiting
+2026-11-24T18:52:30.371Z [quiesco/ios/final/none #95] load 17.81 ≥ 8, waiting
+2026-11-24T18:52:45.384Z [quiesco/ios/final/none #95] load 14.32 ≥ 8, waiting
+2026-11-24T18:53:00.393Z [quiesco/ios/final/none #95] load 11.99 ≥ 8, waiting
+2026-11-24T18:53:15.403Z [quiesco/ios/final/none #95] load 9.62 ≥ 8, waiting
+2026-11-24T18:53:37.029Z [quiesco/ios/final/none #95] running npx quiesco test --platform ios (load 7.88)
+2026-11-24T18:59:10.931Z [quiesco/ios/final/none #95] done: 24 passed, 0 failed, suite 316015 ms, launch 16149 ms, install 5791 ms, load during median 4.19 / max 7.23
+2026-11-24T18:59:29.466Z [maestro/ios/final/none #40] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8289 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T18:59:29.470Z [maestro/ios/final/none #40] load 64.04 ≥ 8, waiting
+2026-11-24T18:59:44.477Z [maestro/ios/final/none #40] load 57.13 ≥ 8, waiting
+2026-11-24T18:59:59.489Z [maestro/ios/final/none #40] load 45.44 ≥ 8, waiting
+2026-11-24T19:00:14.499Z [maestro/ios/final/none #40] load 35.74 ≥ 8, waiting
+2026-11-24T19:00:29.514Z [maestro/ios/final/none #40] load 28.48 ≥ 8, waiting
+2026-11-24T19:00:44.525Z [maestro/ios/final/none #40] load 22.4 ≥ 8, waiting
+2026-11-24T19:00:59.535Z [maestro/ios/final/none #40] load 17.71 ≥ 8, waiting
+2026-11-24T19:01:14.546Z [maestro/ios/final/none #40] load 14.77 ≥ 8, waiting
+2026-11-24T19:01:29.561Z [maestro/ios/final/none #40] load 12.04 ≥ 8, waiting
+2026-11-24T19:01:44.569Z [maestro/ios/final/none #40] load 9.82 ≥ 8, waiting
+2026-11-24T19:01:59.580Z [maestro/ios/final/none #40] load 8.45 ≥ 8, waiting
+2026-11-24T19:02:21.597Z [maestro/ios/final/none #40] running ./run.sh  (load 6.83)
+2026-11-24T19:12:11.070Z [maestro/ios/final/none #40] done: 24 passed, 0 failed, suite 570982 ms, launch 12399 ms, install 6286 ms, load during median 4.25 / max 12.64
+2026-11-24T19:12:35.822Z [detox/android/final/none #100] Android emulator-5554 booted in 21156 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T19:12:36.534Z [detox/android/final/none #100] running npx detox test -c android.att.release --reuse (load 3.89)
+2026-11-24T19:18:53.548Z [detox/android/final/none #100] done: 22 passed, 0 failed, suite 374063 ms, launch 1203 ms, install 628 ms, load during median 5.445 / max 6.45
+2026-11-24T19:18:53.572Z [appium/ios/final/none #85] stopping Android emulator
+2026-11-24T19:19:12.248Z [appium/ios/final/none #85] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 5174 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T19:19:12.252Z [appium/ios/final/none #85] load 22.75 ≥ 8, waiting
+2026-11-24T19:19:27.260Z [appium/ios/final/none #85] load 24.82 ≥ 8, waiting
+2026-11-24T19:19:42.266Z [appium/ios/final/none #85] load 20.56 ≥ 8, waiting
+2026-11-24T19:19:57.274Z [appium/ios/final/none #85] load 16.37 ≥ 8, waiting
+2026-11-24T19:20:12.285Z [appium/ios/final/none #85] load 14.41 ≥ 8, waiting
+2026-11-24T19:20:27.297Z [appium/ios/final/none #85] load 11.73 ≥ 8, waiting
+2026-11-24T19:20:42.305Z [appium/ios/final/none #85] load 9.81 ≥ 8, waiting
+2026-11-24T19:20:57.315Z [appium/ios/final/none #85] load 8.17 ≥ 8, waiting
+2026-11-24T19:21:18.703Z [appium/ios/final/none #85] running npx wdio run wdio.conf.js (load 6.68)
+2026-11-24T19:30:06.771Z [appium/ios/final/none #85] done: 24 passed, 0 failed, suite 511804 ms, launch 14403 ms, install 5511 ms, load during median 7.02 / max 13.41 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T19:30:06.775Z [detox/ios/final/none #4] load 10.52 ≥ 8, waiting
+2026-11-24T19:30:21.786Z [detox/ios/final/none #4] load 8.4 ≥ 8, waiting
+2026-11-24T19:30:55.426Z [detox/ios/final/none #4] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 9547 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T19:30:55.432Z [detox/ios/final/none #4] load 17.67 ≥ 8, waiting
+2026-11-24T19:31:10.460Z [detox/ios/final/none #4] load 20.84 ≥ 8, waiting
+2026-11-24T19:31:25.471Z [detox/ios/final/none #4] load 17.96 ≥ 8, waiting
+2026-11-24T19:31:40.483Z [detox/ios/final/none #4] load 14.2 ≥ 8, waiting
+2026-11-24T19:31:55.493Z [detox/ios/final/none #4] load 11.97 ≥ 8, waiting
+2026-11-24T19:32:10.503Z [detox/ios/final/none #4] load 9.45 ≥ 8, waiting
+2026-11-24T19:32:32.433Z [detox/ios/final/none #4] running npx detox test -c ios.sim.release --reuse (load 7.09)
+2026-11-24T19:41:21.716Z [detox/ios/final/none #4] done: 22 passed, 1 failed (S21:failed), suite 525983 ms, launch 1756 ms, install 6184 ms, load during median 4.09 / max 8.14
+2026-11-24T19:41:39.587Z [appium/ios/final/none #3] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7659 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T19:41:39.598Z [appium/ios/final/none #3] load 12.27 ≥ 8, waiting
+2026-11-24T19:41:54.607Z [appium/ios/final/none #3] load 53.5 ≥ 8, waiting
+2026-11-24T19:42:09.626Z [appium/ios/final/none #3] load 43.91 ≥ 8, waiting
+2026-11-24T19:42:24.638Z [appium/ios/final/none #3] load 36.08 ≥ 8, waiting
+2026-11-24T19:42:39.647Z [appium/ios/final/none #3] load 28.38 ≥ 8, waiting
+2026-11-24T19:42:54.659Z [appium/ios/final/none #3] load 22.68 ≥ 8, waiting
+2026-11-24T19:43:09.668Z [appium/ios/final/none #3] load 17.97 ≥ 8, waiting
+2026-11-24T19:43:24.680Z [appium/ios/final/none #3] load 14.21 ≥ 8, waiting
+2026-11-24T19:43:39.687Z [appium/ios/final/none #3] load 11.65 ≥ 8, waiting
+2026-11-24T19:43:54.698Z [appium/ios/final/none #3] load 9.29 ≥ 8, waiting
+2026-11-24T19:44:16.411Z [appium/ios/final/none #3] running npx wdio run wdio.conf.js (load 7.42)
+2026-11-24T19:52:59.865Z [appium/ios/final/none #3] done: 24 passed, 0 failed, suite 509023 ms, launch 12610 ms, install 5848 ms, load during median 4.13 / max 6.39 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T19:53:16.923Z [quiesco/ios/final/none #51] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8325 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T19:53:16.930Z [quiesco/ios/final/none #51] load 15.62 ≥ 8, waiting
+2026-11-24T19:53:31.940Z [quiesco/ios/final/none #51] load 20.05 ≥ 8, waiting
+2026-11-24T19:53:46.951Z [quiesco/ios/final/none #51] load 17.33 ≥ 8, waiting
+2026-11-24T19:54:01.960Z [quiesco/ios/final/none #51] load 13.71 ≥ 8, waiting
+2026-11-24T19:54:16.969Z [quiesco/ios/final/none #51] load 11.27 ≥ 8, waiting
+2026-11-24T19:54:31.980Z [quiesco/ios/final/none #51] load 9.23 ≥ 8, waiting
+2026-11-24T19:54:46.991Z [quiesco/ios/final/none #51] load 8.12 ≥ 8, waiting
+2026-11-24T19:55:08.537Z [quiesco/ios/final/none #51] running npx quiesco test --platform ios (load 6.1)
+2026-11-24T20:00:37.362Z [quiesco/ios/final/none #51] done: 24 passed, 0 failed, suite 314891 ms, launch 12160 ms, install 5737 ms, load during median 4.82 / max 9.07
+2026-11-24T20:01:02.223Z [detox/android/final/none #6] Android emulator-5554 booted in 21269 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T20:01:02.225Z [detox/android/final/none #6] load 36.91 ≥ 8, waiting
+2026-11-24T20:01:17.236Z [detox/android/final/none #6] load 29.11 ≥ 8, waiting
+2026-11-24T20:01:32.248Z [detox/android/final/none #6] load 23.33 ≥ 8, waiting
+2026-11-24T20:01:47.259Z [detox/android/final/none #6] load 18.74 ≥ 8, waiting
+2026-11-24T20:02:02.270Z [detox/android/final/none #6] load 15.02 ≥ 8, waiting
+2026-11-24T20:02:17.280Z [detox/android/final/none #6] load 11.84 ≥ 8, waiting
+2026-11-24T20:02:32.294Z [detox/android/final/none #6] load 9.89 ≥ 8, waiting
+2026-11-24T20:02:47.304Z [detox/android/final/none #6] load 8.21 ≥ 8, waiting
+2026-11-24T20:03:03.122Z [detox/android/final/none #6] running npx detox test -c android.att.release --reuse (load 6.58)
+2026-11-24T20:09:21.148Z [detox/android/final/none #6] done: 22 passed, 0 failed, suite 375379 ms, launch 1172 ms, install 675 ms, load during median 5.925000000000001 / max 11.6
+2026-11-24T20:09:21.328Z [appium/android/final/none #50] stopping Android emulator
+2026-11-24T20:09:42.710Z [appium/android/final/none #50] Android emulator-5554 booted in 19148 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T20:09:43.247Z [appium/android/final/none #50] running npx wdio run wdio.conf.js (load 5.55)
+2026-11-24T20:15:28.550Z [appium/android/final/none #50] done: 24 passed, 0 failed, suite 339012 ms, launch 4227 ms, install 434 ms, load during median 5.56 / max 6.5
+2026-11-24T20:15:28.574Z [detox/ios/final/none #84] stopping Android emulator
+2026-11-24T20:15:50.195Z [detox/ios/final/none #84] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 6181 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T20:15:50.242Z [detox/ios/final/none #84] load 37.72 ≥ 8, waiting
+2026-11-24T20:16:05.253Z [detox/ios/final/none #84] load 34.83 ≥ 8, waiting
+2026-11-24T20:16:20.263Z [detox/ios/final/none #84] load 28.61 ≥ 8, waiting
+2026-11-24T20:16:35.276Z [detox/ios/final/none #84] load 23.64 ≥ 8, waiting
+2026-11-24T20:16:50.285Z [detox/ios/final/none #84] load 18.82 ≥ 8, waiting
+2026-11-24T20:17:05.297Z [detox/ios/final/none #84] load 15.43 ≥ 8, waiting
+2026-11-24T20:17:20.307Z [detox/ios/final/none #84] load 12.47 ≥ 8, waiting
+2026-11-24T20:17:35.324Z [detox/ios/final/none #84] load 10.09 ≥ 8, waiting
+2026-11-24T20:17:50.335Z [detox/ios/final/none #84] load 8.36 ≥ 8, waiting
+2026-11-24T20:18:12.877Z [detox/ios/final/none #84] running npx detox test -c ios.sim.release --reuse (load 7.11)
+2026-11-24T20:27:01.603Z [detox/ios/final/none #84] done: 22 passed, 1 failed (S21:failed), suite 525421 ms, launch 1766 ms, install 6625 ms, load during median 5.99 / max 12.98 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T20:27:24.263Z [detox/ios/final/none #9] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 7901 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T20:27:24.269Z [detox/ios/final/none #9] load 21.45 ≥ 8, waiting
+2026-11-24T20:27:39.283Z [detox/ios/final/none #9] load 23.55 ≥ 8, waiting
+2026-11-24T20:27:54.294Z [detox/ios/final/none #9] load 22.62 ≥ 8, waiting
+2026-11-24T20:28:09.305Z [detox/ios/final/none #9] load 18.35 ≥ 8, waiting
+2026-11-24T20:28:24.316Z [detox/ios/final/none #9] load 15.04 ≥ 8, waiting
+2026-11-24T20:28:39.327Z [detox/ios/final/none #9] load 12.6 ≥ 8, waiting
+2026-11-24T20:28:54.338Z [detox/ios/final/none #9] load 10.44 ≥ 8, waiting
+2026-11-24T20:29:09.349Z [detox/ios/final/none #9] load 8.94 ≥ 8, waiting
+2026-11-24T20:29:30.591Z [detox/ios/final/none #9] running npx detox test -c ios.sim.release --reuse (load 6.79)
+2026-11-24T20:38:16.388Z [detox/ios/final/none #9] done: 22 passed, 1 failed (S21:failed), suite 522494 ms, launch 1686 ms, install 5375 ms, load during median 3.47 / max 5.77
+2026-11-24T20:38:37.642Z [appium/ios/final/none #91] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8541 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T20:38:37.647Z [appium/ios/final/none #91] load 22.33 ≥ 8, waiting
+2026-11-24T20:38:52.655Z [appium/ios/final/none #91] load 58.44 ≥ 8, waiting
+2026-11-24T20:39:07.668Z [appium/ios/final/none #91] load 48.21 ≥ 8, waiting
+2026-11-24T20:39:22.683Z [appium/ios/final/none #91] load 38.58 ≥ 8, waiting
+2026-11-24T20:39:37.694Z [appium/ios/final/none #91] load 30.47 ≥ 8, waiting
+2026-11-24T20:39:52.703Z [appium/ios/final/none #91] load 24.22 ≥ 8, waiting
+2026-11-24T20:40:07.714Z [appium/ios/final/none #91] load 19.36 ≥ 8, waiting
+2026-11-24T20:40:22.724Z [appium/ios/final/none #91] load 15.39 ≥ 8, waiting
+2026-11-24T20:40:37.736Z [appium/ios/final/none #91] load 12.55 ≥ 8, waiting
+2026-11-24T20:40:52.749Z [appium/ios/final/none #91] load 10.45 ≥ 8, waiting
+2026-11-24T20:41:07.766Z [appium/ios/final/none #91] load 8.35 ≥ 8, waiting
+2026-11-24T20:41:29.055Z [appium/ios/final/none #91] running npx wdio run wdio.conf.js (load 8.99)
+2026-11-24T20:50:11.798Z [appium/ios/final/none #91] done: 24 passed, 0 failed, suite 508563 ms, launch 12375 ms, install 5397 ms, load during median 4.33 / max 8.06
+2026-11-24T20:50:36.516Z [maestro/android/final/none #51] Android emulator-5554 booted in 21162 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T20:50:37.030Z [maestro/android/final/none #51] running ./run.sh  (load 5.88)
+2026-11-24T21:03:27.970Z [maestro/android/final/none #51] done: 24 passed, 0 failed, suite 759651 ms, launch 6022 ms, install 433 ms, load during median 5.22 / max 9.84
+2026-11-24T21:03:28.181Z [appium/android/final/none #66] stopping Android emulator
+2026-11-24T21:03:52.604Z [appium/android/final/none #66] Android emulator-5554 booted in 21148 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T21:03:53.107Z [appium/android/final/none #66] running npx wdio run wdio.conf.js (load 6.24)
+2026-11-24T21:09:40.435Z [appium/android/final/none #66] done: 24 passed, 0 failed, suite 341333 ms, launch 4082 ms, install 417 ms, load during median 6.48 / max 8.11
+2026-11-24T21:09:40.438Z [appium/android/final/none #55] load 20.19 ≥ 8, waiting
+2026-11-24T21:09:55.452Z [appium/android/final/none #55] load 16.16 ≥ 8, waiting
+2026-11-24T21:10:10.463Z [appium/android/final/none #55] load 13.1 ≥ 8, waiting
+2026-11-24T21:10:25.473Z [appium/android/final/none #55] load 11.23 ≥ 8, waiting
+2026-11-24T21:10:40.484Z [appium/android/final/none #55] load 10.17 ≥ 8, waiting
+2026-11-24T21:10:55.494Z [appium/android/final/none #55] load 8.5 ≥ 8, waiting
+2026-11-24T21:11:10.765Z [appium/android/final/none #55] stopping Android emulator
+2026-11-24T21:11:35.153Z [appium/android/final/none #55] Android emulator-5554 booted in 21134 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T21:11:35.660Z [appium/android/final/none #55] running npx wdio run wdio.conf.js (load 6.7)
+2026-11-24T21:17:21.352Z [appium/android/final/none #55] done: 24 passed, 0 failed, suite 339933 ms, launch 3912 ms, install 425 ms, load during median 7.24 / max 9.7
+2026-11-24T21:17:21.375Z [quiesco/ios/final/none #43] stopping Android emulator
+2026-11-24T21:17:40.080Z [quiesco/ios/final/none #43] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 5272 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T21:17:40.103Z [quiesco/ios/final/none #43] load 32.79 ≥ 8, waiting
+2026-11-24T21:17:55.109Z [quiesco/ios/final/none #43] load 63.77 ≥ 8, waiting
+2026-11-24T21:18:10.119Z [quiesco/ios/final/none #43] load 53.04 ≥ 8, waiting
+2026-11-24T21:18:25.129Z [quiesco/ios/final/none #43] load 41.66 ≥ 8, waiting
+2026-11-24T21:18:40.138Z [quiesco/ios/final/none #43] load 33.37 ≥ 8, waiting
+2026-11-24T21:18:57.185Z [quiesco/ios/final/none #43] load 26.48 ≥ 8, waiting
+2026-11-24T21:19:12.195Z [quiesco/ios/final/none #43] load 21.62 ≥ 8, waiting
+2026-11-24T21:19:27.207Z [quiesco/ios/final/none #43] load 17.33 ≥ 8, waiting
+2026-11-24T21:19:42.217Z [quiesco/ios/final/none #43] load 14.38 ≥ 8, waiting
+2026-11-24T21:19:57.228Z [quiesco/ios/final/none #43] load 11.66 ≥ 8, waiting
+2026-11-24T21:20:12.238Z [quiesco/ios/final/none #43] load 10.71 ≥ 8, waiting
+2026-11-24T21:20:27.249Z [quiesco/ios/final/none #43] load 8.7 ≥ 8, waiting
+2026-11-24T21:20:49.248Z [quiesco/ios/final/none #43] running npx quiesco test --platform ios (load 8.79)
+2026-11-24T21:26:21.131Z [quiesco/ios/final/none #43] done: 24 passed, 0 failed, suite 313763 ms, launch 16417 ms, install 6238 ms, load during median 4.24 / max 7.84
+2026-11-24T21:26:38.176Z [appium/ios/final/none #75] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8330 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T21:26:38.183Z [appium/ios/final/none #75] load 13.14 ≥ 8, waiting
+2026-11-24T21:26:53.188Z [appium/ios/final/none #75] load 23.84 ≥ 8, waiting
+2026-11-24T21:27:08.192Z [appium/ios/final/none #75] load 20.93 ≥ 8, waiting
+2026-11-24T21:27:23.197Z [appium/ios/final/none #75] load 16.79 ≥ 8, waiting
+2026-11-24T21:27:38.203Z [appium/ios/final/none #75] load 13.86 ≥ 8, waiting
+2026-11-24T21:27:53.207Z [appium/ios/final/none #75] load 11.85 ≥ 8, waiting
+2026-11-24T21:28:08.212Z [appium/ios/final/none #75] load 9.45 ≥ 8, waiting
+2026-11-24T21:28:29.824Z [appium/ios/final/none #75] running npx wdio run wdio.conf.js (load 6.91)
+2026-11-24T21:37:14.814Z [appium/ios/final/none #75] done: 24 passed, 0 failed, suite 509855 ms, launch 13268 ms, install 5781 ms, load during median 4.26 / max 11.9 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T21:37:14.818Z [maestro/ios/final/none #9] load 8.17 ≥ 8, waiting
+2026-11-24T21:37:47.606Z [maestro/ios/final/none #9] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8246 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T21:37:47.611Z [maestro/ios/final/none #9] load 26.54 ≥ 8, waiting
+2026-11-24T21:38:02.626Z [maestro/ios/final/none #9] load 30.34 ≥ 8, waiting
+2026-11-24T21:38:17.638Z [maestro/ios/final/none #9] load 25.99 ≥ 8, waiting
+2026-11-24T21:38:32.648Z [maestro/ios/final/none #9] load 20.66 ≥ 8, waiting
+2026-11-24T21:38:47.670Z [maestro/ios/final/none #9] load 16.56 ≥ 8, waiting
+2026-11-24T21:39:02.681Z [maestro/ios/final/none #9] load 13.4 ≥ 8, waiting
+2026-11-24T21:39:17.690Z [maestro/ios/final/none #9] load 11.12 ≥ 8, waiting
+2026-11-24T21:39:32.698Z [maestro/ios/final/none #9] load 9.23 ≥ 8, waiting
+2026-11-24T21:39:53.975Z [maestro/ios/final/none #9] running ./run.sh  (load 7.52)
+2026-11-24T21:49:47.320Z [maestro/ios/final/none #9] done: 24 passed, 0 failed, suite 574306 ms, launch 12624 ms, install 5562 ms, load during median 4.53 / max 12.26
+2026-11-24T21:50:12.157Z [detox/android/final/none #73] Android emulator-5554 booted in 21258 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T21:50:12.804Z [detox/android/final/none #73] running npx detox test -c android.att.release --reuse (load 4.2)
+2026-11-24T21:56:31.178Z [detox/android/final/none #73] done: 22 passed, 0 failed, suite 375652 ms, launch 1200 ms, install 564 ms, load during median 6.895 / max 8.02
+2026-11-24T21:56:31.358Z [detox/android/final/none #43] stopping Android emulator
+2026-11-24T21:56:55.736Z [detox/android/final/none #43] Android emulator-5554 booted in 21132 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T21:56:56.423Z [detox/android/final/none #43] running npx detox test -c android.att.release --reuse (load 4.42)
+2026-11-24T22:03:14.217Z [detox/android/final/none #43] done: 22 passed, 0 failed, suite 375280 ms, launch 975 ms, install 571 ms, load during median 4.865 / max 7.3
+2026-11-24T22:03:14.240Z [appium/ios/final/none #100] stopping Android emulator
+2026-11-24T22:03:33.926Z [appium/ios/final/none #100] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 6137 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T22:03:33.930Z [appium/ios/final/none #100] load 70.26 ≥ 8, waiting
+2026-11-24T22:03:48.937Z [appium/ios/final/none #100] load 60.64 ≥ 8, waiting
+2026-11-24T22:04:03.943Z [appium/ios/final/none #100] load 48.99 ≥ 8, waiting
+2026-11-24T22:04:18.951Z [appium/ios/final/none #100] load 38.88 ≥ 8, waiting
+2026-11-24T22:04:33.958Z [appium/ios/final/none #100] load 30.79 ≥ 8, waiting
+2026-11-24T22:04:48.962Z [appium/ios/final/none #100] load 24.41 ≥ 8, waiting
+2026-11-24T22:05:03.967Z [appium/ios/final/none #100] load 19.69 ≥ 8, waiting
+2026-11-24T22:05:18.972Z [appium/ios/final/none #100] load 15.94 ≥ 8, waiting
+2026-11-24T22:05:33.979Z [appium/ios/final/none #100] load 13.32 ≥ 8, waiting
+2026-11-24T22:05:48.985Z [appium/ios/final/none #100] load 10.96 ≥ 8, waiting
+2026-11-24T22:06:03.988Z [appium/ios/final/none #100] load 9.05 ≥ 8, waiting
+2026-11-24T22:06:25.297Z [appium/ios/final/none #100] running npx wdio run wdio.conf.js (load 7.86)
+2026-11-24T22:15:18.241Z [appium/ios/final/none #100] done: 23 passed, 1 failed (S22:failed), suite 517650 ms, launch 13481 ms, install 5480 ms, load during median 4.99 / max 13.35 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T22:15:18.245Z [maestro/android/final/none #64] load 9.46 ≥ 8, waiting
+2026-11-24T22:15:58.171Z [maestro/android/final/none #64] Android emulator-5554 booted in 21280 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-24T22:15:58.174Z [maestro/android/final/none #64] load 8.04 ≥ 8, waiting
+2026-11-24T22:16:13.770Z [maestro/android/final/none #64] running ./run.sh  (load 6.76)
+2026-11-24T22:29:05.212Z [maestro/android/final/none #64] done: 24 passed, 0 failed, suite 760254 ms, launch 5949 ms, install 456 ms, load during median 7.97 / max 15.71
+2026-11-24T22:29:05.256Z [appium/ios/final/none #65] stopping Android emulator
+2026-11-24T22:29:24.716Z [appium/ios/final/none #65] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 5182 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T22:29:24.720Z [appium/ios/final/none #65] load 17.6 ≥ 8, waiting
+2026-11-24T22:29:39.726Z [appium/ios/final/none #65] load 20.3 ≥ 8, waiting
+2026-11-24T22:29:54.733Z [appium/ios/final/none #65] load 18.01 ≥ 8, waiting
+2026-11-24T22:30:09.741Z [appium/ios/final/none #65] load 14.37 ≥ 8, waiting
+2026-11-24T22:30:24.749Z [appium/ios/final/none #65] load 11.56 ≥ 8, waiting
+2026-11-24T22:30:39.755Z [appium/ios/final/none #65] load 9.51 ≥ 8, waiting
+2026-11-24T22:30:54.761Z [appium/ios/final/none #65] load 8.15 ≥ 8, waiting
+2026-11-24T22:31:16.746Z [appium/ios/final/none #65] running npx wdio run wdio.conf.js (load 6.56)
+2026-11-24T22:40:01.351Z [appium/ios/final/none #65] done: 24 passed, 0 failed, suite 509410 ms, launch 13327 ms, install 6111 ms, load during median 4.64 / max 12.73 — INVALID (simulator system UI crashed during the run (PosterBoard × 1))
+2026-11-24T22:40:21.026Z [maestro/ios/final/none #26] iOS 59C18B64-C4A9-473E-91DC-24CCC9996644 rebooted in 8245 ms; env {"languages":"(en)","locale":"en_US","reduceMotion":"0","appearance":"light","keyboardLastUsed":"en_US@sw=QWERTY;hw=Automatic"}
+2026-11-24T22:40:21.030Z [maestro/ios/final/none #26] load 16.6 ≥ 8, waiting
+2026-11-24T22:40:36.039Z [maestro/ios/final/none #26] load 17.5 ≥ 8, waiting
+2026-11-24T22:40:51.061Z [maestro/ios/final/none #26] load 15.99 ≥ 8, waiting
+2026-11-24T22:41:06.073Z [maestro/ios/final/none #26] load 13.09 ≥ 8, waiting
+2026-11-24T22:41:21.083Z [maestro/ios/final/none #26] load 10.64 ≥ 8, waiting
+2026-11-24T22:41:36.094Z [maestro/ios/final/none #26] load 8.78 ≥ 8, waiting
+2026-11-24T22:41:57.443Z [maestro/ios/final/none #26] running ./run.sh  (load 7.23)
+2026-11-24T22:51:43.970Z [maestro/ios/final/none #26] done: 24 passed, 0 failed, suite 567828 ms, launch 12414 ms, install 5644 ms, load during median 4.02 / max 11.33
