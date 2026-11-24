@@ -1,0 +1,8 @@
+{
+  "tool": "appium",
+  "toolVersion": "4.0.0 (xcuitest 13.1.1, uiautomator2 9.2.1, webdriverio 10.2.0)",
+  "platform": "ios",
+  "startedAt": "2026-11-23T12:09:14.652Z",
+  "buildMs": 216776,
+  "exitCode": 0
+}
