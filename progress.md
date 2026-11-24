@@ -290,3 +290,4 @@
   - METHODOLOGY v14（① 固定顺序 ② 负载 / 模拟器 / 睡眠 ③ 计时标记 ④ 整套耗时只统计全绿运行 ⑤ app getItemLayout ⑥ Quiesco 0.13.4）用户确认（2026-11-24），打 tag `methodology-v14`
   - Maestro iOS S3 / S20 / S22（findings.md 2026-11-24）：S3 / S20 iOS 改按回车收起键盘；S22 iOS（用户选方案 1）在场景内按坐标点 Allow（Maestro 2.11.0 iOS setPermissions 不支持 notifications，同 flow 内 tapOn: Allow 找不到元素），点击后通知仍在时右滑 → Open；RESULTS 记为限制。harness 冒烟 smoke3-maestro-*：iOS 24/24（suite 580 s）、Android 24/24（suite 760 s）
   - Appium Android S21（findings.md 2026-11-24）：login() 不等登录完成，登录后的 router.replace 把深链接打开的详情页换回 Home（M3 带窗口模拟器慢，未暴露）→ 正式版登录后等 item-row-1（W3 #15），单独 5/5
+  - harness：运行前检查 harness 管理之外的 Android 模拟器（发现带窗口的 Medium_Phone_API_37.0 / emulator-5556 自 2026-11-23 21:28 起一直运行，smoke2 / smoke3 期间都在）→ 环境错误停止；待用户关闭

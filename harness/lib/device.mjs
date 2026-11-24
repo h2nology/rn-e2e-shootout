@@ -88,6 +88,22 @@ async function emulatorPids() {
   return out.split('\n').filter(Boolean);
 }
 
+/**
+ * harness 管理之外的 Android 模拟器（其他 AVD）。METHODOLOGY 6.4：同一时刻只运行一个模拟器。
+ * 不是 harness 启动的，不替用户结束 → 作为环境错误停止（2026-11-24：带窗口的 API 37 模拟器在冒烟期间一直运行）。
+ */
+export async function assertNoForeignEmulators() {
+  const out = await run('pgrep', ['-fl', 'qemu-system'], { allowFail: true });
+  const foreign = out
+    .split('\n')
+    .filter(Boolean)
+    .filter((l) => !l.includes(`-avd ${ANDROID.avd}`));
+  if (foreign.length > 0) {
+    const avds = foreign.map((l) => l.match(/-avd (\S+)/)?.[1] ?? l.split(' ')[0]);
+    throw new Error(`other Android emulators are running (${avds.join(', ')}); close them first (METHODOLOGY 6.4: one simulator at a time)`);
+  }
+}
+
 export async function killEmulator(log) {
   if ((await emulatorPids()).length === 0) return;
   log?.('stopping Android emulator');

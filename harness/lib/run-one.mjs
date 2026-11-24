@@ -41,7 +41,8 @@ export async function runOne(entry, ctx) {
   // 1. 宿主机负载
   const loadWait = await host.waitForLoad(log);
 
-  // 2. 模拟器
+  // 2. 模拟器（harness 管理之外的 Android 模拟器在运行时停止，METHODOLOGY 6.4）
+  await device.assertNoForeignEmulators();
   const dev =
     platform === 'ios'
       ? await device.prepareIos(log)
