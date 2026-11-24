@@ -1,6 +1,6 @@
 # 测量方法
 
-> 方法版本：**v16**（2026-11-24，待确认；v15 为 2026-11-24，tag `methodology-v15`；v14 为 2026-11-24，tag `methodology-v14`；v13 为 2026-11-23，tag `methodology-v13`；v12 为 2026-11-22，tag `methodology-v12`；v11 为 2026-11-22，tag `methodology-v11`；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11、v12、v13、v14、v15、v16 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
+> 方法版本：**v16**（2026-11-24，tag `methodology-v16`；v15 为 2026-11-24，tag `methodology-v15`；v14 为 2026-11-24，tag `methodology-v14`；v13 为 2026-11-23，tag `methodology-v13`；v12 为 2026-11-22，tag `methodology-v12`；v11 为 2026-11-22，tag `methodology-v11`；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11、v12、v13、v14、v15、v16 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
 
 场景定义见 [`scenarios.md`](scenarios.md)。本文件定义**怎么跑、怎么计数、怎么统计、怎么报告**。
 
