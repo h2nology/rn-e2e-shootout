@@ -28,8 +28,9 @@ export default defineConfig({
   // 正式测量不设（默认只在失败时写），视频不录
   ...(process.env.QUIESCO_TIMELINE === 'all' ? { artifacts: { timeline: 'all' as const } } : {}),
   devices: {
-    ios: { device: 'iPhone 17', os: '27.0' },
+    // 测量专用设备（METHODOLOGY 2 v16）
+    ios: { device: 'Shootout iPhone 17', os: '27.0' },
     // C2 只在 GAPIS 镜像上检查（AOSP 镜像没有浏览器，METHODOLOGY 2.2）：ANDROID_AVD=Medium_Phone_API_36_GAPIS
-    android: { avd: process.env.ANDROID_AVD ?? 'Medium_Phone_API_36_AOSP' },
+    android: { avd: process.env.ANDROID_AVD ?? 'Shootout_API_36_AOSP' },
   },
 });

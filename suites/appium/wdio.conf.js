@@ -14,7 +14,8 @@ const capabilities = {
   ios: {
     platformName: 'iOS',
     'appium:automationName': 'XCUITest',
-    'appium:deviceName': 'iPhone 17',
+    // 测量专用设备（METHODOLOGY 2 v16）：iPhone 17 / iOS 27.0
+    'appium:deviceName': 'Shootout iPhone 17',
     'appium:platformVersion': '27.0',
     'appium:app': `${BUILD}/rnshootout.app`,
     'appium:bundleId': BUNDLE,

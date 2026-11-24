@@ -31,11 +31,12 @@ module.exports = {
   devices: {
     simulator: {
       type: 'ios.simulator',
-      device: { type: 'iPhone 17', os: 'iOS 27.0' },
+      // 测量专用设备（METHODOLOGY 2 v16）：iPhone 17 / iOS 27.0
+      device: { name: 'Shootout iPhone 17', os: 'iOS 27.0' },
     },
     emulator: {
       type: 'android.emulator',
-      device: { avdName: 'Medium_Phone_API_36_AOSP' },
+      device: { avdName: 'Shootout_API_36_AOSP' },
     },
     // emulator 37.2 下 Detox 通过 telnet 查询模拟器控制台超时（“response not received”，控制台需认证），
     // 改用模板中的 android.attached，按 adb 名称直接连接已启动的模拟器。

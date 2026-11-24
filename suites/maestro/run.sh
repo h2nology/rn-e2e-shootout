@@ -2,7 +2,7 @@
 # Maestro 套件的运行入口。
 #   PLATFORM=ios|android  VARIANT=diagnostic|final  ./run.sh [flow 文件或目录 ...]
 # 不给 flow 时运行 flows/$VARIANT 下的全部场景。JUnit 输出到 reports/$PLATFORM-$VARIANT/。
-# 前提：mock server 已在 localhost:4000 运行；模拟器已启动（iOS：iPhone 17 / iOS 27.0；Android：emulator-5554）。
+# 前提：mock server 已在 localhost:4000 运行；模拟器已启动（iOS：Shootout iPhone 17 / iOS 27.0；Android：Shootout_API_36_AOSP / emulator-5554）。
 set -e
 cd "$(dirname "$0")"
 PLATFORM=${PLATFORM:-ios}

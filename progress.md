@@ -294,3 +294,4 @@
   - iOS 比 Android 慢的原因（findings.md 2026-11-24，替换初步结论）：harness 各一轮 timeline（QUIESCO_TIMELINE=all），差 95 s 中 type +66 s（第 1 次 type：启动收尾约 1.4 s + 首次键盘约 0.6 s；之后键盘稳定等待）、timeline 外 +28 s（权限重置、relaunch、S8 runner 启动），点击 / 滚动基本相同；scripts/timeline-breakdown.py
   - 整套耗时口径：用户选共同场景集（iOS 去掉 S21 / S22，Android 去掉 S10b / S22）→ harness commonSuiteMs（场景时段之和，结果 JSON 加 endOffsetMs）、图表改用它、单元测试 7 个通过；METHODOLOGY v15 草稿（待确认）
   - METHODOLOGY v15（共同场景集的整套耗时）用户确认（2026-11-24），打 tag `methodology-v15`；M4 完成
+  - 用户要求正式测量不用现有模拟器 → 新建专用设备：iOS `Shootout iPhone 17`（59C18B64…，iPhone 17 / iOS 27.0）、Android `Shootout_API_36_AOSP`（配置与 Medium_Phone_API_36_AOSP 相同）；harness 与四个工具的配置改为指向新设备；METHODOLOGY v16 草稿（待确认）；新设备上 8 组合冒烟（smoke4-*）进行中。M5 计划 `m5-final-none` 已生成（824 次，种子 20261124），Spotlight 已由用户关闭

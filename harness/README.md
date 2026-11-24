@@ -23,7 +23,7 @@ harness/bin/harness <command> …
 1. **宿主机**：每次运行前确认没有 harness 管理之外的 Android 模拟器在运行（有则作为环境错误停止，METHODOLOGY 6.4 同一时刻只运行一个模拟器）；首次执行时检查接电源（否则停止）、Spotlight 索引（开启时警告）；`caffeinate -dimsu` 在 harness 进程存活期间防止睡眠。每次运行前等 1 分钟 load average 降到阈值（`HARNESS_LOAD_THRESHOLD`，默认 8）以下，最多 20 分钟。
 2. **模拟器**（同一时刻只运行一个）：
    - iOS：关闭 Android 模拟器与其他 iOS 模拟器，`simctl shutdown` → `boot` → `bootstatus`（5 分钟上限）。关机期间把当前键盘恢复为英文（`KeyboardLastUsed`，S7b 后会停在日文键盘），设置语言 `en` / 地区 `en_US`、关闭减弱动态效果、浅色外观，读回并记录。
-   - Android：关闭 iOS 模拟器，结束并以固定参数冷启动模拟器（`-avd Medium_Phone_API_36_AOSP -port 5554 -no-snapshot-load -no-audio -no-window`；`slow-cpu` 加 `-cores 2` 并在模拟器内运行一个占满 1 核的进程），等 `sys.boot_completed`（5 分钟上限）。设置动画缩放 1.0、浅色、语言 en-US，读回并记录。
+   - Android：关闭 iOS 模拟器，结束并以固定参数冷启动模拟器（`-avd Shootout_API_36_AOSP -port 5554 -no-snapshot-load -no-audio -no-window`；`slow-cpu` 加 `-cores 2` 并在模拟器内运行一个占满 1 核的进程），等 `sys.boot_completed`（5 分钟上限）。设置动画缩放 1.0、浅色、语言 en-US，读回并记录。
 3. **mock server**：harness 启动并持有（端口 4000），每次运行前 `PUT /config`（施压条件与种子，同时 reset 数据）、清除计时标记。
 4. **安装**：卸载后安装该工具的 Release 构建（`suites/<tool>/build/`），计时为 `installMs`。Android 之后执行 `adb reverse tcp:4000 tcp:4000`（app 经 localhost 访问 mock server；Detox `--reuse` 时不会自己设置）。工具自身的安装步骤能跳过的都跳过（Detox `--reuse`、Maestro `SKIP_INSTALL`、Appium `noReset` 时同版本不重装）。
 5. **运行工具**：与 M3 相同的命令，30 分钟上限（超时结束进程组，未完成的场景记为 `timeout`）。日志写到 `logs/`。

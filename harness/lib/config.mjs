@@ -8,14 +8,16 @@ export const BUNDLE = 'com.rnshootout.app';
 export const MOCK_URL = 'http://localhost:4000';
 
 export const IOS = {
-  deviceName: 'iPhone 17',
+  // 测量专用模拟器（2026-11-24 新建，METHODOLOGY 2 v16）：iPhone 17 / iOS 27.0
+  deviceName: 'Shootout iPhone 17',
   osVersion: '27.0',
   runtimeId: 'com.apple.CoreSimulator.SimRuntime.iOS-27-0',
 };
 
 const SDK = process.env.ANDROID_HOME ?? path.join(os.homedir(), 'Library', 'Android', 'sdk');
 export const ANDROID = {
-  avd: 'Medium_Phone_API_36_AOSP',
+  // 测量专用 AVD（2026-11-24 新建，配置同 Medium_Phone_API_36_AOSP，METHODOLOGY 2 v16）
+  avd: 'Shootout_API_36_AOSP',
   serial: 'emulator-5554',
   port: 5554,
   sdk: SDK,
