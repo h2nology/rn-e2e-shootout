@@ -21,6 +21,9 @@ export default defineConfig({
   // native-module tracker：await 原生模块 Promise 期间（如登录后的 AsyncStorage.setItem）也算忙碌（h2nology/quiesco#67）。
   // 0.12.0 起只要 app 侧 withQuiesco(config, { nativeModules: true })（app/metro.config.js）就默认开启（#94），这里不需设置。
   // 阈值、忽略列表（含等待用户操作的调用的默认忽略列表，#93）用默认值。
+  // S22 的前置“通知权限已预先授权”（scenarios.md）。0.13.4 起 iOS 模拟器也支持（h2nology/quiesco#113）：
+  // 会话开始时 install 之后、app 启动之前写入通知设置并重启 SpringBoard（已允许则跳过）。Android：pm grant。
+  permissions: ['notifications'],
   devices: {
     ios: { device: 'iPhone 17', os: '27.0' },
     // C2 只在 GAPIS 镜像上检查（AOSP 镜像没有浏览器，METHODOLOGY 2.2）：ANDROID_AVD=Medium_Phone_API_36_GAPIS

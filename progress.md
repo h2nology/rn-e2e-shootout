@@ -284,3 +284,6 @@
   - Quiesco iOS S22 依赖“模拟器上已授权过通知”这一隐藏状态：harness 每次卸载重装，iOS 通知权限随之清除；Appium（`appium:permissions`）、Maestro（`setPermissions`）在场景内自行预先授权，Quiesco iOS 不能（simctl privacy 无 notifications 服务，`setPermission('notifications')` 在 iOS 不支持）→ 待用户决定处理方式
   - 用户决定向 Quiesco 提 issue：h2nology/quiesco#113（iOS 预先授予通知权限）。实测：通知设置在模拟器 `Library/BulletinBoard/VersionedSectionInfo.plist` 的 BBSectionInfo，`simctl uninstall` 会删除；applesimutils 写入该项并重启 SpringBoard；S22 单独运行：重装→授予 通过、授予→安装 通过、重装不授予 失败（弹窗）
   - #113 补充评论（用户担心重启 SpringBoard 导致模拟器崩溃）：applesimutils 授予 15 次循环模拟器 15/15 未崩溃（重启 + 启动约 6.5 s）；开机状态直接写 plist 不重启 → 无效；关机时写入 → 安装 app 时被清除 → 真正的预先授予必须重启 SpringBoard；风险在会话中途（Appium 实测 WDA 断开）→ 建议只在会话开始、app 与 runner 启动前重启，值不变则跳过，中途先停 runner，备用：runner 自动回应弹窗
+  - Quiesco 0.13.4（#113 修复：config `permissions: ['notifications']` 在 iOS 模拟器上于 app 启动前写入通知设置并重启 SpringBoard）：套件升级 core / vitest / cli（app 内 agent 等 0.13.3 只差版本号，按发布说明未重建）；config 加 `permissions: ['notifications']`，S22 去掉 Android 专用授予；S22 iOS 卸载后单独运行通过（SpringBoard 重启后 5.6 s 稳定）；METHODOLOGY v14 ⑥（待确认）
+  - 测量用模拟器 5FB8DD3C 曾因 #114 初版验证（场景中途重启 SpringBoard）PosterBoard 数据损坏（2026-11-23 23:29 起 25 份崩溃报告），2026-11-24 09:25 已修复（数据目录重建、重启），之后无崩溃
+  - harness 冒烟（smoke3-quiesco-*）因宿主机用电池未开始，待接电源
