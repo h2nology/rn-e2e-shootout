@@ -10,6 +10,8 @@ onFlowComplete:
       env:
         EVENT: scenario-end
 ---
+# 前置“通知权限已预先授权”：Android 有效。iOS 无效（Maestro 2.11.0 iOS 的 setPermissions 不支持 notifications，
+# 静默忽略），harness 每次重装 app 后点 “Notify in 3 s” 会弹出权限请求 → 在场景内点 “Allow”（限制，RESULTS.md）
 - setPermissions:
     permissions:
       notifications: allow
@@ -18,6 +20,14 @@ onFlowComplete:
     id: tab-settings
 - tapOn:
     id: notify-in-3s
+- runFlow:
+    when:
+      platform: iOS
+      visible: Allow
+    commands:
+      # 同一 flow 内 tapOn: Allow 找不到元素（元素树中有 accessibilityText=Allow，单独会话可点中）→ 按坐标点（iPhone 17）
+      - tapOn:
+          point: 68%,59%
 - pressKey: home
 - swipe:
     start: 20%, 0%
@@ -36,9 +46,10 @@ onFlowComplete:
       - tapOn: Hello from rnshootout
       - runFlow:
           when:
-            visible: .*Show less
+            visible: Hello from rnshootout
           commands:
-            # iOS 27 通知中心里对通知卡片的点击被识别成横向滑动，app 不打开（Appium 接入时同样实测）。
+            # 点击后通知仍在（未打开 app）：iOS 27 通知中心里对通知卡片的点击被识别成横向滑动（Appium 接入时同样实测）；
+            # 折叠时第一下只是展开。harness 每次重装 app 后只有一条通知、不折叠，同样走这里。
             # 改为用户的另一种打开方式：右滑最上面（最新）的卡片，点露出的 “Open”
             - swipe:
                 from:

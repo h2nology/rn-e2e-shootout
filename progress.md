@@ -288,3 +288,4 @@
   - 测量用模拟器 5FB8DD3C 曾因 #114 初版验证（场景中途重启 SpringBoard）PosterBoard 数据损坏（2026-11-23 23:29 起 25 份崩溃报告），2026-11-24 09:25 已修复（数据目录重建、重启），之后无崩溃
   - harness 冒烟（smoke3-quiesco-*，接电源后）：iOS 24/24（suite 323 s，launch 17.4 s 含 SpringBoard 重启 6.3 s；运行中 load 中位数 10 / 最大 34，偏高）、Android 24/24（suite 215 s）；PosterBoard 无新崩溃
   - METHODOLOGY v14（① 固定顺序 ② 负载 / 模拟器 / 睡眠 ③ 计时标记 ④ 整套耗时只统计全绿运行 ⑤ app getItemLayout ⑥ Quiesco 0.13.4）用户确认（2026-11-24），打 tag `methodology-v14`
+  - Maestro iOS S3 / S20 / S22（findings.md 2026-11-24）：S3 / S20 iOS 改按回车收起键盘；S22 iOS（用户选方案 1）在场景内按坐标点 Allow（Maestro 2.11.0 iOS setPermissions 不支持 notifications，同 flow 内 tapOn: Allow 找不到元素），点击后通知仍在时右滑 → Open；RESULTS 记为限制。harness 冒烟 smoke3-maestro-*：iOS 24/24（suite 580 s）、Android 24/24（suite 760 s）

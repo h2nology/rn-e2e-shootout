@@ -15,7 +15,7 @@
 |---|---|---|---|
 | S1 登录 | ✓ | ✓ | Android 需 W3：重置后 `waitForAnimationToEnd`，否则启动中的点击会使之后所有注入的触摸失效（WAITS #1） |
 | S2 邮箱校验 | ✓ | ✓ | |
-| S3 搜索 | ✓ | ✓ | `inputText` 对 ASCII 文字逐个按键输入；之后 `hideKeyboard`（键盘挡住 `#item-row-49`，`assertVisible` 要求可见） |
+| S3 搜索 | ✓ | ✓ | `inputText` 对 ASCII 文字逐个按键输入；之后收起键盘（键盘挡住 `#item-row-49`，`assertVisible` 要求可见）：Android `hideKeyboard`（返回键）；iOS 按回车（`pressKey: Enter`）。M4 harness 下 iOS 的 `hideKeyboard` 必定失败：它在屏幕中央做两次 3% 的短滑动，本 app 的列表滑动不收起键盘（RN 默认），软键盘显示时收不起来（findings.md 2026-11-24）；M3 时通过时软键盘是否显示已无法确认（Maestro 日志只保留 14 天） |
 | S4 新增 | ✓ | ✓ | |
 | S5 删除 | ✓ | ✓ | |
 | S6 长列表 | ✓ | ✓ | `scrollUntilVisible`，timeout 调为 300 s（WAITS #2）。iOS 约 180 s、Android 约 190 s。`speed: 100` 会惯性越过目标行 |
@@ -34,9 +34,9 @@
 | S17 Toast | ✓ | ✓ | `assertVisible` 后 `assertNotVisible` |
 | S18 错误与重试 | ✓ | ✓ | Appium 在 iOS 上需要的“等首次加载完成”（W3）在 Maestro 中不需要 |
 | S19 Tab 状态 | ✓ | ✓ | “返回”：Android `back`；iOS 点导航栏的 `Back`（Maestro 的 `back` 只支持 Android / Web） |
-| S20 键盘遮挡 | ✓ | ✓ | 两平台都用 `hideKeyboard`（iOS 为在屏幕中间小幅滑动，Android 为返回键） |
+| S20 键盘遮挡 | ✓ | ✓ | 收起键盘：Android `hideKeyboard`（返回键）；iOS 按回车（`pressKey: Enter`，scenarios.md 允许）。M3 时两平台都用 `hideKeyboard`，M4 harness 下 iOS 失败，原因同 S3 |
 | S21 深链接 | ✓ | ✓ | 切后台 `pressKey: home`，`openLink`，终止 `stopApp`。iOS 的“Open in "rnshootout"?”确认框：点过一次后该模拟器不再出现（Maestro 文档），出现时才点 |
-| S22 本地通知 | 需额外说明 | ✓ | 打开通知中心：从屏幕顶端向下 `swipe`（两平台相同）。通知权限：`setPermissions: { notifications: allow }`（Maestro 文档：iOS 不能静默授予，系统弹窗出现时 Maestro 自动点 Allow）。iOS：同 app 的通知被折叠为组，先展开；对通知卡片的点击被识别为横向滑动（与 Appium 相同）→ 右滑卡片后点 `Open` |
+| S22 本地通知 | 需额外说明 | ✓ | 打开通知中心：从屏幕顶端向下 `swipe`（两平台相同）。通知权限：`setPermissions: { notifications: allow }`，Android 有效；**iOS 不能预先授予（限制）**：Maestro 2.11.0 iOS 的 `setPermissions` 支持的权限里没有 `notifications`，被静默忽略，弹窗出现时也不会自动点 Allow（实测）。M3 时依赖模拟器上之前允许过的状态；M4 harness 每次重装 app 后弹出权限请求 → 场景内点 Allow，且同一 flow 内 `tapOn: Allow` 找不到元素（元素树中有，单独会话可点中）→ **按坐标点（限制）**。iOS：对通知卡片的点击被识别为横向滑动（与 Appium 相同）→ 点击后通知仍在时右滑卡片、点 `Open`（M3 时只在通知折叠为组时走这条路径；重装后只有一条通知，同样需要）。findings.md 2026-11-24 |
 | S23 前后台 | ✓ | ✓ | 切后台 `pressKey: home`，回前台 `launchApp: { stopApp: false }`，终止 `stopApp`。“后台停留 2 秒”：Maestro 没有固定时长的等待命令，用 device-helper 的 `/sleep`。Appium 需要的“等保存请求完成”（W3）在 Maestro 中不需要（`tapOn` 后等待界面静止） |
 
 ### 诊断版（不加任何等待）
