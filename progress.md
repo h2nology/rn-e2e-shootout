@@ -287,3 +287,4 @@
   - Quiesco 0.13.4（#113 修复：config `permissions: ['notifications']` 在 iOS 模拟器上于 app 启动前写入通知设置并重启 SpringBoard）：套件升级 core / vitest / cli（app 内 agent 等 0.13.3 只差版本号，按发布说明未重建）；config 加 `permissions: ['notifications']`，S22 去掉 Android 专用授予；S22 iOS 卸载后单独运行通过（SpringBoard 重启后 5.6 s 稳定）；METHODOLOGY v14 ⑥（待确认）
   - 测量用模拟器 5FB8DD3C 曾因 #114 初版验证（场景中途重启 SpringBoard）PosterBoard 数据损坏（2026-11-23 23:29 起 25 份崩溃报告），2026-11-24 09:25 已修复（数据目录重建、重启），之后无崩溃
   - harness 冒烟（smoke3-quiesco-*，接电源后）：iOS 24/24（suite 323 s，launch 17.4 s 含 SpringBoard 重启 6.3 s；运行中 load 中位数 10 / 最大 34，偏高）、Android 24/24（suite 215 s）；PosterBoard 无新崩溃
+  - METHODOLOGY v14（① 固定顺序 ② 负载 / 模拟器 / 睡眠 ③ 计时标记 ④ 整套耗时只统计全绿运行 ⑤ app getItemLayout ⑥ Quiesco 0.13.4）用户确认（2026-11-24），打 tag `methodology-v14`
