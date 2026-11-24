@@ -43,6 +43,7 @@ export async function runOne(entry, ctx) {
 
   // 2. 模拟器（harness 管理之外的 Android 模拟器在运行时停止，METHODOLOGY 6.4）
   await device.assertNoForeignEmulators();
+  const deviceSince = new Date();
   const dev =
     platform === 'ios'
       ? await device.prepareIos(log)
@@ -91,6 +92,12 @@ export async function runOne(entry, ctx) {
   const marks = await mock.getMarks();
   fs.writeFileSync(path.join(junitCopyDir, 'marks.json'), JSON.stringify(marks, null, 1));
   const sleepEvents = await host.sleepEventsSince(startedAt);
+  // 开机到套件结束之间模拟器的系统 UI 进程崩溃（METHODOLOGY 6.4 v17）
+  const systemCrashes = platform === 'ios' ? device.iosSystemCrashesSince(dev.udid, deviceSince) : [];
+  const invalidReasons = [
+    ...(sleepEvents.length > 0 ? ['host sleep events during the run'] : []),
+    ...(systemCrashes.length > 0 ? [`simulator system UI crashed during the run (${[...new Set(systemCrashes.map((c) => c.process))].join(', ')} × ${systemCrashes.length})`] : []),
+  ];
 
   const scenarios = composeScenarios(cases, marks, res.timedOut);
   const starts = scenarios.map((s) => s._start).filter(Number.isFinite);
@@ -122,9 +129,10 @@ export async function runOne(entry, ctx) {
     startedAt: startedAt.toISOString(),
     exitCode: res.code,
     timedOut: res.timedOut,
-    invalid: sleepEvents.length > 0,
-    invalidReason: sleepEvents.length > 0 ? 'host sleep events during the run' : null,
+    invalid: invalidReasons.length > 0,
+    invalidReason: invalidReasons.length > 0 ? invalidReasons.join('; ') : null,
     sleepEvents,
+    systemCrashes,
     environment: {
       loadBefore: loadWait.load,
       loadWaitedMs: loadWait.waitedMs,
@@ -152,7 +160,7 @@ export async function runOne(entry, ctx) {
     `done: ${result.scenarios.filter((s) => s.status === 'passed').length} passed, ${failed.length} failed` +
       `${failed.length ? ` (${failed.map((s) => `${s.id}:${s.status}`).join(', ')})` : ''}, suite ${suiteMs} ms, launch ${launchMs} ms, install ${installMs} ms` +
       `${result.environment.loadDuring ? `, load during median ${result.environment.loadDuring.median} / max ${result.environment.loadDuring.max}` : ''}` +
-      `${result.invalid ? ' — INVALID (sleep events)' : ''}`,
+      `${result.invalid ? ` — INVALID (${result.invalidReason})` : ''}`,
   );
   return result;
 }

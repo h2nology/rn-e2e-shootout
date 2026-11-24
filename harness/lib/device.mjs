@@ -57,6 +57,53 @@ function presetIosLocale(udid) {
   execFileSync('plutil', ['-replace', 'AppleLocale', '-string', 'en_US', f]);
 }
 
+/**
+ * PosterBoard（锁屏 / 壁纸）的数据在关机状态下删除，开机时重建（METHODOLOGY 6.4 v17）。
+ * 2026-11-23 旧模拟器、2026-11-24 专用模拟器各损坏一次（`PRPosterDescriptor _initWithPath` 断言），
+ * 之后每次开机都崩溃循环，SpringBoard 重启后的稳定时间 5–6 s → 16 s。诱因未确定（只有 Quiesco 会重启 SpringBoard）。
+ * 重建不影响开机时间（实测 5–6 s）。
+ */
+function resetPosterBoard(udid) {
+  fs.rmSync(`${process.env.HOME}/Library/Developer/CoreSimulator/Devices/${udid}/data/Library/Application Support/PRBPosterExtensionDataStore`, {
+    recursive: true,
+    force: true,
+  });
+}
+
+// 系统 UI 进程：运行期间崩溃则该次运行无效（METHODOLOGY 6.4 v17）。其他守护进程（assistantd 等）每次开机都可能崩溃，不算
+const SYSTEM_UI_PROCESSES = ['PosterBoard', 'SpringBoard', 'backboardd'];
+
+/** since 之后目标模拟器上系统 UI 进程的崩溃报告：[{ process, time, file }]。 */
+export function iosSystemCrashesSince(udid, since) {
+  const dir = `${process.env.HOME}/Library/Logs/DiagnosticReports`;
+  let files;
+  try {
+    files = fs.readdirSync(dir);
+  } catch {
+    return [];
+  }
+  const out = [];
+  for (const f of files) {
+    const proc = SYSTEM_UI_PROCESSES.find((p) => f.startsWith(`${p}-`) && f.endsWith('.ips'));
+    if (!proc) continue;
+    const p = `${dir}/${f}`;
+    let st;
+    try {
+      st = fs.statSync(p);
+    } catch {
+      continue;
+    }
+    if (st.mtimeMs < since.getTime()) continue;
+    const text = fs.readFileSync(p, 'utf8');
+    if (!text.includes(`com.apple.CoreSimulator.SimDevice.${udid}`)) continue;
+    const m = text.match(/"captureTime" : "(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})\.\d+ ([+-]\d{2})(\d{2})"/);
+    const time = m ? new Date(`${m[1]}T${m[2]}${m[3]}:${m[4]}`) : new Date(st.mtimeMs);
+    if (time < since) continue;
+    out.push({ process: proc, time: time.toISOString(), file: f });
+  }
+  return out.sort((a, b) => a.time.localeCompare(b.time));
+}
+
 /** iOS：关闭 Android 模拟器与其他 iOS 模拟器，重启目标模拟器，设置环境。返回设备信息。 */
 export async function prepareIos(log) {
   await killEmulator(log);
@@ -66,6 +113,7 @@ export async function prepareIos(log) {
   await run('xcrun', ['simctl', 'shutdown', udid], { allowFail: true, timeoutMs: 120_000 });
   resetIosKeyboard(udid);
   presetIosLocale(udid);
+  resetPosterBoard(udid);
   await run('xcrun', ['simctl', 'boot', udid], { timeoutMs: 120_000 });
   await run('xcrun', ['simctl', 'bootstatus', udid, '-b'], { timeoutMs: LIMITS.bootTimeoutMs });
   const rebootMs = Date.now() - t0;

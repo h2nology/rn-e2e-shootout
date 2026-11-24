@@ -1,6 +1,6 @@
 # 测量方法
 
-> 方法版本：**v16**（2026-11-24，tag `methodology-v16`；v15 为 2026-11-24，tag `methodology-v15`；v14 为 2026-11-24，tag `methodology-v14`；v13 为 2026-11-23，tag `methodology-v13`；v12 为 2026-11-22，tag `methodology-v12`；v11 为 2026-11-22，tag `methodology-v11`；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11、v12、v13、v14、v15、v16 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
+> 方法版本：**v17**（待确认；v16 为 2026-11-24，tag `methodology-v16`；v15 为 2026-11-24，tag `methodology-v15`；v14 为 2026-11-24，tag `methodology-v14`；v13 为 2026-11-23，tag `methodology-v13`；v12 为 2026-11-22，tag `methodology-v12`；v11 为 2026-11-22，tag `methodology-v11`；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11、v12、v13、v14、v15、v16 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
 
 场景定义见 [`scenarios.md`](scenarios.md)。本文件定义**怎么跑、怎么计数、怎么统计、怎么报告**。
 
@@ -142,6 +142,8 @@
 - 每次套件运行前等宿主机 1 分钟 load average 降到 **8** 以下（15 核的约一半），模拟器开机后再等一次；最多等 20 分钟，超过则停止。两次的值写进结果 JSON。阈值的依据：M3 中 load average 30–40 时 Android S6 两次因拖动距离变短失败（findings.md：Quiesco 0.13.1）。
 - 模拟器每次以相同方式启动：iOS 为 `simctl shutdown` → `boot`；Android 结束模拟器进程后以固定参数冷启动（`-avd Shootout_API_36_AOSP -port 5554 -no-snapshot-load -no-audio -no-window`；headless：带窗口启动且窗口不在前台时 macOS 把模拟器进程限速为后台优先级，耗时变为 2–3 倍；`slow-cpu` 另加 `-cores 2`）。开机最多等 5 分钟，超时则停止且不写该次结果。
 - 运行期间宿主机如有睡眠 / 唤醒事件（`pmset -g log`），该次运行标为无效（`invalid`），保留结果但不计入统计。
+- iOS 模拟器每次开机前（关机状态）删除 PosterBoard 的数据（`data/Library/Application Support/PRBPosterExtensionDataStore`），开机时由系统重建；语言 / 地区也在关机状态下写入。
+- iOS 模拟器从开机到套件结束之间，系统 UI 进程（PosterBoard、SpringBoard、backboardd）如有崩溃报告（`~/Library/Logs/DiagnosticReports`），该次运行标为无效，同上保留结果但不计入统计。其他系统守护进程（assistantd 等）的崩溃每次开机都可能出现，不作为判断依据。
 
 ### 6.5 超时
 
@@ -294,3 +296,4 @@ CI     = [center − half, center + half]
 | v14 | 2026-11-24 | ① 6.3 套件内的场景按编号固定顺序执行；② 6.4 负载阈值（1 分钟 load average < 8，开机前后各等一次）、模拟器的启动方式与开机上限、运行中宿主机睡眠则该次运行无效；③ 7 场景 / 重置耗时改由计时标记计算（不用 JUnit 的 `time`），`launchMs` 的终点改为第一个场景的重置开始，`installMs` 由 harness 统一计时；④ 9 整套耗时只统计全绿运行，分位数用线性插值；⑤ 2.2 被测 app 的 FlatList 加 `getItemLayout`；⑥ 2.1 Quiesco 0.13.3 → 0.13.4，插件披露的版本加上 `quiesco@h2nology` 0.13.4 | M4 实现 harness 时确定。① M3 中 Vitest 按上次耗时排序使 S8 承担 XCUITest runner 启动（Quiesco 0.13.3），Maestro 的执行顺序不固定；② M3 中高负载导致 S6 失败、模拟器开机曾无限等待、宿主机睡眠导致整轮失败；③ 各工具 JUnit 对重置的计入方式不同，无法满足第 5 节“重置耗时不计入场景耗时”；④ v1–v13 未规定；⑥ harness 每次运行卸载重装 app，iOS 的通知权限随之清除，Quiesco 0.13.3 不能在 iOS 上预先授予通知权限（S22 依赖模拟器上手动允许过的状态，冒烟中失败），向 Quiesco 提 h2nology/quiesco#113，0.13.4 修复（只改 `@quiesco/core`），按第 2.1 节的规则升级；其他工具的 S22 都在场景内自行预先授予。v14 制定时尚无正式测量数据（M4 阶段） |
 | v15 | 2026-11-24 | 9 工具之间比较整套耗时改用共同场景集（按平台去掉至少一个工具 ✗ / 跳过的场景：iOS S21、S22，Android S10b、S22），场景时段之和；各工具全部场景的 `suiteMs`（全绿运行）另外报告 | v14 ④“整套耗时只统计全绿运行”下，Detox iOS 的 S21 每轮失败（✗）→ 永远没有整套耗时；Detox 跳过的场景（iOS S22，Android S10b、S22）使各工具整套耗时覆盖的场景不同，不能直接比较（用户决定，2026-11-24）。v15 制定时尚无正式测量数据（M4 阶段） |
 | v16 | 2026-11-24 | 2 / 6.4 正式测量改用新建的专用模拟器：iOS `Shootout iPhone 17`（iPhone 17 / iOS 27.0），Android `Shootout_API_36_AOSP`（android-36 default arm64-v8a、medium_phone、4 核 / 2 GB，配置与 `Medium_Phone_API_36_AOSP` 相同） | M3 / M4 使用的模拟器也用于其他工作：iOS 模拟器曾因外部验证中重启 SpringBoard 损坏 PosterBoard 数据（findings.md 2026-11-24，已修复），另有其他工作的状态残留（如手动允许过的通知权限）。正式测量用只由 harness 操作的全新设备（用户决定，2026-11-24）。机型、系统版本、镜像、硬件配置不变。v16 制定时尚无正式测量数据（M5 开始前） |
+| v17 | 待确认 | 6.4 iOS 模拟器每次开机前删除 PosterBoard 数据；运行中系统 UI 进程（PosterBoard / SpringBoard / backboardd）崩溃则该次运行无效 | 专用模拟器在 m5-final-none 第 29 次运行（Quiesco iOS #60）开机时 PosterBoard 数据已损坏（`PRPosterDescriptor _initWithPath` 断言，2026-11-24 22:11 起 32 份崩溃报告），之后每次开机崩溃循环，SpringBoard 重启后的稳定时间 5–6 s → 16 s，拉长 launch。M3 用的模拟器 2026-11-23 也发生过一次。诱因未确定（只有 Quiesco 会重启 SpringBoard）。测量暂停，数据重建后不再崩溃；重建不影响开机时间（实测 5–6 s）。用户决定每次开机前重建，并加上自动检测（2026-11-24）。已完成的 28 次运行中只有该次符合无效条件，按本规则补标为无效 |

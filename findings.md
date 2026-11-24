@@ -496,3 +496,12 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 每个场景开头的重置（4 次）：`setPermission('location', 'reset')` iOS 0.18 s（Android 不需要）；`relaunch({ clearData: true })` iOS 2.41–2.50 s、Android 2.08–2.15 s（+0.35 s）；第 1 次 `type` iOS 2.58–2.69 s、Android 0.22–0.35 s。合计每个场景约 +2.9 s，24 个场景约 +68 s。
 
 **结论**：iOS 慢约 95 s 中约 70 s 是每个场景都付一次的固定开销：app 冷启动的收尾（约 1.4 s）、第一次弹出键盘（约 0.6 s）、清数据重启与权限重置（约 0.5 s），加上登录输入时的键盘稳定等待；约 13 s 是之后每次输入的键盘稳定等待（Quiesco 的设计，iOS 特有）；约 5 s 是 XCUITest runner 启动（S8）。点击、滚动、断言等操作本身两平台基本相同。其他工具同样是 iOS 更慢（Maestro 相反），但各工具的开销构成不同，这里只拆解了 Quiesco。
+
+## 2026-11-24 专用 iOS 模拟器 PosterBoard 数据损坏（m5-final-none 中）
+
+- 现象：22:11 起 `Shootout iPhone 17` 上 PosterBoard 反复崩溃（32 份报告，`-[PRPosterDescriptor _initWithPath:]` 断言，`PBFAmbientRoleCoordinator finalizeChangesWithChangeHandler` 中），与 2026-11-23 旧模拟器 5FB8DD3C 的崩溃相同。
+- 时间：第一次崩溃 22:11:28，正是 harness 为 Quiesco iOS #60 重启模拟器开机的时刻 → 数据在此前已损坏：上一次 iOS 运行（Quiesco iOS #61，21:52 SpringBoard 重启，21:58 结束）到下一次开机之间。之前 Maestro / Appium / Detox 的 iOS 运行与 Quiesco 的前 3 次预热都无崩溃。
+- 影响：#60 中 Quiesco 重启 SpringBoard 后的稳定时间 16.3 s（其他运行 5.4–6.3 s，预热 w3 10.3 s），launch 23.7 s（平时 12.6 s）；场景 24/24、suite 316 s 与平时相同。之后的 Appium iOS #50 运行中仍崩溃 → 测量暂停（该次未写结果，恢复时重跑）。
+- 诱因：未确定。两次损坏都发生在 Quiesco 会重启 SpringBoard（`permissions: ['notifications']`，#113）的模拟器上；旧模拟器那次是 #114 初版验证中在场景中途重启 SpringBoard。其他三个工具不重启 SpringBoard。损坏的数据备份在 scratchpad（posterboard-corrupt-20261124），未进仓库。
+- 修复：关机状态下删除 `data/Library/Application Support/PRBPosterExtensionDataStore`，开机时系统重建，之后无崩溃；重建对开机时间无影响（保留 5.7 / 5.6 s，重建 4.6 / 5.6 s）。
+- 对策（用户决定，METHODOLOGY v17 待确认）：每次 iOS 开机前都重建；开机到套件结束之间系统 UI 进程（PosterBoard / SpringBoard / backboardd）有崩溃报告则该次运行无效（结果 JSON `systemCrashes`）。#60 按此补标为无效。
