@@ -291,3 +291,4 @@
   - Maestro iOS S3 / S20 / S22（findings.md 2026-11-24）：S3 / S20 iOS 改按回车收起键盘；S22 iOS（用户选方案 1）在场景内按坐标点 Allow（Maestro 2.11.0 iOS setPermissions 不支持 notifications，同 flow 内 tapOn: Allow 找不到元素），点击后通知仍在时右滑 → Open；RESULTS 记为限制。harness 冒烟 smoke3-maestro-*：iOS 24/24（suite 580 s）、Android 24/24（suite 760 s）
   - Appium Android S21（findings.md 2026-11-24）：login() 不等登录完成，登录后的 router.replace 把深链接打开的详情页换回 Home（M3 带窗口模拟器慢，未暴露）→ 正式版登录后等 item-row-1（W3 #15），单独 5/5
   - harness：运行前检查 harness 管理之外的 Android 模拟器（发现带窗口的 Medium_Phone_API_37.0 / emulator-5556 自 2026-11-23 21:28 起一直运行，smoke2 / smoke3 期间都在）→ 环境错误停止；待用户关闭
+  - iOS 比 Android 慢的原因（findings.md 2026-11-24，替换初步结论）：harness 各一轮 timeline（QUIESCO_TIMELINE=all），差 95 s 中 type +66 s（第 1 次 type：启动收尾约 1.4 s + 首次键盘约 0.6 s；之后键盘稳定等待）、timeline 外 +28 s（权限重置、relaunch、S8 runner 启动），点击 / 滚动基本相同；scripts/timeline-breakdown.py

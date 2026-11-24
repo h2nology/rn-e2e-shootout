@@ -24,6 +24,9 @@ export default defineConfig({
   // S22 的前置“通知权限已预先授权”（scenarios.md）。0.13.4 起 iOS 模拟器也支持（h2nology/quiesco#113）：
   // 会话开始时 install 之后、app 启动之前写入通知设置并重启 SpringBoard（已允许则跳过）。Android：pm grant。
   permissions: ['notifications'],
+  // 按环节分析耗时时（findings.md “iOS 比 Android 慢的原因”）全部场景写 timeline：QUIESCO_TIMELINE=all。
+  // 正式测量不设（默认只在失败时写），视频不录
+  ...(process.env.QUIESCO_TIMELINE === 'all' ? { artifacts: { timeline: 'all' as const } } : {}),
   devices: {
     ios: { device: 'iPhone 17', os: '27.0' },
     // C2 只在 GAPIS 镜像上检查（AOSP 镜像没有浏览器，METHODOLOGY 2.2）：ANDROID_AVD=Medium_Phone_API_36_GAPIS

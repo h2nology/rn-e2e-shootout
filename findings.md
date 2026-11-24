@@ -470,3 +470,29 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 原因：Appium 的 `login()` 点完登录按钮即返回；登录请求完成后 app 执行 `router.replace('/')`，把深链接已打开的详情页换回 Home。M3 时 Android 模拟器带窗口运行、被 macOS 限速，登录总是先完成；M4 harness 改为无窗口模拟器后变快，顺序反过来。
 - 排查过程：切后台后停 1 s 再打开深链接 2/2 通过、不停 0/2；等 `queryAppState` < 4、等前台包名变为桌面都仍失败（不是切后台的时机）。
 - 修复：S21 正式版登录后等 `item-row-1` 显示（W3，Appium WAITS.md #15），5/5 通过。其他工具：Quiesco 在动作后等待 app 空闲（包括网络请求）；Maestro 冒烟通过。
+
+### iOS 比 Android 慢的原因：整轮 timeline 按环节汇总（M4，Quiesco 0.13.4，2026-11-24）
+
+替换上面“初步”一节的结论。harness 各跑一整轮（`QUIESCO_TIMELINE=all`，只写 timeline、不录视频；session `tl-quiesco-{ios,android}`，未提交）：iOS 24/24、suite 318 s，Android 24/24、suite 215 s，运行中 load 中位数 4.6 / 5.1。`scripts/timeline-breakdown.py` 汇总全部场景的 timeline（第一个区段到最后一个区段，iOS 287 s / Android 192 s，差 95 s）：
+
+| 环节 | iOS | Android | 差 |
+|---|---|---|---|
+| `type`（54 次，含前后空闲等待） | 81.4 s | 14.9 s | **+66.4** |
+| timeline 外的时间（测试代码：beforeEach 的 `/reset`、权限重置、`relaunch`，以及设备操作） | 86.3 s | 58.0 s | **+28.3** |
+| `tap`（79 / 78 次） | 64.5 s | 60.9 s | +3.6 |
+| `scrollTo`（S6） | 23.0 s | 26.4 s | −3.4（`getItemLayout` 后 iOS 不再更慢） |
+| soft reset | 24.4 s | 25.5 s | −1.1 |
+| 其他（断言、WebView、swipe 等） | | | 约 +1 |
+
+**按场景**：除 S6（−0.2 s）外，每个场景 iOS 多 +2.9–5.7 s，S8 多 +9.1 s（timeline 外 +5.4 s：第一次用 `system.*` 时启动 XCUITest runner，见 N1；固定顺序后每轮都落在 S8）。
+
+**`type` 的 +66 s**：
+- 每个场景的第 1 次 `type`（`relaunch` 之后）：iOS 平均 2.49 s（其中空闲等待 2.12 s）、Android 0.27 s，24 次约 +53 s。
+- 之后的 `type`：iOS 0.72 s、Android 0.28 s，30 次约 +13 s。
+
+**对照实验（iOS，单独运行）**：
+- 重启后先等 3 s 再输入：第 1 次 `type` 2.55–2.61 s → 1.14–1.29 s，即约 1.4 s 是 app 启动未结束（`relaunch` 在 iOS 上于 splash 1.5 s 最短显示定时器触发前返回，启动的收尾算进第 1 个操作；Android 的 `relaunch` 返回时启动已结束）；剩余约 0.6 s 是本进程第一次弹出键盘。
+- 之后的 `type` 0.62–0.65 s vs Android 约 0.28 s：`@quiesco/native` iOS 键盘稳定等待（键盘最后一次活动后 0.4 s 内报 `keyboard just used`，Quiesco 有意设计，iOS 27 上输入后立刻点击会被丢弃）。空闲等待中 iOS 最常见的忙碌原因即 `native: keyboard just used`（51 次）。
+- 每个场景开头的重置（4 次）：`setPermission('location', 'reset')` iOS 0.18 s（Android 不需要）；`relaunch({ clearData: true })` iOS 2.41–2.50 s、Android 2.08–2.15 s（+0.35 s）；第 1 次 `type` iOS 2.58–2.69 s、Android 0.22–0.35 s。合计每个场景约 +2.9 s，24 个场景约 +68 s。
+
+**结论**：iOS 慢约 95 s 中约 70 s 是每个场景都付一次的固定开销：app 冷启动的收尾（约 1.4 s）、第一次弹出键盘（约 0.6 s）、清数据重启与权限重置（约 0.5 s），加上登录输入时的键盘稳定等待；约 13 s 是之后每次输入的键盘稳定等待（Quiesco 的设计，iOS 特有）；约 5 s 是 XCUITest runner 启动（S8）。点击、滚动、断言等操作本身两平台基本相同。其他工具同样是 iOS 更慢（Maestro 相反），但各工具的开销构成不同，这里只拆解了 Quiesco。
