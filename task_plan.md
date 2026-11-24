@@ -8,11 +8,11 @@
 
 ## Next Step
 
-M4 完成（METHODOLOGY v15，tag `methodology-v15`）：harness、计时标记、固定顺序、环境检查、冒烟问题修复、iOS / Android 差距的按环节拆解、共同场景集的整套耗时。下一步 M5 正式测量：由用户确定 N、预热次数、施压条件后 `harness plan` + `execute`。
+M4 完成（METHODOLOGY v15，tag `methodology-v15`）：harness、计时标记、固定顺序、环境检查、冒烟问题修复、iOS / Android 差距的按环节拆解、共同场景集的整套耗时。下一步 M5 正式测量（规模按 METHODOLOGY 6.2 预先登记：预热 3、无施压 N = 100、每种施压条件 N = 50），先与用户确定执行顺序与时间安排后 `harness plan` + `execute`。
 
 ## Current Phase
 
-Phase 5（M5）：待用户确定正式测量的规模（N、预热、施压条件）
+Phase 5（M5）：待与用户确定执行顺序（规模按 METHODOLOGY 6.2）
 
 ## Phases
 
