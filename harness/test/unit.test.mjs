@@ -92,7 +92,7 @@ test('commonSuiteMs: falls back to resetMs + durationMs for results without endO
   assert.equal(commonSuiteMs(run), 5);
 });
 
-import { makeupEntries } from '../lib/session.mjs';
+import { makeupEntries, trimPlan } from '../lib/session.mjs';
 
 test('makeupEntries: one entry per missing valid run, numbered after the plan, repeated rounds', () => {
   const a = { tool: 'quiesco', platform: 'ios', variant: 'final', stress: 'none' };
@@ -123,4 +123,28 @@ test('makeupEntries: one entry per missing valid run, numbered after the plan, r
   assert.equal(add2[0].runIndex, 6);
   assert.equal(add2[0].makeupRound, 2);
   assert.deepEqual(makeupEntries(plan, [...results, ...[1, 2].map(() => ({ ...a, warmup: false, invalid: false }))]), []);
+});
+
+test('trimPlan: keeps done entries, keeps (runs − valid) pending entries per combo in plan order, records the rest', () => {
+  const a = { tool: 'quiesco', platform: 'ios', variant: 'final', stress: 'none' };
+  const b = { tool: 'detox', platform: 'android', variant: 'final', stress: 'none' };
+  const entries = [
+    { seq: 1, ...a, runIndex: 1, warmup: true, file: 'w' },
+    ...[1, 2, 3, 4, 5].map((i) => ({ seq: 1 + i, ...a, runIndex: i, warmup: false, file: `a${i}` })),
+    ...[1, 2, 3, 4, 5].map((i) => ({ seq: 6 + i, ...b, runIndex: i, warmup: false, file: `b${i}` })),
+  ];
+  const plan = { name: 't', shuffleSeed: 7, runs: 5, combos: [a, b], entries };
+  // a1 有效、a2 无效已完成；b 都未完成
+  const results = [{ ...a, warmup: true }, { ...a, warmup: false, invalid: false }, { ...a, warmup: false, invalid: true }];
+  const todo = entries.filter((e) => !['w', 'a1', 'a2'].includes(e.file));
+  const dropped = trimPlan(plan, results, 2, 'test', todo);
+  assert.equal(plan.runs, 2);
+  assert.deepEqual(plan.entries.map((e) => e.file), ['w', 'a1', 'a2', 'a3', 'b1', 'b2']);
+  assert.deepEqual(dropped.map((e) => e.file), ['a4', 'a5', 'b3', 'b4', 'b5']);
+  assert.equal(plan.droppedEntries.length, 5);
+  assert.deepEqual(plan.runsHistory[0], { ...plan.runsHistory[0], from: 5, to: 2 });
+  // 补跑编号不和移走的条目重复
+  const add = makeupEntries(plan, [...results, { ...a, warmup: false, invalid: true }, ...[1, 2].map(() => ({ ...b, warmup: false, invalid: false }))]);
+  assert.equal(add.length, 1);
+  assert.equal(add[0].runIndex, 6);
 });

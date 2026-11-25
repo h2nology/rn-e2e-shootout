@@ -3,6 +3,7 @@
 //   harness run      --tool <t> --platform <p> --runs <N> [--variant final|diagnostic] [--stress <profile>] [--warmup <K>] [--session <name>]
 //   harness plan     --tools a,b --platforms ios,android --variants final --stress none --runs <N> [--warmup 3] --seed <S> --session <name>
 //   harness execute  --session <name> [--limit <K>]
+//   harness trim     --session <name> --runs <N> --reason <text>   （缩减 N，METHODOLOGY 6.2 v19）
 //   harness build    --tool <t> --platform <p> [--repeat <K>]
 //   harness summarize [--sessions a,b] [--out results/summary.json]
 import fs from 'node:fs';
@@ -12,7 +13,7 @@ import { PLATFORMS, RESULTS_RAW, STRESS_PROFILES, TOOLS, VARIANTS } from './lib/
 import * as host from './lib/host.mjs';
 import * as mock from './lib/mock.mjs';
 import { runOne } from './lib/run-one.mjs';
-import { createPlan, loadPlan, loadResults, makeupEntries, pending, savePlan, sessionDir } from './lib/session.mjs';
+import { createPlan, loadPlan, loadResults, makeupEntries, pending, savePlan, sessionDir, trimPlan } from './lib/session.mjs';
 import { runLogged } from './lib/sh.mjs';
 import { TOOL_ADAPTERS } from './lib/tools.mjs';
 import { summarize } from './summarize.mjs';
@@ -30,6 +31,7 @@ const { values: o } = parseArgs({
     variants: { type: 'string', default: 'final' },
     stress: { type: 'string', default: 'none' },
     runs: { type: 'string' },
+    reason: { type: 'string' },
     warmup: { type: 'string' },
     seed: { type: 'string' },
     session: { type: 'string' },
@@ -136,6 +138,15 @@ async function main() {
     case 'execute': {
       if (!o.session) throw new Error('--session is required');
       await execute(o.session, o.limit);
+      break;
+    }
+    case 'trim': {
+      if (!o.session || !o.runs || !o.reason) throw new Error('--session, --runs and --reason are required');
+      const plan = loadPlan(o.session);
+      const before = pending(plan).length;
+      const dropped = trimPlan(plan, loadResults(plan), Number(o.runs), o.reason);
+      savePlan(plan);
+      console.log(`runs ${plan.runsHistory.at(-1).from} → ${plan.runs}: ${dropped.length} pending runs dropped, ${before - dropped.length} left (before make-up runs)`);
       break;
     }
     case 'build': {

@@ -1,6 +1,6 @@
 # 测量方法
 
-> 方法版本：**v18**（2026-11-25，tag `methodology-v18`；v17 为 2026-11-24，tag `methodology-v17`；v16 为 2026-11-24，tag `methodology-v16`；v15 为 2026-11-24，tag `methodology-v15`；v14 为 2026-11-24，tag `methodology-v14`；v13 为 2026-11-23，tag `methodology-v13`；v12 为 2026-11-22，tag `methodology-v12`；v11 为 2026-11-22，tag `methodology-v11`；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11、v12、v13、v14、v15、v16、v17 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
+> 方法版本：**v19**（2026-11-25，tag `methodology-v19`；v18 为 2026-11-25，tag `methodology-v18`；v17 为 2026-11-24，tag `methodology-v17`；v16 为 2026-11-24，tag `methodology-v16`；v15 为 2026-11-24，tag `methodology-v15`；v14 为 2026-11-24，tag `methodology-v14`；v13 为 2026-11-23，tag `methodology-v13`；v12 为 2026-11-22，tag `methodology-v12`；v11 为 2026-11-22，tag `methodology-v11`；v10 为 2026-11-22，tag `methodology-v10`；v9 为 2026-11-21，tag `methodology-v9`；v8 为 2026-11-21，tag `methodology-v8`；v7 为 2026-11-21，tag `methodology-v7`；v6 为 2026-11-20，tag `methodology-v6`；v5 为 2026-11-20，tag `methodology-v5`；v4 为 2026-11-19，tag `methodology-v4`；v3 为 2026-11-17，tag `methodology-v3`；v1 为 2026-11-17 预注册的初版，各版改动见第 13 节）。本文件只能通过新开版本修改（v2、v3、v4、v5、v6、v7、v8、v9、v10、v11、v12、v13、v14、v15、v16、v17、v18、v19 …），并在第 13 节记录改动原因；改动后所有工具用新方法重跑。官网引用的每个数字都注明所用的方法版本。
 
 场景定义见 [`scenarios.md`](scenarios.md)。本文件定义**怎么跑、怎么计数、怎么统计、怎么报告**。
 
@@ -57,6 +57,8 @@
 
 正式版的完成标准：iOS 和 Android 上连续 5 次全绿，或已记录 ✗ 的原因。
 
+v19 起诊断版本轮不做正式测量（6.2），所有公开的数字都来自正式版。
+
 ---
 
 ## 4. 等待与同步绕过的计数
@@ -112,10 +114,13 @@
 |---|---|
 | 预热 | 3 次，标记 `warmup: true`，不计入统计 |
 | 速度 | N = 20（不含预热） |
-| 稳定性（无施压） | N = 100 |
-| 稳定性（每种施压条件） | N = 50 |
+| 稳定性（无施压） | N = 20（v19 前为 100） |
+| 稳定性（每种施压条件） | 不测（v19 前为 N = 50） |
+| 诊断版（第 3 节） | 不测（v19 前与正式版相同） |
 
-速度数据不单独跑，直接复用正式版、无施压条件的 100 次稳定性运行（N = 100，满足 N ≥ 20）。
+速度数据不单独跑，直接复用正式版、无施压条件的 20 次稳定性运行（N = 20）。
+
+v19 把无施压条件的 N 从 100 减到 20，并取消施压条件和诊断版的测量（8.4 的施压条件、第 3 节的诊断版保留定义，本轮不测；诊断版的代码保留在仓库中）。原因只是测量时间（无施压 N = 100 约 5.5 天，施压条件约 7 天，诊断版与正式版同量），与已得到的结果无关。代价：N = 20 时 0 次失败的失败率 95% Wilson 区间上限约 16%（N = 100 时约 3.7%），稳定性只能区分失败率差别很大的工具；8.2 的“区间重叠不宣称谁更稳定”照常适用。m5-final-none 中已完成的运行全部保留（个别组合的有效 N 可能略多于 20，全部计入）；未完成的计划条目每个组合只保留补足 20 所需的条数（按原打乱顺序），其余移到 `run-order.json` 的 `droppedEntries`（`harness trim`）。
 
 无效运行（6.4）不计入 N。计划内的运行全部完成后，按各组合的无效次数追加补跑（序号接着编，同样用固定种子打乱后交错执行，追加到 `run-order.json`），补跑又无效时再追加，直到每个组合的有效运行达到上表的次数。失败的运行不补跑（失败本身是稳定性数据）。
 
@@ -300,3 +305,4 @@ CI     = [center − half, center + half]
 | v16 | 2026-11-24 | 2 / 6.4 正式测量改用新建的专用模拟器：iOS `Shootout iPhone 17`（iPhone 17 / iOS 27.0），Android `Shootout_API_36_AOSP`（android-36 default arm64-v8a、medium_phone、4 核 / 2 GB，配置与 `Medium_Phone_API_36_AOSP` 相同） | M3 / M4 使用的模拟器也用于其他工作：iOS 模拟器曾因外部验证中重启 SpringBoard 损坏 PosterBoard 数据（findings.md 2026-11-24，已修复），另有其他工作的状态残留（如手动允许过的通知权限）。正式测量用只由 harness 操作的全新设备（用户决定，2026-11-24）。机型、系统版本、镜像、硬件配置不变。v16 制定时尚无正式测量数据（M5 开始前） |
 | v17 | 2026-11-24 | 6.4 iOS 模拟器每次开机前删除 PosterBoard 数据；运行中系统 UI 进程（PosterBoard / SpringBoard / backboardd）崩溃则该次运行无效 | 专用模拟器在 m5-final-none 第 29 次运行（Quiesco iOS #60）开机时 PosterBoard 数据已损坏（`PRPosterDescriptor _initWithPath` 断言，2026-11-24 22:11 起 32 份崩溃报告），之后每次开机崩溃循环，SpringBoard 重启后的稳定时间 5–6 s → 16 s，拉长 launch。M3 用的模拟器 2026-11-23 也发生过一次。诱因未确定（只有 Quiesco 会重启 SpringBoard）。测量暂停，数据重建后不再崩溃；重建不影响开机时间（实测 5–6 s）。用户决定每次开机前重建，并加上自动检测（2026-11-24）。已完成的 28 次运行中只有该次符合无效条件，按本规则补标为无效 |
 | v18 | 2026-11-25 | ① 6.4 PosterBoard 数据不再每次删除，只在上次开机以来有系统 UI 进程崩溃时删除；② 6.2 无效运行不计入 N，计划内运行完成后按组合补跑到预先登记的次数 | ① v17 每次开机前删除后，重建时 PosterBoard 本身会崩溃（`PBFPosterModelStoreCoordinator addNewVersionWithContents` 中的 `pf_posterPathInstanceURLForVersionsURL` 断言，与 v17 的数据损坏不是同一处）：m5-final-none 恢复后的 37 次 iOS 运行中 9 次在开机后 15–50 s 内崩溃 1–3 次，按 v17 判为无效；v17 之前的 28 次运行（不删除）中没有这种崩溃（除数据损坏的 #60）。② 无效运行不补跑时有效 N 低于预先登记的 100，且 iOS 组合少得多。用户决定（2026-11-25）。v17 下已判无效的运行维持无效，由 ② 补跑 |
+| v19 | 2026-11-25 | 6.2 无施压条件 N = 100 → 20；施压条件（8.4）和诊断版（3）本轮不测 | 测量时间：m5-final-none 每次运行约 9.7 分钟，v18 时 117 / 824 次完成，无施压剩余约 4.8 天，施压条件另需约 7 天。用户决定（2026-11-25）。不因已有结果而改；已完成的运行全部保留 |

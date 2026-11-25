@@ -76,7 +76,7 @@ export function makeupEntries(plan, results) {
   const valid = new Map();
   for (const r of results) if (!r.warmup && !r.invalid) valid.set(key(r), (valid.get(key(r)) ?? 0) + 1);
   const maxIndex = new Map();
-  for (const e of plan.entries) if (!e.warmup) maxIndex.set(key(e), Math.max(maxIndex.get(key(e)) ?? 0, e.runIndex));
+  for (const e of [...plan.entries, ...(plan.droppedEntries ?? [])]) if (!e.warmup) maxIndex.set(key(e), Math.max(maxIndex.get(key(e)) ?? 0, e.runIndex));
   const add = [];
   for (const c of plan.combos) {
     const short = plan.runs - (valid.get(key(c)) ?? 0);
@@ -90,6 +90,32 @@ export function makeupEntries(plan, results) {
     const seq = plan.entries.length + i + 1;
     return { seq, ...e, makeupRound: round, seed, file: `${String(seq).padStart(4, '0')}-${e.tool}-${e.platform}-${e.variant}-${e.stress}-r${e.runIndex}.json` };
   });
+}
+
+/**
+ * 缩减 N（METHODOLOGY 6.2 v19）：已完成的条目全部保留；未完成的正式运行条目按计划顺序，每个组合只保留
+ * （runs − 已有有效运行）条，其余移到 plan.droppedEntries（不删除，留作记录）。results 同 makeupEntries；todo：未完成的条目（默认看结果文件是否存在）。
+ * 就地修改 plan（runs 改为新值），返回移走的条目。
+ */
+export function trimPlan(plan, results, runs, reason, todo = pending(plan)) {
+  const key = (e) => `${e.tool}/${e.platform}/${e.variant}/${e.stress}`;
+  const notDone = new Set(todo.map((e) => e.file));
+  const isDone = (e) => !notDone.has(e.file);
+  const left = new Map();
+  for (const c of plan.combos) left.set(key(c), runs);
+  for (const r of results) if (!r.warmup && !r.invalid) left.set(key(r), (left.get(key(r)) ?? 0) - 1);
+  const kept = [];
+  const dropped = [];
+  for (const e of plan.entries) {
+    if (isDone(e) || e.warmup) { kept.push(e); continue; }
+    if ((left.get(key(e)) ?? 0) > 0) { left.set(key(e), left.get(key(e)) - 1); kept.push(e); }
+    else dropped.push(e);
+  }
+  plan.entries = kept;
+  plan.droppedEntries = [...(plan.droppedEntries ?? []), ...dropped.map((e) => ({ ...e, droppedAt: new Date().toISOString(), droppedReason: reason }))];
+  plan.runsHistory = [...(plan.runsHistory ?? []), { from: plan.runs, to: runs, at: new Date().toISOString(), reason }];
+  plan.runs = runs;
+  return dropped;
 }
 
 export function savePlan(plan) {
