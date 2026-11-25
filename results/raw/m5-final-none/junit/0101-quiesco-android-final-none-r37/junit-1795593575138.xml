@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="24" failures="0" errors="0" time="218.579319745">
+    <testsuite name="e2e/final/s01-login.test.ts" timestamp="2026-11-25T08:03:13.956Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="8.280492125">
+        <testcase classname="e2e/final/s01-login.test.ts" name="S1 登录成功后进入列表" time="8.2800295">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+            <system-err>
+[quiesco] Android emulator Shootout_API_36_AOSP (emulator-5554) renders with lavapipe, on the CPU (several cores per emulator): tests run slowly and the system may stop responding. Restart it with -gpu host (or let Quiesco boot it: it uses host on macOS).
+
+            </system-err>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s02-invalid-email.test.ts" timestamp="2026-11-25T08:03:13.957Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="4.060612958">
+        <testcase classname="e2e/final/s02-invalid-email.test.ts" name="S2 错误邮箱的校验提示" time="4.060567958">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s03-search.test.ts" timestamp="2026-11-25T08:03:13.958Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="6.196740542">
+        <testcase classname="e2e/final/s03-search.test.ts" name="S3 防抖搜索" time="6.196682167">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s04-add.test.ts" timestamp="2026-11-25T08:03:13.958Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.145653625">
+        <testcase classname="e2e/final/s04-add.test.ts" name="S4 新增条目并在刷新后保留" time="7.145609667">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s05-delete.test.ts" timestamp="2026-11-25T08:03:13.958Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="6.725130292">
+        <testcase classname="e2e/final/s05-delete.test.ts" name="S5 删除条目，确认 Modal" time="6.725093375">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s06-long-list.test.ts" timestamp="2026-11-25T08:03:13.959Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="32.411349625">
+        <testcase classname="e2e/final/s06-long-list.test.ts" name="S6 长列表滚动到第 400 行" time="32.411307458">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s07-cjk.test.ts" timestamp="2026-11-25T08:03:13.959Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.314890541">
+        <testcase classname="e2e/final/s07-cjk.test.ts" name="S7a 中文 / 日文输入" time="7.314828667">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s08-controls.test.ts" timestamp="2026-11-25T08:03:13.959Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="12.463046541">
+        <testcase classname="e2e/final/s08-controls.test.ts" name="S8 原生控件" time="12.462999916">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s09-webview.test.ts" timestamp="2026-11-25T08:03:13.960Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.409439">
+        <testcase classname="e2e/final/s09-webview.test.ts" name="S9 WebView" time="7.40939425">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s10a-permission.test.ts" timestamp="2026-11-25T08:03:13.960Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="6.480379666">
+        <testcase classname="e2e/final/s10a-permission.test.ts" name="S10a 预先授权后显示 Granted" time="6.480335125">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s10b-permission.test.ts" timestamp="2026-11-25T08:03:13.960Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="10.878343709">
+        <testcase classname="e2e/final/s10b-permission.test.ts" name="S10b 点击系统弹窗“允许”" time="10.878312917">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s11-busy.test.ts" timestamp="2026-11-25T08:03:13.960Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="6.626921292">
+        <testcase classname="e2e/final/s11-busy.test.ts" name="S11 永不静止的动画" time="6.626894875">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s12-swipe-delete.test.ts" timestamp="2026-11-25T08:03:13.960Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.078751875">
+        <testcase classname="e2e/final/s12-swipe-delete.test.ts" name="S12 左滑删除" time="7.078722292">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s13-pull-refresh.test.ts" timestamp="2026-11-25T08:03:13.960Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="6.660623916">
+        <testcase classname="e2e/final/s13-pull-refresh.test.ts" name="S13 下拉刷新" time="6.660584208">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s14-longpress-drag.test.ts" timestamp="2026-11-25T08:03:13.961Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="9.599098958">
+        <testcase classname="e2e/final/s14-longpress-drag.test.ts" name="S14 长按菜单与拖拽排序" time="9.599065">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s15-reanimated.test.ts" timestamp="2026-11-25T08:03:13.961Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.492732458">
+        <testcase classname="e2e/final/s15-reanimated.test.ts" name="S15 Reanimated 动画" time="7.492702208">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s16-live.test.ts" timestamp="2026-11-25T08:03:13.961Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.347900708">
+        <testcase classname="e2e/final/s16-live.test.ts" name="S16 轮询与 WebSocket" time="7.34787775">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s17-toast.test.ts" timestamp="2026-11-25T08:03:13.961Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="8.378240916">
+        <testcase classname="e2e/final/s17-toast.test.ts" name="S17 自动消失的 Toast" time="8.378203541">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s18-error-retry.test.ts" timestamp="2026-11-25T08:03:13.961Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.223869416">
+        <testcase classname="e2e/final/s18-error-retry.test.ts" name="S18 错误态与重试" time="7.223847458">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s19-tabs.test.ts" timestamp="2026-11-25T08:03:13.961Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.954856292">
+        <testcase classname="e2e/final/s19-tabs.test.ts" name="S19 Tab 与嵌套导航" time="7.954828542">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s20-keyboard.test.ts" timestamp="2026-11-25T08:03:13.961Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="7.061644041">
+        <testcase classname="e2e/final/s20-keyboard.test.ts" name="S20 键盘遮挡" time="7.061618167">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s21-deeplink.test.ts" timestamp="2026-11-25T08:03:13.961Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="8.20995775">
+        <testcase classname="e2e/final/s21-deeplink.test.ts" name="S21 深链接" time="8.20992625">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s22-notification.test.ts" timestamp="2026-11-25T08:03:13.962Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="13.807575291">
+        <testcase classname="e2e/final/s22-notification.test.ts" name="S22 本地通知" time="13.807552083">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="e2e/final/s23-background.test.ts" timestamp="2026-11-25T08:03:13.962Z" hostname="S-MAC-395" tests="1" failures="0" errors="0" skipped="0" time="11.771068208">
+        <testcase classname="e2e/final/s23-background.test.ts" name="S23 前后台切换与持久化" time="11.771041042">
+            <system-out>
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+[quiesco] agent connected: android, session 7ee2d9bb-017a-44e2-80c5-fb1c18c4e057, agent 0.13.3, native module true
+
+[quiesco] app JS: bundle built 20:28:11, a one-off export
+
+            </system-out>
+        </testcase>
+    </testsuite>
+</testsuites>

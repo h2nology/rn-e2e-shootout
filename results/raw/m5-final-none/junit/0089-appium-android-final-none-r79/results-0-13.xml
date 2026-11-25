@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S14" timestamp="2026-11-25T15:14:22" time="11.314" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S14"/>
+      <property name="capabilities" value="android.emulator-5554"/>
+      <property name="file" value="file://./test/final/s14-longpress-drag.js"/>
+    </properties>
+    <testcase classname="android.emulator-5554.S14" name="R5 R1" time="11.312">
+      <system-out><![CDATA[
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff00000014/clear - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff00000014/value - {"text":"user@example.com"}
+RESULT: {"text":"user@example.com"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff00000016/clear - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff00000016/value - {"text":"Passw0rd!"}
+RESULT: {"text":"Passw0rd!"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff00000017/click - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-3\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-3\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-3\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-3\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-3\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-3\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-3\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-3\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/actions - {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":0,"y":0,"duration":100,"origin":{"element-6066-11e4-a52e-4f735466cecf":"00000000-0000-009d-ffff-ffff0000007e"}},{"type":"pointerDown","button":0},{"type":"pause","duration":1500},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":0,"y":0,"duration":100,"origin":{"element-6066-11e4-a52e-4f735466cecf":"00000000-0000-009d-ffff-ffff0000007e"}},{"type":"pointerDown","button":0},{"type":"pause","duration":1500},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/actions - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"menu-pin\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"menu-pin\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009e-ffff-ffff00000121/click - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"list-top-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"list-top-title\")"}
+COMMAND: GET /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff00000045/text - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-explore\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff0000002f/click - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"open-reorder\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"open-reorder\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff0000013c/click - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-handle-R5\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-row-R1\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-handle-R5\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-handle-R5\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-row-R1\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-handle-R5\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-handle-R5\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-handle-R5\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-handle-R5\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-handle-R5\")"}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/actions - {"actions":[{"id":"pointer2","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":0,"y":0,"duration":0,"origin":{"element-6066-11e4-a52e-4f735466cecf":"00000000-0000-009d-ffff-ffff00000164"}},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":0,"y":0,"duration":1000,"origin":{"element-6066-11e4-a52e-4f735466cecf":"00000000-0000-009d-ffff-ffff0000014d"}},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer2","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":0,"y":0,"duration":0,"origin":{"element-6066-11e4-a52e-4f735466cecf":"00000000-0000-009d-ffff-ffff00000164"}},{"type":"pointerDown","button":0},{"type":"pause","duration":10},{"type":"pointerMove","button":0,"x":0,"y":0,"duration":1000,"origin":{"element-6066-11e4-a52e-4f735466cecf":"00000000-0000-009d-ffff-ffff0000014d"}},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/actions - {}
+RESULT: {}
+COMMAND: POST /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-summary\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"reorder-summary\")"}
+COMMAND: GET /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4/element/00000000-0000-009d-ffff-ffff0000014c/text - {}
+RESULT: {}
+COMMAND: DELETE /session/220d8e58-6b31-4903-a2b2-7f31d09a69a4 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

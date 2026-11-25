@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S15" timestamp="2026-11-25T16:14:07" time="9.774" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S15"/>
+      <property name="capabilities" value="ios.shootoutiphone17"/>
+      <property name="file" value="file://./test/final/s15-reanimated.js"/>
+    </properties>
+    <testcase classname="ios.shootoutiphone17.S15" name="" time="9.771">
+      <system-out><![CDATA[
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"login-email"}
+RESULT: {"using":"accessibility id","value":"login-email"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/1F000000-0000-0000-F71E-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/1F000000-0000-0000-F71E-010000000000/value - {"text":"u"}
+RESULT: {"text":"u"}
+COMMAND: GET /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/1F000000-0000-0000-F71E-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/1F000000-0000-0000-F71E-010000000000/value - {"text":"ser@example.com"}
+RESULT: {"text":"ser@example.com"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"login-password"}
+RESULT: {"using":"accessibility id","value":"login-password"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/21000000-0000-0000-F71E-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/21000000-0000-0000-F71E-010000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/21000000-0000-0000-F71E-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/21000000-0000-0000-F71E-010000000000/value - {"text":"assw0rd!"}
+RESULT: {"text":"assw0rd!"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"login-submit"}
+RESULT: {"using":"accessibility id","value":"login-submit"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/1D000000-0000-0000-F71E-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/97000000-0000-0000-F71E-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"open-reanimated"}
+RESULT: {"using":"accessibility id","value":"open-reanimated"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"open-reanimated"}
+RESULT: {"using":"accessibility id","value":"open-reanimated"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"open-reanimated"}
+RESULT: {"using":"accessibility id","value":"open-reanimated"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"open-reanimated"}
+RESULT: {"using":"accessibility id","value":"open-reanimated"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"open-reanimated"}
+RESULT: {"using":"accessibility id","value":"open-reanimated"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/BF000000-0000-0000-F71E-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card"}
+RESULT: {"using":"accessibility id","value":"rea-card"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/D5000000-0000-0000-F71E-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-card-action"}
+RESULT: {"using":"accessibility id","value":"rea-card-action"}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/DD000000-0000-0000-F71E-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/elements - {"using":"accessibility id","value":"rea-result"}
+RESULT: {"using":"accessibility id","value":"rea-result"}
+COMMAND: GET /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2/element/D4000000-0000-0000-F71E-010000000000/text - {}
+RESULT: {}
+COMMAND: DELETE /session/a193ca67-1185-449e-bf9a-bc1d7d8e4df2 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

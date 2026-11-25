@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S17" timestamp="2026-11-25T19:29:07" time="8.446" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S17"/>
+      <property name="capabilities" value="android.emulator-5554"/>
+      <property name="file" value="file://./test/final/s17-toast.js"/>
+    </properties>
+    <testcase classname="android.emulator-5554.S17" name="Toast" time="8.444">
+      <system-out><![CDATA[
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/element/00000000-0000-00bf-ffff-ffff00000014/clear - {}
+RESULT: {}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/element/00000000-0000-00bf-ffff-ffff00000014/value - {"text":"user@example.com"}
+RESULT: {"text":"user@example.com"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/element/00000000-0000-00bf-ffff-ffff00000016/clear - {}
+RESULT: {}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/element/00000000-0000-00bf-ffff-ffff00000016/value - {"text":"Passw0rd!"}
+RESULT: {"text":"Passw0rd!"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/element/00000000-0000-00bf-ffff-ffff00000017/click - {}
+RESULT: {}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"tab-settings\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/element/00000000-0000-00bf-ffff-ffff00000035/click - {}
+RESULT: {}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"settings-save\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"settings-save\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/element/00000000-0000-00bf-ffff-ffff0000011d/click - {}
+RESULT: {}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: GET /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/element/00000000-0000-00bf-ffff-ffff00000135/text - {}
+RESULT: {}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: POST /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"toast\")"}
+COMMAND: DELETE /session/f32e4061-09ae-4ab2-abb2-a1371fa0bb78 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

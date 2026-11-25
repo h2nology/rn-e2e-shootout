@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S2" timestamp="2026-11-25T15:10:39" time="4.978" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S2"/>
+      <property name="capabilities" value="android.emulator-5554"/>
+      <property name="file" value="file://./test/final/s02-invalid-email.js"/>
+    </properties>
+    <testcase classname="android.emulator-5554.S2" name="" time="4.975">
+      <system-out><![CDATA[
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/element/00000000-0000-0014-ffff-ffff00000014/clear - {}
+RESULT: {}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/element/00000000-0000-0014-ffff-ffff00000014/value - {"text":"not-an-email"}
+RESULT: {"text":"not-an-email"}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/element/00000000-0000-0014-ffff-ffff00000016/clear - {}
+RESULT: {}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/element/00000000-0000-0014-ffff-ffff00000016/value - {"text":"Passw0rd!"}
+RESULT: {"text":"Passw0rd!"}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/element/00000000-0000-0014-ffff-ffff00000017/click - {}
+RESULT: {}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email-error\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email-error\")"}
+COMMAND: GET /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/element/00000000-0000-0014-ffff-ffff00000021/text - {}
+RESULT: {}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-list\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-list\")"}
+COMMAND: POST /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-list\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-list\")"}
+COMMAND: DELETE /session/63ecf98f-fa1e-4167-8b8a-680b4d5d29a0 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

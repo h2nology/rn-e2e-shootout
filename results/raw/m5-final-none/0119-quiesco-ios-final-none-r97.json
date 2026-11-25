@@ -1,0 +1,328 @@
+{
+  "tool": "quiesco",
+  "toolVersion": "0.13.4",
+  "methodologyVersion": "v18",
+  "variant": "final",
+  "platform": "ios",
+  "device": "Shootout iPhone 17 / iOS 27.0 simulator (59C18B64-C4A9-473E-91DC-24CCC9996644)",
+  "host": "Apple M5 Pro, 15 cores, 24 GB, macOS 26.7.3 (25G342)",
+  "expoSdk": 58,
+  "runIndex": 97,
+  "warmup": false,
+  "stress": "none",
+  "seed": 1,
+  "buildMs": null,
+  "installMs": 5790,
+  "launchMs": 16388,
+  "suiteMs": 315403,
+  "totalMs": 337581,
+  "toolWallMs": 332204,
+  "startedAt": "2026-11-25T10:53:54.511Z",
+  "exitCode": 0,
+  "timedOut": false,
+  "invalid": false,
+  "invalidReason": null,
+  "sleepEvents": [],
+  "systemCrashes": [],
+  "environment": {
+    "loadBefore": {
+      "one": 3.78,
+      "five": 5.85,
+      "fifteen": 8.1
+    },
+    "loadWaitedMs": 3,
+    "loadAfterBoot": {
+      "one": 7.62,
+      "five": 8,
+      "fifteen": 8.78
+    },
+    "loadAfterBootWaitedMs": 90061,
+    "loadAtStart": {
+      "one": 7.25,
+      "five": 7.92,
+      "fifteen": 8.74
+    },
+    "loadDuring": {
+      "samples": 11,
+      "median": 3.79,
+      "max": 6.64,
+      "values": [
+        6.64,
+        5.7,
+        4.39,
+        4.13,
+        3.82,
+        3.79,
+        3.76,
+        3.54,
+        2.89,
+        2.82,
+        2.51
+      ]
+    },
+    "deviceRebootMs": 5674,
+    "device": {
+      "languages": "(en)",
+      "locale": "en_US",
+      "reduceMotion": "0",
+      "appearance": "light",
+      "keyboardLastUsed": "en_US@sw=QWERTY;hw=Automatic",
+      "posterBoardReset": true
+    },
+    "emulatorArgs": null,
+    "mockConfig": {
+      "stress": "none",
+      "netDelayMinMs": 200,
+      "netDelayMaxMs": 200,
+      "animScaleMin": 1,
+      "animScaleMax": 1,
+      "seed": 1
+    }
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "status": "passed",
+      "durationMs": 5378,
+      "resetMs": 2559,
+      "junitTimeMs": 23366,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 7937
+    },
+    {
+      "id": "S2",
+      "status": "passed",
+      "durationMs": 3622,
+      "resetMs": 2569,
+      "junitTimeMs": 7450,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 15399
+    },
+    {
+      "id": "S3",
+      "status": "passed",
+      "durationMs": 7329,
+      "resetMs": 2607,
+      "junitTimeMs": 10560,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 25967
+    },
+    {
+      "id": "S4",
+      "status": "passed",
+      "durationMs": 7955,
+      "resetMs": 2583,
+      "junitTimeMs": 11724,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 37696
+    },
+    {
+      "id": "S5",
+      "status": "passed",
+      "durationMs": 6114,
+      "resetMs": 2559,
+      "junitTimeMs": 9893,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 47597
+    },
+    {
+      "id": "S6",
+      "status": "passed",
+      "durationMs": 28784,
+      "resetMs": 2542,
+      "junitTimeMs": 32596,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 80200
+    },
+    {
+      "id": "S7a",
+      "status": "passed",
+      "durationMs": 8144,
+      "resetMs": 2589,
+      "junitTimeMs": 12120,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 92330
+    },
+    {
+      "id": "S8",
+      "status": "passed",
+      "durationMs": 17126,
+      "resetMs": 2606,
+      "junitTimeMs": 21007,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 113346
+    },
+    {
+      "id": "S9",
+      "status": "passed",
+      "durationMs": 7783,
+      "resetMs": 3486,
+      "junitTimeMs": 12531,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 125883
+    },
+    {
+      "id": "S10a",
+      "status": "passed",
+      "durationMs": 5892,
+      "resetMs": 3449,
+      "junitTimeMs": 10692,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 136582
+    },
+    {
+      "id": "S10b",
+      "status": "passed",
+      "durationMs": 6988,
+      "resetMs": 3069,
+      "junitTimeMs": 11314,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 147904
+    },
+    {
+      "id": "S11",
+      "status": "passed",
+      "durationMs": 6087,
+      "resetMs": 2930,
+      "junitTimeMs": 10289,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 158198
+    },
+    {
+      "id": "S12",
+      "status": "passed",
+      "durationMs": 6064,
+      "resetMs": 3008,
+      "junitTimeMs": 10343,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 168546
+    },
+    {
+      "id": "S13",
+      "status": "passed",
+      "durationMs": 6016,
+      "resetMs": 3007,
+      "junitTimeMs": 10312,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 178863
+    },
+    {
+      "id": "S14",
+      "status": "passed",
+      "durationMs": 8960,
+      "resetMs": 3023,
+      "junitTimeMs": 13242,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 192114
+    },
+    {
+      "id": "S15",
+      "status": "passed",
+      "durationMs": 6922,
+      "resetMs": 3068,
+      "junitTimeMs": 11208,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 203330
+    },
+    {
+      "id": "S16",
+      "status": "passed",
+      "durationMs": 7251,
+      "resetMs": 3066,
+      "junitTimeMs": 11608,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 214947
+    },
+    {
+      "id": "S17",
+      "status": "passed",
+      "durationMs": 7193,
+      "resetMs": 3029,
+      "junitTimeMs": 11547,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 226502
+    },
+    {
+      "id": "S18",
+      "status": "passed",
+      "durationMs": 6318,
+      "resetMs": 2954,
+      "junitTimeMs": 10523,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 237029
+    },
+    {
+      "id": "S19",
+      "status": "passed",
+      "durationMs": 8035,
+      "resetMs": 2975,
+      "junitTimeMs": 12314,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 249352
+    },
+    {
+      "id": "S20",
+      "status": "passed",
+      "durationMs": 7333,
+      "resetMs": 3123,
+      "junitTimeMs": 11689,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 261047
+    },
+    {
+      "id": "S21",
+      "status": "passed",
+      "durationMs": 14381,
+      "resetMs": 2913,
+      "junitTimeMs": 18582,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 279635
+    },
+    {
+      "id": "S22",
+      "status": "passed",
+      "durationMs": 13053,
+      "resetMs": 2999,
+      "junitTimeMs": 16521,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 296165
+    },
+    {
+      "id": "S23",
+      "status": "passed",
+      "durationMs": 14855,
+      "resetMs": 3040,
+      "junitTimeMs": 19227,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 315403
+    }
+  ],
+  "files": {
+    "log": "logs/0119-quiesco-ios-final-none-r97.log",
+    "junit": "junit/0119-quiesco-ios-final-none-r97"
+  }
+}
