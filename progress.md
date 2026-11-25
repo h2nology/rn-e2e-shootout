@@ -302,3 +302,4 @@
   - METHODOLOGY v17（PosterBoard 重建 + 系统 UI 崩溃则无效）用户确认（2026-11-24），打 tag `methodology-v17`；冒烟通过后继续 m5-final-none
   - smoke5-quiesco-ios-v17：24/24，SpringBoard 稳定 5.5 s，无系统 UI 崩溃（invalid=false）→ 继续 m5-final-none（22:42）
   - m5-final-none 87 次时（2026-11-25 07:36）：v17 每次开机前删除 PosterBoard 数据后，重建时 PosterBoard 自身约 1/4 的开机崩溃（addNewVersionWithContents），恢复后 iOS 37 次中 9 次无效（共 11 次无效）。用户决定只在需要时重建 + 无效运行最后补跑到 N = 100 → harness（resetPosterBoardIfCrashed、makeupEntries、execute 补跑循环，单元测试 8 个通过）；METHODOLOGY v18 用户确认（2026-11-25），打 tag `methodology-v18`。第 88 次（Maestro iOS #26，07:51 结束，v17）后停止旧进程，按用户要求暂停（88 / 824 完成）
+  - 2026-11-25 15:09 继续 m5-final-none（v18）：第一次启动时宿主机用电池 → 用户接电源；第二次检测到带窗口的 Medium_Phone_API_37.0（09:10 起运行，harness 之外）→ 用户同意后关闭；15:09 从第 89 次（Appium Android #79）继续，736 / 824 待做

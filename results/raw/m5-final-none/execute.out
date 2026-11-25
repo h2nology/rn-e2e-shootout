@@ -813,3 +813,18 @@
 2026-11-24T22:41:36.094Z [maestro/ios/final/none #26] load 8.78 ≥ 8, waiting
 2026-11-24T22:41:57.443Z [maestro/ios/final/none #26] running ./run.sh  (load 7.23)
 2026-11-24T22:51:43.970Z [maestro/ios/final/none #26] done: 24 passed, 0 failed, suite 567828 ms, launch 12414 ms, install 5644 ms, load during median 4.02 / max 11.33
+2026-11-25T06:08:47.222Z session m5-final-none: 736 of 824 runs to do
+2026-11-25T06:08:47.228Z [appium/android/final/none #79] load 8.77 ≥ 8, waiting
+2026-11-25T06:09:02.266Z ERROR in 0089-appium-android-final-none-r79.json: Error: other Android emulators are running (Medium_Phone_API_37.0); close them first (METHODOLOGY 6.4: one simulator at a time)
+    at Module.assertNoForeignEmulators (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/harness/lib/device.mjs:188:11)
+    at async runOne (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/harness/lib/run-one.mjs:45:3)
+    at async execute (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/harness/cli.mjs:77:11)
+    at async main (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/harness/cli.mjs:138:7)
+Error: other Android emulators are running (Medium_Phone_API_37.0); close them first (METHODOLOGY 6.4: one simulator at a time)
+    at Module.assertNoForeignEmulators (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/harness/lib/device.mjs:188:11)
+    at async runOne (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/harness/lib/run-one.mjs:45:3)
+    at async execute (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/harness/cli.mjs:77:11)
+    at async main (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/harness/cli.mjs:138:7)
+2026-11-25T06:09:58.233Z session m5-final-none: 736 of 824 runs to do
+2026-11-25T06:10:26.231Z [appium/android/final/none #79] Android emulator-5554 booted in 23205 ms; env {"locale":"en-US","animationScales":"1.0/1.0/1.0","nightMode":"Night mode: no","cores":"4","qemuPriority":31}
+2026-11-25T06:10:26.869Z [appium/android/final/none #79] running npx wdio run wdio.conf.js (load 6.49)
