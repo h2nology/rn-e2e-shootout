@@ -1,0 +1,340 @@
+{
+  "tool": "appium",
+  "toolVersion": "4.0.0 (xcuitest 13.1.1, uiautomator2 9.2.1, webdriverio 10.2.0)",
+  "methodologyVersion": "v19",
+  "variant": "final",
+  "platform": "ios",
+  "device": "Shootout iPhone 17 / iOS 27.0 simulator (59C18B64-C4A9-473E-91DC-24CCC9996644)",
+  "host": "Apple M5 Pro, 15 cores, 24 GB, macOS 26.7.3 (25G342)",
+  "expoSdk": 58,
+  "runIndex": 96,
+  "warmup": false,
+  "stress": "none",
+  "seed": 1,
+  "buildMs": null,
+  "installMs": 5864,
+  "launchMs": 13354,
+  "suiteMs": 511059,
+  "totalMs": 530277,
+  "toolWallMs": 524914,
+  "startedAt": "2026-11-25T16:23:57.193Z",
+  "exitCode": 0,
+  "timedOut": false,
+  "invalid": true,
+  "invalidReason": "simulator system UI crashed during the run (SpringBoard × 1)",
+  "sleepEvents": [],
+  "systemCrashes": [
+    {
+      "process": "SpringBoard",
+      "time": "2026-11-25T16:24:27.000Z",
+      "file": "SpringBoard-2026-11-26-012431.ips"
+    }
+  ],
+  "environment": {
+    "loadBefore": {
+      "one": 7.95,
+      "five": 6.9,
+      "fifteen": 7.52
+    },
+    "loadWaitedMs": 15024,
+    "loadAfterBoot": {
+      "one": 6.58,
+      "five": 8.34,
+      "fifteen": 8.15
+    },
+    "loadAfterBootWaitedMs": 120101,
+    "loadAtStart": {
+      "one": 6.29,
+      "five": 8.25,
+      "fifteen": 8.12
+    },
+    "loadDuring": {
+      "samples": 17,
+      "median": 5.06,
+      "max": 15.71,
+      "values": [
+        12.26,
+        15.71,
+        10.88,
+        9.31,
+        7.25,
+        5.31,
+        4.12,
+        4.92,
+        4.2,
+        3.92,
+        5.84,
+        5.06,
+        4.52,
+        4.04,
+        3.88,
+        4.89,
+        8.34
+      ]
+    },
+    "deviceRebootMs": 7905,
+    "device": {
+      "languages": "(en)",
+      "locale": "en_US",
+      "reduceMotion": "0",
+      "appearance": "light",
+      "keyboardLastUsed": "en_US@sw=QWERTY;hw=Automatic",
+      "posterBoardReset": false
+    },
+    "emulatorArgs": null,
+    "mockConfig": {
+      "stress": "none",
+      "netDelayMinMs": 200,
+      "netDelayMaxMs": 200,
+      "animScaleMin": 1,
+      "animScaleMax": 1,
+      "seed": 1
+    }
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "status": "passed",
+      "durationMs": 4827,
+      "resetMs": 3454,
+      "junitTimeMs": 8291,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 8281
+    },
+    {
+      "id": "S2",
+      "status": "passed",
+      "durationMs": 2967,
+      "resetMs": 4063,
+      "junitTimeMs": 7037,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 17949
+    },
+    {
+      "id": "S3",
+      "status": "passed",
+      "durationMs": 5897,
+      "resetMs": 4159,
+      "junitTimeMs": 10063,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 30637
+    },
+    {
+      "id": "S4",
+      "status": "passed",
+      "durationMs": 7323,
+      "resetMs": 4082,
+      "junitTimeMs": 11410,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 44585
+    },
+    {
+      "id": "S5",
+      "status": "passed",
+      "durationMs": 6708,
+      "resetMs": 4110,
+      "junitTimeMs": 10824,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 58042
+    },
+    {
+      "id": "S6",
+      "status": "passed",
+      "durationMs": 173212,
+      "resetMs": 4083,
+      "junitTimeMs": 177300,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 237859
+    },
+    {
+      "id": "S7a",
+      "status": "passed",
+      "durationMs": 7855,
+      "resetMs": 4060,
+      "junitTimeMs": 11921,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 252532
+    },
+    {
+      "id": "S8",
+      "status": "passed",
+      "durationMs": 8218,
+      "resetMs": 4201,
+      "junitTimeMs": 12426,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 267503
+    },
+    {
+      "id": "S9",
+      "status": "passed",
+      "durationMs": 6533,
+      "resetMs": 4119,
+      "junitTimeMs": 10658,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 280794
+    },
+    {
+      "id": "S10a",
+      "status": "passed",
+      "durationMs": 4780,
+      "resetMs": 4124,
+      "junitTimeMs": 8910,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 292320
+    },
+    {
+      "id": "S10b",
+      "status": "passed",
+      "durationMs": 6256,
+      "resetMs": 3728,
+      "junitTimeMs": 9982,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 302305
+    },
+    {
+      "id": "S11",
+      "status": "passed",
+      "durationMs": 4676,
+      "resetMs": 4052,
+      "junitTimeMs": 8734,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 313472
+    },
+    {
+      "id": "S12",
+      "status": "passed",
+      "durationMs": 6602,
+      "resetMs": 4067,
+      "junitTimeMs": 10675,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 326580
+    },
+    {
+      "id": "S13",
+      "status": "passed",
+      "durationMs": 9156,
+      "resetMs": 4088,
+      "junitTimeMs": 13250,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 342309
+    },
+    {
+      "id": "S14",
+      "status": "passed",
+      "durationMs": 10523,
+      "resetMs": 4071,
+      "junitTimeMs": 14599,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 359533
+    },
+    {
+      "id": "S15",
+      "status": "passed",
+      "durationMs": 5663,
+      "resetMs": 4072,
+      "junitTimeMs": 9741,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 371904
+    },
+    {
+      "id": "S16",
+      "status": "passed",
+      "durationMs": 5911,
+      "resetMs": 4067,
+      "junitTimeMs": 9983,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 384503
+    },
+    {
+      "id": "S17",
+      "status": "passed",
+      "durationMs": 6355,
+      "resetMs": 4012,
+      "junitTimeMs": 10373,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 397464
+    },
+    {
+      "id": "S18",
+      "status": "passed",
+      "durationMs": 5016,
+      "resetMs": 4053,
+      "junitTimeMs": 9075,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 409164
+    },
+    {
+      "id": "S19",
+      "status": "passed",
+      "durationMs": 7261,
+      "resetMs": 4059,
+      "junitTimeMs": 11326,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 423029
+    },
+    {
+      "id": "S20",
+      "status": "passed",
+      "durationMs": 5909,
+      "resetMs": 4124,
+      "junitTimeMs": 10039,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 435603
+    },
+    {
+      "id": "S21",
+      "status": "passed",
+      "durationMs": 8081,
+      "resetMs": 4013,
+      "junitTimeMs": 12101,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 450225
+    },
+    {
+      "id": "S22",
+      "status": "passed",
+      "durationMs": 33291,
+      "resetMs": 4106,
+      "junitTimeMs": 37403,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 490140
+    },
+    {
+      "id": "S23",
+      "status": "passed",
+      "durationMs": 14058,
+      "resetMs": 4145,
+      "junitTimeMs": 18209,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 511059
+    }
+  ],
+  "files": {
+    "log": "logs/0159-appium-ios-final-none-r96.log",
+    "junit": "junit/0159-appium-ios-final-none-r96"
+  }
+}

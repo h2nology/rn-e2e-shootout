@@ -1,0 +1,347 @@
+{
+  "tool": "maestro",
+  "toolVersion": "2.11.0",
+  "methodologyVersion": "v19",
+  "variant": "final",
+  "platform": "android",
+  "device": "Shootout_API_36_AOSP emulator (android-36 default arm64-v8a; -port 5554 -no-snapshot-load -no-audio -no-window)",
+  "host": "Apple M5 Pro, 15 cores, 24 GB, macOS 26.7.3 (25G342)",
+  "expoSdk": 58,
+  "runIndex": 24,
+  "warmup": false,
+  "stress": "none",
+  "seed": 1,
+  "buildMs": null,
+  "installMs": 420,
+  "launchMs": 5739,
+  "suiteMs": 764712,
+  "totalMs": 770871,
+  "toolWallMs": 771694,
+  "startedAt": "2026-11-25T23:17:36.043Z",
+  "exitCode": 0,
+  "timedOut": false,
+  "invalid": false,
+  "invalidReason": null,
+  "sleepEvents": [],
+  "systemCrashes": [],
+  "environment": {
+    "loadBefore": {
+      "one": 3.35,
+      "five": 4.26,
+      "fifteen": 4.68
+    },
+    "loadWaitedMs": 4,
+    "loadAfterBoot": {
+      "one": 3.92,
+      "five": 4.31,
+      "fifteen": 4.69
+    },
+    "loadAfterBootWaitedMs": 3,
+    "loadAtStart": {
+      "one": 3.92,
+      "five": 4.31,
+      "fifteen": 4.69
+    },
+    "loadDuring": {
+      "samples": 25,
+      "median": 5.63,
+      "max": 10.59,
+      "values": [
+        10.59,
+        7.51,
+        5.37,
+        6.67,
+        6.76,
+        6.69,
+        7.27,
+        6.22,
+        4.7,
+        5.4,
+        5.71,
+        4.57,
+        5.77,
+        5.72,
+        6.86,
+        7.11,
+        5.63,
+        3.66,
+        3.02,
+        2.59,
+        2.59,
+        1.99,
+        2.7,
+        2.73,
+        2.11
+      ]
+    },
+    "deviceRebootMs": 21204,
+    "device": {
+      "locale": "en-US",
+      "animationScales": "1.0/1.0/1.0",
+      "nightMode": "Night mode: no",
+      "cores": "4",
+      "qemuPriority": 31
+    },
+    "emulatorArgs": [
+      "-port",
+      "5554",
+      "-no-snapshot-load",
+      "-no-audio",
+      "-no-window"
+    ],
+    "mockConfig": {
+      "stress": "none",
+      "netDelayMinMs": 200,
+      "netDelayMaxMs": 200,
+      "animScaleMin": 1,
+      "animScaleMax": 1,
+      "seed": 1
+    }
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "status": "passed",
+      "durationMs": 12293,
+      "resetMs": 2053,
+      "junitTimeMs": 15081,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 14346
+    },
+    {
+      "id": "S2",
+      "status": "passed",
+      "durationMs": 11877,
+      "resetMs": 1843,
+      "junitTimeMs": 13848,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 28309
+    },
+    {
+      "id": "S3",
+      "status": "passed",
+      "durationMs": 18972,
+      "resetMs": 1964,
+      "junitTimeMs": 21062,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 49373
+    },
+    {
+      "id": "S4",
+      "status": "passed",
+      "durationMs": 23789,
+      "resetMs": 1836,
+      "junitTimeMs": 25748,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 75126
+    },
+    {
+      "id": "S5",
+      "status": "passed",
+      "durationMs": 18548,
+      "resetMs": 1771,
+      "junitTimeMs": 20450,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 95572
+    },
+    {
+      "id": "S6",
+      "status": "passed",
+      "durationMs": 132733,
+      "resetMs": 1777,
+      "junitTimeMs": 134757,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 230215
+    },
+    {
+      "id": "S7a",
+      "status": "passed",
+      "durationMs": 25465,
+      "resetMs": 1833,
+      "junitTimeMs": 27430,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 257763
+    },
+    {
+      "id": "S8",
+      "status": "passed",
+      "durationMs": 31232,
+      "resetMs": 1776,
+      "junitTimeMs": 33140,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 290907
+    },
+    {
+      "id": "S9",
+      "status": "passed",
+      "durationMs": 27997,
+      "resetMs": 1834,
+      "junitTimeMs": 29964,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 320869
+    },
+    {
+      "id": "S10a",
+      "status": "passed",
+      "durationMs": 19631,
+      "resetMs": 1891,
+      "junitTimeMs": 21651,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 342527
+    },
+    {
+      "id": "S10b",
+      "status": "passed",
+      "durationMs": 21379,
+      "resetMs": 1809,
+      "junitTimeMs": 23315,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 365845
+    },
+    {
+      "id": "S11",
+      "status": "passed",
+      "durationMs": 35566,
+      "resetMs": 1717,
+      "junitTimeMs": 37408,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 403258
+    },
+    {
+      "id": "S12",
+      "status": "passed",
+      "durationMs": 17087,
+      "resetMs": 1741,
+      "junitTimeMs": 18949,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 422210
+    },
+    {
+      "id": "S13",
+      "status": "passed",
+      "durationMs": 14672,
+      "resetMs": 1818,
+      "junitTimeMs": 16608,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 438824
+    },
+    {
+      "id": "S14",
+      "status": "passed",
+      "durationMs": 26783,
+      "resetMs": 1781,
+      "junitTimeMs": 28689,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 467508
+    },
+    {
+      "id": "S15",
+      "status": "passed",
+      "durationMs": 22696,
+      "resetMs": 1841,
+      "junitTimeMs": 24668,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 492173
+    },
+    {
+      "id": "S16",
+      "status": "passed",
+      "durationMs": 80651,
+      "resetMs": 1831,
+      "junitTimeMs": 82610,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 574789
+    },
+    {
+      "id": "S17",
+      "status": "passed",
+      "durationMs": 18747,
+      "resetMs": 1833,
+      "junitTimeMs": 20702,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 595502
+    },
+    {
+      "id": "S18",
+      "status": "passed",
+      "durationMs": 17059,
+      "resetMs": 1756,
+      "junitTimeMs": 18934,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 614438
+    },
+    {
+      "id": "S19",
+      "status": "passed",
+      "durationMs": 25794,
+      "resetMs": 1761,
+      "junitTimeMs": 27681,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 642116
+    },
+    {
+      "id": "S20",
+      "status": "passed",
+      "durationMs": 24406,
+      "resetMs": 1764,
+      "junitTimeMs": 26294,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 668413
+    },
+    {
+      "id": "S21",
+      "status": "passed",
+      "durationMs": 30242,
+      "resetMs": 1816,
+      "junitTimeMs": 32187,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 700597
+    },
+    {
+      "id": "S22",
+      "status": "passed",
+      "durationMs": 24791,
+      "resetMs": 1799,
+      "junitTimeMs": 26719,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 727320
+    },
+    {
+      "id": "S23",
+      "status": "passed",
+      "durationMs": 35427,
+      "resetMs": 1834,
+      "junitTimeMs": 37389,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 764712
+    }
+  ],
+  "files": {
+    "log": "logs/0256-maestro-android-final-none-r24.log",
+    "junit": "junit/0256-maestro-android-final-none-r24"
+  }
+}

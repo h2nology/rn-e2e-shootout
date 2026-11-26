@@ -507,3 +507,18 @@ METHODOLOGY v1 写的是“app 内所有动画时长乘以随机系数”。实�
 - 对策（用户决定，METHODOLOGY v17）：每次 iOS 开机前都重建；开机到套件结束之间系统 UI 进程（PosterBoard / SpringBoard / backboardd）有崩溃报告则该次运行无效（结果 JSON `systemCrashes`）。#60 按此补标为无效。
 - v17 的副作用（2026-11-25）：每次删除后重建时 PosterBoard 本身会崩溃（`+[NSURL(PosterFoundation) pf_posterPathInstanceURLForVersionsURL:version:]` 断言，`PBFPosterModelStoreCoordinator addNewVersionWithContents` 中，与上面的 `_initWithPath` 不是同一处）。恢复后的 37 次 iOS 运行（四个工具都有）中 9 次在开机后 15–50 s 内崩溃 1–3 次，按 v17 判为无效（约 1/4）；v17 之前不删除的 28 次运行中没有。场景结果与耗时看不出影响（suite 与同组合其他运行相同）。
 - 对策修订（用户决定，METHODOLOGY v18）：只在上次开机以来有系统 UI 进程崩溃时删除（上次开机时刻记在模拟器数据目录的 `.shootout-last-boot`）；无效运行在计划内运行完成后按组合补跑到 N = 100。m5-final-none 第 88 次（2026-11-25 07:51）后切换。
+
+## 2026-11-26 m5-final-none 完成：iOS 系统 UI 崩溃与无效运行的汇总
+
+m5-final-none 在 2026-11-26 10:05 跑完。按 METHODOLOGY v19，正式版、无施压，8 个组合的有效 N 都是 20，另有预热 24 次、无效 19 次。无效运行全部发生在 iOS 上，Android 一次都没有。
+
+| 方法版本 | iOS 运行 | 无效 | 崩溃的进程（按工具） |
+|---|---|---|---|
+| v16（不重建） | 15 | 1 | PosterBoard 崩溃循环（数据损坏，Quiesco #60） |
+| v17（每次开机前重建） | 36 | 10 | PosterBoard（Appium 5、Detox 2、Quiesco 2、Maestro 1） |
+| v18（崩溃后才重建） | 15 | 2 | PosterBoard（Maestro 2，开机前都没重建） |
+| v19（同 v18） | 45 | 6 | SpringBoard 5（Appium 3、Maestro 1、Detox 1），PosterBoard 1（Quiesco） |
+
+- **SpringBoard 崩溃**（2026-11-25 22:54 起出现 5 次）：5 次都在 `-[RBSAssertion dealloc]` 中触发 NSAssertion（RunningBoardServices，SIGABRT），时间从开机后 1 s 到运行开始后约 11 min 不等。v19 之前一次也没有。四个工具里出现了三个，所以判断为 iOS 27.0 模拟器自身的问题，与工具无关。第 211 次（Detox iOS）重启后约 1 s 就崩溃，当时宿主机 1 分钟负载是 71，可能和负载尖峰有关，但其他几次没有这样的尖峰，尚未确认。
+- **PosterBoard**：v18 以后只在没有重建的开机中出现（`addNewVersionWithContents` 同一处），约 3 / 60。
+- **对结果的影响**：无效运行不计入统计，已按 v18 补跑，各组合有效 N 都达到 20。一个工具碰到的无效运行多，只会让它补跑的次数多，不影响它的失败率和耗时。iOS 的无效运行按工具分是：Appium 8、Quiesco 4、Maestro 4、Detox 3。

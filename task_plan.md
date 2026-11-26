@@ -8,11 +8,11 @@
 
 ## Next Step
 
-M5 进行中：`m5-final-none`（METHODOLOGY v19：正式版、无施压，每组合有效 N = 20；施压条件和诊断版本轮不测）。跑完（含补跑）后 `harness summarize`，提交原始数据，进入 M6。
+M5 完成（m5-final-none，METHODOLOGY v19，各组合有效 N = 20；summary 见 results/summary.json）。下一步 M6 Expo 版本矩阵，先与用户确认范围。
 
 ## Current Phase
 
-Phase 5（M5）：m5-final-none 进行中（METHODOLOGY v19：正式版、无施压，N = 20）
+Phase 6（M6）：待开始
 
 ## Phases
 
@@ -62,10 +62,10 @@ Phase 5（M5）：m5-final-none 进行中（METHODOLOGY v19：正式版、无施
 
 ### Phase 5: M5 本地正式测量
 
-- [ ] 速度 + 稳定性：正式版、无施压，N = 20 × 工具 × 平台（METHODOLOGY v19；原 N = 100）
+- [x] 速度 + 稳定性：正式版、无施压，N = 20 × 工具 × 平台（METHODOLOGY v19；原 N = 100）；m5-final-none 2026-11-26 完成，results/summary.json
 - [~] 诊断版：v19 本轮不测（用户决定，2026-11-25）
 - [~] 施压：slow-net / slow-cpu / jitter，v19 本轮不测（用户决定，2026-11-25）
-- **Status:** pending
+- **Status:** complete
 
 ### Phase 6: M6 Expo 版本矩阵
 

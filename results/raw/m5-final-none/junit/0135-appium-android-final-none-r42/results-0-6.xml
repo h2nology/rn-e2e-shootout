@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S7" timestamp="2026-11-25T22:10:12" time="9.773" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S7"/>
+      <property name="capabilities" value="android.emulator-5554"/>
+      <property name="file" value="file://./test/final/s07-cjk.js"/>
+    </properties>
+    <testcase classname="android.emulator-5554.S7" name="S7a" time="9.771">
+      <system-out><![CDATA[
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/execute/sync - {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"appId":"com.rnshootout.app"}]}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-email\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff00000014/clear - {}
+RESULT: {}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff00000014/value - {"text":"user@example.com"}
+RESULT: {"text":"user@example.com"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-password\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff00000016/clear - {}
+RESULT: {}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff00000016/value - {"text":"Passw0rd!"}
+RESULT: {"text":"Passw0rd!"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"login-submit\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff00000017/click - {}
+RESULT: {}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"add-item-button\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"add-item-button\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"add-item-button\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"add-item-button\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"add-item-button\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"add-item-button\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"add-item-button\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"add-item-button\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff00000041/click - {}
+RESULT: {}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-title\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-title\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-title\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-title\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff0000011c/clear - {}
+RESULT: {}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff0000011c/value - {"text":"测试标题 テスト"}
+RESULT: {"text":"测试标题 テスト"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-save\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"new-item-save\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff0000011d/click - {}
+RESULT: {}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-row-501\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff00000142/click - {}
+RESULT: {}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+COMMAND: POST /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/elements - {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+RESULT: {"using":"-android uiautomator","value":"new UiSelector().resourceId(\"item-detail-title\")"}
+COMMAND: GET /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103/element/00000000-0000-004b-ffff-ffff00000151/text - {}
+RESULT: {}
+COMMAND: DELETE /session/cafc13e2-fc8c-4a8b-9043-b904ed38e103 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

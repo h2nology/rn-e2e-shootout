@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="1" errors="0" skipped="0">
+  <testsuite name="S22" timestamp="2026-11-26T00:07:29" time="45.386" tests="1" failures="1" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S22"/>
+      <property name="capabilities" value="ios.shootoutiphone17"/>
+      <property name="file" value="file://./test/final/s22-notification.js"/>
+    </properties>
+    <testcase classname="ios.shootoutiphone17.S22" name="" time="45.382">
+      <failure message="Can't call click on element with selector &quot;-ios predicate string:type == &quot;XCUIElementTypeButton&quot; AND label == &quot;Open&quot;&quot; because element wasn't found"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/72af5f1b-b823-43f3-9b80-390ee8068771/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/72af5f1b-b823-43f3-9b80-390ee8068771/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/72af5f1b-b823-43f3-9b80-390ee8068771/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: DELETE /session/72af5f1b-b823-43f3-9b80-390ee8068771 - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/timeouts - {"script":"<script> [8 bytes]"}
+RESULT: {"script":"<script> [8 bytes]"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"login-email"}
+RESULT: {"using":"accessibility id","value":"login-email"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/2B000000-0000-0000-74D9-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/2B000000-0000-0000-74D9-000000000000/value - {"text":"u"}
+RESULT: {"text":"u"}
+COMMAND: GET /session/79d0af4a-7935-4373-b665-17578d0efaca/element/2B000000-0000-0000-74D9-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/2B000000-0000-0000-74D9-000000000000/value - {"text":"ser@example.com"}
+RESULT: {"text":"ser@example.com"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"login-password"}
+RESULT: {"using":"accessibility id","value":"login-password"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/2D000000-0000-0000-74D9-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/2D000000-0000-0000-74D9-000000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/79d0af4a-7935-4373-b665-17578d0efaca/element/2D000000-0000-0000-74D9-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/2D000000-0000-0000-74D9-000000000000/value - {"text":"assw0rd!"}
+RESULT: {"text":"assw0rd!"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"login-submit"}
+RESULT: {"using":"accessibility id","value":"login-submit"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/29000000-0000-0000-74D9-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/A3000000-0000-0000-74D9-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"accessibility id","value":"notify-in-3s"}
+RESULT: {"using":"accessibility id","value":"notify-in-3s"}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/element/BF000000-0000-0000-74D9-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/execute/sync - {"script":"<script> [19 bytes]","args":[{"seconds":-1}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"seconds":-1}]}
+COMMAND: GET /session/79d0af4a-7935-4373-b665-17578d0efaca/window/rect - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/actions - {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":80,"y":2,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":80,"y":524,"duration":500,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer1","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":80,"y":2,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":80,"y":524,"duration":500,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/79d0af4a-7935-4373-b665-17578d0efaca/actions - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeStaticText\" AND label == \"Hello from rnshootout\""}
+COMMAND: GET /session/79d0af4a-7935-4373-b665-17578d0efaca/element/5A010000-0000-0000-03D5-000000000000/name - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Grouped\" AND label CONTAINS \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Grouped\" AND label CONTAINS \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Grouped\" AND label CONTAINS \"Hello from rnshootout\""}
+RESULT: {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Grouped\" AND label CONTAINS \"Hello from rnshootout\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Hello from rnshootout\" AND NOT (label CONTAINS \"Grouped\")"}
+RESULT: {"using":"-ios predicate string","value":"name == \"ListCell\" AND label CONTAINS \"Hello from rnshootout\" AND NOT (label CONTAINS \"Grouped\")"}
+COMMAND: GET /session/79d0af4a-7935-4373-b665-17578d0efaca/element/49010000-0000-0000-03D5-000000000000/rect - {}
+RESULT: {}
+COMMAND: GET /session/79d0af4a-7935-4373-b665-17578d0efaca/element/49010000-0000-0000-03D5-000000000000/rect - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/actions - {"actions":[{"id":"pointer2","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":54,"y":758,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":238,"y":758,"duration":400,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+RESULT: {"actions":[{"id":"pointer2","type":"pointer","parameters":{"pointerType":"touch"},"actions":[{"type":"pointerMove","button":0,"x":54,"y":758,"duration":100,"origin":"viewport"},{"type":"pointerDown","button":0},{"type":"pointerMove","button":0,"x":238,"y":758,"duration":400,"origin":"viewport"},{"type":"pointerUp","button":0}]}]}
+COMMAND: DELETE /session/79d0af4a-7935-4373-b665-17578d0efaca/actions - {}
+RESULT: {}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: POST /session/79d0af4a-7935-4373-b665-17578d0efaca/elements - {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+COMMAND: GET /session/79d0af4a-7935-4373-b665-17578d0efaca/screenshot - {}
+RESULT: {"using":"-ios predicate string","value":"type == \"XCUIElementTypeButton\" AND label == \"Open\""}
+RESULT: {}
+COMMAND: GET /session/79d0af4a-7935-4373-b665-17578d0efaca/source - {}
+RESULT: {}
+COMMAND: DELETE /session/79d0af4a-7935-4373-b665-17578d0efaca - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: Can't call click on element with selector "-ios predicate string:type == "XCUIElementTypeButton" AND label == "Open"" because element wasn't found
+    at async Context.<anonymous> (file:///Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/suites/appium/test/final/s22-notification.js:78:7)
+]]></system-err>
+    </testcase>
+  </testsuite>
+</testsuites>

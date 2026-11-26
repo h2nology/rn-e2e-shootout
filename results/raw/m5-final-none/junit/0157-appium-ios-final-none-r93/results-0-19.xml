@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S20" timestamp="2026-11-26T01:22:25" time="10.047" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S20"/>
+      <property name="capabilities" value="ios.shootoutiphone17"/>
+      <property name="file" value="file://./test/final/s20-keyboard.js"/>
+    </properties>
+    <testcase classname="ios.shootoutiphone17.S20" name="" time="10.044">
+      <system-out><![CDATA[
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"login-email"}
+RESULT: {"using":"accessibility id","value":"login-email"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2B000000-0000-0000-E6B0-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2B000000-0000-0000-E6B0-000000000000/value - {"text":"u"}
+RESULT: {"text":"u"}
+COMMAND: GET /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2B000000-0000-0000-E6B0-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2B000000-0000-0000-E6B0-000000000000/value - {"text":"ser@example.com"}
+RESULT: {"text":"ser@example.com"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"login-password"}
+RESULT: {"using":"accessibility id","value":"login-password"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/value - {"text":"assw0rd!"}
+RESULT: {"text":"assw0rd!"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"login-submit"}
+RESULT: {"using":"accessibility id","value":"login-submit"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/29000000-0000-0000-E6B0-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"tab-settings"}
+RESULT: {"using":"accessibility id","value":"tab-settings"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/A3000000-0000-0000-E6B0-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"open-long-form"}
+RESULT: {"using":"accessibility id","value":"open-long-form"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"open-long-form"}
+RESULT: {"using":"accessibility id","value":"open-long-form"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"open-long-form"}
+RESULT: {"using":"accessibility id","value":"open-long-form"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"open-long-form"}
+RESULT: {"using":"accessibility id","value":"open-long-form"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"open-long-form"}
+RESULT: {"using":"accessibility id","value":"open-long-form"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/BE000000-0000-0000-E6B0-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"form-notes"}
+RESULT: {"using":"accessibility id","value":"form-notes"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/value - {"text":"n"}
+RESULT: {"text":"n"}
+COMMAND: GET /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/value - {"text":"ote"}
+RESULT: {"text":"ote"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"form-notes"}
+RESULT: {"using":"accessibility id","value":"form-notes"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/2D000000-0000-0000-E6B0-000000000000/value - {"text":"\n"}
+RESULT: {"text":"\n"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"form-submit"}
+RESULT: {"using":"accessibility id","value":"form-submit"}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/DC000000-0000-0000-E6B0-000000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/52a74136-ab14-466d-a3f2-9359d376c27e/elements - {"using":"accessibility id","value":"form-result"}
+RESULT: {"using":"accessibility id","value":"form-result"}
+COMMAND: GET /session/52a74136-ab14-466d-a3f2-9359d376c27e/element/DA000000-0000-0000-E6B0-000000000000/text - {}
+RESULT: {}
+COMMAND: DELETE /session/52a74136-ab14-466d-a3f2-9359d376c27e - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

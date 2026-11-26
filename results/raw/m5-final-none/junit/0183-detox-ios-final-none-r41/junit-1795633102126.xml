@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="24" failures="1" errors="0" time="526.398">
+  <testsuite name="S1" errors="0" failures="0" skipped="0" timestamp="2026-11-25T18:58:22" time="14.51" tests="1">
+    <testcase classname="S1" name="登录成功后进入列表" time="13.653">
+    </testcase>
+  </testsuite>
+  <testsuite name="S2" errors="0" failures="0" skipped="0" timestamp="2026-11-25T18:58:36" time="10.721" tests="1">
+    <testcase classname="S2" name="输入错误邮箱时出现校验提示" time="10.33">
+    </testcase>
+  </testsuite>
+  <testsuite name="S3" errors="0" failures="0" skipped="0" timestamp="2026-11-25T18:58:47" time="14.444" tests="1">
+    <testcase classname="S3" name="搜索关键字后只显示匹配项" time="14.059">
+    </testcase>
+  </testsuite>
+  <testsuite name="S4" errors="0" failures="0" skipped="0" timestamp="2026-11-25T18:59:02" time="19.71" tests="1">
+    <testcase classname="S4" name="新增条目出现在顶部，刷新后仍在" time="19.315">
+    </testcase>
+  </testsuite>
+  <testsuite name="S5" errors="0" failures="0" skipped="0" timestamp="2026-11-25T18:59:21" time="15.711" tests="1">
+    <testcase classname="S5" name="确认 Modal 出现，确认后条目消失" time="15.169">
+    </testcase>
+  </testsuite>
+  <testsuite name="S6" errors="0" failures="0" skipped="0" timestamp="2026-11-25T18:59:37" time="118.254" tests="1">
+    <testcase classname="S6" name="滚动到第 400 行并进入详情" time="117.792">
+    </testcase>
+  </testsuite>
+  <testsuite name="S7" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:01:35" time="19.291" tests="1">
+    <testcase classname="S7" name="S7a 输入中文和日文标题并保存" time="18.769">
+    </testcase>
+  </testsuite>
+  <testsuite name="S8" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:01:55" time="22.762" tests="1">
+    <testcase classname="S8" name="调整开关、滑块、日期后提交" time="22.36">
+    </testcase>
+  </testsuite>
+  <testsuite name="S9" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:02:17" time="15.534" tests="1">
+    <testcase classname="S9" name="点击 WebView 内按钮，原生侧显示结果" time="15.15">
+    </testcase>
+  </testsuite>
+  <testsuite name="S10" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:02:33" time="43.702" tests="2">
+    <testcase classname="S10" name="S10a 预先授权后显示 Granted" time="17.096">
+    </testcase>
+    <testcase classname="S10" name="S10b 点击系统弹窗“允许”" time="26.21">
+    </testcase>
+  </testsuite>
+  <testsuite name="S11" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:03:17" time="14.351" tests="1">
+    <testcase classname="S11" name="在有无限动画的页面上点击按钮" time="13.964">
+    </testcase>
+  </testsuite>
+  <testsuite name="S12" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:03:31" time="15.437" tests="1">
+    <testcase classname="S12" name="左滑后点删除，条目消失" time="15.049">
+    </testcase>
+  </testsuite>
+  <testsuite name="S13" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:03:46" time="14.893" tests="1">
+    <testcase classname="S13" name="下拉刷新后显示服务端新增的数据" time="14.515">
+    </testcase>
+  </testsuite>
+  <testsuite name="S14" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:04:01" time="22.197" tests="1">
+    <testcase classname="S14" name="长按置顶，拖拽 R5 到 R1 的位置" time="21.793">
+    </testcase>
+  </testsuite>
+  <testsuite name="S15" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:04:24" time="18.805" tests="1">
+    <testcase classname="S15" name="卡片展开后点击卡片内按钮" time="18.296">
+    </testcase>
+  </testsuite>
+  <testsuite name="S16" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:04:42" time="19.056" tests="1">
+    <testcase classname="S16" name="在有轮询和 WebSocket 的页面上提交表单" time="18.66">
+    </testcase>
+  </testsuite>
+  <testsuite name="S17" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:05:01" time="16.042" tests="1">
+    <testcase classname="S17" name="Toast 出现后消失" time="15.643">
+    </testcase>
+  </testsuite>
+  <testsuite name="S18" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:05:17" time="16.041" tests="1">
+    <testcase classname="S18" name="500 后显示错误页，重试后恢复" time="15.605">
+    </testcase>
+  </testsuite>
+  <testsuite name="S19" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:05:34" time="26.2" tests="1">
+    <testcase classname="S19" name="嵌套页返回后 Tab 状态保持" time="25.752">
+    </testcase>
+  </testsuite>
+  <testsuite name="S20" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:06:00" time="20.702" tests="1">
+    <testcase classname="S20" name="填写被键盘遮挡的输入框后提交" time="20.261">
+    </testcase>
+  </testsuite>
+  <testsuite name="S21" errors="0" failures="1" skipped="0" timestamp="2026-11-25T19:06:20" time="21.361" tests="1">
+    <testcase classname="S21" name="热启动与冷启动打开深链接" time="20.983">
+      <failure>Test Failed: No elements found for “MATCHER(id == “item-detail-title”)”
+
+HINT: To print view hierarchy on failed actions/matches, use log-level verbose or higher.
+    at Object.toHaveText (/Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/suites/detox/e2e/final/s21-deeplink.test.js:27:55)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="S22" errors="0" failures="0" skipped="1" timestamp="2026-11-25T19:06:42" time="0.395" tests="1">
+    <testcase classname="S22" name="从通知中心点击通知（Detox 不支持操作通知中心）" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="S23" errors="0" failures="0" skipped="0" timestamp="2026-11-25T19:06:42" time="26" tests="1">
+    <testcase classname="S23" name="草稿在前后台切换后保持，保存后重启仍在" time="25.644">
+    </testcase>
+  </testsuite>
+</testsuites>

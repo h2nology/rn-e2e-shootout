@@ -1,0 +1,334 @@
+{
+  "tool": "detox",
+  "toolVersion": "20.51.4",
+  "methodologyVersion": "v19",
+  "variant": "final",
+  "platform": "ios",
+  "device": "Shootout iPhone 17 / iOS 27.0 simulator (59C18B64-C4A9-473E-91DC-24CCC9996644)",
+  "host": "Apple M5 Pro, 15 cores, 24 GB, macOS 26.7.3 (25G342)",
+  "expoSdk": 58,
+  "runIndex": 98,
+  "warmup": false,
+  "stress": "none",
+  "seed": 1,
+  "buildMs": null,
+  "installMs": 5835,
+  "launchMs": 1792,
+  "suiteMs": 527089,
+  "totalMs": 534716,
+  "toolWallMs": 529072,
+  "startedAt": "2026-11-25T11:01:58.091Z",
+  "exitCode": 1,
+  "timedOut": false,
+  "invalid": false,
+  "invalidReason": null,
+  "sleepEvents": [],
+  "systemCrashes": [],
+  "environment": {
+    "loadBefore": {
+      "one": 2.52,
+      "five": 4.47,
+      "fifteen": 6.81
+    },
+    "loadWaitedMs": 3,
+    "loadAfterBoot": {
+      "one": 7.2,
+      "five": 6.94,
+      "fifteen": 7.61
+    },
+    "loadAfterBootWaitedMs": 90075,
+    "loadAtStart": {
+      "one": 7.1,
+      "five": 6.92,
+      "fifteen": 7.6
+    },
+    "loadDuring": {
+      "samples": 17,
+      "median": 4.26,
+      "max": 12.21,
+      "values": [
+        5.35,
+        4.47,
+        3.94,
+        12.21,
+        8.09,
+        5.58,
+        4.17,
+        3.84,
+        3.53,
+        4.67,
+        7.59,
+        5.43,
+        4.26,
+        3.27,
+        3.47,
+        3.66,
+        3.61
+      ]
+    },
+    "deviceRebootMs": 4735,
+    "device": {
+      "languages": "(en)",
+      "locale": "en_US",
+      "reduceMotion": "0",
+      "appearance": "light",
+      "keyboardLastUsed": "en_US@sw=QWERTY;hw=Automatic",
+      "posterBoardReset": false
+    },
+    "emulatorArgs": null,
+    "mockConfig": {
+      "stress": "none",
+      "netDelayMinMs": 200,
+      "netDelayMaxMs": 200,
+      "animScaleMin": 1,
+      "animScaleMax": 1,
+      "seed": 1
+    }
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "status": "passed",
+      "durationMs": 6623,
+      "resetMs": 7363,
+      "junitTimeMs": 13993,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 13986
+    },
+    {
+      "id": "S2",
+      "status": "passed",
+      "durationMs": 4437,
+      "resetMs": 5442,
+      "junitTimeMs": 9881,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 24274
+    },
+    {
+      "id": "S3",
+      "status": "passed",
+      "durationMs": 8599,
+      "resetMs": 5292,
+      "junitTimeMs": 13893,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 38574
+    },
+    {
+      "id": "S4",
+      "status": "passed",
+      "durationMs": 14086,
+      "resetMs": 5379,
+      "junitTimeMs": 19466,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 58523
+    },
+    {
+      "id": "S5",
+      "status": "passed",
+      "durationMs": 9618,
+      "resetMs": 5792,
+      "junitTimeMs": 15411,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 74421
+    },
+    {
+      "id": "S6",
+      "status": "passed",
+      "durationMs": 112587,
+      "resetMs": 5273,
+      "junitTimeMs": 117862,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 192767
+    },
+    {
+      "id": "S7a",
+      "status": "passed",
+      "durationMs": 14082,
+      "resetMs": 5589,
+      "junitTimeMs": 19672,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 213022
+    },
+    {
+      "id": "S8",
+      "status": "passed",
+      "durationMs": 16962,
+      "resetMs": 5394,
+      "junitTimeMs": 22358,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 235796
+    },
+    {
+      "id": "S9",
+      "status": "passed",
+      "durationMs": 9598,
+      "resetMs": 5385,
+      "junitTimeMs": 14984,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 251181
+    },
+    {
+      "id": "S10a",
+      "status": "passed",
+      "durationMs": 11130,
+      "resetMs": 5866,
+      "junitTimeMs": 16998,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 268566
+    },
+    {
+      "id": "S10b",
+      "status": "passed",
+      "durationMs": 20967,
+      "resetMs": 5436,
+      "junitTimeMs": 26405,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 294973
+    },
+    {
+      "id": "S11",
+      "status": "passed",
+      "durationMs": 8399,
+      "resetMs": 5797,
+      "junitTimeMs": 14196,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 309609
+    },
+    {
+      "id": "S12",
+      "status": "passed",
+      "durationMs": 9815,
+      "resetMs": 5658,
+      "junitTimeMs": 15475,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 325590
+    },
+    {
+      "id": "S13",
+      "status": "passed",
+      "durationMs": 9067,
+      "resetMs": 5266,
+      "junitTimeMs": 14335,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 340388
+    },
+    {
+      "id": "S14",
+      "status": "passed",
+      "durationMs": 16378,
+      "resetMs": 5442,
+      "junitTimeMs": 21821,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 362615
+    },
+    {
+      "id": "S15",
+      "status": "passed",
+      "durationMs": 12840,
+      "resetMs": 5405,
+      "junitTimeMs": 18245,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 381346
+    },
+    {
+      "id": "S16",
+      "status": "passed",
+      "durationMs": 13292,
+      "resetMs": 5273,
+      "junitTimeMs": 18567,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 400396
+    },
+    {
+      "id": "S17",
+      "status": "passed",
+      "durationMs": 10232,
+      "resetMs": 5368,
+      "junitTimeMs": 15602,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 416422
+    },
+    {
+      "id": "S18",
+      "status": "passed",
+      "durationMs": 10327,
+      "resetMs": 5374,
+      "junitTimeMs": 15703,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 432504
+    },
+    {
+      "id": "S19",
+      "status": "passed",
+      "durationMs": 20485,
+      "resetMs": 5392,
+      "junitTimeMs": 25878,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 458789
+    },
+    {
+      "id": "S20",
+      "status": "passed",
+      "durationMs": 14956,
+      "resetMs": 5254,
+      "junitTimeMs": 20211,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 479459
+    },
+    {
+      "id": "S21",
+      "status": "failed",
+      "durationMs": 15582,
+      "resetMs": 5368,
+      "junitTimeMs": 20951,
+      "error": "Test Failed: No elements found for “MATCHER(id == “item-detail-title”)”\n\nHINT: To print view hierarchy on failed actions/matches, use log-level verbose or higher.\n    at Object.toHaveText (/Users/hu.shukang.19/workspaces/private/rn-e2e-shootout/suites/detox/e2e/final/s21-deeplink.test.js:27:55)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)",
+      "retries": 0,
+      "endOffsetMs": 500787
+    },
+    {
+      "id": "S22",
+      "status": "skipped",
+      "durationMs": null,
+      "resetMs": null,
+      "junitTimeMs": 0,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": null
+    },
+    {
+      "id": "S23",
+      "status": "passed",
+      "durationMs": 20254,
+      "resetMs": 5287,
+      "junitTimeMs": 25543,
+      "error": null,
+      "retries": 0,
+      "endOffsetMs": 527089
+    }
+  ],
+  "files": {
+    "log": "logs/0120-detox-ios-final-none-r98.log",
+    "junit": "junit/0120-detox-ios-final-none-r98"
+  }
+}

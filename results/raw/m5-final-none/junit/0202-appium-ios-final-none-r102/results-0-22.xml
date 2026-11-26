@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S23" timestamp="2026-11-26T09:51:38" time="18.118" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S23"/>
+      <property name="capabilities" value="ios.shootoutiphone17"/>
+      <property name="file" value="file://./test/final/s23-background.js"/>
+    </properties>
+    <testcase classname="ios.shootoutiphone17.S23" name="" time="18.113">
+      <system-out><![CDATA[
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"login-email"}
+RESULT: {"using":"accessibility id","value":"login-email"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2B000000-0000-0000-4F86-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2B000000-0000-0000-4F86-010000000000/value - {"text":"u"}
+RESULT: {"text":"u"}
+COMMAND: GET /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2B000000-0000-0000-4F86-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2B000000-0000-0000-4F86-010000000000/value - {"text":"ser@example.com"}
+RESULT: {"text":"ser@example.com"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"login-password"}
+RESULT: {"using":"accessibility id","value":"login-password"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/value - {"text":"assw0rd!"}
+RESULT: {"text":"assw0rd!"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"login-submit"}
+RESULT: {"using":"accessibility id","value":"login-submit"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/29000000-0000-0000-4F86-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"add-item-button"}
+RESULT: {"using":"accessibility id","value":"add-item-button"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"add-item-button"}
+RESULT: {"using":"accessibility id","value":"add-item-button"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"add-item-button"}
+RESULT: {"using":"accessibility id","value":"add-item-button"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"add-item-button"}
+RESULT: {"using":"accessibility id","value":"add-item-button"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"add-item-button"}
+RESULT: {"using":"accessibility id","value":"add-item-button"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/AB000000-0000-0000-4F86-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"new-item-title"}
+RESULT: {"using":"accessibility id","value":"new-item-title"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"new-item-title"}
+RESULT: {"using":"accessibility id","value":"new-item-title"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"new-item-title"}
+RESULT: {"using":"accessibility id","value":"new-item-title"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"new-item-title"}
+RESULT: {"using":"accessibility id","value":"new-item-title"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/value - {"text":"D"}
+RESULT: {"text":"D"}
+COMMAND: GET /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/value - {"text":"raft text"}
+RESULT: {"text":"raft text"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/execute/sync - {"script":"<script> [19 bytes]","args":[{"seconds":2}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"seconds":2}]}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"new-item-title"}
+RESULT: {"using":"accessibility id","value":"new-item-title"}
+COMMAND: GET /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"new-item-title"}
+RESULT: {"using":"accessibility id","value":"new-item-title"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/2D000000-0000-0000-4F86-010000000000/value - {"text":"ersisted"}
+RESULT: {"text":"ersisted"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"new-item-save"}
+RESULT: {"using":"accessibility id","value":"new-item-save"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/element/26030000-0000-0000-4F86-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"item-row-501"}
+RESULT: {"using":"accessibility id","value":"item-row-501"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"item-row-501"}
+RESULT: {"using":"accessibility id","value":"item-row-501"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"item-row-501"}
+RESULT: {"using":"accessibility id","value":"item-row-501"}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/a540da89-2dfb-4239-9289-af929d6633a8/elements - {"using":"accessibility id","value":"list-top-title"}
+RESULT: {"using":"accessibility id","value":"list-top-title"}
+COMMAND: GET /session/a540da89-2dfb-4239-9289-af929d6633a8/element/27000000-0000-0000-FF01-000000000000/text - {}
+RESULT: {}
+COMMAND: DELETE /session/a540da89-2dfb-4239-9289-af929d6633a8 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

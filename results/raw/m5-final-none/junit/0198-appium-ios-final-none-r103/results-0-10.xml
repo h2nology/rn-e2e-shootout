@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="S11" timestamp="2026-11-26T09:05:02" time="8.566" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="S11"/>
+      <property name="capabilities" value="ios.shootoutiphone17"/>
+      <property name="file" value="file://./test/final/s11-busy.js"/>
+    </properties>
+    <testcase classname="ios.shootoutiphone17.S11" name="" time="8.563">
+      <system-out><![CDATA[
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/execute/sync - {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"command":"privacy","args":["reset","all","com.rnshootout.app"]}]}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/execute/sync - {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+RESULT: {"script":"<script> [19 bytes]","args":[{"bundleId":"com.rnshootout.app"}]}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"login-email"}
+RESULT: {"using":"accessibility id","value":"login-email"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/2B000000-0000-0000-3418-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/2B000000-0000-0000-3418-010000000000/value - {"text":"u"}
+RESULT: {"text":"u"}
+COMMAND: GET /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/2B000000-0000-0000-3418-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/2B000000-0000-0000-3418-010000000000/value - {"text":"ser@example.com"}
+RESULT: {"text":"ser@example.com"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"login-password"}
+RESULT: {"using":"accessibility id","value":"login-password"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/2D000000-0000-0000-3418-010000000000/clear - {}
+RESULT: {}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/2D000000-0000-0000-3418-010000000000/value - {"text":"P"}
+RESULT: {"text":"P"}
+COMMAND: GET /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/2D000000-0000-0000-3418-010000000000/text - {}
+RESULT: {}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/2D000000-0000-0000-3418-010000000000/value - {"text":"assw0rd!"}
+RESULT: {"text":"assw0rd!"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"login-submit"}
+RESULT: {"using":"accessibility id","value":"login-submit"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/29000000-0000-0000-3418-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"tab-explore"}
+RESULT: {"using":"accessibility id","value":"tab-explore"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/A2000000-0000-0000-3418-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"open-busy-animation"}
+RESULT: {"using":"accessibility id","value":"open-busy-animation"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"open-busy-animation"}
+RESULT: {"using":"accessibility id","value":"open-busy-animation"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"open-busy-animation"}
+RESULT: {"using":"accessibility id","value":"open-busy-animation"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"open-busy-animation"}
+RESULT: {"using":"accessibility id","value":"open-busy-animation"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"open-busy-animation"}
+RESULT: {"using":"accessibility id","value":"open-busy-animation"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/C9000000-0000-0000-3418-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"busy-tap"}
+RESULT: {"using":"accessibility id","value":"busy-tap"}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/DF000000-0000-0000-3418-010000000000/click - {}
+RESULT: {}
+COMMAND: POST /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/elements - {"using":"accessibility id","value":"busy-result"}
+RESULT: {"using":"accessibility id","value":"busy-result"}
+COMMAND: GET /session/71890eb4-49c1-4fe2-9934-734d1e6e0339/element/E0000000-0000-0000-3418-010000000000/text - {}
+RESULT: {}
+COMMAND: DELETE /session/71890eb4-49c1-4fe2-9934-734d1e6e0339 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>
